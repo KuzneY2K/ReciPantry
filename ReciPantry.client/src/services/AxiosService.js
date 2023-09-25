@@ -8,10 +8,10 @@ export const api = Axios.create({
 })
 
 export const recipeApi = Axios.create({
-  baseURL: 'https://api.api-ninjas.com/v1/',
+  baseURL: 'https://api.spoonacular.com/recipes/',
   timeout: 20000,
   headers: {
-    'X-Api-Key': 'j4Y7o24v8UzV985/BJumdw==Mhr7Iwkf8oO3WSzi'
+    'x-api-key': '6e0f35ddf36b42bfa8156775b990fc09'
   }
 })
 
