@@ -22,7 +22,7 @@
   </section>
   <!-- Landing Card -->
   <section class="row p-0 m-0 container-fluid">
-    <div class="col-12 p-0 m-0">
+    <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center">
       <!-- COMPLETELY SEPARATE FROM RECIPE CARDS. -->
       <!-- These are the cards that can be side scrolled on the home page. -->
       <LandingCard />
@@ -36,12 +36,6 @@ import { recipesService } from '../services/RecipesService.js'
 import { logger } from '../utils/Logger.js'
 export default {
   setup() {
-    async function getOneRecipe(){
-      await recipesService.getOneRecipe()
-    }
-    onMounted(() => {
-      getOneRecipe()
-    })
     return {
 
       testBtn(){
