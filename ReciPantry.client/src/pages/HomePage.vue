@@ -9,9 +9,9 @@
   <section class="row p-0 m-0 container-fluid">
     <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center">
       <form>
-        <div class="input-group p-0 m-0 mb-3 mt-4">
+        <div class="input-group p-0 m-0 mb-3 mt-3">
           <span class="input-group-text p-0 m-0 py-1 px-3" id="basic-addon1"><i class="mdi mdi-magnify fs-2"></i></span>
-            <input type="text" class="form-control bg-white" placeholder="Search a recipe" aria-label="Username" aria-describedby="basic-addon1"><button class="btn btn-grad"><img src="https://i.imgur.com/Gh9UJij.png" alt="" height="30"></button>
+            <input type="text" class="form-control bg-white" placeholder="Search a recipe" aria-label="Username" aria-describedby="basic-addon1"><button class="btn btn-grad px-3"><img src="https://i.imgur.com/Gh9UJij.png" alt="" height="30"></button>
           </div>
       </form>
     </div>
@@ -41,7 +41,7 @@ export default {
 
 <style scoped lang="scss">         
 .btn-grad {
-            background-color: #68af8e;
+            background-color: #19875434;
           }
 .home {
   display: grid;
