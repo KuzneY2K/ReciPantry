@@ -3,20 +3,23 @@ import { BadRequest, Forbidden } from "../utils/Errors.js"
 import { logger } from "../utils/Logger.js"
 
 class RecipesService {
+    // gets the recipes from the db
     async getRecipes(query) {
         const recipes = await dbContext.Recipes.find(query)
         return recipes
     }
+    //gets an individual recipe from the db
     async getRecipeById(recipeId) {
         const recipe = await dbContext.Recipes.findById(recipeId)
         if (!recipe) throw new BadRequest(`No recipe at id ${recipeId}`)
         return recipe
     }
-
+    // creates a recipe in the db
     async createRecipe(body) {
         const recipe = await dbContext.Recipes.create(body)
         return recipe
     }
+    //edits a recipe in the db, finds by ID, error handling, then updates/ saves
     async editRecipe(recipeId, updates, userId) {
         const originalRecipe = await dbContext.Recipes.findById(recipeId)
         if (!originalRecipe) throw new BadRequest(`No event at id ${recipeId}`)
@@ -45,7 +48,12 @@ class RecipesService {
         originalRecipe.veryHealthy = updates.veryHealthy || originalRecipe.veryHealthy
         originalRecipe.veryPopular = updates.veryPopular || originalRecipe.veryPopular
         originalRecipe.weightWatcherPoints = updates.weightWatcherPoints || originalRecipe.weightWatcherPoints
+
+        await originalRecipe.save()
+        return originalRecipe
     }
+
+    // finds a recipe by its Id then allows the user to delete the recipe if it is one that they have created
     async deleteRecipe(recipeId, userId) {
         const recipeToRemove = await this.getRecipeById(recipeId)
         if (recipeToRemove.creatorId != userId) throw new Forbidden('This is not your recipe to delete!')

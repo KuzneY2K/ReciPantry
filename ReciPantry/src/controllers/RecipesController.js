@@ -25,7 +25,7 @@ export class RecipesController extends BaseController {
             next(error)
         }
     }
-
+    // getting an individual recipe (utilized for the recipe details page)
     async getRecipeById(req, res, next) {
         try {
             const recipe = await recipesService.getRecipeById(req.params.recipeId)
@@ -34,7 +34,7 @@ export class RecipesController extends BaseController {
             next(error)
         }
     }
-
+    // allows the user to upload / create a recipe
     async createRecipe(req, res, next) {
         try {
             let recipeBody = req.body
@@ -45,7 +45,7 @@ export class RecipesController extends BaseController {
             next(error)
         }
     }
-
+    // llows the user to edit a recipe they have created
     async editRecipe(req, res, next) {
         try {
             const updates = req.body
@@ -66,7 +66,7 @@ export class RecipesController extends BaseController {
             next(error)
         }
     }
-
+    // allows a user to delete a recipe that they have created
     async deleteRecipe(req, res, next) {
         try {
             const message = await recipesService.deleteRecipe(req.params.recipeId, req.userInfo.id)
