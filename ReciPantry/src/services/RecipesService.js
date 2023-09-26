@@ -40,7 +40,6 @@ class RecipesService {
         originalRecipe.veryHealthy = updates.veryHealthy || originalRecipe.veryHealthy
         originalRecipe.veryPopular = updates.veryPopular || originalRecipe.veryPopular
         originalRecipe.weightWatcherPoints = updates.weightWatcherPoints || originalRecipe.weightWatcherPoints
-
     }
 }
 export const recipesService = new RecipesService()
