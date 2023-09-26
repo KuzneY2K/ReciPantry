@@ -1,12 +1,15 @@
 <template>
     <!-- Add router link with params being the props.recipe.id -->
-    <RouterLink :to="{ name: 'RecipeDetails', params: {recipeId: props.recipe.id} }">
+    
     <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5 animate__animated animate__fadeInRightBig postion-relative" :style="{ backgroundImage: 'url(' + props.recipe.image + ')' }">
         <h2 class="postion-absolute text-white recipe-title position-absolute ms-3">{{ props.recipe.title }}</h2>
         <div class="container">
-        <span class="learnMore position-absolute text-white">Learn More</span><i class="mdi mdi-arrow-right-bold p-0 m-0 fs-1 text-white position-absolute arrow"></i></div>
+            <RouterLink :to="{ name: 'Recipe Details', params: {recipeId: props.recipe.id} }">
+                <span class="learnMore position-absolute text-white">Learn More</span><i class="mdi mdi-arrow-right-bold p-0 m-0 fs-1 text-white position-absolute arrow"></i>
+            </RouterLink>
+        </div>
     </div>
-    </RouterLink>
+    
 </template>
 
 <script>
