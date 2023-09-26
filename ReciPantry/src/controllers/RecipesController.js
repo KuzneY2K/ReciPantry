@@ -5,6 +5,14 @@ export class RecipesController extends BaseController {
     constructor() {
         super('api/recipes')
         this.router
-            .get('')
+            .get('', this.getRecipes)
+    }
+
+    async getRecipes(req, res, next) {
+        try {
+            const recipes = await recipesService.getRecipes(req.query)
+        } catch (error) {
+            next(error)
+        }
     }
 }
