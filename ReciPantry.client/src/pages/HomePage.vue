@@ -5,7 +5,6 @@
     </div>
   </section>
   <section class="row p-0 m-0 container-fluid">
-    
   </section>
   <section class="row p-0 m-0 container-fluid">
     <div class="col-12 p-0 m-0">

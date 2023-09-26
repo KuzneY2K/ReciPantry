@@ -1,6 +1,6 @@
 <template>
-    <div class="card-container p-0 m-0">
-        test
+    <div class="card-container p-0 m-0 text-center">
+        Landing Card component
     </div>
 </template>
 
