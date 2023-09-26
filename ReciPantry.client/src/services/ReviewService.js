@@ -9,18 +9,18 @@ class ReviewService {
         AppState.activeReviews.unshift(new Review(res.data))
     }
 
-    async getReviewsByRecipe() {
-        const res = await api.get()
+    async getReviewsByRecipe(recipeId) {
+        const res = await api.get(`api/reviews/${recipeId}`)
         AppState.activeReviews = res.data.map(review => new Review(review))
     }
 
     async getReviewsByAccount() {
-        const res = await api.get()
+        const res = await api.get('account/reviews')
         AppState.myReviews = res.data.map(review => new Review(review))
     }
 
-    async deleteReview() {
-
+    async deleteReview(reviewId) {
+        await api.delete(`api/reviews/${reviewId}`)
     }
 }
 
