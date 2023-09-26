@@ -23,9 +23,12 @@
           <h1>MY RECIPES</h1>
         </button>
       </div>
+      <div class="col-12 text-center mt-3">
+        <button class="btn btn-outline-dark">
+          <h1>FAV RECIPES</h1>
+        </button>
+      </div>
     </section>
-    <!-- STUB  insert recipe card here-->
-
   </div>
 </template>
 
