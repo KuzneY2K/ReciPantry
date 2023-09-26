@@ -13,12 +13,7 @@
         </div>
         <div class="dropdown-menu dropdown-menu-lg-end dropdown-menu-start p-0" aria-labelledby="authDropdown">
           <div class="list-group">
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item dropdown-item list-group-item-action">
-                Manage Account
-              </div>
-            </router-link>
-            <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
+            <div class="list-group-item dropdown-item list-group-item-action text-danger selectable text-light" @click="logout">
               <i class="mdi mdi-logout"></i>
               logout
             </div>
