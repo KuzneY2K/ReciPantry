@@ -1,9 +1,5 @@
 <template>
-  <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-white px-3 d-flex flex-row justify-content-center">
-    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-white px-3 d-flex flex-row justify-content-center">
     <div id="navbarText d-flex flew-row justify-content-around">
       <ul class="navbar-nav d-flex flex-row justify-content-around">
         <li class="px-3">

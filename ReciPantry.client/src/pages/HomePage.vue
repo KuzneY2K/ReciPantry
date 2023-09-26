@@ -1,7 +1,9 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-start justify-content-start mt-4 ms-4">
-    <h2>Home Page</h2>
+  <section class="row p-0 m-0">
+  <div class="col-10 d-flex flex-column align-items-start justify-content-start p-0 m-0 mt-4 ms-4">
+    <h1 class="home-title"><span class="text-success">FIND</span> THE RECIPE THAT <br>SUITS <span class="text-success">YOU</span></h1>
   </div>
+  </section>.
 </template>
 
 <script>
@@ -24,7 +26,6 @@ export default {
   place-content: center;
   text-align: center;
   user-select: none;
-
   .home-card {
     width: 50vw;
 
