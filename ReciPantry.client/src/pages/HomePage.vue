@@ -31,19 +31,23 @@
 </template>
 
 <script>
+import { onMounted } from 'vue'
 import { recipesService } from '../services/RecipesService.js'
 import { logger } from '../utils/Logger.js'
 export default {
   setup() {
+    async function getOneRecipe(){
+      await recipesService.getOneRecipe()
+    }
+    onMounted(() => {
+      getOneRecipe()
+    })
     return {
 
       testBtn(){
         logger.log('test')
       },
 
-      async getRecipe(){
-        await recipesService.getRecipe()
-      }
     }
   }
 }
