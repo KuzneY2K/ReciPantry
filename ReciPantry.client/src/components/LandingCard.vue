@@ -35,6 +35,7 @@ import {recipesService} from '../services/RecipesService.js'
     width: 18rem;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .card-title{

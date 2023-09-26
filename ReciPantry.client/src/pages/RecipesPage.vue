@@ -6,7 +6,7 @@
       </section>
       <section class="row p-0 m-0">
         <div class="col-12 d-flex flex-column align-items-center justify-content-center">
-            <RecipeCard v-for="recipe in recipes" :key="recipe.id" />
+            <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
         </div>
       </section>
 </template>
