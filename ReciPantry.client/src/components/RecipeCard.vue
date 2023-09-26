@@ -2,6 +2,7 @@
     <!-- Add router link with params being the props.recipe.id -->
     <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5 animate__animated animate__fadeInLeftBig postion-relative" :style="{ backgroundImage: 'url(' + props.recipe.image + ')' }">
         <h2 class="postion-absolute text-white recipe-title position-absolute ms-3">{{ props.recipe.title }}</h2>
+        <i class="mdi mdi-arrow-right-bold"></i>
     </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="card-container p-0 m-0 text-center border border-1 border-black rounded rounded-5 elevation-5 position-relative animate__animated animate__bounceInUp" v-if="randomRecipe[0]" :style="{ backgroundImage: 'url(' + randomRecipe[0].image + ')' }">
+    <div class="card-container p-0 m-0 text-center border border-1 border-black rounded rounded-5 elevation-5 position-relative animate__animated animate__bounceInUp mt-2" v-if="randomRecipe[0]" :style="{ backgroundImage: 'url(' + randomRecipe[0].image + ')' }">
         <div class="title-container p-0 m-0 text-start ms-4">
             <h2 class="p-0 m-0 position-absolute card-title text-white fs-1 w-75">{{randomRecipe[0].title}}</h2>
             <h4 class="p-0 m-0 position-absolute ingredientsCount text-white fs-3">{{ randomRecipe[0].ingredientsCount }} Ingredients</h4>
@@ -32,7 +32,7 @@ import {recipesService} from '../services/RecipesService.js'
 
 .card-container {
     height: 23rem;
-    width: 18rem;
+    width: 20rem;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
