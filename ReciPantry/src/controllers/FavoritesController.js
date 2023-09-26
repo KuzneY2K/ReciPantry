@@ -11,6 +11,7 @@ export class FavoritesController extends BaseController {
             .post('', this.createFavorite)
             .delete('/:favoriteId', this.removeFavorite)
     }
+    // STUB allows ability to favorite a recipe
     async createFavorite(req, res, next) {
         try {
             const favBody = req.body;
@@ -22,6 +23,7 @@ export class FavoritesController extends BaseController {
         }
     }
 
+    // STUB removes favorite on specific recipe
     async removeFavorite(req, res, next) {
         try {
             const message = await favoritesService.removeFavorite(req.params.favoriteId, req.userInfo.id)

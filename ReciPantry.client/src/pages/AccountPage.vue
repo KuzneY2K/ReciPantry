@@ -29,8 +29,6 @@
         </button>
       </div>
     </section>
-    <!-- STUB  insert recipe card here-->
-
   </div>
 </template>
 
