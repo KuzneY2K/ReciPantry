@@ -1,6 +1,7 @@
 import BaseController from "../utils/BaseController.js";
 import { recipesService } from "../services/RecipesService.js"
 import { Auth0Provider } from "@bcwdev/auth0provider";
+import { favoritesService } from "../services/FavoritesService.js";
 
 export class RecipesController extends BaseController {
     constructor() {
@@ -56,10 +57,20 @@ export class RecipesController extends BaseController {
         }
     }
 
+    async getFavoritesByRecipe(req, res, next) {
+        try {
+            const favs = await favoritesService.getFavoriteByRecipe(req.params.recipeId)
+            res.send(favs)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     async deleteRecipe(req, res, next) {
         try {
             const message = await recipesService.deleteRecipe(req.params.recipeId, req.userInfo.id)
             res.send(message)
+
         } catch (error) {
             next(error)
         }

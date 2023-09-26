@@ -2,6 +2,13 @@ import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class FavoritesService {
+    async getFavoriteByRecipe(recipeId) {
+        const favs = await dbContext.Favorites.find({ recipeId }).populate('profile')
+    }
+    async getFavoritesByAccount(userId) {
+        const fav = await dbContext.Favorites.find({ accountId: userId })
+        return fav
+    }
     async createFavorite(favBody) {
         const fav = await dbContext.Favorites.create(favBody)
         await fav.populate('recipe')
