@@ -6,6 +6,11 @@ class RecipesService {
         const recipes = await dbContext.Recipes.find(query)
         return recipes
     }
+
+    async createRecipe(body) {
+        const recipe = await dbContext.Recipes.create(body)
+        return recipe
+    }
 }
 
 export const recipesService = new RecipesService()
