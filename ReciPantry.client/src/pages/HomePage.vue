@@ -5,22 +5,6 @@
       <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__bounceInRight"><span class="text-success">FIND</span> THE RECIPE THAT <br>SUITS <span class="text-success">YOU</span></h1>
     </div>
   </section>
-  <!-- Search Bar -->
-  <section class="row p-0 m-0 container-fluid animate__animated animate__fadeInDownBig">
-    <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center">
-      <!-- Search Form - Search by query with filters -->
-      <form @submit.prevent="searchRecipesByQuery()">
-        <div class="input-group p-0 m-0 mb-3 mt-3 elevation-3 border border-black border-1 bg-transparent rounded">
-          <!-- Submit Button -->
-          <button type="submit" class="btn bg-light p-0 m-0"><span class="input-group-text p-0 m-0 py-1 px-3" id="basic-addon1"><i class="mdi mdi-magnify fs-2"></i></span></button>
-            <input v-model="reqData" type="text" class="form-control bg-white" placeholder="Search a recipe" aria-label="searchBar" aria-describedby="basic-addon1">
-            <!-- FILTER BUTTON - Toggles modal that has all filter options. -->
-            <!-- Filters will be options that will set the reqData to their value -->
-            <button class="btn btn-grad px-3"><img src="https://i.imgur.com/Gh9UJij.png" alt="" height="30"></button>
-          </div>
-      </form>
-    </div>
-  </section>
   <!-- Landing Card -->
   <section class="row p-0 m-0 container-fluid">
     <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center landingCardContainer">
@@ -29,42 +13,26 @@
       <LandingCard />
     </div>
   </section>
+  <!-- GET STARTED BUTTON - Redirects to recipes Search -->
+    <section class="row p-0 m-0 container-fluid animate__animated animate__fadeInDownBig">
+      <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center mt-4">
+        <RouterLink :to="{ name: 'Recipes' }">
+            <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2">Get Started</button>
+        </RouterLink>
+      </div>
+    </section>
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'
-import { recipesService } from '../services/RecipesService.js'
-import { logger } from '../utils/Logger.js'
-import Pop from '../utils/Pop.js'
 export default {
   setup() {
-    const reqData = ref('')
     return {
-      reqData,
-
-      // Just to test if buttons work
-      testBtn(){
-        logger.log('test')
-      },
-
-      // Search recipes by query, autocompletes
-      async searchRecipesByQuery(){
-        try {
-          await recipesService.searchRecipesByQuery(reqData.value)
-        } catch (error) {
-          Pop.error(error)
-        }
-      }
-
     }
   }
 }
 </script>
 
 <style scoped lang="scss">         
-.btn-grad {
-            background-color: #19875434;
-          }
 .home {
   display: grid;
   height: 80vh;
