@@ -9,7 +9,7 @@ export const api = Axios.create({
 
 export const recipeApi = Axios.create({
   baseURL: 'https://api.spoonacular.com/recipes/',
-  timeout: 20000,
+  timeout: 100000,
   headers: {
     'x-api-key': '6e0f35ddf36b42bfa8156775b990fc09'
   }
