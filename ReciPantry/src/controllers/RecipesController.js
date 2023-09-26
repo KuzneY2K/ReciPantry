@@ -9,6 +9,7 @@ export class RecipesController extends BaseController {
             .get('', this.getRecipes)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createRecipe)
+            .put('/:recipeId', this.editRecipe)
     }
 
     // pretty simple here, get request to our DB
@@ -25,6 +26,18 @@ export class RecipesController extends BaseController {
             let recipeBody = req.body
             recipeBody.creatorId = req.userInfo.id
             const recipe = await recipesService.createRecipe(recipeBody)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async editRecipe(req, res, next) {
+        try {
+            const updates = req.body
+            const recipeId = req.params.recipeId
+            const userId = req.userInfo.id
+            const editedRecipe = await recipesService.editRecipe(recipeId, updates, userId)
+            res.send(editedRecipe)
         } catch (error) {
             next(error)
         }

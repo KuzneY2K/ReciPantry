@@ -1,6 +1,7 @@
 import { Schema } from "mongoose"
 
 export const RecipeSchema = new Schema({
+    creatorId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
     analyzedInstructions: { type: Array, required: false },
     cheap: { type: Boolean, required: false },
     cookingMinutes: { type: Number, required: false },
