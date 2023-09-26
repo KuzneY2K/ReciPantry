@@ -6,9 +6,16 @@ import { api, recipeApi } from "./AxiosService.js"
 class RecipesService{
     async getOneRecipe(){
         let res = await recipeApi.get('random?number=1')
-        // logger.log(res.data.recipes)
+        logger.log(res.data.recipes)
         AppState.randomRecipe = res.data.recipes.map(recipe => new Recipe(recipe))
         logger.log(AppState.randomRecipe)
+    }
+
+    async searchRecipesByQuery(reqData){
+        let res = await recipeApi.get(`autocomplete?number=10&query=${reqData}`)
+        logger.log(res.data)
+        AppState.recipes = res.data.map(recipe => new Recipe(recipe))
+        logger.log(AppState.recipes)
     }
 
     // click on card. uses recipe id to get the recipe instructions - endpoint => {id}/information

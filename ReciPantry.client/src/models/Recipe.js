@@ -7,7 +7,8 @@ export class Recipe {
         this.dairyFree = data.dairyFree
         this.diets = data.diets
         this.dishTypes = data.dishTypes
-        this.extendedIngredients = data.extendedIngredients
+        this.ingredients = data.extendedIngredients
+        this.ingredientsCount = data.extendedIngredients?.length
         this.glutenFree = data.glutenFree
         this.healthScore = data.healthScore
         this.id = data.id
