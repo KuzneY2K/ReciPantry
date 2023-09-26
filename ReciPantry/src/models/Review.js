@@ -1,7 +1,7 @@
 import { Schema } from "mongoose";
 
 
-export class ReviewSchema = new Schema({
+export const ReviewSchema = new Schema({
     rating: { type: Number, required: true, min: 1, max: 5, },
     comment: {},
     accountId: {},
