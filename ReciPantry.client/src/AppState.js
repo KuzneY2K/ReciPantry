@@ -10,6 +10,8 @@ export const AppState = reactive({
   recipes: {},
   /** @type {import('./models/Recipe.js').Recipe} */
   randomRecipe: {},
+  /** @type {import('./models/Recipe.js').Recipe} */
+  activeRecipe: {},
   /**@type {Review[]} */
   activeReviews: [],
   /**@type {Review[]} */

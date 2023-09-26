@@ -18,6 +18,11 @@ class RecipesService{
     }
 
     // click on card. uses recipe id to get the recipe instructions - endpoint => {id}/information
+
+    async getRecipeById(recipeId){
+        let res = await recipeApi.get(`${recipeId}/information`)
+        logger.log(res)
+    }
 }
 
 export const recipesService = new RecipesService()
