@@ -7,6 +7,11 @@ class RecipesService {
         const recipes = await dbContext.Recipes.find(query)
         return recipes
     }
+    async getRecipeById(recipeId) {
+        const recipe = await dbContext.Recipes.findById(recipeId)
+        if (!recipe) throw new BadRequest(`No recipe at id ${recipeId}`)
+        return recipe
+    }
 
     async createRecipe(body) {
         const recipe = await dbContext.Recipes.create(body)
@@ -40,6 +45,12 @@ class RecipesService {
         originalRecipe.veryHealthy = updates.veryHealthy || originalRecipe.veryHealthy
         originalRecipe.veryPopular = updates.veryPopular || originalRecipe.veryPopular
         originalRecipe.weightWatcherPoints = updates.weightWatcherPoints || originalRecipe.weightWatcherPoints
+    }
+    async deleteRecipe(recipeId, userId) {
+        const recipeToRemove = await this.getRecipeById(recipeId)
+        if (recipeToRemove.creatorId != userId) throw new Forbidden('This is not your recipe to delete!')
+        await recipeToRemove.remove()
+        return `Remove the recipe at id ${recipeId}`
     }
 }
 export const recipesService = new RecipesService()
