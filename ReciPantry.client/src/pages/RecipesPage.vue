@@ -4,11 +4,23 @@
               <SearchBar />
         </div>
       </section>
+      <section class="row p-0 m-0">
+        <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+            <RecipeCard v-for="recipe in recipes" :key="recipe.id" />
+        </div>
+      </section>
 </template>
 
 <script>
+import { computed } from 'vue';
+import { AppState } from '../AppState.js';
+
     export default {
-        
+        setup(){
+            return{
+                recipes: computed(() => AppState.recipes)
+            }
+        }
     }
 </script>
 
