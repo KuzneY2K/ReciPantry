@@ -8,7 +8,8 @@ export class FavoritesController extends BaseController {
         super('api/favorites');
         this.router
             .use(Auth0Provider.getAuthorizedUserInfo)
-            .post('', this.createFavorite);
+            .post('', this.createFavorite)
+            .delete('/:favoriteId', this.removeFavorite)
     }
     async createFavorite(req, res, next) {
         try {
@@ -18,6 +19,15 @@ export class FavoritesController extends BaseController {
             res.send(fav);
         } catch (error) {
             next(error);
+        }
+    }
+
+    async removeFavorite(req, res, next) {
+        try {
+            const message = await favoritesService.removeFavorite(req.params.favoriteId, req.userInfo.id)
+            res.send(message)
+        } catch (error) {
+            next(error)
         }
     }
 }
