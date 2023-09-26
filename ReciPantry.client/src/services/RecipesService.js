@@ -21,7 +21,9 @@ class RecipesService{
 
     async getRecipeById(recipeId){
         let res = await recipeApi.get(`${recipeId}/information`)
-        logger.log(res)
+        // logger.log(res)
+        AppState.activeRecipe = new Recipe(res.data)
+        logger.log(AppState.activeRecipe)
     }
 }
 
