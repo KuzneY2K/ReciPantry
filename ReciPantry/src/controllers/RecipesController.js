@@ -9,10 +9,12 @@ export class RecipesController extends BaseController {
         this.router
             .get('', this.getRecipes)
             .get('/:recipeId', this.getRecipeById)
+            .get('/:recipeId/favorites', this.getFavoritesByRecipe)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createRecipe)
             .put('/:recipeId', this.editRecipe)
             .delete('/:recipeId', this.deleteRecipe)
+
     }
 
     // pretty simple here, get request to our DB
