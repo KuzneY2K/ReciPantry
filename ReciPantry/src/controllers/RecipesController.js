@@ -71,7 +71,6 @@ export class RecipesController extends BaseController {
         try {
             const message = await recipesService.deleteRecipe(req.params.recipeId, req.userInfo.id)
             res.send(message)
-
         } catch (error) {
             next(error)
         }
