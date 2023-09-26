@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <section class="row">
+      <div class="col-12">
+        <Login />
+      </div>
       <!-- STUB Account info -->
       <div class="about text-center mt-5 col-12">
         <h1 class="p-2">My Account</h1>
@@ -35,12 +38,14 @@
 <script>
 import { computed } from 'vue';
 import { AppState } from '../AppState';
+import Login from '../components/Login.vue';
 export default {
-  setup() {
-    return {
-      account: computed(() => AppState.account)
-    }
-  }
+    setup() {
+        return {
+            account: computed(() => AppState.account)
+        };
+    },
+    components: { Login }
 }
 </script>
 
