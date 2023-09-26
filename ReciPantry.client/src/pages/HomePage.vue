@@ -3,7 +3,7 @@
   <div class="col-10 d-flex flex-column align-items-start justify-content-start p-0 m-0 mt-4 ms-4">
     <h1 class="home-title"><span class="text-success">FIND</span> THE RECIPE THAT <br>SUITS <span class="text-success">YOU</span></h1>
   </div>
-  </section>.
+  </section>
 </template>
 
 <script>
