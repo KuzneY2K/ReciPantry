@@ -4,7 +4,7 @@ import { logger } from '../utils/Logger.js'
 
 export const api = Axios.create({
   baseURL,
-  timeout: 20000
+  timeout: 200000
 })
 
 export const recipeApi = Axios.create({
