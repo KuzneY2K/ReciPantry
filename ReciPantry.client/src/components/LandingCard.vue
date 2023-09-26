@@ -1,6 +1,8 @@
 <template>
     <div class="card-container p-0 m-0 text-center mt-3 rounded rounded-5 elevation-5 position-relative" v-if="randomRecipe[0]" :style="{ backgroundImage: 'url(' + randomRecipe[0].image + ')' }">
-        <h2 class="p-0 m-0 position-absolute card-title text-white fs-1">{{randomRecipe[0].title}}</h2>
+        <div class="title-container p-0 m-0">
+            <h2 class="p-0 m-0 position-absolute card-title text-white fs-1">{{randomRecipe[0].title}}</h2>
+        </div>
     </div>
 </template>
 
