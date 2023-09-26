@@ -20,10 +20,11 @@
             <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black">Get Started <i class="mdi mdi-arrow-right-bold"></i></button>
         </RouterLink>
       </div>
+      <hr>
     </section>
     <section class="row p-0 m-0">
       <div class="col-12 p-0 m-0">
-        <h1 class="mt-4 text-center categories-title">Browse Categories</h1>
+        <h1 class="text-center categories-title">Browse Categories</h1>
       </div>
     </section>
 </template>
@@ -42,6 +43,17 @@ export default {
 .categories-title{
   font-size: 2.5rem !important;
 }
+
+hr{
+  
+  border: 0;
+  height: 3px;
+  width: 75%;
+  background-color: black;
+  position: relative;
+  margin: 20px auto;
+}
+
 .home {
   display: grid;
   height: 80vh;
