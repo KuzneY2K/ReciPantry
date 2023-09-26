@@ -14,7 +14,6 @@ export class RecipesController extends BaseController {
             .post('', this.createRecipe)
             .put('/:recipeId', this.editRecipe)
             .delete('/:recipeId', this.deleteRecipe)
-
     }
 
     // pretty simple here, get request to our DB
