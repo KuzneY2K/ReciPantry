@@ -8,6 +8,7 @@ export class RecipesController extends BaseController {
             .get('', this.getRecipes)
     }
 
+    // pretty simple here, get request to our DB
     async getRecipes(req, res, next) {
         try {
             const recipes = await recipesService.getRecipes(req.query)
