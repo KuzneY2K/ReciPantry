@@ -17,7 +17,7 @@
     <section class="row p-0 m-0 container-fluid animate__animated animate__fadeInDownBig">
       <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center mt-4">
         <RouterLink :to="{ name: 'Recipes' }">
-            <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2">Get Started</button>
+            <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black">Get Started</button>
         </RouterLink>
       </div>
     </section>
