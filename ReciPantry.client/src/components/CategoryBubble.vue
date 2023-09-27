@@ -7,7 +7,7 @@
     </div>
     </RouterLink>
     <!-- SIDES -->
-    <RouterLink :to="{ name: 'Recipes' }" @click="setCategory('side dishes')">
+    <RouterLink :to="{ name: 'Recipes' }" @click="setCategory('side')">
     <div class="side-dish-container d-flex flex-column align-items-center justify-content-center me-3">
         <img src="https://images.unsplash.com/photo-1633436375153-d7045cb93e38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80" alt="" class="bubble rounded rounded-pill elevation-5">
         <h5 class="mt-2 category-name">Side Dishes</h5>

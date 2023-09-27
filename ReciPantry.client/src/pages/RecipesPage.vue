@@ -18,11 +18,11 @@
         <div class="col-12 p-0 m-0 px-2" v-if="recipes[0]">
         <div class="btn-container d-flex flex-row justify-content-between">
             <!-- Go back -->
-            <button v-if="pageNum >= 1" @click="previousPage()">Previous Page</button>
+            <button v-if="pageNum >= 1" @click="previousPage()" class="btn btn-success text-white">Previous Page</button>
             <!-- UI prevents user from going into negative pageNum -->
-            <button v-if="pageNum < 1" @click="previousPage()" disabled>Previous Page</button>
+            <button v-if="pageNum < 1" @click="previousPage()" class="btn btn-success text-white" disabled>Previous Page</button>
             <!-- Go forward -->
-            <button @click="nextPage()">Next Page</button>
+            <button @click="nextPage()" class="btn btn-success text-white">Next Page</button>
         </div>
     </div>
       </section>
@@ -36,6 +36,8 @@ import Pop from '../utils/Pop.js';
 
     export default {
         setup(){
+            // Gets random recipes so that the Recipes page isnt empty. 
+            // Only gets recipes if the appstate recipes are empty. Removes conflict with categories
             async function getRandomRecipes(){
                 try {
                     if(!AppState.recipes){

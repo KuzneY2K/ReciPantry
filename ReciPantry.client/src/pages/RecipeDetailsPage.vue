@@ -2,7 +2,9 @@
     <div v-if="recipe">
         <!-- Pulls recipe title from active recipe -->
         <h1 class="text-start ms-4 mt-3 text-success position-relative">{{ recipe.title }} <span class="text-black">- {{ recipe.readyInMinutes }} Mins</span></h1>
-        <button class="btn btn-success postion-absolute"></button>
+        <div class="grocery-btn-container postion-absolute">
+            <button class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5"><i class="mdi mdi-list-box"></i></button>
+        </div>
             <div class="img-container d-flex flex-column align-items-center justify-content-center">
                 <!-- Pulls recipe cover image from active recipe -->
                 <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350" class="rounded rounded-5 border border-1 border-dark elevation-5 recipe-image">
@@ -138,6 +140,15 @@ import { reviewService } from '../services/ReviewService';
 // .cart-btn{
 //     right: -3rem !important;
 // }
+
+.grocery-btn-container{
+
+}
+
+.grocery-list {
+    bottom: 1rem;
+    right: 1rem;
+}
 
 .checkbox {
     height: 1.25rem;

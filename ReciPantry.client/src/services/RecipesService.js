@@ -14,12 +14,14 @@ class RecipesService{
     }
 
     async getRandomRecipes(){
+        AppState.pageNum = 0
         let res = await recipeApi.get(`random?number=10&offset=${AppState.pageNum}0`)
         AppState.recipes = res.data.recipes.map(recipe => new Recipe(recipe))
     }
 
     // search recipes using search parameters
     async searchRecipesByQuery(reqData){
+        AppState.pageNum = 0
         let res = await recipeApi.get(`complexSearch?query=${reqData}&number=10&offset=${AppState.pageNum}0`)
         
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))

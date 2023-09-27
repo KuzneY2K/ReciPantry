@@ -23,7 +23,11 @@
 
 body {
   overscroll-behavior: none;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+}
+
+main {
+  overflow-x: scroll !important;
 }
 
 #app {
