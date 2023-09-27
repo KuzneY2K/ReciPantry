@@ -16,7 +16,7 @@
                 </div>
                 <div class="instructions-container p-0 m-0 px-4 mt-4">
                     <h3 class="p-0 m-0">Instructions</h3>
-                   <p> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
+                   <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3"> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
                 </div>
     </div>
 </template>
