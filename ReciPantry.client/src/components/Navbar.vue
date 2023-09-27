@@ -13,7 +13,7 @@
           </router-link>
         </li>
         <li class="mx-2">
-          <router-link :to="{ name: 'Home' }" class="btn text-success selectable text-uppercase animate__animated animate__bounce">
+          <router-link :to="{ name: 'Community' }" class="btn text-success selectable text-uppercase animate__animated animate__bounce">
             <img src="https://i.imgur.com/msy9hgt.png" alt="" height="35">
           </router-link>
         </li>
