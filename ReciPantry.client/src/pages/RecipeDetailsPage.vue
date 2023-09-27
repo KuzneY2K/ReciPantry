@@ -78,6 +78,7 @@
                 <div>
                     <div v-for="review in reviews" :key="review.id" class="col-12">
                         <ReviewCard :review="review" />
+                        <!-- REVIEW having trouble 'getting' reviews from reading the recipeId in the route... server/controllers/ReviewController -->
                     </div>
                 </div>
     </div>
