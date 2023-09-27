@@ -1,10 +1,15 @@
 <template>
-    <div class="card-container p-0 m-0 text-center border border-1 border-black rounded rounded-5 elevation-5 position-relative animate__animated animate__bounceInUp mt-2" v-if="randomRecipe[0]" :style="{ backgroundImage: 'url(' + randomRecipe[0].image + ')' }">
+
+    <div class="card-container p-0 m-0 text-center border border-1 border-black rounded rounded-5 elevation-5 position-relative animate__animated animate__bounceInUp mt-2" v-if="randomRecipe[0]" :style="{ backgroundImage: 'url(' + randomRecipe[0].image + ')' }">    
         <div class="title-container p-0 m-0 text-start ms-4">
             <h2 class="p-0 m-0 position-absolute card-title text-white fs-1 w-75">{{randomRecipe[0].title}}</h2>
-            <h4 class="p-0 m-0 position-absolute ingredientsCount text-white fs-3">{{ randomRecipe[0].ingredientsCount }} Ingredients</h4>
+                <h4 class="p-0 m-0 position-absolute ingredientsCount text-white fs-3">{{ randomRecipe[0].ingredientsCount }} Ingredients</h4>
         </div>
+        <RouterLink :to="{ name: 'Recipe Details', params: { recipeId: randomRecipe[0].id } }">
+            <span class="learnMore position-absolute text-white">Learn More</span><i class="mdi mdi-arrow-right-bold p-0 m-0 fs-1 text-white position-absolute arrow"></i>
+        </RouterLink>
     </div>
+    
 </template>
 
 <script>
@@ -36,6 +41,19 @@ import {recipesService} from '../services/RecipesService.js'
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.arrow {
+    font-size: 2rem !important;
+    bottom: 0rem;
+    right: 1rem;
+    text-shadow: 1px 1px 5px black;
+}
+
+.learnMore{
+    bottom: .8rem;
+    right: 3rem;
+    text-shadow: 1px 1px 3px black;
 }
 
 .card-title{

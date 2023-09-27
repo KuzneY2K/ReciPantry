@@ -10,8 +10,15 @@ export const AppState = reactive({
   recipes: {},
   /** @type {import('./models/Recipe.js').Recipe} */
   randomRecipe: {},
+  /** @type {import('./models/Recipe.js').Recipe} */
+  activeRecipe: {},
+  nutritionLabel: null,
+  tasteWidget: null,
   /**@type {Review[]} */
   activeReviews: [],
   /**@type {Review[]} */
   myReviews: [],
+  pageNum: 0,
+  savedQuery: null,
+  diet: 'Gluten Free'
 })

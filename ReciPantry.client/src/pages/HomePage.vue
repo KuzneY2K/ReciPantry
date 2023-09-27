@@ -20,11 +20,11 @@
             <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black">Get Started <i class="mdi mdi-arrow-right-bold"></i></button>
         </RouterLink>
       </div>
-      <hr>
+      <hr class="animate__animated animate__fadeIn">
     </section>
     <section class="row p-0 m-0">
       <div class="col-12 p-0 m-0">
-        <h1 class="text-center categories-title">Browse Categories</h1>
+        <h1 class="text-center categories-title animate__animated animate__fadeIn">Browse Categories</h1>
       </div>
     </section>
 </template>
