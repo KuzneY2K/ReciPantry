@@ -11,6 +11,7 @@ export class AccountController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
       .get('/reviews', this.getReviewsByAccount)
+      .get('/favorites', this.getFavoritesByAccount)
   }
 
   async getUserAccount(req, res, next) {
