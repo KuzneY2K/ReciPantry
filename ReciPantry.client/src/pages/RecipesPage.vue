@@ -13,7 +13,7 @@
         <div class="col-12 p-0 m-0 px-2" v-if="recipes[0]">
         <div class="btn-container d-flex flex-row justify-content-between">
             <button v-if="pageNum >= 1" @click="previousPage()">Previous Page</button>
-            <button v-if="pageNum <= 1" @click="previousPage()" disabled>Previous Page</button>
+            <button v-if="pageNum < 1" @click="previousPage()" disabled>Previous Page</button>
             <button @click="nextPage()">Next Page</button>
         </div>
     </div>

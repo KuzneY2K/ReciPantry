@@ -15,7 +15,7 @@ class RecipesService{
         let res = await recipeApi.get(`complexSearch?query=${reqData}&number=10&offset=${AppState.pageNum}0`)
         
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
-        // logger.log(AppState.recipes)
+        logger.log(AppState.recipes)
     }
 
     async paginate(reqData){
