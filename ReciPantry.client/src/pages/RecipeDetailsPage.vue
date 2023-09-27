@@ -27,6 +27,7 @@
                             <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.original }}</span>
                                 
                         </li>
+                        <li class="btn bg-success p-0 m-0 mt-3 py-3 px-3 rounded rounded-5 elevation-3 d-flex flex-row justify-content-center align-items-center text-white fs-2">SEE NUTRITION</li>
                     </ul>
                 </div>
 
@@ -35,6 +36,8 @@
                     <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
                 <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5"> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
                 </div>
+
+
                 <!-- Widget's Containing ALL data for meal, turn into modal -->
                 <div class="widgets p-0 m-0">
                     <div class="nutrition-label">
