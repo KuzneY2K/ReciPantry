@@ -4,6 +4,8 @@ import { logger } from "../utils/Logger.js"
 import { api, recipeApi } from "./AxiosService.js"
 
 class RecipesService{
+
+    // for home page, just gets a random recipe
     async getOneRecipe(){
         let res = await recipeApi.get('random?number=1')
         // logger.log(res.data.recipes)
@@ -11,6 +13,7 @@ class RecipesService{
         // logger.log(AppState.randomRecipe)
     }
 
+    // search recipes using search parameters
     async searchRecipesByQuery(reqData){
         let res = await recipeApi.get(`complexSearch?query=${reqData}&number=10&offset=${AppState.pageNum}0`)
         
@@ -18,13 +21,13 @@ class RecipesService{
         logger.log(AppState.recipes)
     }
 
+    // next page, previous page function
     async paginate(reqData){
         let res = await recipeApi.get(`complexSearch?query=${reqData}&number=10&offset=${AppState.pageNum}0`)
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
     }
 
-    // click on card. uses recipe id to get the recipe instructions - endpoint => {id}/information
-
+    // after clicking on recipe card, the recipe specific to the recipe card's id is gotten and rendered
     async getRecipeById(recipeId){
         let res = await recipeApi.get(`${recipeId}/information`)
         AppState.activeRecipe = new Recipe(res.data)  
