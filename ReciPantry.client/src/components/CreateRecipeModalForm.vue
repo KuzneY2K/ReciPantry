@@ -6,7 +6,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitleId">Modal title</h5>
+                    <h5 class="modal-title" id="modalTitleId">Create Recipe</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -19,10 +19,10 @@
                             <label for="recipeIngredients">Ingredients</label>
                             <input class="form-control" id="recipeIngredients" type="text" maxlength="1000">
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 d-flex flex-column">
                             <label for="recipeInstructions">Instructions:</label>
                             <textarea name="recipeInstructions" id="recipeInstructions" maxlength="5000"
-                                placeholder="Instructions:"></textarea>
+                                placeholder="Instructions:" cols="100"></textarea>
                         </div>
                         <div class="col-6">
                             <label for="recipeServings">Servings:</label>
@@ -31,25 +31,25 @@
                         </div>
                         <div class="col-6">
                             <label for="recipePrepTime">Prep Time:</label>
-                            <input class="form-control" type="number" max="1000" placeholder="how many minutes to prep?"
+                            <input class="form-control" type="number" max="1000" placeholder="minutes to prep?"
                                 id="recipePrepTime">
                         </div>
                         <div class="col-6">
                             <label for="recipeCookTime">Cooking Time:</label>
-                            <input class="form-control" type="number" max="1000" placeholder="how many minutes to cook?"
+                            <input class="form-control" type="number" max="1000" placeholder="minutes to cook?"
                                 id="recipeCookTime">
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 form-check">
                             <label for="glutenFree">Gluten Free?</label>
-                            <input class="form-check-input" type="checkbox">
+                            <input class="form-check-input bg-light" type="checkbox" value="" id="glutenFree">
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 form-check">
                             <label for="vegan">Vegan?</label>
-                            <input class="form-check-input" type="checkbox">
+                            <input value="" class="form-check-input bg-light" type="checkbox">
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 form-check">
                             <label for="vegetarian">Vegetarian?</label>
-                            <input class="form-check-input" type="checkbox">
+                            <input value="" class="form-check-input bg-light" type="checkbox">
                         </div>
                     </form>
                 </div>

@@ -1,13 +1,12 @@
 <template>
-    <CreateRecipeModalForm />
     <section class="row p-0 m-0">
         <div class="col-12 p-0 m-0 px-5">
             <h1 class="text-center mt-3">Explore <span class="text-success">Community</span></h1>
             <CommunitySearchBar />
         </div>
-
+        <CreateRecipeModalForm />
         <div class="col-2 col-md-4">
-            <button data-bs-toggle="#createRecipe" class="btn btn-success buttonContainer"><i
+            <button data-bs-toggle="modal" data-bs-target="#createRecipe" class="btn btn-success buttonContainer"><i
                     class="mdi mdi-plus"></i></button>
         </div>
     </section>
