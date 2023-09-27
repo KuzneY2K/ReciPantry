@@ -10,7 +10,7 @@
                     <ul class="p-0 m-0 list-unstyled">
                         <!-- <li class="p-0 m-0">{{ recipe.ingredients[0]?.name }} - Amount: {{ recipe.ingredients[0]?.amount }} <br> {{ recipe.ingredients[0]?.measures?.us.amount + recipe.ingredients[0]?.measures?.us.unitShort }}</li> -->
                         <li v-for="ingredient in ingredients" :key="ingredient">
-                            {{ ingredient.name }}
+                            {{ ingredient.original }} 
                         </li>
                     </ul>
                 </div>
