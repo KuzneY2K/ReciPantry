@@ -42,6 +42,7 @@ setup() {
         try {
             await accountService.editAccount(editable.value)
             Pop.success('Account Updated!')
+            editable.value = {}
         } catch (error) {
             Pop.error(error)
         }

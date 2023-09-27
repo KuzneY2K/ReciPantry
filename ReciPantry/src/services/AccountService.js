@@ -1,4 +1,5 @@
 import { dbContext } from '../db/DbContext'
+import { profileService } from './ProfileService.js'
 
 // Private Methods
 
@@ -66,17 +67,17 @@ class AccountService {
 
   /**
    * Updates account with the request body, will only allow changes to editable fields
-   *  @param {any} user Auth0 user object
-   *  @param {any} body Updates to apply to user object
+   * Updates to apply to user object
    */
-  async updateAccount(user, body) {
-    const update = sanitizeBody(body)
-    const account = await dbContext.Account.findOneAndUpdate(
-      { _id: user.id },
-      { $set: update },
-      { runValidators: true, setDefaultsOnInsert: true, new: true }
-    )
-    return account
+  async updateAccount(accountId, edits) {
+    const eventId = edits.eventId
+    const userId = edits.accountId
+    const original = await profileService.getProfileById(accountId)
+    original.name = edits.name || original.name
+    original.picture = edits.picture || original.picture
+    original.id = original.id
+    await original.save()
+    return original
   }
 }
 export const accountService = new AccountService()
