@@ -12,6 +12,7 @@ export class ReviewController extends BaseController {
             .post('', this.createReview)
             .delete('/:reviewId', this.deleteReview)
     }
+
     async createReview(req, res, next) {
         try {
             const reviewData = req.body
