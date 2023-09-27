@@ -1,7 +1,21 @@
 <template> 
-<form @submit.prevent="editAccount">
-
-</form>
+    <form @submit.prevent="editAccount">
+        <div class="conntain">
+            <section class="row">
+                <div class="col-6 fs-2">
+                    <label for="accountName">Name:</label>
+                    <input v-model="editable.name" class="form-control fs-3" maxlength="100" placeholder="Name?" type="text">
+                </div>
+                <div class="col-6 fs-2">
+                    <label for="accountPic">Picture:</label>
+                    <input v-model="editable.picture" class="form-control fs-3" maxlength="1000" placeholder="Picture URL?" type="url">
+                </div>
+                <div class="col-12 text-end mt-4">
+                    <button class="btn btn-outline-success fs-2">Save Changes <i class="mdi mdi-content-save"></i></button>
+                </div>
+            </section>
+        </div>
+    </form>
 </template>
 
 <script>
