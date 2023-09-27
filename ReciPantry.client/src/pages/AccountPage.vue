@@ -1,13 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="account">
     <section class="row">
-        <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
-        v-if="!user.isAuthenticated">
-        Login
-        </button>
-      <div class="mt-3 list-group-item dropdown-item list-group-item-action text-danger selectable text-dark fs-2 col-12 text-end" @click="logout">
-                <i class="mdi mdi-logout"></i>
+      <div class="mt-3 list-group-item dropdown-item list-group-item-action  text-dark fs-2 col-12 text-end" @click="logout">
+        <span class="selectable p-2">
+                          <i class="mdi mdi-logout"></i>
                 Logout
+        </span>
+
       </div>
       <!-- STUB Account info -->
       <div class="about text-center mt-5 col-12">
