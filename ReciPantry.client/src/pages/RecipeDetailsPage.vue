@@ -96,6 +96,7 @@ import { logger } from '../utils/Logger.js';
                 document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
                 document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
                 // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
+                // ^^^^ REVIEW WHAT TEAM WANTS
             }
 
             // gets recipe info from route params
