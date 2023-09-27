@@ -48,6 +48,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Closes modal -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
