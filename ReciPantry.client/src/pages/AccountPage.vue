@@ -19,17 +19,17 @@
       <!-- Edit account modal -->
 
       <div class="col-12 text-center mt-5">
-        <ModalWrapper id="edit-account" btnColor="dark-outline">
+        <ModalWrapper id="edit-account">
           <template #button>
             <h1 class="fs-2 btn btn-outline-dark">EDIT ACCOUNT <i class="mdi mdi-head"></i></h1>
           </template>
           <template #body>
-edit here
+            <EditAccountForm />
           </template>
           </ModalWrapper>
       </div>
-      <div class="col-12 text-center mt-3">
-          <ModalWrapper id="preferences" btnColor="dark-outline">
+      <div class="col-12 text-center mt-1">
+          <ModalWrapper id="preferences">
             <template #button>
               <h1 class="fs-2 btn btn-outline-dark">PREFERENCES <i class="mdi mdi-heart"></i></h1>
             </template>
@@ -57,6 +57,8 @@ import { computed } from 'vue';
 import { AppState } from '../AppState';
 import { AuthService } from '../services/AuthService'
 import ModalWrapper from '../components/ModalWrapper.vue';
+import EditAccountForm from '../components/EditAccountForm.vue'
+
 export default {
     setup() {
         return {
@@ -72,7 +74,7 @@ export default {
       },
         };
     },
-    components: { ModalWrapper }
+    components: { ModalWrapper, EditAccountForm }
 }
 </script>
 
