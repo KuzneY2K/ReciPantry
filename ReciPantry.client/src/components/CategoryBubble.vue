@@ -77,6 +77,7 @@
 import { RouterLink } from 'vue-router';
 import {AppState} from '../AppState.js'
 import { logger } from '../utils/Logger.js';
+import { recipesService } from '../services/RecipesService.js';
 
     export default {
     setup() {
@@ -84,6 +85,7 @@ import { logger } from '../utils/Logger.js';
             async setCategory(name){
                 AppState.selectedCategory = name
                 logger.log(AppState.selectedCategory)
+                await recipesService.searchRecipesByCategory()
             }
         };
     },
