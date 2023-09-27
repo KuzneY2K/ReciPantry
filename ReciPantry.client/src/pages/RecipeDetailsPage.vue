@@ -20,8 +20,8 @@
                         <!-- Cart icon so user can add ingredient to shopping list -->
                             <i class="mdi mdi-cart p-0 m-0 text-success fs-2"></i>
                         <!-- Checkbox for checking off what a user has and doesnt has -->    
-                            <input type="checkbox" name="have" class="form-check-input mx-2">
-                            <span class="fs-5 ingredient-name">{{ ingredient.original }}</span>
+                            <input type="checkbox" name="have" class="form-check-input m-0 p-0 mx-2 checkbox">
+                            <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.original }}</span>
                                 
                         </li>
                     </ul>
@@ -66,6 +66,11 @@ import {AppState} from '../AppState.js'
 // .cart-btn{
 //     right: -3rem !important;
 // }
+
+.checkbox {
+    height: 1.25rem;
+    width: 1.25rem;
+}
 
 .recipe-image{
     object-fit: cover;
