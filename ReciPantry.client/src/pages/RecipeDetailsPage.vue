@@ -9,7 +9,7 @@
                     <h3 class="p-0 m-0">Ingredients</h3>
                     <ul class="p-0 m-0 list-unstyled">
                         <!-- <li class="p-0 m-0">{{ recipe.ingredients[0]?.name }} - Amount: {{ recipe.ingredients[0]?.amount }} <br> {{ recipe.ingredients[0]?.measures?.us.amount + recipe.ingredients[0]?.measures?.us.unitShort }}</li> -->
-                        <li v-for="ingredient in ingredients" :key="ingredient">
+                        <li class="bg-white p-0 m-0 mt-3 py-2 px-2 rounded rounded-5 elevation-3 " v-for="ingredient in ingredients" :key="ingredient"><input type="checkbox" name="have" class="form-check-input ms-2">
                             {{ ingredient.original }} 
                         </li>
                     </ul>
