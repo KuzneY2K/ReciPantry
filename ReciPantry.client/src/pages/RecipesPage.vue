@@ -1,5 +1,5 @@
 <template>
-      <section class="row p-0 m-0 container-fluid animate__animated animate__fadeInDownBig">
+      <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
         <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center">
         <!-- Search bar that takes in parameters & filters 🔎 -->
               <SearchBar />

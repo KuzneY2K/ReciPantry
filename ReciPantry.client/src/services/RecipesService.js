@@ -21,6 +21,12 @@ class RecipesService{
         logger.log(AppState.recipes)
     }
 
+    // get Community Recipes
+    async getCommunityRecipes(){
+        let res = await api.get(`api/recipes`)
+        logger.log(res)
+    }
+
     async searchRecipesByCategory(){
         let res = await recipeApi.get(`complexSearch?query=${AppState.selectedCategory}&number=10&offset=${AppState.pageNum}0`)
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
