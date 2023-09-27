@@ -3,6 +3,7 @@ import { accountService } from '../services/AccountService'
 import BaseController from '../utils/BaseController'
 import { favoritesService } from '../services/FavoritesService.js'
 import { reviewService } from '../services/ReviewService.js'
+import { recipesService } from '../services/RecipesService.js'
 
 export class AccountController extends BaseController {
   constructor() {
@@ -12,6 +13,7 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/reviews', this.getReviewsByAccount)
       .get('/favorites', this.getFavoritesByAccount)
+      .get('/recipes', this.getMyRecipes)
       .put('', this.updateAccount)
   }
 
@@ -38,6 +40,16 @@ export class AccountController extends BaseController {
       const accountId = req.userInfo.id
       const reviews = await reviewService.getReviewsByAccount(accountId)
       res.send(reviews)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getMyRecipes(req, res, next) {
+    try {
+      const accountId = req.userInfo.id
+      const recipes = await recipesService.getMyRecipes(accountId)
+      res.send(recipes)
     } catch (error) {
       next(error)
     }
