@@ -1,8 +1,13 @@
 <template>
   <div class="container">
     <section class="row">
-      <div class="col-12">
-        <Login />
+        <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
+        v-if="!user.isAuthenticated">
+        Login
+        </button>
+      <div class="list-group-item dropdown-item list-group-item-action text-danger selectable text-dark fs-2 col-12 text-end" @click="logout">
+                <i class="mdi mdi-logout"></i>
+                Logout
       </div>
       <!-- STUB Account info -->
       <div class="about text-center mt-5 col-12">
@@ -38,14 +43,23 @@
 <script>
 import { computed } from 'vue';
 import { AppState } from '../AppState';
-import Login from '../components/Login.vue';
+import { AuthService } from '../services/AuthService'
 export default {
     setup() {
         return {
-            account: computed(() => AppState.account)
+          user: computed(() => AppState.user),
+            account: computed(() => AppState.account),
+
+      async logout() {
+        AuthService.logout({ returnTo: window.location.origin })
+      },
+
+      async login() {
+        AuthService.loginWithPopup()
+      },
         };
     },
-    components: { Login }
+    components: {  }
 }
 </script>
 
