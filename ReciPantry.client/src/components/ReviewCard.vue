@@ -1,5 +1,5 @@
 <template>
-    review card
+    {{review}}
 </template>
 
 <script>
