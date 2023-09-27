@@ -2,6 +2,7 @@ import BaseController from "../utils/BaseController.js";
 import { recipesService } from "../services/RecipesService.js"
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { favoritesService } from "../services/FavoritesService.js";
+import { reviewService } from "../services/ReviewService.js";
 
 export class RecipesController extends BaseController {
     constructor() {
@@ -10,6 +11,7 @@ export class RecipesController extends BaseController {
             .get('', this.getRecipes)
             .get('/:recipeId', this.getRecipeById)
             .get('/:recipeId/favorites', this.getFavoritesByRecipe)
+            .get('/:recipeId/reviews', this.getReviewsByRecipe)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createRecipe)
             .put('/:recipeId', this.editRecipe)
@@ -30,6 +32,16 @@ export class RecipesController extends BaseController {
         try {
             const recipe = await recipesService.getRecipeById(req.params.recipeId)
             res.send(recipe)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getReviewsByRecipe(req, res, next) {
+        try {
+            const recipeId = req.params.recipeId
+            const reviews = await reviewService.getReviewsByRecipe(recipeId)
+            res.send(reviews)
         } catch (error) {
             next(error)
         }
