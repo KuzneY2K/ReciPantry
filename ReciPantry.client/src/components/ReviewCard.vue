@@ -6,7 +6,7 @@
 import { Review } from '../models/Review';
 
 export default {
-    props: {review: {type: Review, required: true}},
+    props: {review: {type: {Review, Object}, required: true}},
 setup() {
   return {};
 },
