@@ -26,19 +26,30 @@
       <div class="col-12 p-0 m-0">
         <h1 class="text-center categories-title animate__animated animate__fadeIn">Browse Categories</h1>
       </div>
+      <div class="col-12 p-0 m-0 d-flex flex-row justify-content-start bubble-container">
+        <CategoryBubble />
+      </div>
     </section>
 </template>
 
 <script>
+import { computed } from 'vue';
+import { AppState } from '../AppState.js';
+
 export default {
   setup() {
     return {
+      categories: computed(() => AppState.categories)
     }
   }
 }
 </script>
 
-<style scoped lang="scss">     
+<style scoped lang="scss">    
+
+.bubble-container {
+  overflow-x: scroll !important;
+}
 
 .categories-title{
   font-size: 2.5rem !important;
