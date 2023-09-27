@@ -7,5 +7,9 @@ export class CommunityRecipe {
         this.summary = data.summary
         this.servings = data.servings
         this.glutenFree = data.glutenFree
+        this.preparationMinutes = data.preparationMinutes
+        this.readyInMinutes = data.readyInMinutes
+        this.vegan = data.vegan
+        this.vegitarian = data.vegitarian
     }
 }
