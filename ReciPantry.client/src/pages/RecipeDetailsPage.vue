@@ -84,6 +84,8 @@ import { useRoute } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import {AppState} from '../AppState.js'
 import { logger } from '../utils/Logger.js';
+import Pop from '../utils/Pop';
+import { reviewService } from '../services/ReviewService';
     export default {
         setup(){
             let route = useRoute()
@@ -101,11 +103,23 @@ import { logger } from '../utils/Logger.js';
 
             // gets recipe info from route params
             onMounted(() => {
-                getRecipeById()
+                getRecipeById();
+                getReviewsByRecipe();
             })
+
+            async function getReviewsByRecipe(){
+                try {
+                    const recipeId = AppState.activeRecipe.id
+                    await reviewService.getReviewsByRecipe(recipeId)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
+
             return{
                 recipe: computed(() => AppState.activeRecipe),
                 ingredients: computed(() => AppState.activeRecipe.ingredients),
+                reviews: computed(()=> AppState.activeReviews),
             }
         }
     }
