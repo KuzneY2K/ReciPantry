@@ -1,5 +1,7 @@
 <template> 
-account details
+<form @submit.prevent="editAccount">
+
+</form>
 </template>
 
 <script>
