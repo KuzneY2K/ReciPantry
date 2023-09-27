@@ -3,14 +3,21 @@
         <h1 class="text-center mt-3 text-success">{{ recipe.title }}</h1>
             <div class="img-container d-flex flex-column align-items-center justify-content-center">
                 <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350" class="rounded rounded-5 border border-1 border-dark elevation-5 recipe-image">
-                <div class="ingredients-container">
-                    
+
+            </div>                
+            <div class="ingredients-container p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
+                    <h3 class="p-0 m-0">Ingredients</h3>
+                    <ul class="p-0 m-0 list-unstyled">
+                        <!-- <li class="p-0 m-0">{{ recipe.ingredients[0]?.name }} - Amount: {{ recipe.ingredients[0]?.amount }} <br> {{ recipe.ingredients[0]?.measures?.us.amount + recipe.ingredients[0]?.measures?.us.unitShort }}</li> -->
+                        <li v-for="ingredient in ingredients" :key="ingredient">
+                            {{ ingredient.name }}
+                        </li>
+                    </ul>
                 </div>
-                <div class="instructions-container px-4 mt-4">
-                    <h3>Instructions</h3>
+                <div class="instructions-container p-0 m-0 px-4 mt-4">
+                    <h3 class="p-0 m-0">Instructions</h3>
                    <p> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
                 </div>
-            </div>
     </div>
 </template>
 
@@ -34,7 +41,8 @@ import {AppState} from '../AppState.js'
                 getRecipeById()
             })
             return{
-                recipe: computed(() => AppState.activeRecipe)
+                recipe: computed(() => AppState.activeRecipe),
+                ingredients: computed(() => AppState.activeRecipe.ingredients)
             }
         }
     }
