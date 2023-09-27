@@ -1,12 +1,12 @@
 <template>
   <!-- Landing Text -->
-  <section class="row p-0 m-0 container-fluid">
+  <section class="row p-0 m-0">
     <div class="col-12 p-0 m-0">
       <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__bounceInRight"><span class="text-success">FIND</span> THE RECIPE THAT <br>SUITS <span class="text-success">YOU</span> <i class="mdi mdi-chef-hat"></i></h1>
     </div>
   </section>
   <!-- Landing Card -->
-  <section class="row p-0 m-0 container-fluid">
+  <section class="row p-0 m-0">
     <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center landingCardContainer">
       <!-- COMPLETELY SEPARATE FROM RECIPE CARDS. -->
       <!-- These are the cards that can be side scrolled on the home page. -->
@@ -14,7 +14,7 @@
     </div>
   </section>
   <!-- GET STARTED BUTTON - Redirects to recipes Search -->
-    <section class="row p-0 m-0 container-fluid animate__animated animate__fadeInDownBig">
+    <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
       <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center mt-4">
         <RouterLink :to="{ name: 'Recipes' }">
             <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black">Get Started <i class="mdi mdi-arrow-right-bold"></i></button>

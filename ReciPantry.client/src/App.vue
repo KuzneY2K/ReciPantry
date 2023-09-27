@@ -2,7 +2,7 @@
   <header class="sticky-top">
     <Navbar />
   </header>
-  <main>
+  <main class="container-fluid">
     <router-view />
   </main>
 </template>
