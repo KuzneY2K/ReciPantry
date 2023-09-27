@@ -1,7 +1,7 @@
 <template>
     <div v-if="recipe">
         <!-- Pulls recipe title from active recipe -->
-        <h1 class="text-center mt-3 text-success">{{ recipe.title }}</h1>
+        <h1 class="text-start ms-4 mt-3 text-success">{{ recipe.title }}</h1>
             <div class="img-container d-flex flex-column align-items-center justify-content-center">
                 <!-- Pulls recipe cover image from active recipe -->
                 <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350" class="rounded rounded-5 border border-1 border-dark elevation-5 recipe-image">
@@ -9,7 +9,10 @@
             </div>
             <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
             <div class="ingredients-container p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
-                    <h3 class="p-0 m-0">Ingredients</h3>
+                <div class="ingredients-header d-flex flex-row justify-content-between align-items-center">
+                    <h1 class="p-0 m-0">Ingredients</h1>
+                    <h3 class="badge bg-success fs-5 servings elevation-3">{{ recipe.servings }} SERVINGS</h3>
+                </div>
                     <ul class="p-0 m-0 list-unstyled">
                         <!-- Dont take this approach, VUE is amazing for its v-for method -->
 
@@ -27,7 +30,7 @@
                     </ul>
                 </div>
                 <div class="instructions-container p-0 m-0 px-4 mt-4">
-                    <h3 class="p-0 m-0">Instructions</h3>
+                    <h1 class="p-0 m-0">Instructions</h1>
                     <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
                    <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5"> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
                 </div>
@@ -70,6 +73,10 @@ import {AppState} from '../AppState.js'
 .checkbox {
     height: 1.25rem;
     width: 1.25rem;
+}
+
+.servings {
+    font-family: 'Ubuntu' !important;
 }
 
 .recipe-image{
