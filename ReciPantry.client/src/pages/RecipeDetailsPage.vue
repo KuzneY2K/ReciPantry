@@ -16,17 +16,20 @@
                         <!-- <li class="p-0 m-0">{{ recipe.ingredients[0]?.name }} - Amount: {{ recipe.ingredients[0]?.amount }} <br> {{ recipe.ingredients[0]?.measures?.us.amount + recipe.ingredients[0]?.measures?.us.unitShort }}</li> -->
 
                         <!-- For every recipe available, render it's card out. -->
-                        <li class="bg-white p-0 m-0 mt-3 py-2 px-2 rounded rounded-5 elevation-3 " v-for="ingredient in ingredients" :key="ingredient">
-                        <!-- Checkbox for checking off what a user has and doesnt has -->
+                        <li class="bg-white p-0 m-0 mt-3 py-3 px-3 rounded rounded-5 elevation-3 d-flex flex-row justify-content-start align-items-center" v-for="ingredient in ingredients" :key="ingredient">
+                        <!-- Cart icon so user can add ingredient to shopping list -->
+                            <i class="mdi mdi-cart p-0 m-0 text-success fs-2"></i>
+                        <!-- Checkbox for checking off what a user has and doesnt has -->    
                             <input type="checkbox" name="have" class="form-check-input mx-2">
-                            {{ ingredient.original }} 
+                            <span class="fs-5 ingredient-name">{{ ingredient.original }}</span>
+                                
                         </li>
                     </ul>
                 </div>
                 <div class="instructions-container p-0 m-0 px-4 mt-4">
                     <h3 class="p-0 m-0">Instructions</h3>
                     <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
-                   <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3"> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
+                   <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5"> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
                 </div>
     </div>
 </template>
@@ -59,6 +62,11 @@ import {AppState} from '../AppState.js'
 </script>
 
 <style lang="scss" scoped>
+
+// .cart-btn{
+//     right: -3rem !important;
+// }
+
 .recipe-image{
     object-fit: cover;
 }
