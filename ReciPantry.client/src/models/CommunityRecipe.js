@@ -10,6 +10,6 @@ export class CommunityRecipe {
         this.preparationMinutes = data.preparationMinutes
         this.readyInMinutes = data.readyInMinutes
         this.vegan = data.vegan
-        this.vegitarian = data.vegitarian
+        this.vegetarian = data.vegetarian
     }
 }
