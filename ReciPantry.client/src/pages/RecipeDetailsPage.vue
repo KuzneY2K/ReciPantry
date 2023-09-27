@@ -28,6 +28,7 @@
                                 
                         </li>
                         <li>
+                            <!-- Button that pulls up nutrition facts specific to the meal -->
                             <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4">
                                 <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal" data-bs-target="#nutritionModal">SEE NUTRITION FACTS <img src="https://i.imgur.com/WbcjLNE.png" alt="" height="30"></button>
                             </div>
@@ -52,8 +53,8 @@
                             </div>
                         </div>
                     </div>
-    </div>
                 </div>
+                    </div>
 
                 <div class="instructions-container p-0 m-0 px-4 mt-4">
                     <h1 class="p-0 m-0">Instructions</h1>
@@ -85,6 +86,7 @@ import { logger } from '../utils/Logger.js';
                 document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
             }
 
+            // gets recipe info from route params
             onMounted(() => {
                 getRecipeById()
             })
