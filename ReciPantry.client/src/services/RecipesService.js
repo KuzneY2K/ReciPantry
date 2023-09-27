@@ -8,7 +8,7 @@ class RecipesService{
         let res = await recipeApi.get('random?number=1')
         // logger.log(res.data.recipes)
         AppState.randomRecipe = res.data.recipes.map(recipe => new Recipe(recipe))
-        // logger.log(AppState.randomRecipe)
+        logger.log(AppState.randomRecipe)
     }
 
     async searchRecipesByQuery(reqData){
