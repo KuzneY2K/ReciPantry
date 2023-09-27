@@ -29,12 +29,12 @@
                         </li>
                         <li>
                             <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4">
-                                <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal" data-bs-target="#exampleModal">SEE NUTRITION FACTS <img src="https://i.imgur.com/WbcjLNE.png" alt="" height="30"></button>
+                                <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal" data-bs-target="#nutritionModal">SEE NUTRITION FACTS <img src="https://i.imgur.com/WbcjLNE.png" alt="" height="30"></button>
                             </div>
                         </li>
                     </ul>
                     <!-- Nutrition facts Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="nutritionModal" tabindex="-1" aria-labelledby="nutritionModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                             <div class="modal-header">
