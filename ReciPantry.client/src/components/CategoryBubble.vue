@@ -104,15 +104,20 @@ import { RouterLink } from 'vue-router';
 import {AppState} from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import { recipesService } from '../services/RecipesService.js';
+import Pop from '../utils/Pop.js';
 
     export default {
     setup() {
         return {
             async setCategory(name){
-                AppState.selectedCategory = name
-                AppState.recipes = {}
-                logger.log(AppState.selectedCategory)
-                await recipesService.searchRecipesByCategory()
+                try {
+                    AppState.selectedCategory = name
+                    AppState.recipes = {}
+                    logger.log(AppState.selectedCategory)
+                    await recipesService.searchRecipesByCategory()
+                } catch (error) {
+                        Pop.error(error)
+                    }
             }
         };
     },

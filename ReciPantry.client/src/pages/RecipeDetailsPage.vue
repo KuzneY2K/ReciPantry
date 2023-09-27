@@ -98,12 +98,15 @@ import { reviewService } from '../services/ReviewService';
 
             // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
             async function getRecipeById(){
-                AppState.activeRecipe = {}
-                await recipesService.getRecipeById(route.params.recipeId)
-                document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
-                document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
-                // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
-                // ^^^^ REVIEW WHAT TEAM WANTS
+                try {
+                    AppState.activeRecipe = {}
+                    await recipesService.getRecipeById(route.params.recipeId)
+                    document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
+                    document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
+                    // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
+                } catch (error) {
+                    Pop.error(error)
+                }
             }
 
             // gets recipe info from route params
