@@ -75,6 +75,11 @@
                         
                     </div>
                 </div>
+                <div>
+                    <div v-for="review in reviews" :key="review.id" class="col-12">
+                        <ReviewCard :review="review" />
+                    </div>
+                </div>
     </div>
 </template>
 

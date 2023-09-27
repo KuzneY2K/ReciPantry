@@ -1,0 +1,18 @@
+<template>
+    review card
+</template>
+
+<script>
+import { Review } from '../models/Review';
+
+export default {
+    props: {review: {type: Review, required: true}},
+setup() {
+  return {};
+},
+};
+</script>
+
+
+<style>
+</style>
