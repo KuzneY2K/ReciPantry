@@ -29,10 +29,16 @@
                         </li>
                     </ul>
                 </div>
+
                 <div class="instructions-container p-0 m-0 px-4 mt-4">
                     <h1 class="p-0 m-0">Instructions</h1>
                     <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
-                   <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5"> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
+                <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5"> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
+                </div>
+                <!-- Widget's Containing ALL data for meal, turn into modal -->
+                <div class="widgets p-0 m-0">
+                    <div class="nutrition-label">
+                    </div>
                 </div>
     </div>
 </template>
@@ -42,6 +48,7 @@ import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import {AppState} from '../AppState.js'
+import { logger } from '../utils/Logger.js';
     export default {
         setup(){
             let route = useRoute()
@@ -51,6 +58,7 @@ import {AppState} from '../AppState.js'
             async function getRecipeById(){
                 AppState.activeRecipe = {}
                 await recipesService.getRecipeById(route.params.recipeId)
+                document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
             }
 
             onMounted(() => {
@@ -58,7 +66,7 @@ import {AppState} from '../AppState.js'
             })
             return{
                 recipe: computed(() => AppState.activeRecipe),
-                ingredients: computed(() => AppState.activeRecipe.ingredients)
+                ingredients: computed(() => AppState.activeRecipe.ingredients),
             }
         }
     }

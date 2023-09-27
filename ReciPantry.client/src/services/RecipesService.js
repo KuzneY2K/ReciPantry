@@ -13,6 +13,7 @@ class RecipesService{
 
     async searchRecipesByQuery(reqData){
         let res = await recipeApi.get(`complexSearch?query=${reqData}&number=10`)
+        
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
         logger.log(AppState.recipes)
     }
@@ -21,9 +22,10 @@ class RecipesService{
 
     async getRecipeById(recipeId){
         let res = await recipeApi.get(`${recipeId}/information`)
-        // logger.log(res)
-        AppState.activeRecipe = new Recipe(res.data)
-        logger.log(AppState.activeRecipe)
+        AppState.activeRecipe = new Recipe(res.data)  
+        logger.log(AppState.activeRecipe)        
+        let nlRes = await recipeApi.get(`${recipeId}/nutritionLabel`)
+        AppState.nutritionLabel = nlRes.data
     }
 }
 
