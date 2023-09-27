@@ -60,5 +60,9 @@ class RecipesService {
         await recipeToRemove.remove()
         return `Remove the recipe at id ${recipeId}`
     }
+    async getMyRecipes(accountId) {
+        const myRecipes = await dbContext.Recipes.find({ creatorId: accountId })
+        return myRecipes
+    }
 }
 export const recipesService = new RecipesService()

@@ -34,6 +34,7 @@ import { AppState } from '../AppState.js'
             // Search recipes by query, autocompletes
             async searchRecipesByQuery() {
                 try {
+                    AppState.selectedCategory = null
                     AppState.savedQuery = reqData.value
                     await recipesService.searchRecipesByQuery(reqData.value)
                 } catch (error) {
