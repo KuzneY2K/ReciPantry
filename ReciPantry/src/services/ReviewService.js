@@ -4,7 +4,7 @@ import { Forbidden } from "../utils/Errors.js"
 
 class ReviewService {
     async createReview(reviewData) {
-        const review = (await dbContext.Reviews.create(reviewData)).populate('profile recipe', '-email')
+        const review = (await dbContext.Reviews.create(reviewData)).populate('profile', '-email')
         return review
     }
 
