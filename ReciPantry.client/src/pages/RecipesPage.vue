@@ -29,12 +29,26 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState.js';
 import { recipesService } from '../services/RecipesService.js';
+import Pop from '../utils/Pop.js';
 
     export default {
         setup(){
+            async function getRandomRecipes(){
+                try {
+                    if(!AppState.recipes){
+                        await recipesService.getRandomRecipes()
+                    }
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
+
+            onMounted(() => {
+                getRandomRecipes()
+            })
             return{
                 recipes: computed(() => AppState.recipes),
                 pageNum: computed(() => AppState.pageNum),
@@ -44,14 +58,22 @@ import { recipesService } from '../services/RecipesService.js';
                 // Offset is basically how many results the api skips over. Kinda like a next page / prev page thing
                 // Next page, increases page count to increase search offset
                 async nextPage(){
-                    AppState.pageNum += 1
-                    await recipesService.paginate(this.query)
+                    try {
+                        AppState.pageNum += 1
+                        await recipesService.paginate(this.query)
+                    } catch (error) {
+                        Pop.error(error)
+                    }
                 },
 
                 // Previous page, decreases page count to decrease search offset
                 async previousPage(){
-                    AppState.pageNum -= 1
-                    await recipesService.paginate(this.query)
+                    try {
+                        AppState.pageNum -= 1
+                        await recipesService.paginate(this.query)
+                    } catch (error) {
+                        Pop.error(error)
+                    }
                 }
             }
         }
