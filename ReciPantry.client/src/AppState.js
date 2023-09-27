@@ -18,4 +18,6 @@ export const AppState = reactive({
   activeReviews: [],
   /**@type {Review[]} */
   myReviews: [],
+  pageNum: 0,
+  savedQuery: null
 })

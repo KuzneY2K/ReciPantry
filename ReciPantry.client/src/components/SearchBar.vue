@@ -17,6 +17,7 @@ import { ref } from 'vue'
 import { logger } from '../utils/Logger.js'
 import { recipesService } from '../services/RecipesService.js'
 import Pop from '../utils/Pop.js'
+import { AppState } from '../AppState.js'
 
     export default {
           setup() {
@@ -32,6 +33,7 @@ import Pop from '../utils/Pop.js'
             // Search recipes by query, autocompletes
             async searchRecipesByQuery() {
                 try {
+                    AppState.savedQuery = reqData.value
                     await recipesService.searchRecipesByQuery(reqData.value)
                 } catch (error) {
                     Pop.error(error)

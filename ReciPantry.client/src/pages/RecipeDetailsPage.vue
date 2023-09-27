@@ -27,21 +27,38 @@
                             <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.original }}</span>
                                 
                         </li>
-                        <li class="btn bg-success p-0 m-0 mt-3 py-3 px-3 rounded rounded-5 elevation-3 d-flex flex-row justify-content-center align-items-center text-white fs-2">SEE NUTRITION</li>
+                        <li>
+                            <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4">
+                                <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal" data-bs-target="#exampleModal">SEE NUTRITION FACTS <img src="https://i.imgur.com/WbcjLNE.png" alt="" height="30"></button>
+                            </div>
+                        </li>
                     </ul>
+                    <!-- Nutrition facts Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                        <div class="modal-body">
+                        <!-- Widget's Containing ALL data for meal, turn into modal -->
+                        <div class="widgets p-0 m-0">
+                            <div class="nutrition-label">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+    </div>
                 </div>
 
                 <div class="instructions-container p-0 m-0 px-4 mt-4">
                     <h1 class="p-0 m-0">Instructions</h1>
                     <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
                 <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5"> {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }} </p>
-                </div>
-
-
-                <!-- Widget's Containing ALL data for meal, turn into modal -->
-                <div class="widgets p-0 m-0">
-                    <div class="nutrition-label">
-                    </div>
                 </div>
     </div>
 </template>
