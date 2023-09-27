@@ -20,14 +20,20 @@
             <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black">Get Started <i class="mdi mdi-arrow-right-bold"></i></button>
         </RouterLink>
       </div>
-      <hr class="animate__animated animate__fadeIn">
     </section>
+    <hr class="animate__animated animate__fadeIn">
     <section class="row p-0 m-0">
       <div class="col-12 p-0 m-0">
         <h1 class="text-center categories-title animate__animated animate__fadeIn">Browse Categories</h1>
       </div>
-      <div class="col-12 p-0 m-0 d-flex flex-row justify-content-start bubble-container">
+      <div class="col-12 p-0 m-0 d-flex flex-row justify-content-start bubble-container animate__animated animate__fadeInRightBig">
         <CategoryBubble />
+      </div>
+    </section>
+    <hr class="animate__animated animate__fadeIn">
+    <section class="row p-0 m-0">
+      <div class="col-12 p-0 m-0">
+        <h1 class="text-center categories-title animate__animated animate__fadeIn">HOT COMMUNITY PICKS</h1>
       </div>
     </section>
 </template>
@@ -56,9 +62,7 @@ export default {
 }
 
 hr{
-  
-  border: 0;
-  height: 3px;
+  height: 4px;
   width: 75%;
   background-color: black;
   position: relative;
