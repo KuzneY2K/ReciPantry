@@ -36,16 +36,26 @@
         <h1 class="text-center categories-title animate__animated animate__fadeIn">HOT COMMUNITY PICKS</h1>
       </div>
     </section>
+    <!-- FORM PROTOTYPE -->
+    <!-- <button @click="addToArray()">+</button>
+    <form action="">
+      <input v-for="ingredient in ingredientArray" :key="ingredient" v-model="ingredient.body" type="text">
+    </form> -->
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { AppState } from '../AppState.js';
 
 export default {
   setup() {
+    // const ingredientArray = ref([{}])
     return {
-      categories: computed(() => AppState.categories)
+      categories: computed(() => AppState.categories),
+      // ingredientArray,
+      addToArray(){
+        // ingredientArray.value.push({})
+      }
     }
   }
 }

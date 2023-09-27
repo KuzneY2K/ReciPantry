@@ -47,7 +47,7 @@ class RecipesService{
     async getRecipeById(recipeId){
         let res = await recipeApi.get(`${recipeId}/information`)
         AppState.activeRecipe = new Recipe(res.data)  
-        // logger.log(AppState.activeRecipe)        
+        logger.log(AppState.activeRecipe)        
         let nlRes = await recipeApi.get(`${recipeId}/nutritionLabel`)
         AppState.nutritionLabel = nlRes.data
     }
