@@ -1,7 +1,7 @@
 <template>
     <div v-if="recipe">
         <!-- Pulls recipe title from active recipe -->
-        <h1 class="text-start ms-4 mt-3 text-success">{{ recipe.title }}</h1>
+        <h1 class="text-start ms-4 mt-3 text-success">{{ recipe.title }} <span class="text-black">- {{ recipe.readyInMinutes }} Mins</span></h1>
             <div class="img-container d-flex flex-column align-items-center justify-content-center">
                 <!-- Pulls recipe cover image from active recipe -->
                 <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350" class="rounded rounded-5 border border-1 border-dark elevation-5 recipe-image">
@@ -65,6 +65,15 @@
                         .replaceAll('</ol>', '')
                         .replaceAll('<li>', '')
                         .replaceAll('</li>', '') }} </p>
+                    <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
+                        
+                    </div> -->
+                </div>
+                <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
+                    <h1 class="p-0 m-0">About The Recipe</h1>
+                    <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary">
+                        
+                    </div>
                 </div>
     </div>
 </template>
@@ -85,6 +94,8 @@ import { logger } from '../utils/Logger.js';
                 AppState.activeRecipe = {}
                 await recipesService.getRecipeById(route.params.recipeId)
                 document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
+                document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
+                // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
             }
 
             // gets recipe info from route params
