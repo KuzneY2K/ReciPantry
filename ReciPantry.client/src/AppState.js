@@ -20,5 +20,4 @@ export const AppState = reactive({
   myReviews: [],
   pageNum: 0,
   savedQuery: null,
-  diet: 'Gluten Free'
 })
