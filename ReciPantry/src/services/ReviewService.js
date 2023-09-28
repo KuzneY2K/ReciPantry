@@ -9,12 +9,12 @@ class ReviewService {
     }
 
     async getReviewsByRecipe(recipeId) {
-        const reviews = await dbContext.Reviews.find({ recipeId }).populate('profile recipe', '-email')
+        const reviews = await dbContext.Reviews.find({ recipeId }).populate('profile', '-email')
         return reviews
     }
 
     async getReviewsByAccount(accountId) {
-        const reviews = await dbContext.Reviews.find({ accountId }).populate('profile recipe', '-email')
+        const reviews = await dbContext.Reviews.find({ accountId }).populate('profile', '-email')
         return reviews
     }
 
