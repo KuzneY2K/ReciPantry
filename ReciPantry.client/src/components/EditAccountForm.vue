@@ -20,7 +20,6 @@
 
 <script>
 import { computed, watchEffect, ref } from 'vue';
-import { useRouter } from 'vue-router';
 import { AppState } from '../AppState';
 import Pop from '../utils/Pop';
 import { accountService } from '../services/AccountService';
