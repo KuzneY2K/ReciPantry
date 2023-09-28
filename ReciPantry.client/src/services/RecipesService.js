@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js"
+import { CommunityRecipe } from "../models/CommunityRecipe.js"
 import { Recipe } from "../models/Recipe.js"
 import { logger } from "../utils/Logger.js"
 import { api, recipeApi } from "./AxiosService.js"
@@ -52,6 +53,13 @@ class RecipesService{
         logger.log(AppState.activeRecipe)        
         let nlRes = await recipeApi.get(`${recipeId}/nutritionLabel`)
         AppState.nutritionLabel = nlRes.data
+    }
+    async createRecipe(recipeData){
+        const res = await api.post('api/recipes', recipeData)
+        logger.log('Created Recipe', res.data)
+        const newRecipe = new CommunityRecipe(res.data)
+        AppState.communityRecipes.push(newRecipe)
+        return newRecipe
     }
 }
 
