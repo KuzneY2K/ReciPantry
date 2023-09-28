@@ -77,9 +77,12 @@
         <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
-            <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
+                <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
+
+                </div>
+            <!-- <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
                 {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }}
-            </p>
+            </p> -->
             <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
                         
                     </div> -->
@@ -154,7 +157,7 @@ import { onAuthLoaded } from '@bcwdev/auth0provider-client';
                     getReviewsByRecipe();
                     document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
                     document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
-                    // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
+                    document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
                 } catch (error) {
                     Pop.error(error)
                 }
