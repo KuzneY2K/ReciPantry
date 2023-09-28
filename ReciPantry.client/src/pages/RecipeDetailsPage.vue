@@ -67,15 +67,18 @@
             </div>
         </div>
 
+
+        <!-- ?.replaceAll('
+                        < ol > ', '')
+                            .replaceAll('</ol>', '')
+                            .replaceAll('<li>', '')
+                            .replaceAll('</li>', '') -->
+
         <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
-                {{ recipe.instructions?.replaceAll('
-                    < ol > ', '')
-                        .replaceAll('</ol>', '')
-                        .replaceAll('<li>', '')
-                        .replaceAll('</li>', '') }}
+                {{ recipe.instructions }}
             </p>
             <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
                         
