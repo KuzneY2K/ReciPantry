@@ -26,6 +26,7 @@ class AccountService {
       const res = await api.get('account/recipes')
       logger.log(res.data)
       AppState.myRecipes = res.data.map(recipe => new Recipe(recipe))
+      logger.log('appstate', AppState.myRecipes)
     } catch (error) {
       Pop.error(error)
     }
