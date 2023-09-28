@@ -78,7 +78,7 @@
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
-                {{ recipe.instructions }}
+                {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }}
             </p>
             <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
                         
@@ -129,16 +129,21 @@
 </template>
 
 <script>
-import { computed, onMounted, watchEffect } from 'vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
+import {groceriesService} from '../services/GroceriesService.js'
+import { onAuthLoaded } from '@bcwdev/auth0provider-client';
+
     export default {
         setup(){
             let route = useRoute()
+
+            let groceryData = ref({})
 
 
             // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
@@ -177,19 +182,23 @@ import { reviewService } from '../services/ReviewService';
             ingredients: computed(() => AppState.activeRecipe.ingredients),
             reviews: computed(() => AppState.activeReviews),
             ingredientOnList: computed(() => AppState.groceryList),
+            groceryData,
 
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
-            async addToList(listItem) {
-                logger.log
-                if (await Pop.confirm(`Add ${listItem.name} to grocery list?`)) {
-                    AppState.groceryList.push(listItem)
-                    Pop.success(`Added ${listItem.name} to grocery list!`)
-                    logger.log(AppState.groceryList)
-                } else {
-                    Pop.toast(`${listItem.name} not added to grocery list.`)
-                }
-                // Change pop confirm message that says "you wont be able to revert"
+            async addToList(grocery) {
+                // logger.log
+                // if (await Pop.confirm(`Add ${listItem.name} to grocery list?`)) {
+                //     AppState.groceryList.push(listItem)
+                //     Pop.success(`Added ${listItem.name} to grocery list!`)
+                //     logger.log(AppState.groceryList)
+                // } else {
+                //     Pop.toast(`${listItem.name} not added to grocery list.`)
+                // }
+
+                groceryData.value.groceryName = grocery.name
+                logger.log(groceryData.value)
+                await groceriesService.addGrocery(groceryData.value)
 
                 // Remove ingredient from shopping list by clicking little X symbol
             },

@@ -11,11 +11,11 @@ export class AccountController extends BaseController {
     super('account')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/groceries', this.getGroceryList)
       .get('', this.getUserAccount)
       .get('/reviews', this.getReviewsByAccount)
       .get('/favorites', this.getFavoritesByAccount)
       .get('/recipes', this.getMyRecipes)
-      .get('', this.getGroceryList)
       .put('', this.updateAccount)
   }
 
