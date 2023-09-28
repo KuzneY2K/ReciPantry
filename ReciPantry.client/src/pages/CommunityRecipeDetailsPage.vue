@@ -149,7 +149,7 @@ export default {
 
         // gets recipe info from route params
         onMounted(() => {
-            getRecipeById();
+            // getRecipeById();
         })
 
         // watchEffect(()=> {
