@@ -66,14 +66,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- ?.replaceAll('
-                        < ol > ', '')
-                            .replaceAll('</ol>', '')
-                            .replaceAll('<li>', '')
-                            .replaceAll('</li>', '') -->
-
         <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Set the inner HTML of this div to the active recipe instructions. -->

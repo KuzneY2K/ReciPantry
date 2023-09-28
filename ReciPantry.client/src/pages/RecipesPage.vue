@@ -1,7 +1,7 @@
 <template>
       <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
         <div class="col-12 p-0 m-0 d-flex flex-column align-items-center justify-content-center">
-            <h1 class="mt-3">Explore <span class="text-success">Recipes</span></h1>
+            <h1 class="mt-3">Find your perfect <span class="text-success">Recipe</span></h1>
         <!-- Search bar that takes in parameters & filters 🔎 -->
               <SearchBar />
         </div>

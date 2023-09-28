@@ -12,7 +12,7 @@
       <!-- STUB Account info -->
       <div class="about text-center mt-5 col-12">
         <h1 class="p-2">My Account</h1>
-        <img class="rounded" :src="account.picture" alt="" />
+        <img class="profile-pic" :src="account.picture" alt="" />
         <h2 class="mt-3">{{ account.name }}</h2>
       </div>
       <!-- STUB Account page buttons -->
@@ -46,7 +46,7 @@
         </button>
       </div>
       <div class="collapse" id="myRecipes" v-for="recipe in recipes" :key="recipe.id">
-        <LandingCard :recipe="recipe" />
+        <CommunityRecipeCard :recipe="recipe" />
       </div>
 
       <div class="col-12 text-center mt-4">
@@ -73,6 +73,7 @@ import EditAccountForm from '../components/EditAccountForm.vue'
 import Pop from '../utils/Pop';
 import { accountService } from '../services/AccountService';
 import LandingCard from '../components/LandingCard.vue';
+import CommunityRecipeCard from '../components/CommunityRecipeCard.vue';
 
 export default {
   setup() {
@@ -103,11 +104,19 @@ export default {
       },
     };
   },
-  components: { ModalWrapper, EditAccountForm, LandingCard }
+  components: { ModalWrapper, EditAccountForm, CommunityRecipeCard }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.profile-pic {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 500px;
+}
+
 img {
   max-width: 200px;
 }
