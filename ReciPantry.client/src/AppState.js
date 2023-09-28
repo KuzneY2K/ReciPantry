@@ -24,6 +24,6 @@ export const AppState = reactive({
   savedQuery: null,
   selectedCategory: null,
   groceryList: [],
-/**@type {Recipe[]} */
-myRecipes: []
+  /**@type {Recipe[]} */
+  myRecipes: []
 })
