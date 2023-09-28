@@ -13,43 +13,47 @@
                     <form @submit.prevent="createRecipe" class="row">
                         <div class="col-6">
                             <label for="recipeTitle">Recipe Title:</label>
-                            <input class="form-control" id="recipeTitle" maxlength="50" type="text" placeholder="Title">
+                            <input v-model="recipeData.title" class="form-control" id="recipeTitle" maxlength="50"
+                                type="text" placeholder="Title">
                         </div>
                         <div class="col-6">
                             <label for="recipeIngredients">Ingredients</label>
-                            <input class="form-control" id="recipeIngredients" type="text" maxlength="1000">
+                            <input v-model="recipeData.ingredients" class="form-control" id="recipeIngredients" type="text"
+                                maxlength="1000">
                         </div>
                         <div class="col-12 d-flex flex-column">
                             <label for="recipeInstructions">Instructions:</label>
-                            <textarea name="recipeInstructions" id="recipeInstructions" maxlength="5000"
-                                placeholder="Instructions:" cols="100"></textarea>
+                            <textarea v-model="recipeData.instructions" name="recipeInstructions" id="recipeInstructions"
+                                maxlength="5000" placeholder="Instructions:" cols="100"></textarea>
                         </div>
                         <div class="col-6">
                             <label for="recipeServings">Servings:</label>
-                            <input class="form-control" type="number" max="100" placeholder="# of servings"
-                                id="recipeServings">
+                            <input v-model="recipeData.servings" class="form-control" type="number" max="100"
+                                placeholder="# of servings" id="recipeServings">
                         </div>
                         <div class="col-6">
                             <label for="recipePrepTime">Prep Time:</label>
-                            <input class="form-control" type="number" max="1000" placeholder="minutes to prep?"
-                                id="recipePrepTime">
+                            <input v-model="recipeData.preparationMinutes" class="form-control" type="number" max="1000"
+                                placeholder="minutes to prep?" id="recipePrepTime">
                         </div>
                         <div class="col-6">
                             <label for="recipeCookTime">Cooking Time:</label>
-                            <input class="form-control" type="number" max="1000" placeholder="minutes to cook?"
-                                id="recipeCookTime">
+                            <input v-model="recipeData.readyInMinutes" class="form-control" type="number" max="1000"
+                                placeholder="minutes to cook?" id="recipeCookTime">
                         </div>
                         <div class="col-6 form-check">
                             <label for="glutenFree">Gluten Free?</label>
-                            <input class="form-check-input bg-light" type="checkbox" value="" id="glutenFree">
+                            <input v-model="recipeData.glutenFree" class="form-check-input bg-light" type="checkbox"
+                                value="" id="glutenFree">
                         </div>
                         <div class="col-6 form-check">
                             <label for="vegan">Vegan?</label>
-                            <input value="" class="form-check-input bg-light" type="checkbox">
+                            <input v-model="recipeData.vegan" value="" class="form-check-input bg-light" type="checkbox">
                         </div>
                         <div class="col-6 form-check">
                             <label for="vegetarian">Vegetarian?</label>
-                            <input value="" class="form-check-input bg-light" type="checkbox">
+                            <input v-model="recipeData.vegetarian" value="" class="form-check-input bg-light"
+                                type="checkbox">
                         </div>
                         <div class="col-2">
                             <button class="btn btn-success">Submit</button>
