@@ -4,6 +4,9 @@
             <h1 class="text-center mt-3">Explore <span class="text-success">Community</span></h1>
             <CommunitySearchBar />
         </div>
+        <div class="col-12 p-0 m-0">
+            <RecipeCard v-for="recipe in communityRecipes" :key="recipe.id" />
+        </div>
         <CreateRecipeModalForm />
         <div class="col-2 col-md-4">
             <button data-bs-toggle="modal" data-bs-target="#createRecipe" class="btn btn-success buttonContainer"><i
@@ -13,9 +16,10 @@
 </template>
 
 <script>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { recipesService } from '../services/RecipesService.js'
 import Pop from '../utils/Pop.js';
+import { AppState } from '../AppState.js';
 
 export default {
     setup() {
@@ -31,7 +35,7 @@ export default {
             }
         }
         return {
-
+            communityRecipes: computed(() => AppState.communityRecipes)
         }
     }
 }
