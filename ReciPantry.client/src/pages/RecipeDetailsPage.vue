@@ -76,16 +76,10 @@
 
         <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
-            <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
+            <!-- Set the inner HTML of this div to the active recipe instructions. -->
                 <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
 
                 </div>
-            <!-- <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
-                {{ recipe.instructions?.replaceAll('<ol>', '').replaceAll('</ol>', '').replaceAll('<li>', '').replaceAll('</li>', '') }}
-            </p> -->
-            <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
-                        
-                    </div> -->
         </div>
 
         <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->

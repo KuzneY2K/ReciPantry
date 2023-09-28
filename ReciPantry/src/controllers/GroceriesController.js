@@ -8,6 +8,7 @@ export class GroceriesController extends BaseController {
         this.router
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.addGrocery)
+            .delete('/:groceryId')
     }
 
     async addGrocery(req, res, next) {
@@ -16,6 +17,16 @@ export class GroceriesController extends BaseController {
             groceryData.accountId = req.userInfo.id
             const newGrocery = await groceriesService.addGrocery(groceryData)
             res.send(newGrocery)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async removeGrocery(req, res, next) {
+        try {
+            const groceryId = req.params.groceryId
+            const removedGrocery = await groceriesService.removeGrocery(groceryId)
+            res.send(removedGrocery)
         } catch (error) {
             next(error)
         }

@@ -12,6 +12,10 @@ class GroceriesService {
         return myGroceries
     }
 
+    async removeGrocery(groceryId) {
+        const removedRecipe = await 
+    }
+
 }
 
 export const groceriesService = new GroceriesService()
