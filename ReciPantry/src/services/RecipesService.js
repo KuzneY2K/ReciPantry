@@ -61,7 +61,7 @@ class RecipesService {
         return `Remove the recipe at id ${recipeId}`
     }
     async getMyRecipes(accountId) {
-        const myRecipes = await dbContext.Recipes.find({ creatorId: accountId }).populate('creator', '-email')
+        const myRecipes = await dbContext.Recipes.find({ creatorId: accountId })
         return myRecipes
     }
 }
