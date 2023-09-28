@@ -1,7 +1,7 @@
 <template>
   <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5 animate__animated
     animate__fadeInRightBig position-relative">
-    <h1>
+    <h1 class="p-2">
       {{ review.profile.name }}
     </h1>
   </div>
