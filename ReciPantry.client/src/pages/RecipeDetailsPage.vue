@@ -137,7 +137,7 @@ import { reviewService } from '../services/ReviewService';
             // gets recipe info from route params
             onMounted(() => {
                 getRecipeById();
-                // getReviewsByRecipe();
+                getReviewsByRecipe();
             })
 
             async function getReviewsByRecipe(){
