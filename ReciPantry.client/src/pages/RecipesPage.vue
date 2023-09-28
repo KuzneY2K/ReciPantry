@@ -38,7 +38,7 @@ import { logger } from '../utils/Logger.js';
     export default {
         setup(){
             // Gets random recipes so that the Recipes page isnt empty. 
-            // Only gets recipes if the appstate recipes are empty. Removes conflict with categories
+            // Only gets recipes if the appstate selected category is null. Removes conflict with categories
             async function getRandomRecipes(){
                 try {
                     logger.log(AppState.selectedCategory)
