@@ -55,6 +55,12 @@ class RecipesService{
         let nlRes = await recipeApi.get(`${recipeId}/nutritionLabel`)
         AppState.nutritionLabel = nlRes.data
     }
+
+    async getCommunityRecipeById(recipeId){
+        const res = await api.get(`api/recipe/${recipeId}`)
+        logger.log(res.data)
+        AppState.activeRecipe = new CommunityRecipe(res.data)
+    }
     async createRecipe(recipeData){
         const res = await api.post('api/recipes', recipeData)
         logger.log('Created Recipe', res.data)
