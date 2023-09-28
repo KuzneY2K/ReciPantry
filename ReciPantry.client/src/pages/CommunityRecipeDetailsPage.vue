@@ -71,11 +71,10 @@
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
-                {{ recipe.instructions?.replaceAll('
-                    < ol > ', '')
-                        .replaceAll('</ol>', '')
-                        .replaceAll('<li>', '')
-                        .replaceAll('</li>', '') }} </p>
+
+                INSTRUCTIONS
+
+            </p>
             <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
                         
                     </div> -->
@@ -135,18 +134,18 @@ export default {
 
 
         // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
-        async function getRecipeById() {
-            try {
-                AppState.activeRecipe = {}
-                await recipesService.getRecipeById(route.params.recipeId)
-                getReviewsByRecipe();
-                document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
-                document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
-                // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
-            } catch (error) {
-                Pop.error(error)
-            }
-        }
+        // async function getRecipeById() {
+        //     try {
+        //         AppState.activeRecipe = {}
+        //         await recipesService.getRecipeById(route.params.recipeId)
+        //         getReviewsByRecipe();
+        //         document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
+        //         document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
+        //         // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
+        //     } catch (error) {
+        //         Pop.error(error)
+        //     }
+        // }
 
         // gets recipe info from route params
         onMounted(() => {
