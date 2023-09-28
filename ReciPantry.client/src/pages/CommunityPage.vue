@@ -4,8 +4,8 @@
             <h1 class="text-center mt-3">Explore <span class="text-success">Community</span></h1>
             <CommunitySearchBar />
         </div>
-        <div class="col-12 p-0 m-0">
-            <RecipeCard v-for="recipe in communityRecipes" :key="recipe.id" />
+        <div class="col-12 p-0 m-0 d-flex flex-column justify-content-center align-items-center">
+            <CommunityRecipeCard v-for="recipe in communityRecipes" :key="recipe.id" :recipe="recipe" />
         </div>
         <CreateRecipeModalForm />
         <div class="col-2 col-md-4">
