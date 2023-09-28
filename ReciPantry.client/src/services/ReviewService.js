@@ -11,6 +11,7 @@ class ReviewService {
     }
 
     async getReviewsByRecipe(recipeId) {
+        logger.log(recipeId)
         const res = await api.get(`api/recipes/${recipeId}/reviews`)
         logger.log('fetched reviews ✅', res.data)
         AppState.activeReviews = res.data.map(review => new Review(review))
