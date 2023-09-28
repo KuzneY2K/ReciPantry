@@ -33,6 +33,7 @@ class RecipesService{
     async getCommunityRecipes(){
         let res = await api.get(`api/recipes`)
         logger.log(res)
+        AppState.communityRecipes = res.data.map(recipe => new CommunityRecipe(recipe))
     }
 
     async searchRecipesByCategory(){

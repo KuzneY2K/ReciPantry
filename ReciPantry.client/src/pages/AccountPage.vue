@@ -40,18 +40,18 @@
       </div>
 
 
-      <div class="col-12 text-center mt-3">
+      <div class="col-12 text-center mt-2">
         <button class="btn btn-outline-dark" data-bs-toggle="collapse" data-bs-target="#myRecipes">
-          <h1>MY RECIPES</h1>
+          <h1 class="fs-2 pt-2">MY <i class="mdi mdi-bomb"></i> RECIPES </h1>
         </button>
       </div>
       <div class="collapse" id="myRecipes">
         My recipes
       </div>
 
-      <div class="col-12 text-center mt-3">
+      <div class="col-12 text-center mt-4">
         <button class="btn btn-outline-dark" data-bs-toggle="collapse" data-bs-target="#favRecipes">
-          <h1>FAV RECIPES</h1>
+          <h1 class="fs-2 pt-2">FAV RECIPES <i class="mdi mdi-fire"></i></h1>
         </button>
       </div>
       <div class="collapse" id="favRecipes">
