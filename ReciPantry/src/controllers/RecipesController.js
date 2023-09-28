@@ -57,7 +57,7 @@ export class RecipesController extends BaseController {
             next(error)
         }
     }
-    // llows the user to edit a recipe they have created
+    // allows the user to edit a recipe they have created
     async editRecipe(req, res, next) {
         try {
             const updates = req.body
