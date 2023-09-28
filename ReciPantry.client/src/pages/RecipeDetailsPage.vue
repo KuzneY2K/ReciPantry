@@ -153,6 +153,8 @@ import { reviewService } from '../services/ReviewService';
                 reviews: computed(()=> AppState.activeReviews),
                 ingredientOnList: computed(() => AppState.groceryList),
 
+                // Adds ingredient to shopping list when clicking on cart.
+                // Utilizes localStorage
                 async addToList(ingredientName){
                     if(await Pop.confirm(`Add ${ingredientName} to grocery list?`)){
                         AppState.groceryList.push(ingredientName)
@@ -161,8 +163,7 @@ import { reviewService } from '../services/ReviewService';
                     } else {
                         Pop.toast(`${ingredientName} not added to grocery list.`)
                     }
-
-                    // Change pop confirm message that says "you wont be able to revert"
+                // Change pop confirm message that says "you wont be able to revert"
 
                 }
             }
