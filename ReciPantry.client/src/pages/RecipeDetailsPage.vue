@@ -103,7 +103,7 @@
                         <ul class="list-unstyled">
                             <div class="li-container d-flex flex-row justify-content-between fs-5"
                                 v-for="i in ingredientOnList" :key="i.name">
-                                <li> {{ i.name }} {{ i.measureUnit }} </li><i class="mdi mdi-close text-danger fs-2"
+                                <li> {{ i.name }} </li><i class="mdi mdi-close text-danger fs-2"
                                     @click="removeFromList(i.id)"></i>
                             </div>
                         </ul>
