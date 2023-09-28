@@ -150,7 +150,16 @@ export default {
         // gets recipe info from route params
         onMounted(() => {
             // getRecipeById();
+            getCommunityRecipeById();
+            getReviewsByRecipe();
         })
+        async function getCommunityRecipeById() {
+            try {
+                await recipesService.getCommunityRecipeById(route.params.recipeId)
+            } catch (error) {
+                Pop.error(error)
+            }
+        }
 
         // watchEffect(()=> {
         // })
@@ -219,4 +228,5 @@ export default {
 
 .recipe-image {
     object-fit: cover;
-}</style>
+}
+</style>
