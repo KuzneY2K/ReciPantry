@@ -90,7 +90,7 @@ export default {
                     resetForm()
                     Modal.getOrCreateInstance('#createRecipe').hide()
                     logger.log(newRecipe)
-                    router.push({ name: "Recipe Details", params: { recipeId: newRecipe.id } })
+                    router.push({ name: "Recipe Details", params: { recipeId: newRecipe._id } })
                 } catch (error) {
                     Pop.error(error)
                 }
