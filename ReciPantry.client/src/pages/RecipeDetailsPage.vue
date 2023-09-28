@@ -81,10 +81,9 @@
                     </div>
                 </div>
                 <div>
-                    <!-- <div v-for="review in reviews" :key="review.id" class="col-12"> -->
-                        <!-- <ReviewCard :review="review" /> -->
-                        <!-- REVIEW having trouble 'getting' reviews from reading the recipeId in the route... server/controllers/ReviewController -->
-                    <!-- </div> -->
+                    <div v-for="review in reviews" :key="review.id" class="col-12">
+                        <ReviewCard :review="review" />
+                    </div>
                 </div>
                 <!-- MODAL - CONVERT TO COMPONENT -->
                 <div class="modal fade" id="groceryListModal" tabindex="-1" aria-labelledby="groceryListModalLabel" aria-hidden="true">
@@ -111,7 +110,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import {AppState} from '../AppState.js'
@@ -139,6 +138,9 @@ import { reviewService } from '../services/ReviewService';
             // gets recipe info from route params
             onMounted(() => {
                 getRecipeById();
+            })
+
+            watchEffect(()=> {
                 getReviewsByRecipe();
             })
 

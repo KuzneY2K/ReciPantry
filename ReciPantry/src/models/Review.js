@@ -10,7 +10,7 @@ export const ReviewSchema = new Schema({
 
 ReviewSchema.virtual('profile', {
     localField: 'accountId',
-    foreignField: 'id',
+    foreignField: '_id',
     ref: 'Account',
     justOne: true
 })
