@@ -11,7 +11,9 @@ class GroceriesService{
     }
 
     async addGrocery(data){
-        const res = await api.post()
+        const res = await api.post('api/groceries', data)
+        AppState.groceryList.push = new Grocery(res.data)
+        // this.getGroceryList()
     }
 }
 

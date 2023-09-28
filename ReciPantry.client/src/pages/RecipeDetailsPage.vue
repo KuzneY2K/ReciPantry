@@ -113,7 +113,7 @@
                     <div class="modal-body">
                         <ul class="list-unstyled">
                             <div class="li-container d-flex flex-row justify-content-between fs-5"
-                                v-for="i in ingredientOnList" :key="i">
+                                v-for="i in ingredientOnList" :key="i.id">
                                 <li> {{ i.name }} </li><i class="mdi mdi-close text-danger"
                                     @click="removeFromList(i.id)"></i>
                             </div>
@@ -187,18 +187,14 @@ import { onAuthLoaded } from '@bcwdev/auth0provider-client';
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
             async addToList(grocery) {
-                // logger.log
-                // if (await Pop.confirm(`Add ${listItem.name} to grocery list?`)) {
-                //     AppState.groceryList.push(listItem)
-                //     Pop.success(`Added ${listItem.name} to grocery list!`)
-                //     logger.log(AppState.groceryList)
-                // } else {
-                //     Pop.toast(`${listItem.name} not added to grocery list.`)
-                // }
-
-                groceryData.value.groceryName = grocery.name
-                logger.log(groceryData.value)
-                await groceriesService.addGrocery(groceryData.value)
+                if (await Pop.confirm(`Add ${grocery.name} to grocery list?`)) {
+                    groceryData.value.groceryName = grocery.name
+                    await groceriesService.addGrocery(groceryData.value)
+                    Pop.success(`Added ${grocery.name} to grocery list!`)
+                    logger.log(AppState.groceryList)
+                } else {
+                    Pop.toast(`${grocery.name} not added to grocery list.`)
+                }
 
                 // Remove ingredient from shopping list by clicking little X symbol
             },
