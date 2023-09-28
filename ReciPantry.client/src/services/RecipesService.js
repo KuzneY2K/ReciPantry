@@ -57,7 +57,7 @@ class RecipesService{
     }
 
     async getCommunityRecipeById(recipeId){
-        const res = await api.get(`api/recipe/${recipeId}`)
+        const res = await api.get(`api/recipes/${recipeId}`)
         logger.log(res.data)
         AppState.activeRecipe = new CommunityRecipe(res.data)
     }
