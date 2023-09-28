@@ -66,20 +66,12 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- ?.replaceAll('
-                        < ol > ', '')
-                            .replaceAll('</ol>', '')
-                            .replaceAll('<li>', '')
-                            .replaceAll('</li>', '') -->
-
         <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Set the inner HTML of this div to the active recipe instructions. -->
-                <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
+            <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
 
-                </div>
+            </div>
         </div>
 
         <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
@@ -90,7 +82,7 @@
             </div>
         </div>
         <div class="p-0 m-0">
-            <h1 class="p-0 m-0">Recipe Reviews</h1>
+            <h1 class="p-4 m-0">Recipe Reviews</h1>
             <div v-for="review in reviews" :key="review.id"
                 class="col-12 d-flex flex-column align-items-center justify-content-center">
                 <ReviewCard :review="review" />
@@ -110,8 +102,8 @@
                     <div class="modal-body">
                         <ul class="list-unstyled">
                             <div class="li-container d-flex flex-row justify-content-between fs-5"
-                                v-for="i in ingredientOnList" :key="i.id">
-                                <li> {{ i.name }} </li><i class="mdi mdi-close text-danger"
+                                v-for="i in ingredientOnList" :key="i.name">
+                                <li> {{ i.name }} {{ i.measureUnit }} </li><i class="mdi mdi-close text-danger fs-2"
                                     @click="removeFromList(i.id)"></i>
                             </div>
                         </ul>
@@ -133,34 +125,34 @@ import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
-import {groceriesService} from '../services/GroceriesService.js'
+import { groceriesService } from '../services/GroceriesService.js'
 import { onAuthLoaded } from '@bcwdev/auth0provider-client';
 
-    export default {
-        setup(){
-            let route = useRoute()
+export default {
+    setup() {
+        let route = useRoute()
 
-            let groceryData = ref({})
+        let groceryData = ref({})
 
 
-            // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
-            async function getRecipeById(){
-                try {
-                    AppState.activeRecipe = {}
-                    await recipesService.getRecipeById(route.params.recipeId)
-                    getReviewsByRecipe();
-                    document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
-                    document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
-                    document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
-                } catch (error) {
-                    Pop.error(error)
-                }
+        // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
+        async function getRecipeById() {
+            try {
+                AppState.activeRecipe = {}
+                await recipesService.getRecipeById(route.params.recipeId)
+                getReviewsByRecipe();
+                document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
+                document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
+                document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
+            } catch (error) {
+                Pop.error(error)
             }
+        }
 
-            // gets recipe info from route params
-            onMounted(() => {
-                getRecipeById();
-            })
+        // gets recipe info from route params
+        onMounted(() => {
+            getRecipeById();
+        })
 
         // watchEffect(()=> {
         // })
@@ -182,10 +174,11 @@ import { onAuthLoaded } from '@bcwdev/auth0provider-client';
             groceryData,
 
             // Adds ingredient to shopping list when clicking on cart.
-            // Utilizes localStorage
             async addToList(grocery) {
                 if (await Pop.confirm(`Add ${grocery.name} to grocery list?`)) {
                     groceryData.value.groceryName = grocery.name
+                    groceryData.value.measureAmount = grocery.measures.us.amount
+                    groceryData.value.measureUnit = grocery.measures.us.unitShort
                     await groceriesService.addGrocery(groceryData.value)
                     Pop.success(`Added ${grocery.name} to grocery list!`)
                     logger.log(AppState.groceryList)
@@ -195,11 +188,13 @@ import { onAuthLoaded } from '@bcwdev/auth0provider-client';
 
                 // Remove ingredient from shopping list by clicking little X symbol
             },
-            async removeFromList(ingredientId) {
-                logger.log(ingredientId)
-                // if(await Pop.confirm(`Remove ${ingredientName} from gorcery list?`)){
-                //     let filteredIngredients = AppState.activeRecipe.ingredients.name != ingredientName
-                // }
+            async removeFromList(groceryId) {
+                logger.log(groceryId)
+                if(await Pop.confirm(`Remove from gorcery list?`)){
+                    await groceriesService.removeFromList(groceryId)
+                } else {
+                    Pop.toast('Grocery was not removed from the list.')
+                }
             }
         }
     }

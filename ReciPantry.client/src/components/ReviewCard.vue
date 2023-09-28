@@ -1,9 +1,24 @@
 <template>
-  <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5 animate__animated
-    animate__fadeInRightBig position-relative">
-    <h1 class="p-2">
-      {{ review.profile.name }}
-    </h1>
+  <div
+    class="card-container align-items-center d-flex p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5">
+    <section>
+      <div v-if="review.rating == 5"><i class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i><i
+          class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i><i
+          class="mdi text-warning mdi-star"></i></div>
+      <div v-if="review.rating == 4"><i class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i><i
+          class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i></div>
+      <div v-if="review.rating == 3"><i class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i><i
+          class="mdi text-warning mdi-star"></i>
+      </div>
+      <div v-if="review.rating == 2"><i class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i>
+      </div>
+      <div v-if="review.rating == 1"><i class="mdi text-warning mdi-star"></i></div>
+    </section>
+    <section class="p-2">
+      <img class="profile-picture" :src="review.profile.picture" alt="">
+    </section>
+    <h1>{{ review.profile.name }}</h1>
+    <p>{{ review.comment }}</p>
   </div>
 </template>
 
@@ -26,5 +41,13 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  height: 50px;
+  width: 50px;
 }
 </style>

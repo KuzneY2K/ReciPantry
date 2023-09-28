@@ -18,12 +18,12 @@
                         </div>
                         <div class="col-6">
                             <label for="recipeIngredients">Ingredients</label>
-                            <input v-model="recipeData.ingredients" class="form-control" id="recipeIngredients" type="text"
+                            <input v-model="recipeData.extendedIngredients" class="form-control" id="recipeIngredients" type="text"
                                 maxlength="1000" required>
                         </div>
                         <div class="col-12 d-flex flex-column">
                             <label for="recipeInstructions">Instructions:</label>
-                            <textarea v-model="recipeData.instructions" class="form-control" name="recipeInstructions"
+                            <textarea v-model="recipeData.analyzedInstructions" class="form-control" name="recipeInstructions"
                                 id="recipeInstructions" maxlength="5000" placeholder="Instructions:" cols="100"
                                 required></textarea>
                         </div>
