@@ -102,8 +102,8 @@
                     <div class="modal-body">
                         <ul class="list-unstyled">
                             <div class="li-container d-flex flex-row justify-content-between fs-5"
-                                v-for="i in ingredientOnList" :key="i.id">
-                                <li> {{ i.name }} </li><i class="mdi mdi-close text-danger"
+                                v-for="i in ingredientOnList" :key="i.name">
+                                <li> {{ i.name }} {{ i.measureUnit }} </li><i class="mdi mdi-close text-danger fs-2"
                                     @click="removeFromList(i.id)"></i>
                             </div>
                         </ul>
@@ -174,10 +174,11 @@ import { onAuthLoaded } from '@bcwdev/auth0provider-client';
             groceryData,
 
             // Adds ingredient to shopping list when clicking on cart.
-            // Utilizes localStorage
             async addToList(grocery) {
                 if (await Pop.confirm(`Add ${grocery.name} to grocery list?`)) {
                     groceryData.value.groceryName = grocery.name
+                    groceryData.value.measureAmount = grocery.measures.us.amount
+                    groceryData.value.measureUnit = grocery.measures.us.unitShort
                     await groceriesService.addGrocery(groceryData.value)
                     Pop.success(`Added ${grocery.name} to grocery list!`)
                     logger.log(AppState.groceryList)
@@ -187,11 +188,13 @@ import { onAuthLoaded } from '@bcwdev/auth0provider-client';
 
                 // Remove ingredient from shopping list by clicking little X symbol
             },
-            async removeFromList(ingredientId) {
-                logger.log(ingredientId)
-                // if(await Pop.confirm(`Remove ${ingredientName} from gorcery list?`)){
-                //     let filteredIngredients = AppState.activeRecipe.ingredients.name != ingredientName
-                // }
+            async removeFromList(groceryId) {
+                logger.log(groceryId)
+                if(await Pop.confirm(`Remove from gorcery list?`)){
+                    await groceriesService.removeFromList(groceryId)
+                } else {
+                    Pop.toast('Grocery was not removed from the list.')
+                }
             }
         }
     }

@@ -13,7 +13,15 @@ class GroceriesService{
     async addGrocery(data){
         const res = await api.post('api/groceries', data)
         AppState.groceryList.push = new Grocery(res.data)
-        // this.getGroceryList()
+        this.getGroceryList()
+    }
+
+    async removeFromList(groceryId){
+        const res = await api.delete(`api/groceries/${groceryId}`)
+        logger.log(res)
+        let filteredGroceries = AppState.groceryList.filter(g => g.id != groceryId)
+        AppState.groceryList = filteredGroceries
+        this.getGroceryList()
     }
 }
 

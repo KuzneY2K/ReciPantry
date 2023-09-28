@@ -31,7 +31,7 @@
                     <i class="mdi mdi-cart p-0 m-0 text-success fs-2" @click="addToList(ingredient)"></i>
                     <!-- Checkbox for checking off what a user has and doesnt has -->
                     <input type="checkbox" name="have" class="form-check-input m-0 p-0 mx-2 checkbox">
-                    <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.original }}</span>
+                    <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient }}</span>
 
                 </li>
                 <li>
@@ -72,7 +72,7 @@
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
 
-                INSTRUCTIONS
+                {{ recipe.instructions }}
 
             </p>
             <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
@@ -84,7 +84,7 @@
         <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
             <h1 class="p-0 m-0">About The Recipe</h1>
             <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary">
-
+                {{ recipe.summary }}
             </div>
         </div>
         <div>
