@@ -10,7 +10,7 @@ class ReviewService {
     }
 
     async getReviewsByRecipe(recipeId) {
-        const res = await api.get(`api/reviews/${recipeId}`)
+        const res = await api.get(`api/recipes/${recipeId}/reviews`)
         AppState.activeReviews = res.data.map(review => new Review(review))
     }
 
