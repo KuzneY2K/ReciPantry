@@ -40,7 +40,7 @@ import Pop from '../utils/Pop.js';
             // Only gets recipes if the appstate recipes are empty. Removes conflict with categories
             async function getRandomRecipes(){
                 try {
-                    if(!AppState.recipes){
+                    if(AppState.recipes){
                         await recipesService.getRandomRecipes()
                     }
                 } catch (error) {
@@ -49,7 +49,7 @@ import Pop from '../utils/Pop.js';
             }
 
             onMounted(() => {
-                getRandomRecipes()
+                // getRandomRecipes()
             })
             return{
                 recipes: computed(() => AppState.recipes),

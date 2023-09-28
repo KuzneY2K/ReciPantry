@@ -22,5 +22,6 @@ export const AppState = reactive({
   myReviews: [],
   pageNum: 0,
   savedQuery: null,
-  selectedCategory: null
+  selectedCategory: null,
+  groceryList: []
 })
