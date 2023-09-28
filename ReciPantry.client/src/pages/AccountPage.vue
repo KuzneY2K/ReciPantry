@@ -65,14 +65,28 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, watchEffect } from 'vue';
 import { AppState } from '../AppState';
 import { AuthService } from '../services/AuthService'
 import ModalWrapper from '../components/ModalWrapper.vue';
 import EditAccountForm from '../components/EditAccountForm.vue'
+import Pop from '../utils/Pop';
+import { accountService } from '../services/AccountService';
 
 export default {
   setup() {
+    watchEffect(() => {
+      getMyRecipes()
+    })
+
+    async function getMyRecipes() {
+      try {
+        await accountService.getMyRecipes()
+      } catch (error) {
+        Pop.error(error)
+      }
+    }
+
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
