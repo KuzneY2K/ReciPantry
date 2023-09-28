@@ -46,7 +46,7 @@
         </button>
       </div>
       <div class="collapse" id="myRecipes" v-for="recipe in recipes" :key="recipe.id">
-        <LandingCard :recipe="account.recipe" />
+        <LandingCard :recipe="recipe" />
       </div>
 
       <div class="col-12 text-center mt-4">
@@ -82,6 +82,7 @@ export default {
 
     async function getMyRecipes() {
       try {
+
         await accountService.getMyRecipes()
       } catch (error) {
         Pop.error(error)

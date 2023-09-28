@@ -23,6 +23,7 @@ class AccountService {
 
   async getMyRecipes(){
     try {
+      AppState.myRecipes = []
       const res = await api.get('account/recipes')
       logger.log(res.data)
       AppState.myRecipes = res.data.map(recipe => new Recipe(recipe))
