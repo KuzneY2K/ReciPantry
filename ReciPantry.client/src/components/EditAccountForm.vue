@@ -31,7 +31,7 @@ setup() {
 
     watchEffect(() => {
         AppState.account
-        editable.value = AppState.account
+        
     })
   return {
     editable,
