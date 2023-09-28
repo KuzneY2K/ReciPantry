@@ -33,6 +33,7 @@ import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState.js';
 import { recipesService } from '../services/RecipesService.js';
 import Pop from '../utils/Pop.js';
+import { logger } from '../utils/Logger.js';
 
     export default {
         setup(){
@@ -40,7 +41,8 @@ import Pop from '../utils/Pop.js';
             // Only gets recipes if the appstate recipes are empty. Removes conflict with categories
             async function getRandomRecipes(){
                 try {
-                    if(AppState.recipes){
+                    logger.log(AppState.selectedCategory)
+                    if(AppState.selectedCategory == null){
                         await recipesService.getRandomRecipes()
                     }
                 } catch (error) {
@@ -49,7 +51,7 @@ import Pop from '../utils/Pop.js';
             }
 
             onMounted(() => {
-                // getRandomRecipes()
+                getRandomRecipes()
             })
             return{
                 recipes: computed(() => AppState.recipes),
