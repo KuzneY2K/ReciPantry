@@ -7,18 +7,7 @@ export class GroceriesController extends BaseController {
         super('api/groceries')
         this.router
             .use(Auth0Provider.getAuthorizedUserInfo)
-            .get('', this.getGroceryList)
             .post('', this.addGrocery)
-    }
-
-    async getGroceryList(req, res, next) {
-        try {
-            let accountId = req.userInfo.id
-            const groceryList = await groceriesService.getGroceryList(accountId)
-            res.send(groceryList)
-        } catch (error) {
-            next(error)
-        }
     }
 
     async addGrocery(req, res, next) {

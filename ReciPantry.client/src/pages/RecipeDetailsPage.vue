@@ -67,15 +67,18 @@
             </div>
         </div>
 
+
+        <!-- ?.replaceAll('
+                        < ol > ', '')
+                            .replaceAll('</ol>', '')
+                            .replaceAll('<li>', '')
+                            .replaceAll('</li>', '') -->
+
         <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
-                {{ recipe.instructions?.replaceAll('
-                    < ol > ', '')
-                        .replaceAll('</ol>', '')
-                        .replaceAll('<li>', '')
-                        .replaceAll('</li>', '') }}
+                {{ recipe.instructions }}
             </p>
             <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
                         
@@ -133,29 +136,29 @@ import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
-export default {
-    setup() {
-        let route = useRoute()
+    export default {
+        setup(){
+            let route = useRoute()
 
 
-        // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
-        async function getRecipeById() {
-            try {
-                AppState.activeRecipe = {}
-                await recipesService.getRecipeById(route.params.recipeId)
-                getReviewsByRecipe();
-                document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
-                document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
-                // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
-            } catch (error) {
-                Pop.error(error)
+            // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
+            async function getRecipeById(){
+                try {
+                    AppState.activeRecipe = {}
+                    await recipesService.getRecipeById(route.params.recipeId)
+                    getReviewsByRecipe();
+                    document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
+                    document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
+                    // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
+                } catch (error) {
+                    Pop.error(error)
+                }
             }
-        }
 
-        // gets recipe info from route params
-        onMounted(() => {
-            getRecipeById();
-        })
+            // gets recipe info from route params
+            onMounted(() => {
+                getRecipeById();
+            })
 
         // watchEffect(()=> {
         // })

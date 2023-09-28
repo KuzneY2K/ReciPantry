@@ -4,6 +4,7 @@ import BaseController from '../utils/BaseController'
 import { favoritesService } from '../services/FavoritesService.js'
 import { reviewService } from '../services/ReviewService.js'
 import { recipesService } from '../services/RecipesService.js'
+import { groceriesService } from '../services/GroceriesService.js'
 
 export class AccountController extends BaseController {
   constructor() {
@@ -14,6 +15,7 @@ export class AccountController extends BaseController {
       .get('/reviews', this.getReviewsByAccount)
       .get('/favorites', this.getFavoritesByAccount)
       .get('/recipes', this.getMyRecipes)
+      .get('', this.getGroceryList)
       .put('', this.updateAccount)
   }
 
@@ -54,6 +56,17 @@ export class AccountController extends BaseController {
       next(error)
     }
   }
+
+  async getGroceryList(req, res, next) {
+    try {
+      let accountId = req.userInfo.id
+      const groceryList = await groceriesService.getGroceryList(accountId)
+      res.send(groceryList)
+    } catch (error) {
+      next(error)
+    }
+  }
+
   async updateAccount(req, res, next) {
     try {
       let accountId = req.userInfo.id
