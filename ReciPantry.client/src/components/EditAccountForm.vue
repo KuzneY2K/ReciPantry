@@ -28,7 +28,6 @@ import { accountService } from '../services/AccountService';
 export default {
 setup() {
     const editable = ref({})
-    const router = useRouter()
 
     watchEffect(() => {
         AppState.account
