@@ -1,5 +1,6 @@
 import { AppState } from "../AppState"
 import { Review } from "../models/Review"
+import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
 
@@ -11,6 +12,7 @@ class ReviewService {
 
     async getReviewsByRecipe(recipeId) {
         const res = await api.get(`api/recipes/${recipeId}/reviews`)
+        logger.log('fetched reviews ✅', res.data)
         AppState.activeReviews = res.data.map(review => new Review(review))
     }
 
