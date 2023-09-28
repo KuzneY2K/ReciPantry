@@ -28,4 +28,4 @@ export const RecipeSchema = new Schema({
     veryHealthy: { type: Boolean, required: false },
     veryPopular: { type: Boolean, required: false },
     weightWatcherPoints: { type: Number, required: false },
-})
+}, { timestamps: true, toJSON: { virtuals: true } })

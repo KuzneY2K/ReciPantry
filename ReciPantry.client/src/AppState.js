@@ -23,5 +23,5 @@ export const AppState = reactive({
   pageNum: 0,
   savedQuery: null,
   selectedCategory: null,
-  groceryList: []
+  // groceryList: localStorage.getItem('groceryList')
 })

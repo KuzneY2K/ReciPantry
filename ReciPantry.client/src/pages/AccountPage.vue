@@ -1,10 +1,11 @@
 <template>
   <div class="container" v-if="account">
     <section class="row">
-      <div class="mt-3 list-group-item dropdown-item list-group-item-action  text-dark fs-2 col-12 text-end" @click="logout">
+      <div class="mt-3 list-group-item dropdown-item list-group-item-action  text-dark fs-2 col-12 text-end"
+        @click="logout">
         <span class="selectable p-2">
-                          <i class="mdi mdi-logout"></i>
-                Logout
+          <i class="mdi mdi-logout"></i>
+          Logout
         </span>
 
       </div>
@@ -25,28 +26,40 @@
           <template #body>
             <EditAccountForm />
           </template>
-          </ModalWrapper>
+        </ModalWrapper>
       </div>
       <div class="col-12 text-center mt-1">
-          <ModalWrapper id="preferences">
-            <template #button>
-              <h1 class="fs-2 btn btn-outline-dark">PREFERENCES <i class="mdi mdi-heart"></i></h1>
-            </template>
-            <template #body>
-  preferences
-            </template>
-          </ModalWrapper>
+        <ModalWrapper id="preferences">
+          <template #button>
+            <h1 class="fs-2 btn btn-outline-dark">PREFERENCES <i class="mdi mdi-heart"></i></h1>
+          </template>
+          <template #body>
+            preferences
+          </template>
+        </ModalWrapper>
       </div>
+
+
       <div class="col-12 text-center mt-3">
-        <button class="btn btn-outline-dark">
+        <button class="btn btn-outline-dark" data-bs-toggle="collapse" data-bs-target="#myRecipes">
           <h1>MY RECIPES</h1>
         </button>
       </div>
+      <div class="collapse" id="myRecipes">
+        My recipes
+      </div>
+
       <div class="col-12 text-center mt-3">
-        <button class="btn btn-outline-dark">
+        <button class="btn btn-outline-dark" data-bs-toggle="collapse" data-bs-target="#favRecipes">
           <h1>FAV RECIPES</h1>
         </button>
       </div>
+      <div class="collapse" id="favRecipes">
+        <section class="row">
+          Fav recipes
+        </section>
+      </div>
+
     </section>
   </div>
 </template>
@@ -59,10 +72,10 @@ import ModalWrapper from '../components/ModalWrapper.vue';
 import EditAccountForm from '../components/EditAccountForm.vue'
 
 export default {
-    setup() {
-        return {
-          user: computed(() => AppState.user),
-            account: computed(() => AppState.account),
+  setup() {
+    return {
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
 
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
@@ -71,9 +84,9 @@ export default {
       async login() {
         AuthService.loginWithPopup()
       },
-        };
-    },
-    components: { ModalWrapper, EditAccountForm }
+    };
+  },
+  components: { ModalWrapper, EditAccountForm }
 }
 </script>
 
