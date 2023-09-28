@@ -45,8 +45,8 @@
           <h1 class="fs-2 pt-2">MY <i class="mdi mdi-bomb"></i> RECIPES </h1>
         </button>
       </div>
-      <div class="collapse" id="myRecipes">
-        My recipes
+      <div class="collapse" id="myRecipes" v-for="recipe in recipes" :key="recipe.id">
+        <LandingCard :recipe="account.recipe" />
       </div>
 
       <div class="col-12 text-center mt-4">
@@ -72,6 +72,7 @@ import ModalWrapper from '../components/ModalWrapper.vue';
 import EditAccountForm from '../components/EditAccountForm.vue'
 import Pop from '../utils/Pop';
 import { accountService } from '../services/AccountService';
+import LandingCard from '../components/LandingCard.vue';
 
 export default {
   setup() {
@@ -90,6 +91,7 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
+      recipes: computed(() => AppState.myRecipes),
 
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
@@ -100,7 +102,7 @@ export default {
       },
     };
   },
-  components: { ModalWrapper, EditAccountForm }
+  components: { ModalWrapper, EditAccountForm, LandingCard }
 }
 </script>
 
