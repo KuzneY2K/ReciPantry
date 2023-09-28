@@ -46,7 +46,7 @@
         </button>
       </div>
       <div class="collapse" id="myRecipes" v-for="recipe in recipes" :key="recipe.id">
-        <LandingCard :recipe="recipe" />
+        <RecipeCard :recipe="recipe" />
       </div>
 
       <div class="col-12 text-center mt-4">
@@ -73,6 +73,7 @@ import EditAccountForm from '../components/EditAccountForm.vue'
 import Pop from '../utils/Pop';
 import { accountService } from '../services/AccountService';
 import LandingCard from '../components/LandingCard.vue';
+import RecipeCard from '../components/RecipeCard.vue';
 
 export default {
   setup() {
@@ -103,7 +104,7 @@ export default {
       },
     };
   },
-  components: { ModalWrapper, EditAccountForm, LandingCard }
+  components: { ModalWrapper, EditAccountForm, RecipeCard }
 }
 </script>
 
