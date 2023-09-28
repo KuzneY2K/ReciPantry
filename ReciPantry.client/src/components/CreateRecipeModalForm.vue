@@ -77,7 +77,7 @@ import { logger } from '../utils/Logger.js';
 export default {
     setup() {
         const recipeData = ref({})
-        const router = useRouter
+        const router = useRouter()
         function resetForm() {
             recipeData.value = {}
         }
