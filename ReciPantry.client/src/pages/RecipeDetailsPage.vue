@@ -97,7 +97,7 @@
                     <div class="modal-body">
                         <ul class="list-unstyled">
                             <div class="li-container d-flex flex-row justify-content-between fs-5">
-                                <li v-for="i in ingredientOnList" :key="i"> {{ i }} </li><i class="mdi mdi-close text-danger" @click="removeFromList(i)"></i>
+                                <li v-for="i in ingredientOnList" :key="i"> {{ i }} </li><i class="mdi mdi-close text-danger" @click="removeFromList(ingredientName)"></i>
                             </div>
                         </ul>
                     </div>
@@ -172,10 +172,10 @@ import { reviewService } from '../services/ReviewService';
                     // Remove ingredient from shopping list by clicking little X symbol
                 },
                 async removeFromList(ingredientName){
-                    if(await Pop.confirm(`Remove ${ingredientName} from gorcery list?`)){
-                        let filteredIngredients = AppState.activeRecipe.ingredients.name != ingredientName
-                        logger.log(ingredientName)
-                    }
+                    logger.log(ingredientName)
+                    // if(await Pop.confirm(`Remove ${ingredientName} from gorcery list?`)){
+                    //     let filteredIngredients = AppState.activeRecipe.ingredients.name != ingredientName
+                    // }
                 }
             }
         }
