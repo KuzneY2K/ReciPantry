@@ -51,6 +51,9 @@
                             <label for="vegetarian">Vegetarian?</label>
                             <input value="" class="form-check-input bg-light" type="checkbox">
                         </div>
+                        <div class="col-2">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -60,11 +63,35 @@
 
 
 <script>
+import { useRouter } from 'vue-router';
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
+import { computed, reactive, onMounted, ref } from 'vue';
+import Pop from '../utils/Pop.js';
+import { recipesService } from '../services/RecipesService.js';
+import { Modal } from 'bootstrap';
+import { logger } from '../utils/Logger.js';
 export default {
     setup() {
-        return {}
+        const recipeData = ref({})
+        const router = useRouter
+        function resetForm() {
+            recipeData.value = {}
+        }
+        return {
+            recipeData,
+            async createRecipe() {
+                try {
+                    let newRecipe = await recipesService.createRecipe(recipeData.value)
+                    Pop.toast('Recipe Created!', 'success')
+                    resetForm()
+                    Modal.getOrCreateInstance('#createRecipe').hide()
+                    logger.log(newRecipe)
+                    router.push({ name: "Recipe Details", params: { recipeId: newRecipe.id } })
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
+        }
     }
 };
 </script>
