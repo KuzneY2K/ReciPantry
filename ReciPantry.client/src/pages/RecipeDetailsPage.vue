@@ -117,6 +117,7 @@ import {AppState} from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
+import { groceriesService } from '../services/GroceriesService.js';
     export default {
         setup(){
             let route = useRoute()
@@ -136,9 +137,14 @@ import { reviewService } from '../services/ReviewService';
                 }
             }
 
+            async function getGroceryList(){
+                await groceriesService.getGroceryList()
+            }
+
             // gets recipe info from route params
             onMounted(() => {
                 getRecipeById();
+                getGroceryList()
             })
 
             // watchEffect(()=> {
