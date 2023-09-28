@@ -14,32 +14,43 @@
                         <div class="col-6">
                             <label for="recipeTitle">Recipe Title:</label>
                             <input v-model="recipeData.title" class="form-control" id="recipeTitle" maxlength="50"
-                                type="text" placeholder="Title">
+                                type="text" placeholder="Title" required>
                         </div>
                         <div class="col-6">
                             <label for="recipeIngredients">Ingredients</label>
                             <input v-model="recipeData.ingredients" class="form-control" id="recipeIngredients" type="text"
-                                maxlength="1000">
+                                maxlength="1000" required>
                         </div>
                         <div class="col-12 d-flex flex-column">
                             <label for="recipeInstructions">Instructions:</label>
-                            <textarea v-model="recipeData.instructions" name="recipeInstructions" id="recipeInstructions"
-                                maxlength="5000" placeholder="Instructions:" cols="100"></textarea>
+                            <textarea v-model="recipeData.instructions" class="form-control" name="recipeInstructions"
+                                id="recipeInstructions" maxlength="5000" placeholder="Instructions:" cols="100"
+                                required></textarea>
                         </div>
                         <div class="col-6">
                             <label for="recipeServings">Servings:</label>
                             <input v-model="recipeData.servings" class="form-control" type="number" max="100"
-                                placeholder="# of servings" id="recipeServings">
+                                placeholder="# of servings" id="recipeServings" required>
                         </div>
                         <div class="col-6">
                             <label for="recipePrepTime">Prep Time:</label>
                             <input v-model="recipeData.preparationMinutes" class="form-control" type="number" max="1000"
-                                placeholder="minutes to prep?" id="recipePrepTime">
+                                placeholder="minutes to prep?" id="recipePrepTime" required>
                         </div>
                         <div class="col-6">
                             <label for="recipeCookTime">Cooking Time:</label>
                             <input v-model="recipeData.readyInMinutes" class="form-control" type="number" max="1000"
-                                placeholder="minutes to cook?" id="recipeCookTime">
+                                placeholder="minutes to cook?" id="recipeCookTime" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="recipeImg">Img Url:</label>
+                            <input v-model="recipeData.image" type="url" id="recipeImg" class="form-control"
+                                maxlength="5000" placeholder="ImgURL" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="recipeSummary">Summary:</label>
+                            <textarea v-model="recipeData.summary" class="form-control" id="recipeSummary"
+                                placeholder="Summary"></textarea>
                         </div>
                         <div class="col-6 form-check">
                             <label for="glutenFree">Gluten Free?</label>
