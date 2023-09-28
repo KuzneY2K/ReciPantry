@@ -6,9 +6,19 @@ export class GroceriesController extends BaseController {
     constructor() {
         super('api/groceries')
         this.router
+            .get('', this.getAllGroceries)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.addGrocery)
-            .delete('/:groceryId')
+            .delete('/:groceryId', this.removeGrocery)
+    }
+
+    async getAllGroceries(req, res, next) {
+        try {
+            let groceries = await groceriesService.getAllGroceries()
+            res.send(groceries)
+        } catch (error) {
+            next(error)
+        }
     }
 
     async addGrocery(req, res, next) {
@@ -25,7 +35,8 @@ export class GroceriesController extends BaseController {
     async removeGrocery(req, res, next) {
         try {
             const groceryId = req.params.groceryId
-            const removedGrocery = await groceriesService.removeGrocery(groceryId)
+            const accountId = req.userInfo.id
+            const removedGrocery = await groceriesService.removeGrocery(groceryId, accountId)
             res.send(removedGrocery)
         } catch (error) {
             next(error)
