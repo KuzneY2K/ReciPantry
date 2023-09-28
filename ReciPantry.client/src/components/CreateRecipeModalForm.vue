@@ -54,17 +54,19 @@
                         </div>
                         <div class="col-6 form-check">
                             <label for="glutenFree">Gluten Free?</label>
-                            <input v-model="recipeData.glutenFree" class="form-check-input bg-light" type="checkbox"
-                                value="" id="glutenFree">
+                            <input v-model="recipeData.glutenFree"
+                                class="form-check-input border border-1 border-black text-success" type="checkbox" value=""
+                                id="glutenFree">
                         </div>
                         <div class="col-6 form-check">
                             <label for="vegan">Vegan?</label>
-                            <input v-model="recipeData.vegan" value="" class="form-check-input bg-light" type="checkbox">
+                            <input v-model="recipeData.vegan" value="" class="form-check-input border border-1 border-black"
+                                type="checkbox">
                         </div>
                         <div class="col-6 form-check">
                             <label for="vegetarian">Vegetarian?</label>
-                            <input v-model="recipeData.vegetarian" value="" class="form-check-input bg-light"
-                                type="checkbox">
+                            <input v-model="recipeData.vegetarian" value=""
+                                class="form-check-input border border-1 border-black" type="checkbox">
                         </div>
                         <div class="col-2">
                             <button class="btn btn-success">Submit</button>

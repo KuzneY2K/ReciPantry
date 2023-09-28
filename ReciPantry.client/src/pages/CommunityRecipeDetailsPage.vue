@@ -3,7 +3,7 @@
         <!-- Pulls recipe title from active recipe -->
         <h1 class="text-start ms-4 mt-3 text-success position-relative">{{ recipe.title }} <span class="text-black">- {{
             recipe.readyInMinutes }} Mins</span></h1>
-        <div class="grocery-btn-container postion-absolute">
+        <div class="grocery-btn-container position-absolute">
             <!-- Grocery List modal toggle -->
             <button class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5"
                 data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
