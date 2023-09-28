@@ -69,9 +69,9 @@
         <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Set the inner HTML of this div to the active recipe instructions. -->
-                <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
+            <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
 
-                </div>
+            </div>
         </div>
 
         <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
@@ -82,7 +82,7 @@
             </div>
         </div>
         <div class="p-0 m-0">
-            <h1 class="p-0 m-0">Recipe Reviews</h1>
+            <h1 class="p-4 m-0">Recipe Reviews</h1>
             <div v-for="review in reviews" :key="review.id"
                 class="col-12 d-flex flex-column align-items-center justify-content-center">
                 <ReviewCard :review="review" />
@@ -125,34 +125,34 @@ import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
-import {groceriesService} from '../services/GroceriesService.js'
+import { groceriesService } from '../services/GroceriesService.js'
 import { onAuthLoaded } from '@bcwdev/auth0provider-client';
 
-    export default {
-        setup(){
-            let route = useRoute()
+export default {
+    setup() {
+        let route = useRoute()
 
-            let groceryData = ref({})
+        let groceryData = ref({})
 
 
-            // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
-            async function getRecipeById(){
-                try {
-                    AppState.activeRecipe = {}
-                    await recipesService.getRecipeById(route.params.recipeId)
-                    getReviewsByRecipe();
-                    document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
-                    document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
-                    document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
-                } catch (error) {
-                    Pop.error(error)
-                }
+        // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
+        async function getRecipeById() {
+            try {
+                AppState.activeRecipe = {}
+                await recipesService.getRecipeById(route.params.recipeId)
+                getReviewsByRecipe();
+                document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
+                document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
+                document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
+            } catch (error) {
+                Pop.error(error)
             }
+        }
 
-            // gets recipe info from route params
-            onMounted(() => {
-                getRecipeById();
-            })
+        // gets recipe info from route params
+        onMounted(() => {
+            getRecipeById();
+        })
 
         // watchEffect(()=> {
         // })
