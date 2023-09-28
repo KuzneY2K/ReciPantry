@@ -107,11 +107,13 @@
                     </div>
                     <div class="modal-body">
                         <ul class="list-unstyled">
-                            <div class="li-container d-flex flex-row justify-content-between fs-5"
-                                v-for="i in ingredientOnList" :key="i">
-                                <li> {{ i.name }} </li><i class="mdi mdi-close text-danger"
-                                    @click="removeFromList(i.id)"></i>
-                            </div>
+                            <ul class="list-unstyled">
+                                <div class="li-container d-flex flex-row justify-content-between fs-5"
+                                    v-for="i in ingredientOnList" :key="i.name">
+                                    <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name || i }}</span> - {{ i.measureAmount }} {{ i.measureUnit }} </li><i class="mdi mdi-close text-danger fs-2"
+                                        @click="removeFromList(i.id)"></i>
+                                </div>
+                            </ul>
                         </ul>
                     </div>
                     <div class="modal-footer">
@@ -186,9 +188,9 @@ export default {
             // Utilizes localStorage
             async addToList(listItem) {
                 logger.log
-                if (await Pop.confirm(`Add ${listItem.name} to grocery list?`)) {
+                if (await Pop.confirm(`Add ${listItem} to grocery list?`)) {
                     AppState.groceryList.push(listItem)
-                    Pop.success(`Added ${listItem.name} to grocery list!`)
+                    Pop.success(`Added ${listItem} to grocery list!`)
                     logger.log(AppState.groceryList)
                 } else {
                     Pop.toast(`${listItem.name} not added to grocery list.`)
