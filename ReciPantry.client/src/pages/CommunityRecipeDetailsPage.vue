@@ -88,6 +88,9 @@
             </div>
         </div>
         <div>
+            <button class=" m-2 btn btn-danger">Delete Recipe</button>
+        </div>
+        <div>
             <div v-for="review in reviews" :key="review.id" class="col-12">
                 <ReviewCard :review="review" />
             </div>
