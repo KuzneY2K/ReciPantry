@@ -175,11 +175,12 @@ export default {
         // gets recipe info from route params
         onMounted(() => {
             getRecipeById();
-
+            getReviewsByRecipe();
         })
 
         // watchEffect(()=> {
         // })
+
 
         async function getReviewsByRecipe() {
             try {
