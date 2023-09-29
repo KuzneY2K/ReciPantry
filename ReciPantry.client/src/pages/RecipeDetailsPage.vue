@@ -245,7 +245,7 @@ export default {
 .grocery-btn-container {}
 
 .grocery-list {
-    bottom: 1rem;
+    bottom: 5rem;
     right: 1rem;
 }
 

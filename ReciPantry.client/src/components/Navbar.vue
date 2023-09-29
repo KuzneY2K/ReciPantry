@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar position-relative navbar-dark bg-white d-flex flex-row justify-content-center elevation-5 mb-4">
+  <nav class="navbar navbar-dark bg-white d-flex flex-row justify-content-center elevation-5 mb-4">
     <div id="navbarText d-flex flew-row justify-content-around">
       <ul class="navbar-nav d-flex flex-row justify-content-around">
         <li class="mx-2">
@@ -19,7 +19,7 @@
         </li>
         <li class="mx-2">
           <router-link :to="{ name: 'Account' }" class="btn text-success selectable text-uppercase animate__animated animate__bounce">
-            <img src="https://i.imgur.com/3bXnC5K.png" alt="" height="35"> <span class="fs-4" v-if="!account.id">Login</span>
+            <img src="https://i.imgur.com/3bXnC5K.png" alt="" height="35"> <span class="fs-4" v-if="!account">Login</span>
             
           </router-link>
         </li>
