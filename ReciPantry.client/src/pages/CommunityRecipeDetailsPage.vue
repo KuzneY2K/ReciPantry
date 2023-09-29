@@ -1,13 +1,16 @@
 <template>
     <div>
-        <div>
-            <button @click="deleteRecipe" class="btn btn-danger m-2">Delete Recipe</button>
-        </div>
+        <div class="btn-container d-flex flex-row justify-content-start ms-3 mt-3">
+
         <div class="ms-2">
             <button class="btn btn-success" @click="createFavorite"><i class="mdi mdi-heart-outline"></i></button>
         </div>
         <div class="ms-2">
             <button class="btn btn-success" @click="deleteFavorite"><i class="mdi mdi-heart"></i></button>
+        </div>        
+        <div class="ms-2">
+            <button @click="deleteRecipe" class="btn btn-danger">Delete Recipe</button>
+        </div>
         </div>
         <!-- Pulls recipe title from active recipe -->
         <h1 class="text-start ms-4 mt-3 text-success position-relative">{{ recipe.title }} <span class="text-black">- {{
