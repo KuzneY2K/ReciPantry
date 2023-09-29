@@ -18,9 +18,9 @@
                         </div>
                         <div class="col-8">
                             <label for="recipeIngredients">Ingredients:</label>
-                            <input v-model="recipeData.extendedIngredients" v-for="(ingredient, index) in ingredients"
-                                :key="ingredient.id" class="form-control" id="recipeIngredients" type="text"
-                                maxlength="1000" placeholder="Ingredients" required>
+                            <input v-model="ingredient.name" v-for="ingredient in ingredients" :key="ingredient.id"
+                                class="form-control" id="recipeIngredients" type="text" maxlength="1000"
+                                placeholder="Ingredients" required>
                         </div>
                         <div class="col-2 mt-4">
                             <button @click="addIngredient" type="button" class="btn btn-success"><i
@@ -100,7 +100,7 @@ export default {
     setup() {
         const recipeData = ref({})
         const router = useRouter()
-        let ingredients = ref(['ingredient'])
+        let ingredients = ref([{}])
         function resetForm() {
             recipeData.value = {}
         }
@@ -109,7 +109,7 @@ export default {
             ingredients,
             async addIngredient() {
                 try {
-                    ingredients.value.push("ingredient")
+                    ingredients.value.push({})
                 } catch (error) {
                     Pop.error(error)
                 }
@@ -125,7 +125,7 @@ export default {
             },
             async createRecipe() {
                 try {
-                    recipeData.value.extendedIngredients = recipeIngredients.value
+                    recipeData.value.extendedIngredients = ingredients.value
                     let newRecipe = await recipesService.createRecipe(recipeData.value)
                     Pop.toast('Recipe Created!', 'success')
                     resetForm()
