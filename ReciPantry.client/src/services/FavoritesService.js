@@ -17,7 +17,7 @@ class FavoritesService{
     }
 
     async getFavoritesByRecipe(recipeId){
-        const res = await api.get(`api/favorites/${recipeId}`)
+        const res = await api.get(`api/${recipeId}/favorites`)
         logger.log('fetched favs', res.data)
         AppState.favorites = res.data.map(fav=> new Favorite(fav))
     }
