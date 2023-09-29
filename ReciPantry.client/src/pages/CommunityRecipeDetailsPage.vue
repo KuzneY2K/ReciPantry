@@ -1,5 +1,5 @@
 <template>
-    <div v-if="recipe">
+    <div v-if="recipe && account">
         <div v-if="account.id == recipe.creator.id">
             <button @click="deleteRecipe" class="btn btn-danger m-2">Delete Recipe</button>
         </div>
