@@ -58,6 +58,7 @@ import { logger } from '../utils/Logger.js';
                 pageNum: computed(() => AppState.pageNum),
                 // After every recipe search the users query params are sent to the appstate so that these buttons can access them
                 query: computed(() => AppState.savedQuery),
+                categories: computed(() => AppState.selectedCategory),
 
                 // Offset is basically how many results the api skips over. Kinda like a next page / prev page thing
                 // Next page, increases page count to increase search offset
