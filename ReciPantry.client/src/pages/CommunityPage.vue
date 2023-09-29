@@ -52,7 +52,7 @@ export default {
 
     @media(max-width: 768px) {
         left: 20rem;
-        top: 38rem;
+        top: 34rem;
     }
 }
 </style>
