@@ -1,10 +1,12 @@
 <template>
-  <header class="sticky-top">
-    <Navbar />
+  <header>
   </header>
   <main class=" p-0 m-0">
     <router-view />
   </main>
+  <footer class="sticky-bottom">
+    <Navbar />
+  </footer>
 </template>
 
 <script>

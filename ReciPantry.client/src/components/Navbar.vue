@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark bg-white d-flex flex-row justify-content-center elevation-5">
+  <nav class="navbar position-relative navbar-dark bg-white d-flex flex-row justify-content-center elevation-5 mb-4">
     <div id="navbarText d-flex flew-row justify-content-around">
       <ul class="navbar-nav d-flex flex-row justify-content-around">
         <li class="mx-2">

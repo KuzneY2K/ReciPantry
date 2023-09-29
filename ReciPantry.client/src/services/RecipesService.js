@@ -36,6 +36,11 @@ class RecipesService{
         AppState.communityRecipes = res.data.map(recipe => new CommunityRecipe(recipe))
     }
 
+    async getRandomCommunityRecipes(){
+        let rand = Math.floor(Math.random() * 10)
+        let res = await api.get(`recipes`)
+    }
+
     async searchRecipesByCategory(){
         let res = await recipeApi.get(`complexSearch?query=${AppState.selectedCategory}&number=10&offset=${AppState.pageNum}0`)
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
