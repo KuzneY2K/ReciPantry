@@ -19,7 +19,7 @@
     </section>
     <h1>{{ review.profile.name }}</h1>
     <p>{{ review.comment }}</p>
-    <button v-if="account.id == review.creatorId" class="btn btn-danger" @click="deleteReview">Delete <i
+    <button v-if="account.id == review.profile.id" class="btn btn-danger" @click="deleteReview">Delete <i
         class="mdi mdi-delete-forever"></i></button>
   </div>
 </template>
