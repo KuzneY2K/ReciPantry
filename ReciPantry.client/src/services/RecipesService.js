@@ -61,7 +61,7 @@ class RecipesService{
         AppState.activeRecipe = new CommunityRecipe(res.data)
         logger.log(AppState.activeRecipe)
     }
-    async createRecipe(recipeData, ingredientsData){
+    async createRecipe(recipeData){
         const res = await api.post('api/recipes', recipeData)
         logger.log('Created Recipe', res.data)
         const newRecipe = new CommunityRecipe(res.data)
