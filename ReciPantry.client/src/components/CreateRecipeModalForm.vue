@@ -11,15 +11,18 @@
                 </div>
                 <div class="modal-body">
                     <form @submit.prevent="createRecipe" class="row">
-                        <div class="col-6">
+                        <div class="col-12">
                             <label for="recipeTitle">Recipe Title:</label>
                             <input v-model="recipeData.title" class="form-control" id="recipeTitle" maxlength="50"
                                 type="text" placeholder="Title" required>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12">
                             <label for="recipeIngredients">Ingredients</label>
-                            <input v-model="recipeData.extendedIngredients" class="form-control" id="recipeIngredients" type="text"
+                            <button class="btn btn-success me-1 p-0 m-0 px-2 ms-2" @click="addIngredient()">+</button>
+                            <div class="inputs-container d-flex flex-column align-items-start justify-content-start">
+                            <input v-for="ingredient in recipeIngredients" :key="ingredient" v-model="ingredient.name" class="form-control" id="recipeIngredients" type="text"
                                 maxlength="1000" required>
+                            </div>
                         </div>
                         <div class="col-12 d-flex flex-column">
                             <label for="recipeInstructions">Instructions:</label>
@@ -90,14 +93,22 @@ import { logger } from '../utils/Logger.js';
 export default {
     setup() {
         const recipeData = ref({})
+        const recipeIngredients = ref([{}])
         const router = useRouter()
         function resetForm() {
             recipeData.value = {}
         }
         return {
             recipeData,
+            recipeIngredients,
+
+            addIngredient(){
+                recipeIngredients.value.push({})
+            },
+
             async createRecipe() {
                 try {
+                    recipeData.value.extendedIngredients = recipeIngredients.value
                     let newRecipe = await recipesService.createRecipe(recipeData.value)
                     Pop.toast('Recipe Created!', 'success')
                     resetForm()
