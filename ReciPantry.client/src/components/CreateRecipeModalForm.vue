@@ -1,7 +1,7 @@
 <template>
     <!-- Modal Body -->
     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-    <div class="modal fade" id="createRecipe" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+    <div class="modal fade create-form" id="createRecipe" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
         aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
@@ -22,11 +22,11 @@
                                 class="form-control" id="recipeIngredients" type="text" maxlength="1000"
                                 placeholder="Ingredients" required>
                         </div>
-                        <div class="col-2 mt-4">
+                        <div class="col-2 p-0 m-0 mt-4">
                             <button @click="addIngredient" type="button" class="btn btn-success"><i
                                     class="mdi mdi-plus"></i></button>
                         </div>
-                        <div class="col-2 mt-4">
+                        <div class="col-2 mt-4 p-0 m-0">
                             <button @click="removeIngredient" class="btn btn-danger" type="button"><i
                                     class="mdi mdi-minus"></i></button>
                         </div>
@@ -44,38 +44,40 @@
                         <div class="col-6">
                             <label for="recipePrepTime">Prep Time:</label>
                             <input v-model="recipeData.preparationMinutes" class="form-control" type="number" max="1000"
-                                placeholder="minutes to prep?" id="recipePrepTime" required>
+                                placeholder="In minutes." id="recipePrepTime" required>
                         </div>
                         <div class="col-6">
                             <label for="recipeCookTime">Cook Time:</label>
                             <input v-model="recipeData.readyInMinutes" class="form-control" type="number"
-                                id="recipeCookTime" placeholder="Minutes To Cook?">
+                                id="recipeCookTime" placeholder="In minutes.">
                         </div>
                         <div class="col-12">
                             <label for="recipeImg">Img Url:</label>
                             <input v-model="recipeData.image" type="url" id="recipeImg" class="form-control"
-                                maxlength="5000" placeholder="ImgURL" required>
+                                maxlength="5000" placeholder="Insert your recipe image." required>
                         </div>
                         <div class="col-12">
                             <label for="recipeSummary">Summary:</label>
                             <textarea v-model="recipeData.summary" class="form-control" id="recipeSummary"
-                                placeholder="Summary"></textarea>
+                                placeholder="Tell everyone something about the recipe. ex: Where it comes from."></textarea>
                         </div>
-                        <div class="col-6 form-check">
+                        <div class="check-container d-flex flex-column ms-4 my-3">
+                        <div class="col-4 form-check p-0 m-0">
                             <label for="glutenFree">Gluten Free?</label>
                             <input v-model="recipeData.glutenFree"
                                 class="form-check-input border border-1 border-black text-success" type="checkbox" value=""
                                 id="glutenFree">
                         </div>
-                        <div class="col-6 form-check">
+                        <div class="col-4 form-check p-0 m-0">
                             <label for="vegan">Vegan?</label>
                             <input v-model="recipeData.vegan" value="" class="form-check-input border border-1 border-black"
                                 type="checkbox">
                         </div>
-                        <div class="col-6 form-check">
+                        <div class="col-4 form-check p-0 m-0">
                             <label for="vegetarian">Vegetarian?</label>
                             <input v-model="recipeData.vegetarian" value=""
                                 class="form-check-input border border-1 border-black" type="checkbox">
+                        </div>
                         </div>
                         <div class="col-2">
                             <button class="btn btn-success">Submit</button>
@@ -142,4 +144,8 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.create-form{
+    font-family: 'Ubuntu' !important;
+}
+</style>
