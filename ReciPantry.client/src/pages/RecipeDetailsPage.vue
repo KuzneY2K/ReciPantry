@@ -155,9 +155,7 @@ export default {
         let route = useRoute()
         let reviewData = ref({})
         let groceryData = ref({})
-        function resetForm() {
-            reviewData.value = []
-        }
+
 
         // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
         async function getRecipeById() {
@@ -176,7 +174,7 @@ export default {
         // gets recipe info from route params
         onMounted(() => {
             getRecipeById();
-            resetForm()
+
         })
 
         // watchEffect(()=> {
@@ -228,7 +226,7 @@ export default {
                     logger.log(reviewData.value)
                     let newReview = await reviewService.createReview(reviewData.value)
                     Pop.toast('Review left')
-                    resetForm()
+
                 } catch (error) {
                     Pop.error(error)
                 }
