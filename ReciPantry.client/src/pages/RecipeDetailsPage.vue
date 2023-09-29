@@ -81,8 +81,29 @@
 
             </div>
         </div>
+
+        <!-- STUB review card component -->
         <div class="p-0 m-0">
-            <h1 class="p-4 m-0">Recipe Reviews</h1>
+            <div>
+                <h1 class="p-4 m-0">Recipe Reviews <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
+                        class="btn btn-success">Add Review <i class="mdi mdi-plus"></i></button></h1>
+            </div>
+            <!-- STUB create review form -->
+            <div class="collapse" id="reviewForm">
+                <form @submit.prevent="createReview" class="form-control">
+                    <input v-model="reviewData.comment" class="form-control" placeholder="Your Comment" type="text" required
+                        maxlength="200" minlength="4">
+                    <select v-model="reviewData.rating" class="form-control">
+                        <option disabled selected value="">rating</option>
+                        <option value="1">1/5 stars</option>
+                        <option value="2">2/5 stars</option>
+                        <option value="3">3/5 stars</option>
+                        <option value="4">4/5 stars</option>
+                        <option value="5">5/5 stars</option>
+                    </select>
+                    <button class="btn btn-success">Post Review</button>
+                </form>
+            </div>
             <div v-for="review in reviews" :key="review.id"
                 class="col-12 d-flex flex-column align-items-center justify-content-center">
                 <ReviewCard :review="review" />
@@ -103,7 +124,8 @@
                         <ul class="list-unstyled">
                             <div class="li-container d-flex flex-row justify-content-between fs-5"
                                 v-for="i in ingredientOnList" :key="i.name">
-                                <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name }}</span> - {{ i.measureAmount }} {{ i.measureUnit }} </li><i class="mdi mdi-close text-danger fs-2"
+                                <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name }}</span> - {{
+                                    i.measureAmount }} {{ i.measureUnit }} </li><i class="mdi mdi-close text-danger fs-2"
                                     @click="removeFromList(i.id)"></i>
                             </div>
                         </ul>
@@ -131,9 +153,11 @@ import { onAuthLoaded } from '@bcwdev/auth0provider-client';
 export default {
     setup() {
         let route = useRoute()
-
+        let reviewData = ref({})
         let groceryData = ref({})
-
+        function resetForm() {
+            reviewData.value = []
+        }
 
         // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
         async function getRecipeById() {
@@ -152,6 +176,7 @@ export default {
         // gets recipe info from route params
         onMounted(() => {
             getRecipeById();
+            resetForm()
         })
 
         // watchEffect(()=> {
@@ -172,6 +197,7 @@ export default {
             reviews: computed(() => AppState.activeReviews),
             ingredientOnList: computed(() => AppState.groceryList),
             groceryData,
+            reviewData,
 
             // Adds ingredient to shopping list when clicking on cart.
             async addToList(grocery) {
@@ -190,10 +216,21 @@ export default {
             },
             async removeFromList(groceryId) {
                 logger.log(groceryId)
-                if(await Pop.confirm(`Remove from gorcery list?`)){
+                if (await Pop.confirm(`Remove from gorcery list?`)) {
                     await groceriesService.removeFromList(groceryId)
                 } else {
                     Pop.toast('Grocery was not removed from the list.')
+                }
+            },
+            // STUB create review function - takes data fro input form in dropdown menu
+            async createReview(reviewData) {
+                try {
+                    logger.log(reviewData.value)
+                    let newReview = await reviewService.createReview(reviewData.value)
+                    Pop.toast('Review left')
+                    resetForm()
+                } catch (error) {
+                    Pop.error(error)
                 }
             }
         }
