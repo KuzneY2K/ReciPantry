@@ -26,5 +26,6 @@ export class Recipe {
         this.veryHealthy = data.veryHealthy
         this.veryPopular = data.veryPopular
         this.weightWatcherPoints = data.weightWatcherSmartPoints
+        this.creator = data.creator
     }
 }

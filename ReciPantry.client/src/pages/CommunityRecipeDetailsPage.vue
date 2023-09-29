@@ -1,5 +1,8 @@
 <template>
     <div v-if="recipe">
+        <div v-if="account.id == recipe.creator.id">
+            <button @click="deleteRecipe" class="btn btn-danger m-2">Delete Recipe</button>
+        </div>
         <!-- Pulls recipe title from active recipe -->
         <h1 class="text-start ms-4 mt-3 text-success position-relative">{{ recipe.title }} <span class="text-black">- {{
             recipe.readyInMinutes }} Mins</span></h1>
@@ -88,9 +91,6 @@
             </div>
         </div>
         <div>
-            <button class=" m-2 btn btn-danger">Delete Recipe</button>
-        </div>
-        <div>
             <div v-for="review in reviews" :key="review.id" class="col-12">
                 <ReviewCard :review="review" />
             </div>
@@ -110,8 +110,9 @@
                             <ul class="list-unstyled">
                                 <div class="li-container d-flex flex-row justify-content-between fs-5"
                                     v-for="i in ingredientOnList" :key="i.name">
-                                    <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name || i }}</span> - {{ i.measureAmount }} {{ i.measureUnit }} </li><i class="mdi mdi-close text-danger fs-2"
-                                        @click="removeFromList(i.id)"></i>
+                                    <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name || i }}</span> -
+                                        {{ i.measureAmount }} {{ i.measureUnit }} </li><i
+                                        class="mdi mdi-close text-danger fs-2" @click="removeFromList(i.id)"></i>
                                 </div>
                             </ul>
                         </ul>
@@ -181,6 +182,7 @@ export default {
         return {
             recipe: computed(() => AppState.activeRecipe),
             ingredients: computed(() => AppState.activeRecipe.ingredients),
+            account: computed(() => AppState.account),
             reviews: computed(() => AppState.activeReviews),
             ingredientOnList: computed(() => AppState.groceryList),
 
@@ -204,6 +206,15 @@ export default {
                 // if(await Pop.confirm(`Remove ${ingredientName} from gorcery list?`)){
                 //     let filteredIngredients = AppState.activeRecipe.ingredients.name != ingredientName
                 // }
+            },
+
+            async deleteRecipe() {
+                try {
+                    const recipeId = AppState.activeRecipe.id
+                    await recipesService.deleteRecipe(recipeId)
+                } catch (error) {
+                    Pop.error(error)
+                }
             }
         }
     }
