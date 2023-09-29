@@ -19,16 +19,29 @@
     </section>
     <h1>{{ review.profile.name }}</h1>
     <p>{{ review.comment }}</p>
+    <button v-if="account.id == review.profile.id" class="btn btn-danger" @click="deleteReview">Delete <i
+        class="mdi mdi-delete-forever"></i></button>
   </div>
 </template>
 
 <script>
+import { computed } from 'vue';
 import { Review } from '../models/Review';
+import { AppState } from '../AppState';
+import { reviewService } from '../services/ReviewService';
 
 export default {
   props: { review: { type: [Review, Object], required: true } },
   setup() {
-    return {};
+    return {
+      account: computed(() => AppState.account),
+
+      async deleteReview() {
+        let review = AppState.activeReviews.find(review => review.profile.id == AppState.account.id)
+        await reviewService.deleteReview(review.id)
+      }
+
+    };
   },
 };
 </script>

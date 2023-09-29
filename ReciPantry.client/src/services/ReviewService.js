@@ -7,7 +7,9 @@ import { api } from "./AxiosService"
 class ReviewService {
     async createReview(reviewData) {
         const res = await api.post('api/reviews', reviewData)
-        AppState.activeReviews.unshift(new Review(res.data))
+        const newReview = new Review(res.data)
+        AppState.activeReviews.unshift(newReview)
+        
     }
 
     async getReviewsByRecipe(recipeId) {
@@ -24,6 +26,8 @@ class ReviewService {
 
     async deleteReview(reviewId) {
         await api.delete(`api/reviews/${reviewId}`)
+        let indexToRemove = AppState.activeReview.findIndex(review => review.id == reviewId)
+        AppState.activeReviews.splice(indexToRemove, 1)
     }
 }
 

@@ -69,6 +69,12 @@ class RecipesService{
         logger.log('new recipe', newRecipe)
         return newRecipe
     }
+
+    async deleteRecipe(recipeId){
+        await api.delete(`api/recipes/${recipeId}`)
+        let index = AppState.recipes.findIndex(recipe=> recipe.id == recipeId)
+        AppState.recipes.splice(index, 1)
+    }
 }
 
 export const recipesService = new RecipesService()

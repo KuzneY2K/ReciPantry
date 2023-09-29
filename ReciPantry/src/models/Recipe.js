@@ -29,3 +29,10 @@ export const RecipeSchema = new Schema({
     veryPopular: { type: Boolean, required: false },
     weightWatcherPoints: { type: Number, required: false },
 }, { timestamps: true, toJSON: { virtuals: true } })
+
+RecipeSchema.virtual('creator', {
+    localField: 'creatorId',
+    foreignField: 'id',
+    ref: 'Account',
+    justOne: true
+})
