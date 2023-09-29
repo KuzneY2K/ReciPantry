@@ -6,6 +6,9 @@
         <div class="ms-2">
             <button class="btn btn-success" @click="createFavorite"><i class="mdi mdi-heart-outline"></i></button>
         </div>
+        <div class="ms-2">
+            <button class="btn btn-success" @click="deleteFavorite"><i class="mdi mdi-heart"></i></button>
+        </div>
         <!-- Pulls recipe title from active recipe -->
         <h1 class="text-start ms-4 mt-3 text-success position-relative">{{ recipe.title }} <span class="text-black">- {{
             recipe.readyInMinutes }} Mins</span></h1>
@@ -163,10 +166,19 @@ export default {
             // getRecipeById();
             getCommunityRecipeById();
             getReviewsByRecipe();
+            getFavoritesByRecipe()
         })
         async function getCommunityRecipeById() {
             try {
                 await recipesService.getCommunityRecipeById(route.params.recipeId)
+            } catch (error) {
+                Pop.error(error)
+            }
+        }
+
+        async function getFavoritesByRecipe() {
+            try {
+                await favoritesService.getFavoritesByRecipe(route.params.recipeId)
             } catch (error) {
                 Pop.error(error)
             }
@@ -191,6 +203,8 @@ export default {
             reviews: computed(() => AppState.activeReviews),
             ingredientOnList: computed(() => AppState.groceryList),
             router,
+            favorite: computed(() => AppState.favorites),
+
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
             async addToList(listItem) {
@@ -227,6 +241,15 @@ export default {
                 try {
                     let favData = { recipeId: route.params.recipeId }
                     await favoritesService.createFavorite(favData)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
+
+            async deleteFavorite() {
+                try {
+                    const favorite = AppState.favorites.find(fav => fav.accountId == AppState.account.id)
+                    await favoritesService.deleteFavorite(favorite.id)
                 } catch (error) {
                     Pop.error(error)
                 }

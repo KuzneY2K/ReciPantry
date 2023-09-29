@@ -9,7 +9,17 @@ class FavoritesService{
     async createFavorite(favData){
         const res = await api.post('api/favorites', favData)
         logger.log('created fav', res.data)
-        AppState.myFavorites.push(new Favorite(res.data))
+        AppState.favorites.push(new Favorite(res.data))
+    }
+
+    async deleteFavorite(favoriteId){
+        await api.delete(`api/favorites/${favoriteId}`)
+    }
+
+    async getFavoritesByRecipe(recipeId){
+        const res = await api.get(`api/favorites/${recipeId}`)
+        logger.log('fetched favs', res.data)
+        AppState.favorites = res.data.map(fav=> new Favorite(fav))
     }
 }
 
