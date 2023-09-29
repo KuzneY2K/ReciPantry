@@ -93,15 +93,15 @@
                 <form @submit.prevent="createReview" class="form-control">
                     <input v-model="reviewData.comment" class="form-control" placeholder="Your Comment" type="text" required
                         maxlength="200" minlength="4">
-                    <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating">
-                    <!-- <select v-model="reviewData.rating" class="form-control">
+                    <!-- <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating"> -->
+                    <select v-model="reviewData.rating" class="form-control">
                         <option disabled selected value="">rating</option>
                         <option value="1">1/5 stars</option>
                         <option value="2">2/5 stars</option>
                         <option value="3">3/5 stars</option>
                         <option value="4">4/5 stars</option>
                         <option value="5">5/5 stars</option>
-                    </select> -->
+                    </select>
                     <button class="btn btn-success">Post Review</button>
                 </form>
             </div>
@@ -175,11 +175,12 @@ export default {
         // gets recipe info from route params
         onMounted(() => {
             getRecipeById();
-
+            getReviewsByRecipe();
         })
 
         // watchEffect(()=> {
         // })
+
 
         async function getReviewsByRecipe() {
             try {
@@ -222,11 +223,11 @@ export default {
                 }
             },
             // STUB create review function - takes data fro input form in dropdown menu
-            async createReview(reviewData) {
+            async createReview() {
                 try {
                     logger.log(reviewData.value)
-                    reviewData.recipeId = route.params.recipeId
-                    await reviewService.createReview(reviewData)
+                    reviewData.value.recipeId = route.params.recipeId
+                    await reviewService.createReview(reviewData.value)
                     Pop.toast('Review left')
                 } catch (error) {
                     Pop.error(error)

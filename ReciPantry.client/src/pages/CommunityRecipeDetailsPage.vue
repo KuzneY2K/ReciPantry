@@ -2,15 +2,15 @@
     <div>
         <div class="btn-container d-flex flex-row justify-content-start ms-3 mt-3">
 
-        <div class="ms-2">
-            <button class="btn btn-success" @click="createFavorite"><i class="mdi mdi-heart-outline"></i></button>
-        </div>
-        <div class="ms-2">
-            <button class="btn btn-success" @click="deleteFavorite"><i class="mdi mdi-heart"></i></button>
-        </div>        
-        <div class="ms-2">
-            <button @click="deleteRecipe" class="btn btn-danger">Delete Recipe</button>
-        </div>
+            <div class="ms-2">
+                <button class="btn btn-success" @click="createFavorite"><i class="mdi mdi-heart-outline"></i></button>
+            </div>
+            <div class="ms-2">
+                <button class="btn btn-success" @click="deleteFavorite"><i class="mdi mdi-heart"></i></button>
+            </div>
+            <div class="ms-2">
+                <button @click="deleteRecipe" class="btn btn-danger">Delete Recipe</button>
+            </div>
         </div>
         <!-- Pulls recipe title from active recipe -->
         <h1 class="text-start ms-4 mt-3 text-success position-relative">{{ recipe.title }} <span class="text-black">- {{
@@ -71,6 +71,26 @@
             </div>
         </div>
         <div>
+            <h1 class="p-4 m-0">Recipe Reviews <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
+                    class="btn btn-success">Add Review <i class="mdi mdi-plus"></i></button></h1>
+        </div>
+        <div class="collapse" id="reviewForm">
+            <form @submit.prevent="createReview" class="form-control">
+                <input v-model="reviewData.comment" class="form-control" placeholder="Your Comment" type="text" required
+                    maxlength="200" minlength="4">
+                <!-- <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating"> -->
+                <select v-model="reviewData.rating" class="form-control">
+                    <option disabled selected value="">rating</option>
+                    <option value="1">1/5 stars</option>
+                    <option value="2">2/5 stars</option>
+                    <option value="3">3/5 stars</option>
+                    <option value="4">4/5 stars</option>
+                    <option value="5">5/5 stars</option>
+                </select>
+                <button class="btn btn-success">Post Review</button>
+            </form>
+        </div>
+        <div>
             <div v-for="review in reviews" :key="review.id" class="col-12">
                 <ReviewCard :review="review" />
             </div>
@@ -107,7 +127,7 @@
 </template>
 
 <script>
-import { computed, onMounted, watchEffect } from 'vue';
+import { computed, onMounted, watchEffect, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import { AppState } from '../AppState.js'
@@ -119,6 +139,7 @@ export default {
     setup() {
         let route = useRoute()
         let router = useRouter()
+        let reviewData = ref({})
 
 
         // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
@@ -135,7 +156,7 @@ export default {
         //     }
         // }
 
-        function redirect(){
+        function redirect() {
             router.push({ name: "Community Recipe Details", params: { recipeId: AppState.activeRecipe.id } })
         }
 
@@ -183,6 +204,7 @@ export default {
             ingredientOnList: computed(() => AppState.groceryList),
             router,
             favorite: computed(() => AppState.favorites),
+            reviewData,
 
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
@@ -229,6 +251,17 @@ export default {
                 try {
                     const favorite = AppState.favorites.find(fav => fav.accountId == AppState.account.id)
                     await favoritesService.deleteFavorite(favorite.id)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
+
+            async createReview() {
+                try {
+                    logger.log(reviewData.value)
+                    reviewData.value.recipeId = route.params.recipeId
+                    await reviewService.createReview(reviewData.value)
+                    Pop.toast('Review left')
                 } catch (error) {
                     Pop.error(error)
                 }
