@@ -224,7 +224,8 @@ export default {
             async createReview(reviewData) {
                 try {
                     logger.log(reviewData.value)
-                    let newReview = await reviewService.createReview(reviewData.value)
+                    reviewData.value.recipeId = route.params.recipeId
+                    await reviewService.createReview(reviewData.value)
                     Pop.toast('Review left')
 
                 } catch (error) {

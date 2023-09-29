@@ -28,5 +28,7 @@ export const AppState = reactive({
   /**@type {Recipe[]} */
   myRecipes: [],
   /**@type {Favorite[]}*/
-  myFavorites: []
+  myFavorites: [],
+  /**@type {Favorite[]} */
+  favorites: [],
 })

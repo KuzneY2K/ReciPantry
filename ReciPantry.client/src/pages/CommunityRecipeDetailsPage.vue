@@ -6,6 +6,9 @@
         <div class="ms-2">
             <button class="btn btn-success" @click="createFavorite"><i class="mdi mdi-heart-outline"></i></button>
         </div>
+        <div class="ms-2">
+            <button class="btn btn-success" @click="deleteFavorite"><i class="mdi mdi-heart"></i></button>
+        </div>
         <!-- Pulls recipe title from active recipe -->
         <h1 class="text-start ms-4 mt-3 text-success position-relative">{{ recipe.title }} <span class="text-black">- {{
             recipe.readyInMinutes }} Mins</span></h1>
@@ -37,40 +40,11 @@
                     <i class="mdi mdi-cart p-0 m-0 text-success fs-2" @click="addToList(ingredient)"></i>
                     <!-- Checkbox for checking off what a user has and doesnt has -->
                     <input type="checkbox" name="have" class="form-check-input m-0 p-0 mx-2 checkbox">
-                    <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient }}</span>
+                    <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.name }}</span>
 
-                </li>
-                <li>
-                    <!-- Button that pulls up nutrition facts specific to the meal -->
-                    <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4">
-                        <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal"
-                            data-bs-target="#nutritionModal">SEE NUTRITION FACTS <img src="https://i.imgur.com/WbcjLNE.png"
-                                alt="" height="30"></button>
-                    </div>
                 </li>
             </ul>
             <!-- Nutrition facts Modal -->
-            <div class="modal fade" id="nutritionModal" tabindex="-1" aria-labelledby="nutritionModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Widget's Containing ALL data for meal, turn into modal -->
-                            <div class="widgets p-0 m-0">
-                                <div class="nutrition-label">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Closes modal -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="instructions-container p-0 m-0 px-4 mt-4">
@@ -78,7 +52,7 @@
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
 
-                {{ recipe.instructions }}
+                {{ recipe.instructions?.toString() }}
 
             </p>
             <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
@@ -113,7 +87,7 @@
                             <ul class="list-unstyled">
                                 <div class="li-container d-flex flex-row justify-content-between fs-5"
                                     v-for="i in ingredientOnList" :key="i.name">
-                                    <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name || i }}</span> -
+                                    <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name }}</span> -
                                         {{ i.measureAmount }} {{ i.measureUnit }} </li><i
                                         class="mdi mdi-close text-danger fs-2" @click="removeFromList(i.id)"></i>
                                 </div>
@@ -163,10 +137,19 @@ export default {
             // getRecipeById();
             getCommunityRecipeById();
             getReviewsByRecipe();
+            getFavoritesByRecipe()
         })
         async function getCommunityRecipeById() {
             try {
                 await recipesService.getCommunityRecipeById(route.params.recipeId)
+            } catch (error) {
+                Pop.error(error)
+            }
+        }
+
+        async function getFavoritesByRecipe() {
+            try {
+                await favoritesService.getFavoritesByRecipe(route.params.recipeId)
             } catch (error) {
                 Pop.error(error)
             }
@@ -191,6 +174,8 @@ export default {
             reviews: computed(() => AppState.activeReviews),
             ingredientOnList: computed(() => AppState.groceryList),
             router,
+            favorite: computed(() => AppState.favorites),
+
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
             async addToList(listItem) {
@@ -227,6 +212,15 @@ export default {
                 try {
                     let favData = { recipeId: route.params.recipeId }
                     await favoritesService.createFavorite(favData)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
+
+            async deleteFavorite() {
+                try {
+                    const favorite = AppState.favorites.find(fav => fav.accountId == AppState.account.id)
+                    await favoritesService.deleteFavorite(favorite.id)
                 } catch (error) {
                     Pop.error(error)
                 }
