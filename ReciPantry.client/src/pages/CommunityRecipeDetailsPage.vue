@@ -1,6 +1,6 @@
 <template>
-    <div v-if="recipe && account">
-        <div v-if="account.id == recipe.creator.id">
+    <div>
+        <div>
             <button @click="deleteRecipe" class="btn btn-danger m-2">Delete Recipe</button>
         </div>
         <!-- Pulls recipe title from active recipe -->
@@ -128,7 +128,7 @@
 
 <script>
 import { computed, onMounted, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
@@ -137,6 +137,7 @@ import { reviewService } from '../services/ReviewService';
 export default {
     setup() {
         let route = useRoute()
+        let router = useRouter()
 
 
         // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
@@ -185,7 +186,7 @@ export default {
             account: computed(() => AppState.account),
             reviews: computed(() => AppState.activeReviews),
             ingredientOnList: computed(() => AppState.groceryList),
-
+            router,
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
             async addToList(listItem) {
@@ -212,6 +213,7 @@ export default {
                 try {
                     const recipeId = AppState.activeRecipe.id
                     await recipesService.deleteRecipe(recipeId)
+                    router.push({ name: 'Account' })
                 } catch (error) {
                     Pop.error(error)
                 }
