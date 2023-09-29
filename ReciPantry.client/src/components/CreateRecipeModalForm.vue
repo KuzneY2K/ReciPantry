@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-8">
                             <label for="recipeIngredients">Ingredients:</label>
-                            <input v-model="recipeData.extendedIngredients" v-for="ingredient in ingredients"
+                            <input v-model="recipeData.extendedIngredients" v-for="(ingredient, index) in ingredients"
                                 :key="ingredient.id" class="form-control" id="recipeIngredients" type="text"
                                 maxlength="1000" placeholder="Ingredients" required>
                         </div>
