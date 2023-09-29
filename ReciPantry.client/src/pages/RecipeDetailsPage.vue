@@ -222,11 +222,11 @@ export default {
                 }
             },
             // STUB create review function - takes data fro input form in dropdown menu
-            async createReview(reviewData) {
+            async createReview() {
                 try {
                     logger.log(reviewData.value)
-                    reviewData.recipeId = route.params.recipeId
-                    await reviewService.createReview(reviewData)
+                    reviewData.value.recipeId = route.params.recipeId
+                    await reviewService.createReview(reviewData.value)
                     Pop.toast('Review left')
                 } catch (error) {
                     Pop.error(error)
