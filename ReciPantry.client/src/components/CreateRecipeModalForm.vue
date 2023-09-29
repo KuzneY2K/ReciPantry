@@ -16,19 +16,25 @@
                             <input v-model="recipeData.title" class="form-control" id="recipeTitle" maxlength="50"
                                 type="text" placeholder="Title" required>
                         </div>
-                        <div class="col-12">
-                            <label for="recipeIngredients">Ingredients</label>
-                            <button class="btn btn-success me-1 p-0 m-0 px-2 ms-2" @click="addIngredient()">+</button>
-                            <div class="inputs-container d-flex flex-column align-items-start justify-content-start">
-                            <input v-for="ingredient in recipeIngredients" :key="ingredient" v-model="ingredient.name" class="form-control" id="recipeIngredients" type="text"
-                                maxlength="1000" required>
-                            </div>
+                        <div class="col-8">
+                            <label for="recipeIngredients">Ingredients:</label>
+                            <input v-model="ingredient.name" v-for="ingredient in ingredients" :key="ingredient.id"
+                                class="form-control" id="recipeIngredients" type="text" maxlength="1000"
+                                placeholder="Ingredients" required>
+                        </div>
+                        <div class="col-2 mt-4">
+                            <button @click="addIngredient" type="button" class="btn btn-success"><i
+                                    class="mdi mdi-plus"></i></button>
+                        </div>
+                        <div class="col-2 mt-4">
+                            <button @click="removeIngredient" class="btn btn-danger" type="button"><i
+                                    class="mdi mdi-minus"></i></button>
                         </div>
                         <div class="col-12 d-flex flex-column">
                             <label for="recipeInstructions">Instructions:</label>
-                            <textarea v-model="recipeData.analyzedInstructions" class="form-control" name="recipeInstructions"
-                                id="recipeInstructions" maxlength="5000" placeholder="Instructions:" cols="100"
-                                required></textarea>
+                            <textarea v-model="recipeData.analyzedInstructions" class="form-control"
+                                name="recipeInstructions" id="recipeInstructions" maxlength="5000"
+                                placeholder="Instructions:" cols="100" required></textarea>
                         </div>
                         <div class="col-6">
                             <label for="recipeServings">Servings:</label>
@@ -41,9 +47,9 @@
                                 placeholder="minutes to prep?" id="recipePrepTime" required>
                         </div>
                         <div class="col-6">
-                            <label for="recipeCookTime">Cooking Time:</label>
-                            <input v-model="recipeData.readyInMinutes" class="form-control" type="number" max="1000"
-                                placeholder="minutes to cook?" id="recipeCookTime" required>
+                            <label for="recipeCookTime">Cook Time:</label>
+                            <input v-model="recipeData.readyInMinutes" class="form-control" type="number"
+                                id="recipeCookTime" placeholder="Minutes To Cook?">
                         </div>
                         <div class="col-12">
                             <label for="recipeImg">Img Url:</label>
@@ -93,22 +99,33 @@ import { logger } from '../utils/Logger.js';
 export default {
     setup() {
         const recipeData = ref({})
-        const recipeIngredients = ref([{}])
         const router = useRouter()
+        let ingredients = ref([{}])
         function resetForm() {
             recipeData.value = {}
         }
         return {
             recipeData,
-            recipeIngredients,
-
-            addIngredient(){
-                recipeIngredients.value.push({})
+            ingredients,
+            async addIngredient() {
+                try {
+                    ingredients.value.push({})
+                } catch (error) {
+                    Pop.error(error)
+                }
             },
-
+            async removeIngredient() {
+                try {
+                    if (ingredients.value.length != 1) {
+                        ingredients.value.pop()
+                    }
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
             async createRecipe() {
                 try {
-                    recipeData.value.extendedIngredients = recipeIngredients.value
+                    recipeData.value.extendedIngredients = ingredients.value
                     let newRecipe = await recipesService.createRecipe(recipeData.value)
                     Pop.toast('Recipe Created!', 'success')
                     resetForm()
