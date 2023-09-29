@@ -73,8 +73,11 @@ class RecipesService{
 
     async deleteRecipe(recipeId){
         await api.delete(`api/recipes/${recipeId}`)
-        let indexToRemove = AppState.recipes.findIndex(recipe=> recipe.id == recipeId)
-        AppState.recipes.splice(indexToRemove, 1)
+        // let indexToRemove = AppState.recipes.findIndex(recipe=> recipe.id == recipeId)
+        // AppState.recipes.splice(indexToRemove, 1)
+        let recipes = AppState.recipes.filter(r => r.id != AppState.activeRecipe.id)
+        AppState.recipes = recipes
+        AppState.activeRecipe = {}
     }
 }
 
