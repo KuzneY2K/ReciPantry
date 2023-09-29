@@ -28,12 +28,19 @@
 import { computed } from 'vue';
 import { Review } from '../models/Review';
 import { AppState } from '../AppState';
+import { reviewService } from '../services/ReviewService';
 
 export default {
   props: { review: { type: [Review, Object], required: true } },
   setup() {
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+
+      async deleteReview() {
+        let review = AppState.activeReviews.find(review => review.profile.id == AppState.account.id)
+        await reviewService.deleteReview(review.id)
+      }
+
     };
   },
 };
