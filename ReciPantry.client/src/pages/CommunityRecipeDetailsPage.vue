@@ -49,7 +49,7 @@
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
 
-                {{ recipe.instructions.toString() }}
+                {{ recipe.instructions?.toString() }}
 
             </p>
             <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
