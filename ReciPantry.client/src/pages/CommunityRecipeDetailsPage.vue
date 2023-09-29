@@ -40,37 +40,8 @@
                     <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.name }}</span>
 
                 </li>
-                <li>
-                    <!-- Button that pulls up nutrition facts specific to the meal -->
-                    <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4">
-                        <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal"
-                            data-bs-target="#nutritionModal">SEE NUTRITION FACTS <img src="https://i.imgur.com/WbcjLNE.png"
-                                alt="" height="30"></button>
-                    </div>
-                </li>
             </ul>
             <!-- Nutrition facts Modal -->
-            <div class="modal fade" id="nutritionModal" tabindex="-1" aria-labelledby="nutritionModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Widget's Containing ALL data for meal, turn into modal -->
-                            <div class="widgets p-0 m-0">
-                                <div class="nutrition-label">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Closes modal -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="instructions-container p-0 m-0 px-4 mt-4">
