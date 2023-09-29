@@ -22,7 +22,7 @@ const routes = [
     component: loadPage('RecipeDetailsPage')
   },
   {
-    path: '/recipes/:recipeId',
+    path: '/community/recipes/:recipeId',
     name: 'Community Recipe Details',
     component: loadPage('CommunityRecipeDetailsPage')
   },

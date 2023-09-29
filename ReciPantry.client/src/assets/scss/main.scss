@@ -5,7 +5,7 @@
 @import "./loaders.scss";
 
 * {
-  font-family: 'Bebas Neue' !important;
+  // font-family: 'Bebas Neue';
   // overflow-x: hidden !important;
   -ms-overflow-style: none !important;
   /* IE and Edge */
@@ -27,7 +27,12 @@ body {
 }
 
 main {
+  font-family: 'Bebas Neue';
   overflow-x: scroll !important;
+}
+
+.navbar {
+  font-family: 'Bebas Neue';
 }
 
 #app {
