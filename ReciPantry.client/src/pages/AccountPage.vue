@@ -7,12 +7,11 @@
         <h1 class="p-2">My Account</h1>
         <img class="profile-pic rounded border border-1 border-black elevation-5" :src="account.picture" alt="" />
         <h2 class="mt-3">{{ account.name }}</h2>
-        <div class="list-group-item dropdown-item list-group-item-action text-dark fs-2 col-12"
-          @click="logout">
+        <div class="list-group-item dropdown-item list-group-item-action text-dark fs-2 col-12" @click="logout">
           <span class="selectable p-2 btn btn-success p-0 m-0 px-4 py-2">
             <i class="mdi mdi-logout"></i>
             Logout
-        </span>
+          </span>
         </div>
       </div>
       <!-- STUB Account page buttons -->
@@ -45,7 +44,7 @@
           <h1 class="fs-2 pt-2">MY <i class="mdi mdi-bomb"></i> RECIPES </h1>
         </button>
       </div>
-      <div class="collapse d-flex flex-column align-items-center" id="myRecipes" v-for="recipe in recipes" :key="recipe.id">
+      <div class="collapse flex-column align-items-center" id="myRecipes" v-for="recipe in recipes" :key="recipe.id">
         <CommunityRecipeCard :recipe="recipe" />
       </div>
 
