@@ -15,7 +15,7 @@ class RecipesService{
     }
 
     async getRandomRecipes(){
-        AppState.pageNum = 0
+        AppState.pageNum = 1
         let res = await recipeApi.get(`random?number=10&offset=${AppState.pageNum}0`)
         AppState.recipes = res.data.recipes.map(recipe => new Recipe(recipe))
     }
@@ -43,7 +43,7 @@ class RecipesService{
 
     // next page, previous page function
     async paginate(reqData){
-        let res = await recipeApi.get(`complexSearch?query=${reqData || AppState.selectedCategory}&number=10&offset=${AppState.pageNum}0`)
+        let res = await recipeApi.get(`complexSearch?query=${reqData || AppState.selectedCategory || 'main course'}&number=10&offset=${AppState.pageNum}0`)
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
     }
 
