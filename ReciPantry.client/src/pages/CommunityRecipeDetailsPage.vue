@@ -70,19 +70,23 @@
                 {{ recipe.summary }}
             </div>
         </div>
+        <div>
+            <h1 class="p-4 m-0">Recipe Reviews <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
+                    class="btn btn-success">Add Review <i class="mdi mdi-plus"></i></button></h1>
+        </div>
         <div class="collapse" id="reviewForm">
             <form @submit.prevent="createReview" class="form-control">
                 <input v-model="reviewData.comment" class="form-control" placeholder="Your Comment" type="text" required
                     maxlength="200" minlength="4">
-                <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating">
-                <!-- <select v-model="reviewData.rating" class="form-control">
-                        <option disabled selected value="">rating</option>
-                        <option value="1">1/5 stars</option>
-                        <option value="2">2/5 stars</option>
-                        <option value="3">3/5 stars</option>
-                        <option value="4">4/5 stars</option>
-                        <option value="5">5/5 stars</option>
-                    </select> -->
+                <!-- <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating"> -->
+                <select v-model="reviewData.rating" class="form-control">
+                    <option disabled selected value="">rating</option>
+                    <option value="1">1/5 stars</option>
+                    <option value="2">2/5 stars</option>
+                    <option value="3">3/5 stars</option>
+                    <option value="4">4/5 stars</option>
+                    <option value="5">5/5 stars</option>
+                </select>
                 <button class="btn btn-success">Post Review</button>
             </form>
         </div>
