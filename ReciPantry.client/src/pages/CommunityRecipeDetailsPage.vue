@@ -3,6 +3,9 @@
         <div>
             <button @click="deleteRecipe" class="btn btn-danger m-2">Delete Recipe</button>
         </div>
+        <div class="ms-2">
+            <button class="btn btn-success" @click="createFavorite"><i class="mdi mdi-heart-outline"></i></button>
+        </div>
         <!-- Pulls recipe title from active recipe -->
         <h1 class="text-start ms-4 mt-3 text-success position-relative">{{ recipe.title }} <span class="text-black">- {{
             recipe.readyInMinutes }} Mins</span></h1>
@@ -134,6 +137,7 @@ import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
+import { favoritesService } from '../services/FavoritesService';
 export default {
     setup() {
         let route = useRoute()
@@ -214,6 +218,15 @@ export default {
                     const recipeId = AppState.activeRecipe.id
                     await recipesService.deleteRecipe(recipeId)
                     router.push({ name: 'Account' })
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
+
+            async createFavorite() {
+                try {
+                    let favData = { recipeId: route.params.recipeId }
+                    await favoritesService.createFavorite(favData)
                 } catch (error) {
                     Pop.error(error)
                 }
