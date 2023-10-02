@@ -12,7 +12,7 @@
                 <button class="btn btn-success" @click="addOrRemoveFavorite"><i v-if="!isFavorite"
                         class="mdi mdi-heart-outline"></i> <i v-if="isFavorite" class="mdi mdi-heart"></i></button>
             </div>
-            <div class="ms-2" v-if="user.id == recipe.creatorId">
+            <div class="ms-2" v-if="account.id == recipe.creatorId">
                 <button @click="deleteRecipe" class="btn btn-danger">Delete Recipe</button>
             </div>
         </div>
