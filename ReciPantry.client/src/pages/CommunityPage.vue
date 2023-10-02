@@ -46,8 +46,8 @@ export default {
     position: fixed;
 
     @media(min-width: 768px) {
-        left: 110rem;
-        top: 52rem;
+        left: 115rem;
+        top: 50rem;
     }
 
     @media(max-width: 768px) {
