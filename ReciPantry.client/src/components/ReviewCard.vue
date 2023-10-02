@@ -31,6 +31,7 @@ import { Review } from '../models/Review';
 import { AppState } from '../AppState';
 import { reviewService } from '../services/ReviewService';
 import Pop from '../utils/Pop';
+import { logger } from '../utils/Logger';
 
 export default {
   props: { review: { type: [Review, Object], required: true } },
@@ -40,9 +41,12 @@ export default {
 
       async deleteReview() {
         try {
+          await Pop.confirm('Delete Review?')
           const review = AppState.activeReviews.find(review => review.accountId == AppState.account.id)
           const reviewId = review.id
+          logger.log(review)
           await reviewService.deleteReview(reviewId)
+          Pop.toast('Review Deleted!', 'success')
         } catch (error) {
           Pop.error(error)
         }
