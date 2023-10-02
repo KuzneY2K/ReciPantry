@@ -30,6 +30,7 @@ import { computed } from 'vue';
 import { Review } from '../models/Review';
 import { AppState } from '../AppState';
 import { reviewService } from '../services/ReviewService';
+import Pop from '../utils/Pop';
 
 export default {
   props: { review: { type: [Review, Object], required: true } },
@@ -38,9 +39,13 @@ export default {
       account: computed(() => AppState.account),
 
       async deleteReview() {
-        const review = AppState.activeReviews.find(review => review.accountId == AppState.account.id)
-        const reviewId = review.id
-        await reviewService.deleteReview(reviewId)
+        try {
+          const review = AppState.activeReviews.find(review => review.accountId == AppState.account.id)
+          const reviewId = review.id
+          await reviewService.deleteReview(reviewId)
+        } catch (error) {
+          Pop.error(error)
+        }
       }
 
     };
