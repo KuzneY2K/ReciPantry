@@ -26,7 +26,7 @@ class ReviewService {
 
     async deleteReview(reviewId) {
         await api.delete(`api/reviews/${reviewId}`)
-        let indexToRemove = AppState.activeReview.find(review => review.id == reviewId)
+        let indexToRemove = AppState.activeReviews.findIndex(review => review.id == reviewId)
         AppState.activeReviews.splice(indexToRemove, 1)
     }
 }
