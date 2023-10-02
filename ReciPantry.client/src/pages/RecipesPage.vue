@@ -60,7 +60,7 @@
                                     </div>             
                                 </div>
                             </section>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary" @click="searchRecipesByQuery()">Save changes</button>
                         </form>
                       </div>
                       <div class="modal-footer">
@@ -132,9 +132,20 @@ import { logger } from '../utils/Logger.js';
                     } else {
                         filterData.value.keto = ''
                     }
-                    // logger.log(filterData.value)
+                    logger.log(filterData.value)
                     recipesService.setFilterData(filterData)
                 },
+
+                // On 'save changes' search recipes
+                async searchRecipesByQuery() {
+                try {
+                    AppState.selectedCategory = null
+                    await recipesService.searchRecipesByQuery(AppState.savedQuery)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
+
 
                 // Offset is basically how many results the api skips over. Kinda like a next page / prev page thing
                 // Next page, increases page count to increase search offset
