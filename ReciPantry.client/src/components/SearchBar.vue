@@ -7,7 +7,7 @@
                 <input v-model="reqData" type="text" class="form-control bg-white" placeholder="Search a recipe" aria-label="searchBar" aria-describedby="basic-addon1">
                 <!-- FILTER BUTTON - Toggles modal that has all filter options. -->
                 <!-- Filters will be options that will set the reqData to their value -->
-                <button class="btn btn-grad px-3"><img src="https://i.imgur.com/Gh9UJij.png" alt="" height="30"></button>
+                <button type="button" class="btn btn-grad px-3 filter-btn"><img src="https://i.imgur.com/Gh9UJij.png" alt="" height="30" data-bs-toggle="modal" data-bs-target="#filterModal"></button>
               </div>
           </form>
 </template>
@@ -50,5 +50,9 @@ import { AppState } from '../AppState.js'
 <style lang="scss" scoped>
 .btn-grad {
     background-color: #19875434;
+}
+
+.filter-btn{
+    z-index: 5;
 }
 </style>

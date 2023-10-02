@@ -141,21 +141,6 @@ export default {
         let router = useRouter()
         let reviewData = ref({})
 
-
-        // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
-        // async function getRecipeById() {
-        //     try {
-        //         AppState.activeRecipe = {}
-        //         await recipesService.getRecipeById(route.params.recipeId)
-        //         getReviewsByRecipe();
-        //         document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
-        //         document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
-        //         // document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
-        //     } catch (error) {
-        //         Pop.error(error)
-        //     }
-        // }
-
         function redirect() {
             router.push({ name: "Community Recipe Details", params: { recipeId: AppState.activeRecipe.id } })
         }
@@ -183,9 +168,6 @@ export default {
                 Pop.error(error)
             }
         }
-
-        // watchEffect(()=> {
-        // })
 
         async function getReviewsByRecipe() {
             try {
@@ -275,8 +257,6 @@ export default {
 // .cart-btn{
 //     right: -3rem !important;
 // }
-
-.grocery-btn-container {}
 
 .grocery-list {
     bottom: 5rem;

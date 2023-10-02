@@ -23,7 +23,7 @@ class RecipesService{
     // search recipes using search parameters
     async searchRecipesByQuery(reqData){
         AppState.pageNum = 0
-        let res = await recipeApi.get(`complexSearch?query=${reqData}&number=10&offset=${AppState.pageNum}0`)
+        let res = await recipeApi.get(`complexSearch?query=${reqData}${AppState.filterData.vegan}${AppState.filterData.vegetarian}${AppState.filterData.glutenFree}${AppState.filterData.pescetarian}${AppState.filterData.keto}&number=10&offset=${AppState.pageNum}0`)
         
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
         logger.log(AppState.recipes)
@@ -83,6 +83,11 @@ class RecipesService{
         let recipes = AppState.recipes.filter(r => r.id != AppState.activeRecipe.id)
         AppState.recipes = recipes
         AppState.activeRecipe = {}
+    }
+
+    setFilterData(filterData){
+        AppState.filterData = filterData
+        logger.log(AppState.filterData)
     }
 }
 

@@ -31,4 +31,5 @@ export const AppState = reactive({
   myFavorites: [],
   /**@type {Favorite[]} */
   favorites: [],
+  filterData: []
 })
