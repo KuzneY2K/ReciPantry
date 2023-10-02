@@ -145,14 +145,8 @@ export default {
         let router = useRouter()
         let reviewData = ref({})
 
-        function redirect() {
-            router.push({ name: "Community Recipe Details", params: { recipeId: AppState.activeRecipe.id } })
-        }
-
         // gets recipe info from route params
         onMounted(() => {
-            // getRecipeById();
-            redirect();
             getCommunityRecipeById();
             getReviewsByRecipe();
             getFavoritesByRecipe()
