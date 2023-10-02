@@ -30,7 +30,7 @@ import { AppState } from '../AppState.js'
 
             logQuery() {
                 AppState.savedQuery = reqData
-                logger.log(AppState.savedQuery)
+                // logger.log(AppState.savedQuery)
             },
 
             // Just to test if buttons work
