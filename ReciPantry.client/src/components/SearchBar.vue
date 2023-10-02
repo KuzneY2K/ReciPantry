@@ -22,7 +22,7 @@ import { AppState } from '../AppState.js'
     export default {
           setup() {
 
-        // Accepts user query 
+        // Accepts user queryy
         const reqData = ref('')
 
         return {
