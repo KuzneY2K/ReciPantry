@@ -96,8 +96,8 @@
         </div>
 
         <!-- STUB review cards  -->
-        <div>
-            <div v-for="review in reviews" :key="review.id" class="col-6">
+        <div class="">
+            <div v-for="review in reviews" :key="review.id" class="col-10">
                 <ReviewCard :review="review" />
             </div>
         </div>
