@@ -56,7 +56,7 @@
       <div class="collapse" id="favRecipes">
         <section class="row">
           <div v-for="recipe in myFavoriteRecipes" :key="recipe.id" class="col-12">
-            <CommunityRecipeCard :recipe="recipe.recipe" />
+            <CommunityRecipeCard :recipe="recipe" />
           </div>
         </section>
       </div>
