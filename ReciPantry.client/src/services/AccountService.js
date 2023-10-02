@@ -1,5 +1,7 @@
 import { AppState } from '../AppState'
 import { Account } from '../models/Account.js'
+import { CommunityRecipe } from '../models/CommunityRecipe.js'
+import { Favorite } from '../models/Favorite.js'
 import { Recipe } from '../models/Recipe'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
@@ -28,6 +30,16 @@ class AccountService {
       logger.log(res.data)
       AppState.myRecipes = res.data.map(recipe => new Recipe(recipe))
       logger.log('appstate', AppState.myRecipes)
+    } catch (error) {
+      Pop.error(error)
+    }
+  }
+  async getMyFavorites(){
+    try {
+      const res = await api.get('account/favorites')
+      AppState.myFavorites = res.data.map(favorite => new Favorite(favorite))
+      logger.log('my Favorites', AppState.myFavorites)
+      logger.log('res', res)
     } catch (error) {
       Pop.error(error)
     }

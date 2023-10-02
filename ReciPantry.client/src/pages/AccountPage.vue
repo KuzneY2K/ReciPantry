@@ -55,7 +55,9 @@
       </div>
       <div class="collapse" id="favRecipes">
         <section class="row">
-          Fav recipes
+          <div v-for="recipe in myFavoriteRecipes" :key="recipe.id" class="col-12">
+            <CommunityRecipeCard :recipe="recipe.recipe" />
+          </div>
         </section>
       </div>
 
@@ -64,7 +66,7 @@
 </template>
 
 <script>
-import { computed, watchEffect } from 'vue';
+import { computed, onMounted, watchEffect } from 'vue';
 import { AppState } from '../AppState';
 import { AuthService } from '../services/AuthService'
 import ModalWrapper from '../components/ModalWrapper.vue';
@@ -73,26 +75,38 @@ import Pop from '../utils/Pop';
 import { accountService } from '../services/AccountService';
 import LandingCard from '../components/LandingCard.vue';
 import CommunityRecipeCard from '../components/CommunityRecipeCard.vue';
+import { logger } from '../utils/Logger.js';
 
 export default {
   setup() {
+    onMounted(() => {
+
+    })
     watchEffect(() => {
       getMyRecipes()
+      getMyFavorites()
     })
 
     async function getMyRecipes() {
       try {
-
         await accountService.getMyRecipes()
       } catch (error) {
         Pop.error(error)
       }
     }
 
+    async function getMyFavorites() {
+      try {
+        await accountService.getMyFavorites(AppState.account.id)
+      } catch (error) {
+        Pop.error(error)
+      }
+    }
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
       recipes: computed(() => AppState.myRecipes),
+      myFavoriteRecipes: computed(() => AppState.myFavorites),
 
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })

@@ -5,13 +5,13 @@ class FavoritesService {
 
     // STUB getting all the favorties for a specific recipe
     async getFavoriteByRecipe(recipeId) {
-        const favs = await dbContext.Favorites.find({ recipeId }).populate('profile')
+        const favs = await dbContext.Favorites.find({ recipeId }).populate('recipe profile')
         return favs
     }
 
     // STUB getting all favorited recipes by account
     async getFavoritesByAccount(userId) {
-        const fav = await dbContext.Favorites.find({ accountId: userId })
+        const fav = await dbContext.Favorites.find({ accountId: userId }).populate('recipe profile')
         return fav
     }
 
