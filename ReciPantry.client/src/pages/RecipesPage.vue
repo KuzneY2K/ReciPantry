@@ -59,14 +59,46 @@
                                         <input type="checkbox" name="ketoCheck" id="ketoCheck" v-model="filterData.ketoCheck">
                                         <label for="ketoCheck" class="ms-2">Ketogenic</label>
                                     </div>
-                                    <h3>Exclude Intolerances</h3>
+                                    <h3 class="mt-3">Exclude Intolerances</h3>
                                     <div class="input-group flex-nowrap">
                                         <input type="checkbox" name="dairyCheck" id="dairyCheck" v-model="filterData.dairyCheck">
                                         <label for="dairyCheck" class="ms-2">No Dairy</label>
-                                    </div>             
+                                    </div>
+                                    <div class="input-group flex-nowrap">
+                                        <input type="checkbox" name="eggCheck" id="eggCheck" v-model="filterData.eggCheck">
+                                        <label for="eggCheck" class="ms-2">No Egg</label>
+                                    </div>
+                                    <div class="input-group flex-nowrap">
+                                        <input type="checkbox" name="grainCheck" id="grainCheck" v-model="filterData.grainCheck">
+                                        <label for="grainCheck" class="ms-2">No Grains</label>
+                                    </div> 
+                                    <div class="input-group flex-nowrap">
+                                        <input type="checkbox" name="peanutCheck" id="peanutCheck" v-model="filterData.peanutCheck">
+                                        <label for="peanutCheck" class="ms-2">No Peanuts</label>
+                                    </div>
+                                    <div class="input-group flex-nowrap">
+                                        <input type="checkbox" name="seafoodCheck" id="seafoodCheck" v-model="filterData.seafoodCheck">
+                                        <label for="seafoodCheck" class="ms-2">No Seafood</label>
+                                    </div>
+                                    <div class="input-group flex-nowrap">
+                                        <input type="checkbox" name="shellfishCheck" id="shellfishCheck" v-model="filterData.shellfishCheck">
+                                        <label for="shellfishCheck" class="ms-2">No Shellfish</label>
+                                    </div>
+                                    <div class="input-group flex-nowrap">
+                                        <input type="checkbox" name="soyCheck" id="soyCheck" v-model="filterData.soyCheck">
+                                        <label for="soyCheck" class="ms-2">No Soy</label>
+                                    </div>
+                                    <div class="input-group flex-nowrap">
+                                        <input type="checkbox" name="sulfiteCheck" id="sulfiteCheck" v-model="filterData.sulfiteCheck">
+                                        <label for="sulfiteCheck" class="ms-2">No Sulfite</label>
+                                    </div>
+                                    <div class="input-group flex-nowrap">
+                                        <input type="checkbox" name="wheatCheck" id="wheatCheck" v-model="filterData.wheatCheck">
+                                        <label for="wheatCheck" class="ms-2">No Wheat</label>
+                                    </div>
                                 </div>
                             </section>
-                            <button type="submit" class="btn btn-primary" @click="searchRecipesByQuery()">Save changes</button>
+                            <button type="submit" class="btn btn-primary mt-3">Save changes</button>
                         </form>
                       </div>
                       <div class="modal-footer">
@@ -105,6 +137,7 @@ import { Modal } from 'bootstrap';
             onMounted(() => {
                 getRandomRecipes()
             })
+            
             return{
                 recipes: computed(() => AppState.recipes),
                 pageNum: computed(() => AppState.pageNum),
@@ -114,13 +147,22 @@ import { Modal } from 'bootstrap';
                 filterData,
 
                 setFilterData(){
-                    filterData.value.veganCheck == true ? filterData.value.vegan = '&diet=Vegan' : filterData.value.vegan = ''
-                    filterData.value.vegetarianCheck == true ? filterData.value.vegetarian = '&diet=Vegetarian' : filterData.value.vegetarian = ''
-                    filterData.value.glutenFreeCheck == true ? filterData.value.glutenFree = '&diet=Gluten Free' : filterData.value.glutenFree = ''
-                    filterData.value.pescetarianCheck == true ? filterData.value.pescetarian = '&diet=Pescetarian' : filterData.value.pescetarian = ''
-                    filterData.value.ketoCheck == true ? filterData.value.keto = '&diet=Ketogenic' : filterData.value.keto = ''
-                    logger.log(filterData.value)
+                    filterData.value.veganCheck == true ? filterData.value.vegan = 'Vegan,' : filterData.value.vegan = ''
+                    filterData.value.vegetarianCheck == true ? filterData.value.vegetarian = 'Vegetarian,' : filterData.value.vegetarian = ''
+                    filterData.value.glutenFreeCheck == true ? filterData.value.glutenFree = 'Gluten Free,' : filterData.value.glutenFree = ''
+                    filterData.value.pescetarianCheck == true ? filterData.value.pescetarian = 'Pescetarian,' : filterData.value.pescetarian = ''
+                    filterData.value.ketoCheck == true ? filterData.value.keto = 'Ketogenic,' : filterData.value.keto = ''
+                    filterData.value.dairyCheck == true ? filterData.value.dairy = 'Dairy,' : filterData.value.dairy = ''
+                    filterData.value.eggCheck == true ? filterData.value.eggs = 'Eggs,' : filterData.value.eggs = ''
+                    filterData.value.grainCheck == true ? filterData.value.grains = 'Grains,' : filterData.value.grains = ''
+                    filterData.value.peanutCheck == true ? filterData.value.peanuts = 'Peanuts,' : filterData.value.peanuts = ''
+                    filterData.value.seafoodCheck == true ? filterData.value.seafood = 'Seafood,' : filterData.value.seafood = ''
+                    filterData.value.shellfishCheck == true ? filterData.value.shellfish = 'Shellfish,' : filterData.value.shellfish = ''
+                    filterData.value.soyCheck == true ? filterData.value.soy = 'Soy,' : filterData.value.soy = ''
+                    filterData.value.sulfiteCheck == true ? filterData.value.sulfite = 'Sulfite,' : filterData.value.sulfite = ''
+                    filterData.value.wheatCheck == true ? filterData.value.wheat = 'Wheat,' : filterData.value.wheat = ''
                     recipesService.setFilterData(filterData)
+                    logger.log(filterData)
                     Modal.getOrCreateInstance('#filterModal').hide()
                 },
 
