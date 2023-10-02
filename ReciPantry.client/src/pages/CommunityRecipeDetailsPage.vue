@@ -2,13 +2,17 @@
     <div>
         <div class="btn-container d-flex flex-row justify-content-start ms-3 mt-3">
 
-            <div class="ms-2">
+            <!-- <div class="ms-2">
                 <button class="btn btn-success" @click="createFavorite"><i class="mdi mdi-heart-outline"></i></button>
             </div>
             <div class="ms-2">
                 <button class="btn btn-success" @click="deleteFavorite"><i class="mdi mdi-heart"></i></button>
-            </div>
+            </div> -->
             <div class="ms-2">
+                <button class="btn btn-success" @click="addOrRemoveFavorite"><i v-if="!isFavorite"
+                        class="mdi mdi-heart-outline"></i> <i v-if="isFavorite" class="mdi mdi-heart"></i></button>
+            </div>
+            <div class="ms-2" v-if="user.id == recipe.creatorId">
                 <button @click="deleteRecipe" class="btn btn-danger">Delete Recipe</button>
             </div>
         </div>
@@ -200,10 +204,12 @@ export default {
             recipe: computed(() => AppState.activeRecipe),
             ingredients: computed(() => AppState.activeRecipe.ingredients),
             account: computed(() => AppState.account),
+            user: computed(() => AppState.user),
             reviews: computed(() => AppState.activeReviews),
             ingredientOnList: computed(() => AppState.groceryList),
             router,
             favorite: computed(() => AppState.favorites),
+            isFavorite: computed(() => AppState.favorites.find(favorite => favorite.accountId == AppState.account.id)),
             reviewData,
 
             // Adds ingredient to shopping list when clicking on cart.
@@ -238,19 +244,28 @@ export default {
                 }
             },
 
-            async createFavorite() {
+            // async createFavorite() {
+            //     try {
+            //         let favData = { recipeId: route.params.recipeId }
+            //         await favoritesService.createFavorite(favData)
+            //     } catch (error) {
+            //         Pop.error(error)
+            //     }
+            // },
+
+            // async deleteFavorite() {
+            //     try {
+            //         const favorite = AppState.favorites.find(fav => fav.accountId == AppState.account.id)
+            //         await favoritesService.deleteFavorite(favorite.id)
+            //     } catch (error) {
+            //         Pop.error(error)
+            //     }
+            // },
+
+            async addOrRemoveFavorite() {
                 try {
                     let favData = { recipeId: route.params.recipeId }
-                    await favoritesService.createFavorite(favData)
-                } catch (error) {
-                    Pop.error(error)
-                }
-            },
-
-            async deleteFavorite() {
-                try {
-                    const favorite = AppState.favorites.find(fav => fav.accountId == AppState.account.id)
-                    await favoritesService.deleteFavorite(favorite.id)
+                    await favoritesService.addOrRemoveFavorite(favData)
                 } catch (error) {
                     Pop.error(error)
                 }
