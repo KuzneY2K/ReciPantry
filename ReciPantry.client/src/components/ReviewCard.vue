@@ -1,6 +1,6 @@
 <template>
   <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5">
-    <section class="col-12 p-3 pb-0 align-items-end">
+    <section class="col-12 p-3 pb-0">
       <div v-if="review.rating == 5"><i class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i><i
           class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i><i
           class="mdi text-warning mdi-star"></i></div>
