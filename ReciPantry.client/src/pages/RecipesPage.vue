@@ -38,6 +38,7 @@
                         <form @submit.prevent="setFilterData()">
                             <section class="row p-0 m-0">
                                 <div class="col-12 p-0 m-0">
+                                    <h3>Dietary Filters</h3>
                                     <div class="input-group flex-nowrap">
                                         <input type="checkbox" name="veganCheck" id="veganCheck" v-model="filterData.veganCheck">
                                         <label for="veganCheck" class="ms-2">Vegan</label>
@@ -57,6 +58,11 @@
                                     <div class="input-group flex-nowrap">
                                         <input type="checkbox" name="ketoCheck" id="ketoCheck" v-model="filterData.ketoCheck">
                                         <label for="ketoCheck" class="ms-2">Ketogenic</label>
+                                    </div>
+                                    <h3>Exclude Intolerances</h3>
+                                    <div class="input-group flex-nowrap">
+                                        <input type="checkbox" name="dairyCheck" id="dairyCheck" v-model="filterData.dairyCheck">
+                                        <label for="dairyCheck" class="ms-2">No Dairy</label>
                                     </div>             
                                 </div>
                             </section>
@@ -76,6 +82,7 @@ import { AppState } from '../AppState.js';
 import { recipesService } from '../services/RecipesService.js';
 import Pop from '../utils/Pop.js';
 import { logger } from '../utils/Logger.js';
+import { Modal } from 'bootstrap';
 
     export default {
         setup(){
@@ -107,33 +114,14 @@ import { logger } from '../utils/Logger.js';
                 filterData,
 
                 setFilterData(){
-                    if(filterData.value.veganCheck == true){
-                        filterData.value.vegan = '&diet=Vegan'
-                    } else {
-                        filterData.value.vegan = ''
-                    }
-                    if(filterData.value.vegetarianCheck == true){
-                        filterData.value.vegetarian = '&diet=Vegetarian'
-                    } else {
-                        filterData.value.vegetarian = ''
-                    }
-                    if(filterData.value.glutenFreeCheck == true){
-                        filterData.value.glutenFree = '&diet=Gluten Free'
-                    } else {
-                        filterData.value.glutenFree = ''
-                    }
-                    if(filterData.value.pescetarianCheck == true){
-                        filterData.value.pescetarian = '&diet=Pescetarian'
-                    } else {
-                        filterData.value.pescetarian = ''
-                    }
-                    if(filterData.value.ketoCheck == true){
-                        filterData.value.keto = '&diet=Ketogenic'
-                    } else {
-                        filterData.value.keto = ''
-                    }
+                    filterData.value.veganCheck == true ? filterData.value.vegan = '&diet=Vegan' : filterData.value.vegan = ''
+                    filterData.value.vegetarianCheck == true ? filterData.value.vegetarian = '&diet=Vegetarian' : filterData.value.vegetarian = ''
+                    filterData.value.glutenFreeCheck == true ? filterData.value.glutenFree = '&diet=Gluten Free' : filterData.value.glutenFree = ''
+                    filterData.value.pescetarianCheck == true ? filterData.value.pescetarian = '&diet=Pescetarian' : filterData.value.pescetarian = ''
+                    filterData.value.ketoCheck == true ? filterData.value.keto = '&diet=Ketogenic' : filterData.value.keto = ''
                     logger.log(filterData.value)
                     recipesService.setFilterData(filterData)
+                    Modal.getOrCreateInstance('#filterModal').hide()
                 },
 
                 // On 'save changes' search recipes
