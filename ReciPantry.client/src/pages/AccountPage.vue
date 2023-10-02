@@ -39,7 +39,7 @@
       </div>
 
 
-      <div class="col-12 text-center mt-2">
+      <div class="col-12 text-center mt-2" v-if="recipes">
         <button class="btn btn-outline-dark" data-bs-toggle="collapse" data-bs-target="#myRecipes">
           <h1 class="fs-2 pt-2">MY <i class="mdi mdi-bomb"></i> RECIPES </h1>
         </button>
@@ -48,7 +48,7 @@
         <CommunityRecipeCard :recipe="recipe" />
       </div>
 
-      <div class="col-12 text-center mt-4">
+      <div class="col-12 text-center mt-4" v-if="myFavoriteRecipes">
         <button class="btn btn-outline-dark" data-bs-toggle="collapse" data-bs-target="#favRecipes">
           <h1 class="fs-2 pt-2">FAV RECIPES <i class="mdi mdi-fire"></i></h1>
         </button>

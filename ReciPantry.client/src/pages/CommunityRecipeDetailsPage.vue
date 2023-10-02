@@ -150,12 +150,12 @@ export default {
         // gets recipe info from route params
         onMounted(() => {
             getCommunityRecipeById();
-            getReviewsByRecipe();
-            getFavoritesByRecipe()
         })
         async function getCommunityRecipeById() {
             try {
                 await recipesService.getCommunityRecipeById(route.params.recipeId)
+                getReviewsByRecipe()
+                getFavoritesByRecipe()
             } catch (error) {
                 Pop.error(error)
             }
