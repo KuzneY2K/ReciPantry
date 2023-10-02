@@ -94,8 +94,10 @@
                 <button class="btn btn-success">Post Review</button>
             </form>
         </div>
+
+        <!-- STUB review cards  -->
         <div>
-            <div v-for="review in reviews" :key="review.id" class="col-12">
+            <div v-for="review in reviews" :key="review.id" class="col-6">
                 <ReviewCard :review="review" />
             </div>
         </div>

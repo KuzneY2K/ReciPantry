@@ -1,7 +1,6 @@
 <template>
-  <div
-    class="card-container align-items-center d-flex p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5">
-    <section>
+  <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5">
+    <section class="col-12 p-3 pb-0 align-items-end">
       <div v-if="review.rating == 5"><i class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i><i
           class="mdi text-warning mdi-star"></i><i class="mdi text-warning mdi-star"></i><i
           class="mdi text-warning mdi-star"></i></div>
@@ -14,13 +13,15 @@
       </div>
       <div v-if="review.rating == 1"><i class="mdi text-warning mdi-star"></i></div>
     </section>
-    <section class="p-2">
+    <section class="p-2 col-4">
       <img class="profile-picture" :src="review.profile.picture" alt="">
+      <h1>{{ review.profile.name }}</h1>
     </section>
-    <h1>{{ review.profile.name }}</h1>
-    <p>{{ review.comment }}</p>
-    <button v-if="account.id == review.profile.id" class="btn btn-danger" @click="deleteReview">Delete <i
-        class="mdi mdi-delete-forever"></i></button>
+    <section class="col-8">
+      <p>{{ review.comment }}</p>
+      <button v-if="account.id == review.profile.id" class="btn btn-danger" @click="deleteReview">Delete <i
+          class="mdi mdi-delete-forever"></i></button>
+    </section>
   </div>
 </template>
 
@@ -50,7 +51,7 @@ export default {
 <style lang="scss" scoped>
 .card-container {
   width: 90%;
-  height: 7rem;
+  height: 8rem;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
