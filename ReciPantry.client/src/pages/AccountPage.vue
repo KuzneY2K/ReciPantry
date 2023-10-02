@@ -106,7 +106,7 @@ export default {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
       recipes: computed(() => AppState.myRecipes),
-      myFavoriteRecipes: computed(() => AppState.myFavorites),
+      myFavoriteRecipes: computed(() => AppState.favorites),
 
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
