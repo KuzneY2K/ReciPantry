@@ -197,9 +197,13 @@ export default {
 
             async deleteRecipe() {
                 try {
-                    const recipeId = AppState.activeRecipe.id
-                    await recipesService.deleteRecipe(recipeId)
-                    router.push({ name: 'Account' })
+                    if(await Pop.confirm('Are you sure you want to delete this recipe?')){
+                        const recipeId = AppState.activeRecipe.id
+                        await recipesService.deleteRecipe(recipeId)
+                        router.push({ name: 'Account' })
+                    } else {
+                        Pop.toast('Recipe deletion cancelled.')
+                    }
                 } catch (error) {
                     Pop.error(error)
                 }

@@ -44,7 +44,7 @@
           <h1 class="fs-2 pt-2">MY <i class="mdi mdi-bomb"></i> RECIPES </h1>
         </button>
       </div>
-      <div class="collapse flex-column align-items-center" id="myRecipes" v-for="recipe in recipes" :key="recipe.id">
+      <div class="collapse d-flex flex-column align-items-center" id="myRecipes" v-for="recipe in recipes" :key="recipe.id">
         <CommunityRecipeCard :recipe="recipe" />
       </div>
 
@@ -55,7 +55,7 @@
       </div>
       <div class="collapse" id="favRecipes">
         <section class="row">
-          <div v-for="recipe in myFavoriteRecipes" :key="recipe.id" class="col-12">
+          <div v-for="recipe in myFavoriteRecipes" :key="recipe.id" class="col-12 d-flex flex-column align-items-center">
             <CommunityRecipeCard :recipe="recipe.recipe" />
           </div>
         </section>
