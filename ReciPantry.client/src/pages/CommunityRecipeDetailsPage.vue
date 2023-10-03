@@ -32,9 +32,16 @@
                     class="btn btn-danger border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">Delete Recipe</button>
             </div>
             <div class="ms-2" v-if="account.id == recipe.creatorId">
-                <button @click="editRecipe"
-                    class="btn btn-primary border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">Edit
-                    Recipe</button>
+                <ModalWrapper id="editRecipes">
+                    <template #button>
+                        <h5 class="btn btn-primary border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">
+                            Edit
+                            Recipe</h5>
+                    </template>
+                    <template #body>
+                        <EditRecipeForm />
+                    </template>
+                </ModalWrapper>
             </div>
         </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
@@ -117,7 +124,7 @@
 </template>
 
 <script>
-import { computed, onMounted, watchEffect, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import { AppState } from '../AppState.js'
@@ -126,44 +133,44 @@ import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
 import { favoritesService } from '../services/FavoritesService';
 import { groceriesService } from '../services/GroceriesService.js';
+import EditRecipeForm from '../components/EditRecipeForm.vue';
 export default {
     setup() {
-        let route = useRoute()
-        let router = useRouter()
-        let reviewData = ref({})
-        let groceryData = ref({})
-
+        let route = useRoute();
+        let router = useRouter();
+        let reviewData = ref({});
+        let groceryData = ref({});
         // gets recipe info from route params
         onMounted(() => {
             getCommunityRecipeById();
-        })
+        });
         async function getCommunityRecipeById() {
             try {
-                await recipesService.getCommunityRecipeById(route.params.recipeId)
-                getReviewsByRecipe()
-                getFavoritesByRecipe()
-            } catch (error) {
-                Pop.error(error)
+                await recipesService.getCommunityRecipeById(route.params.recipeId);
+                getReviewsByRecipe();
+                getFavoritesByRecipe();
+            }
+            catch (error) {
+                Pop.error(error);
             }
         }
-
         async function getFavoritesByRecipe() {
             try {
-                await favoritesService.getFavoritesByRecipe(route.params.recipeId)
-            } catch (error) {
-                Pop.error(error)
+                await favoritesService.getFavoritesByRecipe(route.params.recipeId);
+            }
+            catch (error) {
+                Pop.error(error);
             }
         }
-
         async function getReviewsByRecipe() {
             try {
-                const recipeId = AppState.activeRecipe.id
-                await reviewService.getReviewsByRecipe(recipeId)
-            } catch (error) {
-                Pop.error(error)
+                const recipeId = AppState.activeRecipe.id;
+                await reviewService.getReviewsByRecipe(recipeId);
+            }
+            catch (error) {
+                Pop.error(error);
             }
         }
-
         return {
             recipe: computed(() => AppState.activeRecipe),
             ingredients: computed(() => AppState.activeRecipe.ingredients),
@@ -176,66 +183,67 @@ export default {
             isFavorite: computed(() => AppState.myFavorites.find(favorite => favorite.accountId == AppState.account.id)),
             reviewData,
             groceryData,
-
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
             async addToList(listItem) {
-                logger.log
+                logger.log;
                 if (await Pop.confirm(`Add ${listItem.name} to grocery list?`)) {
-                    groceryData.value.groceryName = listItem.name
-                    groceryData.value.measureAmount = listItem.measureAmount
-                    groceryData.value.measureUnit = listItem.measureUnit
-                    await groceriesService.addGrocery(groceryData.value)
+                    groceryData.value.groceryName = listItem.name;
+                    groceryData.value.measureAmount = listItem.measureAmount;
+                    groceryData.value.measureUnit = listItem.measureUnit;
+                    await groceriesService.addGrocery(groceryData.value);
                     // AppState.groceryList.push(listItem)
-                    Pop.success(`Added ${listItem.name} to grocery list!`)
+                    Pop.success(`Added ${listItem.name} to grocery list!`);
                     // logger.log(AppState.groceryList)
-                } else {
-                    Pop.toast(`${listItem.name} not added to grocery list.`)
+                }
+                else {
+                    Pop.toast(`${listItem.name} not added to grocery list.`);
                 }
                 // Change pop confirm message that says "you wont be able to revert"
-
                 // Remove ingredient from shopping list by clicking little X symbol
             },
             async removeFromList(ingredientId) {
-                logger.log(ingredientId)
+                logger.log(ingredientId);
             },
-
             async deleteRecipe() {
                 try {
                     if (await Pop.confirm('Are you sure you want to delete this recipe?')) {
-                        const recipeId = AppState.activeRecipe.id
-                        await recipesService.deleteRecipe(recipeId)
-                        router.push({ name: 'Account' })
-                    } else {
-                        Pop.toast('Recipe deletion cancelled.')
+                        const recipeId = AppState.activeRecipe.id;
+                        await recipesService.deleteRecipe(recipeId);
+                        router.push({ name: 'Account' });
                     }
-                } catch (error) {
-                    Pop.error(error)
+                    else {
+                        Pop.toast('Recipe deletion cancelled.');
+                    }
+                }
+                catch (error) {
+                    Pop.error(error);
                 }
             },
-
             async addOrRemoveFavorite() {
                 try {
-                    let favData = { recipeId: route.params.recipeId }
-                    await favoritesService.addOrRemoveFavorite(favData)
-                } catch (error) {
-                    Pop.error(error)
+                    let favData = { recipeId: route.params.recipeId };
+                    await favoritesService.addOrRemoveFavorite(favData);
+                }
+                catch (error) {
+                    Pop.error(error);
                 }
             },
-
             async createReview() {
                 try {
-                    logger.log(reviewData.value)
-                    reviewData.value.recipeId = route.params.recipeId
-                    await reviewService.createReview(reviewData.value)
-                    reviewData.value = {}
-                    Pop.toast('Review left', 'success')
-                } catch (error) {
-                    Pop.error(error)
+                    logger.log(reviewData.value);
+                    reviewData.value.recipeId = route.params.recipeId;
+                    await reviewService.createReview(reviewData.value);
+                    reviewData.value = {};
+                    Pop.toast('Review left', 'success');
                 }
-            }
-        }
-    }
+                catch (error) {
+                    Pop.error(error);
+                }
+            },
+        };
+    },
+    components: { EditRecipeForm }
 }
 </script>
 
