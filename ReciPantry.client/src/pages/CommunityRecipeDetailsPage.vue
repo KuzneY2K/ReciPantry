@@ -32,9 +32,17 @@
                     class="btn btn-danger border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">Delete Recipe</button>
             </div>
             <div class="ms-2" v-if="account.id == recipe.creatorId">
-                <button @click="editRecipe"
-                    class="btn btn-primary border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">Edit
-                    Recipe</button>
+                <ModalWrapper>
+                    <template #button>
+                        <h5 @click="editRecipe"
+                            class="btn btn-primary border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">
+                            Edit
+                            Recipe</h5>
+                    </template>
+                    <template #body>
+
+                    </template>
+                </ModalWrapper>
             </div>
         </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
@@ -117,7 +125,7 @@
 </template>
 
 <script>
-import { computed, onMounted, watchEffect, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import { AppState } from '../AppState.js'
@@ -233,7 +241,7 @@ export default {
                 } catch (error) {
                     Pop.error(error)
                 }
-            }
+            },
         }
     }
 }
