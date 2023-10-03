@@ -6,16 +6,16 @@
               <SearchBar />
         </div>
       </section>
-      <section class="row p-0 m-0">
+      <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0">
         <!-- For every recipe result a clickable card is rendered out -->
-        <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+        <div class="col-12 col-md-8 d-flex flex-column align-items-center justify-content-center">
             <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
         </div>
       </section>
 
       <!-- Pagination buttons, for cleaner UI purposes 📕 -->
-      <section class="row p-0 m-0 mt-4 mb-4">
-        <div class="col-12 p-0 m-0 px-2" v-if="recipes[0]">
+      <section class="row d-flex flex-row justify-content-center align-items-center p-0 m-0 mt-4 mb-4">
+        <div class="col-12 col-md-8 d-flex flex-column p-0 m-0 px-2" v-if="recipes[0]">
         <div class="btn-container d-flex flex-row justify-content-between">
             <!-- Go back -->
             <button v-if="pageNum >= 1" @click="previousPage()" class="btn btn-success text-white">Previous Page</button>
