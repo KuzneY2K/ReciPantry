@@ -7,7 +7,7 @@
         </div>
         <div class="col-12">
             <label for="recipeIngredients">Ingredients:</label>
-            <div class="ingredient-container d-flex flex-row justify-content-start" v-for="ingredient in ingredients"
+            <div class="ingredient-container d-flex flex-row justify-content-start" v-for="ingredient in recipeIngredients"
                 :key="ingredient.id">
                 <input v-model="ingredient.name" class="form-control" id="recipeIngredients" type="text" maxlength="1000"
                     placeholder="Ingredients" required>
@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { onMounted, ref, watchEffect } from 'vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import Pop from '../utils/Pop';
 import { recipesService } from '../services/RecipesService';
@@ -114,8 +114,10 @@ export default {
         }
 
         return {
+
             recipeData,
             ingredients,
+            recipeIngredients: computed(() => AppState.activeRecipe.ingredients),
             router,
             async addIngredient() {
                 try {
