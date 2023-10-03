@@ -33,7 +33,10 @@
             <h1 class="fs-2 btn btn-outline-dark">PREFERENCES <i class="mdi mdi-heart"></i></h1>
           </template>
           <template #body>
-            preferences
+            <h3>
+              Preferences
+            </h3>
+            <PreferencesForm />
           </template>
         </ModalWrapper>
       </div>
@@ -80,6 +83,7 @@ import { accountService } from '../services/AccountService';
 import LandingCard from '../components/LandingCard.vue';
 import CommunityRecipeCard from '../components/CommunityRecipeCard.vue';
 import { logger } from '../utils/Logger.js';
+import PreferencesForm from '../components/PreferencesForm.vue';
 
 export default {
   setup() {
@@ -121,7 +125,7 @@ export default {
       },
     };
   },
-  components: { ModalWrapper, EditAccountForm, CommunityRecipeCard }
+  components: { ModalWrapper, EditAccountForm, CommunityRecipeCard, PreferencesForm }
 }
 </script>
 

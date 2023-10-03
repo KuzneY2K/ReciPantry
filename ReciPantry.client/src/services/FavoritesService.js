@@ -1,6 +1,7 @@
 import { AppState } from "../AppState"
 import { Favorite } from "../models/Favorite"
 import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 import { api } from "./AxiosService"
 
 
@@ -22,10 +23,12 @@ class FavoritesService{
             await api.delete(`api/favorites/${isFavorite.id}`)
             AppState.myFavorites.splice(isFavorite, 1)
             logger.log(`Favorite at id ${isFavorite.id} deleted`)
+            Pop.success('Favorited no longer!')
         } else {
             const res = await api.post('api/favorites', recipeId)
             logger.log('created favorite', res.data)
             AppState.myFavorites.push(new Favorite(res.data))
+            Pop.success('New favorite added!')
             
         }
     }
