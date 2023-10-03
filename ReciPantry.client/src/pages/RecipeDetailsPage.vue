@@ -1,17 +1,22 @@
 <template>
     <div v-if="recipe">
         <!-- Pulls recipe title from active recipe -->
-        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span class="text-black">- {{
-            recipe.readyInMinutes }} Mins</span></h1>
+        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span
+                class="text-black">- {{
+                    recipe.readyInMinutes }} Mins</span></h1>
         <div class="grocery-btn-container postion-absolute">
             <!-- Grocery List modal toggle -->
-            <button class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5 grocery-list-btn"
+            <button
+                class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5 grocery-list-btn"
                 data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
         </div>
         <div class="img-container d-flex flex-column align-items-center justify-content-center">
             <!-- Pulls recipe cover image from active recipe -->
             <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
                 class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
+        </div>
+        <div class="ms-4">
+            <button class="btn btn-success">Clone Recipe</button>
         </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
         <div class="ingredients-container p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
@@ -85,9 +90,9 @@
         <!-- STUB review card component -->
         <div class="p-0 m-0">
             <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
-                <h1 class="p-0 m-0m-0">Recipe Reviews</h1> 
-                <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
-                        class="btn btn-success">Add Review <i class="mdi mdi-plus"></i></button>
+                <h1 class="p-0 m-0m-0">Recipe Reviews</h1>
+                <button data-bs-toggle="collapse" data-bs-target="#reviewForm" class="btn btn-success">Add Review <i
+                        class="mdi mdi-plus"></i></button>
             </div>
             <!-- STUB create review form -->
             <div class="collapse" id="reviewForm">
@@ -109,9 +114,9 @@
 
             <!-- STUB review card -->
             <div class="p-0 m-0 px-3">
-            <div v-for="review in reviews" :key="review.id" class="col-12">
-                <ReviewCard :review="review" />
-            </div>
+                <div v-for="review in reviews" :key="review.id" class="col-12">
+                    <ReviewCard :review="review" />
+                </div>
             </div>
         </div>
 
@@ -219,13 +224,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.recipe-title{
+.recipe-title {
     font-size: 2.5rem;
     text-shadow: 0px 0px 5px rgb(255, 255, 255);
 }
 
-.ingredients-label{
+.ingredients-label {
     text-shadow: 0px 0px 5px white;
     font-size: 2.25rem !important;
 }

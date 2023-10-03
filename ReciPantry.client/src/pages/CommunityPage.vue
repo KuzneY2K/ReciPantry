@@ -1,13 +1,13 @@
 <template>
-          <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
-            <div class="col-12 p-0 m-0 d-flex flex-column align-items-center justify-content-center">
-                <h1 class="mt-3 title">From Our <span class="text-success">Community</span></h1>
+    <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
+        <div class="col-12 p-0 m-0 d-flex flex-column align-items-center justify-content-center">
+            <h1 class="mt-3 title">From Our <span class="text-success">Community</span></h1>
             <!-- Search bar that takes in parameters & filters 🔎 -->
             <section class="row p-0 m-0">
                 <CommunitySearchBar />
-            </section>          
-            </div>
-          </section>
+            </section>
+        </div>
+    </section>
     <section class="row p-0 m-0">
         <div class="col-12 p-0 m-0 d-flex flex-column justify-content-center align-items-center mt-3">
             <CommunityRecipeCard v-for="recipe in communityRecipes" :key="recipe.id" :recipe="recipe" />
@@ -47,7 +47,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .title {
     font-size: 2.25rem;
     text-shadow: 0px 1px 7px rgb(221, 221, 221)
@@ -56,17 +55,18 @@ export default {
 .pag-btn {
     width: 8rem;
 }
+
 .buttonContainer {
     position: fixed;
 
     @media(min-width: 768px) {
-        left: 115rem;
-        top: 50rem;
+        bottom: 5em;
+        right: 1em;
     }
 
     @media(max-width: 768px) {
-        left: 20rem;
-        top: 34.5rem;
+        bottom: 5em;
+        right: 1em;
     }
 }
 </style>
