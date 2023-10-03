@@ -113,7 +113,7 @@ import Pop from '../utils/Pop.js';
                 try {
                     AppState.selectedCategory = name
                     AppState.recipes = {}
-                    logger.log(AppState.selectedCategory)
+                    // logger.log(AppState.selectedCategory)
                     await recipesService.searchRecipesByCategory()
                 } catch (error) {
                         Pop.error(error)

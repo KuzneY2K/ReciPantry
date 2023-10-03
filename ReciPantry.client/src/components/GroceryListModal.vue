@@ -13,9 +13,10 @@
                                 <ul class="list-unstyled">
                                     <div class="li-container d-flex flex-row justify-content-between fs-5"
                                         v-for="i in ingredientOnList" :key="i.name">
+                                        <RouterLink :to="{ name: 'Recipes' }" @click="setIngredient(`${i.name}`)">
                                         <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name }}</span> -
-                                            {{ i.measureAmount }} {{ i.measureUnit }} </li><i
-                                            class="mdi mdi-close text-danger fs-2" @click="removeFromList(i.id)"></i>
+                                            {{ i.measureAmount }} {{ i.measureUnit }} </li></RouterLink>
+                                            <i class="mdi mdi-close text-danger fs-2" @click="removeFromList(i.id)"></i>
                                     </div>
                                 </ul>
                             </ul>
@@ -48,14 +49,19 @@ import Pop from '../utils/Pop.js';
             return{
             ingredientOnList: computed(() => AppState.groceryList),
 
-                async removeFromList(groceryId) {
+            async removeFromList(groceryId) {
                 logger.log(groceryId)
                 if (await Pop.confirm(`Remove from gorcery list?`)) {
                     await groceriesService.removeFromList(groceryId)
                 } else {
                     Pop.toast('Grocery was not removed from the list.')
                 }
-            }    
+            },
+            
+            async setIngredient(name){
+                AppState.selectedIngredient = name
+                AppState.recipes = {}
+            }
 
             }
         }
