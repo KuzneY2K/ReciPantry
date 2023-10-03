@@ -3,7 +3,7 @@
   <div class="col-4 p-0 m-0">
   <div class="card-container p-0 m-0 d-flex flex-column align-items-center justify-content-center">
     <div class="card-info p-0 m-0 mt-3">
-      <img class="profile-picture p-0 m-0" :src="review.profile.picture" alt="">
+      <img class="profile-picture p-0 m0" :src="review.profile.picture" alt="">
       <h1 class="p-0 m-0 mt-1">{{ review.profile.name }}</h1>
     </div>
       <div class="rating-container p-0 m-0 mb-3">
