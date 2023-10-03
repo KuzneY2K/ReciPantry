@@ -28,6 +28,7 @@ import { computed, watchEffect, ref } from 'vue';
 import { AppState } from '../AppState';
 import Pop from '../utils/Pop';
 import { accountService } from '../services/AccountService';
+import { Modal } from 'bootstrap';
 
 export default {
     setup() {
@@ -45,6 +46,7 @@ export default {
                 try {
                     await accountService.editAccount(editable.value)
                     Pop.success('Account Updated!')
+                    Modal.getOrCreateInstance('#edit-account').hide()
                     editable.value = {}
                 } catch (error) {
                     Pop.error(error)
