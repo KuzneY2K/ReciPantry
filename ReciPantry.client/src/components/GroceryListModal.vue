@@ -43,6 +43,7 @@ import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import { groceriesService } from '../services/GroceriesService.js';
 import Pop from '../utils/Pop.js';
+import { recipesService } from '../services/RecipesService.js'
 
     export default {
         setup(){
@@ -59,8 +60,13 @@ import Pop from '../utils/Pop.js';
             },
             
             async setIngredient(name){
-                AppState.selectedIngredient = name
-                AppState.recipes = {}
+                try {
+                    AppState.selectedIngredient = name
+                    AppState.recipes = {}
+                    await recipesService.searchRecipesByIngredient()
+                } catch (error) {
+                    Pop.error(error)
+                }
             }
 
             }
