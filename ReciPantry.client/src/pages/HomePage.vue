@@ -8,11 +8,11 @@
     </div>
   </section>
   <!-- Landing Card -->
-  <section class="row p-0 m-0">
+  <section class="row p-0 m-0" id="homeCard">
     <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center landingCardContainer">
       <!-- COMPLETELY SEPARATE FROM RECIPE CARDS. -->
       <!-- These are the cards that can be side scrolled on the home page. -->
-      <LandingCard id="homeCard" />
+      <LandingCard  />
     </div>
   </section>
   <!-- GET STARTED BUTTON - Redirects to recipes Search -->
@@ -35,11 +35,6 @@
     </div>
   </section>
   <hr class="animate__animated animate__fadeIn">
-  <section class="row p-0 m-0">
-    <div class="col-12 p-0 m-0">
-      <h1 class="text-center categories-title animate__animated animate__fadeIn">HOT COMMUNITY PICKS</h1>
-    </div>
-  </section>
 </template>
 
 <script>
@@ -50,29 +45,18 @@ export default {
   setup() {
 
     const driver = window.driver.js.driver
-    const driverObj = driver()
-
-    function onboarding(){
-    driverObj.highlight({
+    const driverObj = driver({
+      showProgress: true,
       steps: [
-      { element: '#titleText',
-      popover: {
-        title: 'Welcome to ReciPantry',
-        description: 'Sit back while we show you around.',
-        position: 'bottom'
-      }
-      }, 
-      { element: '#homeCard',
-      popover: {
-        title: `It's more than a card.`,
-        description: 'Helping you become the best home cook you can possibly be! Sit back while we show you around.',
-        position: 'bottom'
-      }
-      },
-    
-    ]
+        { element: '#homeCard', popover: { title: 'Welcome to ReciPantry 🍔', description: 'Let us show you around and give you a small tour!!' }, position: 'Center' },
+        { element: '#titleText', popover: { title: 'Let us help you become the best chef. 🍔', description: 'Finding the perfect recipe and saving money while doing so has never been easier.' }, position: 'Center' },
+      ]
     })
-  }
+    
+    function onboarding() {
+      driverObj.drive()
+    }
+
 
   onMounted(() => {
     onboarding()
