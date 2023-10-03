@@ -142,7 +142,6 @@ export default {
         let router = useRouter()
         let reviewData = ref({})
         let groceryData = ref({})
-        let router = useRouter()
 
 
         // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
