@@ -127,7 +127,7 @@
 
 <script>
 import { computed, onMounted, ref, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
@@ -141,6 +141,7 @@ export default {
         let route = useRoute()
         let reviewData = ref({})
         let groceryData = ref({})
+        let router = useRouter()
 
 
         // Community Recipe function should be different, mayhaps - getCommunityRecipeById()

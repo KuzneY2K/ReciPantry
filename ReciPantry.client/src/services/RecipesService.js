@@ -107,6 +107,7 @@ class RecipesService{
 
     async cloneRecipe(originalRecipe){
         const newRecipe = new CommunityRecipe(originalRecipe)
+        logger.log(AppState.account)
         newRecipe.creator = AppState.account
         newRecipe.creatorId = AppState.account.id
         newRecipe.extendedIngredients = Object.values(originalRecipe.ingredients)
