@@ -25,12 +25,9 @@
             class="btn text-success selectable text-uppercase animate__animated animate__bounce">
             <img src="https://i.imgur.com/3bXnC5K.png" alt="" height="35"> <span class="fs-4"
               v-if="!account.id">Login</span>
-
           </router-link>
         </li>
-        <li>
-          <router-link></router-link>
-        </li>
+
       </ul>
       <!-- LOGIN COMPONENT HERE -->
     </div>
