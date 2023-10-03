@@ -27,7 +27,12 @@
 </script>
 
 <style lang="scss" scoped>
+
 .btn-grad {
-    background-color: #19875434;
+    background-color: rgb(156, 211, 185)
+}
+
+.filter-btn{
+    z-index: 100;
 }
 </style>

@@ -47,6 +47,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.title {
+    font-size: 2.25rem;
+    text-shadow: 0px 1px 7px rgb(221, 221, 221)
+}
+
+.pag-btn {
+    width: 8rem;
+}
 .buttonContainer {
     position: fixed;
 
