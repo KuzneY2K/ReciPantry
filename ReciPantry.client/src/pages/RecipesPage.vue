@@ -1,12 +1,14 @@
 <template>
       <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
         <div class="col-12 p-0 m-0 d-flex flex-column align-items-center justify-content-center">
-            <h1 class="mt-3">Find your perfect <span class="text-success">Recipe</span></h1>
+            <h1 class="mt-3 title">Find your perfect <span class="text-success">Recipe</span></h1>
         <!-- Search bar that takes in parameters & filters 🔎 -->
-              <SearchBar />
+        <section class="row p-0 m-0">
+            <SearchBar />
+        </section>          
         </div>
       </section>
-      <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0">
+      <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
         <!-- For every recipe result a clickable card is rendered out -->
         <div class="col-12 col-md-8 d-flex flex-column align-items-center justify-content-center">
             <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
@@ -203,5 +205,10 @@ import { Modal } from 'bootstrap';
 </script>
 
 <style lang="scss" scoped>
+
+.title {
+    font-size: 2.25rem;
+    text-shadow: 0px 1px 7px rgb(221, 221, 221)
+}
 
 </style>

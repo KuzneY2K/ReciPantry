@@ -1,6 +1,6 @@
 <template>
     <!-- For each recipe a card is rendered out, instead of using img a div background image is used for UI enhancement -->
-    <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5 animate__animated animate__fadeInRightBig postion-relative " :style="{ backgroundImage: 'url(' + props.recipe.image + ')' }">
+    <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-1 border-dark elevation-5 animate__animated animate__fadeInRightBig postion-relative" :style="{ backgroundImage: 'url(' + props.recipe.image + ')' }">
         <h2 class="postion-absolute text-white recipe-title position-absolute ms-3">{{ props.recipe.title }}</h2>
         <div class="container">
             <!-- Upon clicking "Learn More =>"  the user is taken to the recipe details page of the specific recipe-->
@@ -45,21 +45,14 @@ import { RouterLink } from 'vue-router';
     .card-container{
         height: 7rem;
     }
-
-    .recipe-title{
-        bottom: 3.5rem !important;
-        font-size: 2rem !important;
-        height: 2rem;
-    }
     
 }
 
 .recipe-title {
-    bottom: 8.5rem;
+    bottom: 3.5rem;
     text-shadow: 1px 1px 5px black;
-    height: 4rem;
+    height: 2rem;
     overflow-y: scroll !important;
-    font-size: 4rem;
 }
 
 .arrow {
