@@ -22,11 +22,11 @@
                 <button class="btn btn-success" @click="deleteFavorite"><i class="mdi mdi-heart"></i></button>
             </div> -->
             <div class="ms-2">
-                <button class="btn btn-success border border-1 border-black elevation-5" @click="addOrRemoveFavorite"><i v-if="!isFavorite"
+                <button class="btn btn-success border border-1 border-black elevation-5 p-0 m-0 px-3 py-2" @click="addOrRemoveFavorite"><i v-if="!isFavorite"
                         class="mdi mdi-heart-outline"></i> <i v-if="isFavorite" class="mdi mdi-heart"></i></button>
             </div>
             <div class="ms-2" v-if="account.id == recipe.creatorId">
-                <button @click="deleteRecipe" class="btn btn-danger">Delete Recipe</button>
+                <button @click="deleteRecipe" class="btn btn-danger border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">Delete Recipe</button>
             </div>
         </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
