@@ -1,17 +1,18 @@
 <template>
     <div>
         <!-- Pulls recipe title from active recipe -->
-        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span class="text-black">- {{
-            recipe.readyInMinutes }} Mins</span></h1>
+        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span
+                class="text-black">- {{
+                    recipe.readyInMinutes }} Mins</span></h1>
         <div class="grocery-btn-container position-absolute">
             <!-- Grocery List modal toggle -->
             <button class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5"
-            data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
+                data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
         </div>
         <div class="img-container d-flex flex-column align-items-center justify-content-center">
             <!-- Pulls recipe cover image from active recipe -->
             <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
-            class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
+                class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
         </div>
         <div class="btn-container d-flex flex-row justify-content-start ms-3 mt-4">
 
@@ -22,11 +23,18 @@
                 <button class="btn btn-success" @click="deleteFavorite"><i class="mdi mdi-heart"></i></button>
             </div> -->
             <div class="ms-2">
-                <button class="btn btn-success border border-1 border-black elevation-5 p-0 m-0 px-3 py-2" @click="addOrRemoveFavorite"><i v-if="!isFavorite"
-                        class="mdi mdi-heart-outline"></i> <i v-if="isFavorite" class="mdi mdi-heart"></i></button>
+                <button class="btn btn-success border border-1 border-black elevation-5 p-0 m-0 px-3 py-2"
+                    @click="addOrRemoveFavorite"><i v-if="!isFavorite" class="mdi mdi-heart-outline"></i> <i
+                        v-if="isFavorite" class="mdi mdi-heart"></i></button>
             </div>
             <div class="ms-2" v-if="account.id == recipe.creatorId">
-                <button @click="deleteRecipe" class="btn btn-danger border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">Delete Recipe</button>
+                <button @click="deleteRecipe"
+                    class="btn btn-danger border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">Delete Recipe</button>
+            </div>
+            <div class="ms-2" v-if="account.id == recipe.creatorId">
+                <button @click="editRecipe"
+                    class="btn btn-primary border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">Edit
+                    Recipe</button>
             </div>
         </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
@@ -47,7 +55,8 @@
                     <i class="mdi mdi-cart p-0 m-0 text-success fs-2" @click="addToList(ingredient)"></i>
                     <!-- Checkbox for checking off what a user has and doesnt has -->
                     <input type="checkbox" name="have" class="form-check-input m-0 p-0 mx-2 checkbox">
-                    <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.name }} - {{ ingredient.measureAmount }} {{ ingredient.measureUnit }}</span>
+                    <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.name }} - {{ ingredient.measureAmount }} {{
+                        ingredient.measureUnit }}</span>
 
                 </li>
             </ul>
@@ -76,8 +85,8 @@
         </div>
         <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
             <h1 class="p-0 m-0m-0">Recipe Reviews </h1>
-                <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
-                    class="btn btn-success">Add Review <i class="mdi mdi-plus"></i></button>
+            <button data-bs-toggle="collapse" data-bs-target="#reviewForm" class="btn btn-success">Add Review <i
+                    class="mdi mdi-plus"></i></button>
         </div>
         <div class="collapse" id="reviewForm">
             <form @submit.prevent="createReview" class="form-control">
@@ -190,14 +199,11 @@ export default {
             },
             async removeFromList(ingredientId) {
                 logger.log(ingredientId)
-                // if(await Pop.confirm(`Remove ${ingredientName} from gorcery list?`)){
-                //     let filteredIngredients = AppState.activeRecipe.ingredients.name != ingredientName
-                // }
             },
 
             async deleteRecipe() {
                 try {
-                    if(await Pop.confirm('Are you sure you want to delete this recipe?')){
+                    if (await Pop.confirm('Are you sure you want to delete this recipe?')) {
                         const recipeId = AppState.activeRecipe.id
                         await recipesService.deleteRecipe(recipeId)
                         router.push({ name: 'Account' })
@@ -208,24 +214,6 @@ export default {
                     Pop.error(error)
                 }
             },
-
-            // async createFavorite() {
-            //     try {
-            //         let favData = { recipeId: route.params.recipeId }
-            //         await favoritesService.createFavorite(favData)
-            //     } catch (error) {
-            //         Pop.error(error)
-            //     }
-            // },
-
-            // async deleteFavorite() {
-            //     try {
-            //         const favorite = AppState.favorites.find(fav => fav.accountId == AppState.account.id)
-            //         await favoritesService.deleteFavorite(favorite.id)
-            //     } catch (error) {
-            //         Pop.error(error)
-            //     }
-            // },
 
             async addOrRemoveFavorite() {
                 try {
@@ -257,17 +245,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.recipe-title{
+.recipe-title {
     font-size: 2.5rem;
     text-shadow: 0px 0px 5px rgb(255, 255, 255);
 }
+
 .grocery-list {
     bottom: 5rem;
     right: 1rem;
     z-index: 5 !important;
 }
 
-.ingredients-label{
+.ingredients-label {
     text-shadow: 0px 0px 5px white;
     font-size: 2.25rem !important;
 }
