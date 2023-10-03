@@ -37,23 +37,28 @@ class RecipesService{
         AppState.communityRecipes = res.data.map(recipe => new CommunityRecipe(recipe))
     }
 
-    async getRandomCommunityRecipes(){
-        let rand = Math.floor(Math.random() * 10)
-        let res = await api.get(`recipes`)
-    }
+    // async getRandomCommunityRecipes(){
+    //     let rand = Math.floor(Math.random() * 10)
+    //     let res = await api.get(`recipes`)
+    // }
 
     async searchRecipesByCategory(){
+        AppState.pageNum = 1
+        AppState.selectedIngredient = null
         let res = await recipeApi.get(`complexSearch?query=${AppState.selectedCategory}&number=10&offset=${AppState.pageNum}0`)
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
     }
 
     async searchRecipesByIngredient(){
-        
+        AppState.pageNum = 1
+        AppState.selectedCategory = null
+        let res = await recipeApi.get(`complexSearch?query=${AppState.selectedIngredient}&number=10&offset=${AppState.pageNum}`)
+        AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
     }
 
     // next page, previous page function
     async paginate(reqData){
-        let res = await recipeApi.get(`complexSearch?query=${reqData || AppState.selectedCategory || 'main course'}&number=10&offset=${AppState.pageNum}0`)
+        let res = await recipeApi.get(`complexSearch?query=${reqData || AppState.selectedCategory || AppState.selectedIngredient}&number=10&offset=${AppState.pageNum}0`)
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
     }
 

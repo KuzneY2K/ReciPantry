@@ -14,7 +14,7 @@
                                     <div class="li-container d-flex flex-row justify-content-between fs-5"
                                         v-for="i in ingredientOnList" :key="i.name">
                                         <RouterLink :to="{ name: 'Recipes' }" @click="setIngredient(`${i.name}`)">
-                                        <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name }}</span> -
+                                        <li class="text-black"><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name }}</span> -
                                             {{ i.measureAmount }} {{ i.measureUnit }} </li></RouterLink>
                                             <i class="mdi mdi-close text-danger fs-2" @click="removeFromList(i.id)"></i>
                                     </div>
@@ -44,6 +44,7 @@ import { logger } from '../utils/Logger.js';
 import { groceriesService } from '../services/GroceriesService.js';
 import Pop from '../utils/Pop.js';
 import { recipesService } from '../services/RecipesService.js'
+import { Modal } from 'bootstrap';
 
     export default {
         setup(){
@@ -63,6 +64,7 @@ import { recipesService } from '../services/RecipesService.js'
                 try {
                     AppState.selectedIngredient = name
                     AppState.recipes = {}
+                    Modal.getOrCreateInstance('#groceryListModal').hide()
                     await recipesService.searchRecipesByIngredient()
                 } catch (error) {
                     Pop.error(error)

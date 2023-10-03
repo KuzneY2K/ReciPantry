@@ -128,7 +128,7 @@ import { Modal } from 'bootstrap';
             async function getRandomRecipes(){
                 try {
                     logger.log(AppState.selectedCategory)
-                    if(AppState.selectedCategory == null){
+                    if(AppState.selectedCategory == null && AppState.selectedIngredient == null){
                         await recipesService.getRandomRecipes()
                     }
                 } catch (error) {
@@ -172,6 +172,7 @@ import { Modal } from 'bootstrap';
                 async searchRecipesByQuery() {
                 try {
                     AppState.selectedCategory = null
+                    AppState.selectedIngredient = null
                     await recipesService.searchRecipesByQuery(AppState.savedQuery)
                 } catch (error) {
                     Pop.error(error)
