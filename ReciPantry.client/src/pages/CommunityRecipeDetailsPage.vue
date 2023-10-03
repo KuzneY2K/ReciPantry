@@ -32,7 +32,7 @@
                     class="btn btn-danger border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">Delete Recipe</button>
             </div>
             <div class="ms-2" v-if="account.id == recipe.creatorId">
-                <ModalWrapper id="editRecipes">
+                <ModalWrapper id="editRecipe">
                     <template #button>
                         <button class="btn btn-primary border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">
                             Edit

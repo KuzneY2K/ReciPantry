@@ -29,7 +29,7 @@
         </div>
         <div class="col-12 d-flex flex-column">
             <label for="recipeInstructions">Instructions:</label>
-            <textarea v-model="recipeData.analyzedInstructions" class="form-control" name="recipeInstructions"
+            <textarea v-model="recipeData.instructions" class="form-control" name="recipeInstructions"
                 id="recipeInstructions" maxlength="5000" placeholder="Instructions:" cols="100" required></textarea>
         </div>
         <div class="col-6">
@@ -86,6 +86,7 @@ import { useRouter } from 'vue-router';
 import Pop from '../utils/Pop';
 import { recipesService } from '../services/RecipesService';
 import { AppState } from '../AppState';
+import { Modal } from 'bootstrap';
 
 export default {
     setup() {
@@ -103,7 +104,7 @@ export default {
             // recipeData.value.ingredient.name = AppState.activeRecipe.ingredient.name
             // recipeData.value.ingredient.measureAmount = AppState.activeRecipe.ingredient.measureAmount
             // recipeData.value.ingredient.measureUnit = AppState.activeRecipe.ingredient.measureUnit
-            recipeData.value.analyzedInstructions = AppState.activeRecipe.instructions
+            recipeData.value.instructions = AppState.activeRecipe.instructions
             recipeData.value.servings = AppState.activeRecipe.servings
             recipeData.value.preparationMinutes = AppState.activeRecipe.preparationMinutes
             recipeData.value.readyInMinutes = AppState.activeRecipe.readyInMinutes
@@ -140,6 +141,7 @@ export default {
                 try {
                     const recipeId = AppState.activeRecipe.id
                     await recipesService.editRecipe(recipeData.value, recipeId)
+                    Modal.getOrCreateInstance('#editRecipe').hide()
                 } catch (error) {
                     Pop.error(error)
                 }
