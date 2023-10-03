@@ -28,6 +28,9 @@
 
           </router-link>
         </li>
+        <li>
+          <router-link></router-link>
+        </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
     </div>
