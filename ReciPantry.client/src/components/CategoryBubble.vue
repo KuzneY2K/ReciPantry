@@ -1,6 +1,6 @@
 <template>
     <!-- MAIN COURSE -->
-    <RouterLink :to="{ name: 'Recipes' }" @click="setCategory('main courses')" >
+    <RouterLink :to="{ name: 'Recipes' }" @click="setCategory('main courses')">
     <div class="main-course-container d-flex flex-column align-items-center justify-content-center me-3" >
         <img src="https://plus.unsplash.com/premium_photo-1664391747379-b7d777d02281?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1959&q=80" alt="" class="bubble rounded rounded-pill elevation-5">
         <h5 class="mt-2 category-name">Main Courses</h5>
