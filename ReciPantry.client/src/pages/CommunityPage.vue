@@ -1,7 +1,7 @@
 <template>
           <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
             <div class="col-12 p-0 m-0 d-flex flex-column align-items-center justify-content-center">
-                <h1 class="mt-3 title">Our <span class="text-success">Community <i class="mdi mdi-heart-multiple"></i></span></h1>
+                <h1 class="mt-3 title">From Our <span class="text-success">Community</span></h1>
             <!-- Search bar that takes in parameters & filters 🔎 -->
             <section class="row p-0 m-0">
                 <CommunitySearchBar />
@@ -9,11 +9,7 @@
             </div>
           </section>
     <section class="row p-0 m-0">
-        <div class="col-12 p-0 m-0 px-5">
-            <h1 class="text-center mt-3">Explore <span class="text-success">Community</span></h1>
-            <CommunitySearchBar />
-        </div>
-        <div class="col-12 p-0 m-0 d-flex flex-column justify-content-center align-items-center">
+        <div class="col-12 p-0 m-0 d-flex flex-column justify-content-center align-items-center mt-3">
             <CommunityRecipeCard v-for="recipe in communityRecipes" :key="recipe.id" :recipe="recipe" />
         </div>
         <CreateRecipeModalForm />
