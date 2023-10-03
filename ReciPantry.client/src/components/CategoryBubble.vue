@@ -130,6 +130,7 @@ import Pop from '../utils/Pop.js';
 .category-name{
     text-decoration: none !important;
     color: black !important;
+    text-shadow: 0px 1px 5px white;
 }
 
 .bubble{
