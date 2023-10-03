@@ -143,11 +143,12 @@ export default {
         // gets recipe info from route params
         onMounted(() => {
             getCommunityRecipeById();
+            logger.log(AppState.account)
         });
         async function getCommunityRecipeById() {
             try {
                 await recipesService.getCommunityRecipeById(route.params.recipeId);
-                document.getElementById('instructions').innerText= AppState.activeRecipe.instructions
+                document.getElementById('instructions').innerHTML= AppState.activeRecipe.instructions
                 document.getElementById('summary').innerHTML = AppState.activeRecipe.summary
                 getReviewsByRecipe();
                 getFavoritesByRecipe();
