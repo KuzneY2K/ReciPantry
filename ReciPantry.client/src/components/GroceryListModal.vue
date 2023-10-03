@@ -31,11 +31,24 @@
 <script>
 import { computed } from 'vue';
 import { AppState } from '../AppState.js';
+import { logger } from '../utils/Logger.js';
+import { groceriesService } from '../services/GroceriesService.js';
+import Pop from '../utils/Pop.js';
 
     export default {
         setup(){
             return{
             ingredientOnList: computed(() => AppState.groceryList),
+
+                async removeFromList(groceryId) {
+                logger.log(groceryId)
+                if (await Pop.confirm(`Remove from gorcery list?`)) {
+                    await groceriesService.removeFromList(groceryId)
+                } else {
+                    Pop.toast('Grocery was not removed from the list.')
+                }
+            }    
+
             }
         }
     }
