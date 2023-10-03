@@ -60,23 +60,28 @@ export default {
         { element: '#navbarHomeBox', popover: { title: 'Home Page. 🏡', description: 'You are here!', side: "top", align: "center" } },
         { element: '#navbarRecipesBox', popover: { title: 'Recipe Page. 📃', description: 'Explore all of our recipes on this page!', side: "top", align: "center" } },
         { element: '#navbarCommunityBox', popover: { title: 'Community Page. 🫂', description: 'Explore all of our custom user created recipes, and be able to create your own!', side: "top", align: "center" } },
-        { element: '#navbarAccountBox', popover: { title: 'Account Page. 👳', description: 'Access your account here.', side: "top", align: "center" } },
-        { element: '#getStartedBox', popover: { title: 'Ready to start?', description: 'Go on now.', side: "top", align: "center" }, 
-        onNextClick: () => {AppState.needsHomeTour = localStorage.setItem('needsHomeTour', 'false')} }
+        { element: '#navbarAccountBox', popover: { title: 'Account Page. 👳', description: 'Access your account here.', side: "top", align: "center", 
+        onNextClick: () => {
+          localStorage.setItem('needsHomeTour', false),
+            logger.log('END TOUR => ' + localStorage.getItem('needsHomeTour'))
+          driverObj.moveNext()
+            } } },
+        { element: '#getStartedBox', popover: { title: 'Ready to start?', description: 'Go on now.', side: "top", align: "center"}, 
+         }
         
       ]
     })
     
-    async function onboarding() {
-      await AppState.recipes
+    function onboarding() {
       driverObj.drive()
-      logger.log(localStorage.getItem('needsHomeTour'))
     }
 
 
   onMounted(() => {
-
-    onboarding()
+    // localStorage.clear()
+    if(localStorage.getItem('needsHomeTour') == null){
+      onboarding()
+    }
   })
     
     return {
