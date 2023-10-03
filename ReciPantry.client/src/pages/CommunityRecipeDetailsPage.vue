@@ -32,7 +32,7 @@
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
         <div class="ingredients-container p-0 m-0 px-4 mt-3" v-if="recipe.ingredients">
             <div class="ingredients-header d-flex flex-row justify-content-between align-items-center">
-                <h1 class="p-0 m-0">Ingredients</h1>
+                <h1 class="p-0 m-0 ingredients-label">Ingredients</h1>
                 <h3 class="badge bg-success fs-5 servings elevation-3">{{ recipe.servings }} SERVINGS</h3>
             </div>
             <ul class="p-0 m-0 list-unstyled">
@@ -278,6 +278,11 @@ export default {
 .grocery-list {
     bottom: 5rem;
     right: 1rem;
+}
+
+.ingredients-label{
+    text-shadow: 0px 0px 5px white;
+    font-size: 2.25rem !important;
 }
 
 .checkbox {
