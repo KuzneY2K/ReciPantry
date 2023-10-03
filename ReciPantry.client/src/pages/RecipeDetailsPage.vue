@@ -5,7 +5,7 @@
             recipe.readyInMinutes }} Mins</span></h1>
         <div class="grocery-btn-container postion-absolute">
             <!-- Grocery List modal toggle -->
-            <button class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5"
+            <button class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5 grocery-list-btn"
                 data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
         </div>
         <div class="img-container d-flex flex-column align-items-center justify-content-center">
@@ -84,9 +84,10 @@
 
         <!-- STUB review card component -->
         <div class="p-0 m-0">
-            <div>
-                <h1 class="p-4 m-0">Recipe Reviews <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
-                        class="btn btn-success">Add Review <i class="mdi mdi-plus"></i></button></h1>
+            <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
+                <h1 class="p-0 m-0m-0">Recipe Reviews</h1> 
+                <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
+                        class="btn btn-success">Add Review <i class="mdi mdi-plus"></i></button>
             </div>
             <!-- STUB create review form -->
             <div class="collapse" id="reviewForm">
@@ -105,9 +106,12 @@
                     <button class="btn btn-success">Post Review</button>
                 </form>
             </div>
-            <div v-for="review in reviews" :key="review.id"
-                class="col-12 d-flex flex-column align-items-center justify-content-center">
+
+            <!-- STUB review card -->
+            <div class="p-0 m-0 px-3">
+            <div v-for="review in reviews" :key="review.id" class="col-12">
                 <ReviewCard :review="review" />
+            </div>
             </div>
         </div>
 
@@ -239,6 +243,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .recipe-title{
     font-size: 2.5rem;
     text-shadow: 0px 0px 5px rgb(255, 255, 255);
@@ -252,6 +257,7 @@ export default {
 .grocery-list {
     bottom: 5rem;
     right: 1rem;
+    z-index: 5 !important;
 }
 
 .checkbox {

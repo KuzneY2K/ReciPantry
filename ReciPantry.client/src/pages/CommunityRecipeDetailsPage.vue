@@ -74,9 +74,10 @@
                 {{ recipe.summary }}
             </div>
         </div>
-        <div>
-            <h1 class="p-4 m-0">Recipe Reviews <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
-                    class="btn btn-success">Add Review <i class="mdi mdi-plus"></i></button></h1>
+        <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
+            <h1 class="p-0 m-0m-0">Recipe Reviews </h1>
+                <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
+                    class="btn btn-success">Add Review <i class="mdi mdi-plus"></i></button>
         </div>
         <div class="collapse" id="reviewForm">
             <form @submit.prevent="createReview" class="form-control">
@@ -96,7 +97,7 @@
         </div>
 
         <!-- STUB review cards  -->
-        <div class="">
+        <div class="p-0 m-0 px-3">
             <div v-for="review in reviews" :key="review.id" class="col-12">
                 <ReviewCard :review="review" />
             </div>
@@ -278,6 +279,7 @@ export default {
 .grocery-list {
     bottom: 5rem;
     right: 1rem;
+    z-index: 5 !important;
 }
 
 .ingredients-label{
