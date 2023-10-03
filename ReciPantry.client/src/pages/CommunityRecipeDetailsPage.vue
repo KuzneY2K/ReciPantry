@@ -176,7 +176,6 @@ export default {
             isFavorite: computed(() => AppState.myFavorites.find(favorite => favorite.accountId == AppState.account.id)),
             reviewData,
             groceryData,
-            ref,
 
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
@@ -229,15 +228,11 @@ export default {
                     logger.log(reviewData.value)
                     reviewData.value.recipeId = route.params.recipeId
                     await reviewService.createReview(reviewData.value)
-                    this.clearForm()
-                    Pop.toast('Review left')
+                    reviewData.value = {}
+                    Pop.toast('Review left', 'success')
                 } catch (error) {
                     Pop.error(error)
                 }
-            },
-
-            async clearForm() {
-
             }
         }
     }
