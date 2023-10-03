@@ -21,8 +21,15 @@
                             </ul>
                         </div>
                         <div class="modal-footer d-flex flex-row justify-content-between">
-                            <span></span>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Grocery Tips
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <p class="dropdown-item">Clicking a grocery list item will redirect<br> you to a list of recipes utilizing that ingredient!</p>
+                                </ul>
+    </div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close List</button>
                         </div>
                     </div>
                 </div>
