@@ -1,6 +1,19 @@
 <template>
     <div>
-        <div class="btn-container d-flex flex-row justify-content-start ms-3 mt-3">
+        <!-- Pulls recipe title from active recipe -->
+        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span class="text-black">- {{
+            recipe.readyInMinutes }} Mins</span></h1>
+        <div class="grocery-btn-container position-absolute">
+            <!-- Grocery List modal toggle -->
+            <button class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5"
+            data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
+        </div>
+        <div class="img-container d-flex flex-column align-items-center justify-content-center">
+            <!-- Pulls recipe cover image from active recipe -->
+            <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
+            class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
+        </div>
+        <div class="btn-container d-flex flex-row justify-content-start ms-3 mt-4">
 
             <!-- <div class="ms-2">
                 <button class="btn btn-success" @click="createFavorite"><i class="mdi mdi-heart-outline"></i></button>
@@ -16,21 +29,8 @@
                 <button @click="deleteRecipe" class="btn btn-danger">Delete Recipe</button>
             </div>
         </div>
-        <!-- Pulls recipe title from active recipe -->
-        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span class="text-black">- {{
-            recipe.readyInMinutes }} Mins</span></h1>
-        <div class="grocery-btn-container position-absolute">
-            <!-- Grocery List modal toggle -->
-            <button class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5"
-                data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
-        </div>
-        <div class="img-container d-flex flex-column align-items-center justify-content-center">
-            <!-- Pulls recipe cover image from active recipe -->
-            <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
-                class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
-        </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
-        <div class="ingredients-container p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
+        <div class="ingredients-container p-0 m-0 px-4 mt-3" v-if="recipe.ingredients">
             <div class="ingredients-header d-flex flex-row justify-content-between align-items-center">
                 <h1 class="p-0 m-0">Ingredients</h1>
                 <h3 class="badge bg-success fs-5 servings elevation-3">{{ recipe.servings }} SERVINGS</h3>
