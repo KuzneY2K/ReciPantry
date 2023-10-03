@@ -102,7 +102,7 @@ class RecipesService{
 
     async editRecipe(recipeData, recipeId){
         const res = await api.put(`api/recipes/${recipeId}`, recipeData)
-        AppState.activeRecipe = new Recipe(res.data)
+        AppState.activeRecipe = new CommunityRecipe(res.data)
     }
 
     async cloneRecipe(originalRecipe){
