@@ -1,7 +1,7 @@
 <template>
     <div v-if="recipe">
         <!-- Pulls recipe title from active recipe -->
-        <h1 class="text-start ms-4 mt-3 text-success position-relative">{{ recipe.title }} <span class="text-black">- {{
+        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span class="text-black">- {{
             recipe.readyInMinutes }} Mins</span></h1>
         <div class="grocery-btn-container postion-absolute">
             <!-- Grocery List modal toggle -->
@@ -11,7 +11,7 @@
         <div class="img-container d-flex flex-column align-items-center justify-content-center">
             <!-- Pulls recipe cover image from active recipe -->
             <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
-                class="rounded rounded-5 border border-1 border-dark elevation-5 recipe-image">
+                class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
         </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
         <div class="ingredients-container p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
@@ -239,11 +239,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .cart-btn{
-//     right: -3rem !important;
-// }
-
-.grocery-btn-container {}
+.recipe-title{
+    font-size: 2.5rem;
+    text-shadow: 0px 0px 5px rgb(255, 255, 255);
+}
 
 .grocery-list {
     bottom: 5rem;
