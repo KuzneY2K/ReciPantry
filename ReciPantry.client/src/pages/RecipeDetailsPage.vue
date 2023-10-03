@@ -183,8 +183,8 @@ export default {
             async addToList(grocery) {
                 if (await Pop.confirm(`Add ${grocery.name} to grocery list?`)) {
                     groceryData.value.groceryName = grocery.name
-                    groceryData.value.measureAmount = grocery.measures.us.amount
-                    groceryData.value.measureUnit = grocery.measures.us.unitShort
+                    groceryData.value.measureAmount = grocery.measures.us.amount || ''
+                    groceryData.value.measureUnit = grocery.measures.us.unitShort || ''
                     await groceriesService.addGrocery(groceryData.value)
                     Pop.success(`Added ${grocery.name} to grocery list!`)
                     logger.log(AppState.groceryList)
