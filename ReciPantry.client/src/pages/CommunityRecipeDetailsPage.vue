@@ -24,8 +24,8 @@
             </div> -->
             <div class="ms-2">
                 <button class="btn btn-success border border-1 border-black elevation-5 p-0 m-0 px-3 py-2"
-                    @click="addOrRemoveFavorite"><i v-if="!isFavorite" class="mdi mdi-heart-outline"></i> <i
-                        v-if="isFavorite" class="mdi mdi-heart"></i></button>
+                    @click="addOrRemoveFavorite"><i v-if="!isFavorite" class="mdi mdi-heart-outline"></i> <i v-else
+                        class="mdi mdi-heart"></i></button>
             </div>
             <div class="ms-2" v-if="account.id == recipe.creatorId">
                 <button @click="deleteRecipe"
@@ -124,7 +124,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import { AppState } from '../AppState.js'
@@ -141,6 +141,9 @@ export default {
         let reviewData = ref({});
         let groceryData = ref({});
         // gets recipe info from route params
+        watchEffect(() => {
+            getFavoritesByRecipe()
+        })
         onMounted(() => {
             getCommunityRecipeById();
             logger.log(AppState.account)
@@ -148,7 +151,7 @@ export default {
         async function getCommunityRecipeById() {
             try {
                 await recipesService.getCommunityRecipeById(route.params.recipeId);
-                document.getElementById('instructions').innerHTML= AppState.activeRecipe.instructions
+                document.getElementById('instructions').innerHTML = AppState.activeRecipe.instructions
                 document.getElementById('summary').innerHTML = AppState.activeRecipe.summary
                 getReviewsByRecipe();
                 getFavoritesByRecipe();
@@ -183,7 +186,7 @@ export default {
             ingredientOnList: computed(() => AppState.groceryList),
             router,
             favorite: computed(() => AppState.favorites),
-            isFavorite: computed(() => AppState.myFavorites.find(favorite => favorite.accountId == AppState.account.id)),
+            isFavorite: computed(() => AppState.favorites.find(favorite => favorite.accountId == AppState.account.id)),
             reviewData,
             groceryData,
             // Adds ingredient to shopping list when clicking on cart.
