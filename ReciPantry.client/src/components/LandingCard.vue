@@ -6,7 +6,7 @@
                 <h4 class="p-0 m-0 position-absolute ingredientsCount text-white fs-3">{{ randomRecipe[0].ingredientsCount }} Ingredients</h4>
         </div>
         <RouterLink :to="{ name: 'Recipe Details', params: { recipeId: randomRecipe[0].id } }">
-            <span class="learnMore position-absolute text-white">Learn More</span><i class="mdi mdi-arrow-right-bold p-0 m-0 fs-1 text-white position-absolute arrow"></i>
+            <span class="learnMore position-absolute text-white" id="learnMoreText">Learn More</span><i class="mdi mdi-arrow-right-bold p-0 m-0 fs-1 text-white position-absolute arrow"></i>
         </RouterLink>
     </div>
     

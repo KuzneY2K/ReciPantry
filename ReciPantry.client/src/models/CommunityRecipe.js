@@ -6,7 +6,7 @@ export class CommunityRecipe {
         this.title = data.title
         this.ingredients = data.extendedIngredients
         this.image = data.image
-        this.instructions = data.analyzedInstructions
+        this.instructions = data.instructions
         this.summary = data.summary
         this.servings = data.servings
         this.glutenFree = data.glutenFree

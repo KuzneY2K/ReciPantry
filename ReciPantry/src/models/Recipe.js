@@ -2,7 +2,7 @@ import { Schema } from "mongoose"
 
 export const RecipeSchema = new Schema({
     creatorId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
-    analyzedInstructions: { type: Array, required: false },
+    // analyzedInstructions: { type: Array, required: false },
     cheap: { type: Boolean, required: false },
     cookingMinutes: { type: Number, required: false },
     cuisines: { type: Array, required: false },
@@ -10,12 +10,12 @@ export const RecipeSchema = new Schema({
     // This needs to be ENUMS !!!
     diets: { type: Array, required: false },
     dishTypes: { type: Array, required: false },
-    extendedIngredients: { type: Array, required: false },
+    extendedIngredients: { type: Object, required: false },
     glutenFree: { type: Boolean, required: false },
     healthScore: { type: Number, required: false },
     dishId: { type: Number, required: false },
     image: { type: String, required: false },
-    instructions: { type: String, required: false },
+    instructions: { type: String, required: true },
     preparationMinutes: { type: Number, required: false },
     pricePerServing: { type: Number, required: false },
     readyInMinutes: { type: Number, required: false },

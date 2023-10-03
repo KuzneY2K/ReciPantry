@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-12 d-flex flex-column">
                             <label for="recipeInstructions">Instructions:</label>
-                            <textarea v-model="recipeData.analyzedInstructions" class="form-control"
+                            <textarea v-model="recipeData.instructions" class="form-control"
                                 name="recipeInstructions" id="recipeInstructions" maxlength="5000"
                                 placeholder="Instructions:" cols="100" required></textarea>
                         </div>

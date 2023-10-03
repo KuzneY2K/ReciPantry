@@ -152,6 +152,7 @@ export default {
                 document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
                 document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
                 document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
+                logger.log(AppState.activeRecipe)
             } catch (error) {
                 Pop.error(error)
             }

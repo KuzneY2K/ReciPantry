@@ -104,7 +104,7 @@ class RecipesService{
         const newRecipe = new CommunityRecipe(originalRecipe)
         newRecipe.creator = AppState.account
         newRecipe.creatorId = AppState.account.id
-        newRecipe.ingredients = Object.values(originalRecipe.ingredients)
+        newRecipe.extendedIngredients = Object.values(originalRecipe.ingredients)
         newRecipe.instructions = originalRecipe.instructions
         
         logger.log(originalRecipe)

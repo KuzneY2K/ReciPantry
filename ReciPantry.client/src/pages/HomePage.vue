@@ -1,7 +1,7 @@
 <template>
   <!-- Landing Text -->
   <section class="row p-0 m-0">
-    <div class="col-12 p-0 m-0">
+    <div class="col-12 p-0 m-0" id="titleText">
       <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__bounceInRight"><span
           class="text-success">FIND</span> THE RECIPE THAT <br>SUITS <span class="text-success">YOU</span> <i
           class="mdi mdi-chef-hat"></i></h1>
@@ -12,7 +12,7 @@
     <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center landingCardContainer">
       <!-- COMPLETELY SEPARATE FROM RECIPE CARDS. -->
       <!-- These are the cards that can be side scrolled on the home page. -->
-      <LandingCard />
+      <LandingCard id="homeCard" />
     </div>
   </section>
   <!-- GET STARTED BUTTON - Redirects to recipes Search -->
@@ -40,26 +40,47 @@
       <h1 class="text-center categories-title animate__animated animate__fadeIn">HOT COMMUNITY PICKS</h1>
     </div>
   </section>
-  <!-- FORM PROTOTYPE -->
-  <!-- <button @click="addToArray()">+</button>
-    <form action="">
-      <input v-for="ingredient in ingredientArray" :key="ingredient" v-model="ingredient.body" type="text">
-    </form> -->
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { AppState } from '../AppState.js';
 
 export default {
   setup() {
-    // const ingredientArray = ref([{}])
+
+    const driver = window.driver.js.driver
+    const driverObj = driver()
+
+    function onboarding(){
+    driverObj.highlight({
+      steps: [
+      { element: '#titleText',
+      popover: {
+        title: 'Welcome to ReciPantry',
+        description: 'Sit back while we show you around.',
+        position: 'bottom'
+      }
+      }, 
+      { element: '#homeCard',
+      popover: {
+        title: `It's more than a card.`,
+        description: 'Helping you become the best home cook you can possibly be! Sit back while we show you around.',
+        position: 'bottom'
+      }
+      },
+    
+    ]
+    })
+  }
+
+  onMounted(() => {
+    onboarding()
+  })
+    
     return {
       categories: computed(() => AppState.categories),
-      // ingredientArray,
-      addToArray() {
-        // ingredientArray.value.push({})
-      }
+      
     }
   }
 }

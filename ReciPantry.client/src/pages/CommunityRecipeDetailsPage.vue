@@ -73,7 +73,7 @@
         <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
-            <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5">
+            <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5" id="instructions">
 
                 {{ recipe.instructions?.toString() }}
 
