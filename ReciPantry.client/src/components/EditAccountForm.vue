@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="editAccount">
-        <div class="conntain">
+        <div class="container">
             <section class="row">
                 <div class="col-6 fs-2">
                     <label for="accountName">Name:</label>

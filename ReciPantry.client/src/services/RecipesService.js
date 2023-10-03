@@ -100,6 +100,11 @@ class RecipesService{
         logger.log(AppState.filterData)
     }
 
+    async editRecipe(recipeData, recipeId){
+        const res = await api.put(`api/recipes/${recipeId}`, recipeData)
+        AppState.activeRecipe = new Recipe(res.data)
+    }
+
     async cloneRecipe(originalRecipe){
         const newRecipe = new CommunityRecipe(originalRecipe)
         newRecipe.creator = AppState.account

@@ -7,7 +7,7 @@
         </div>
         <div class="col-12">
             <label for="recipeIngredients">Ingredients:</label>
-            <div class="ingredient-container d-flex flex-row justify-content-start" v-for="ingredient in ingredients"
+            <div class="ingredient-container d-flex flex-row justify-content-start" v-for="ingredient in recipeIngredients"
                 :key="ingredient.id">
                 <input v-model="ingredient.name" class="form-control" id="recipeIngredients" type="text" maxlength="1000"
                     placeholder="Ingredients" required>
@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import Pop from '../utils/Pop';
 import { recipesService } from '../services/RecipesService';
@@ -92,9 +92,32 @@ export default {
         const recipeData = ref({})
         const router = useRouter()
         let ingredients = ref([{}])
+
+        watchEffect(() => {
+            populateForm();
+        })
+
+        async function populateForm() {
+            recipeData.value.title = AppState.activeRecipe.title
+            recipeData.value.image = AppState.activeRecipe.image
+            // recipeData.value.ingredient.name = AppState.activeRecipe.ingredient.name
+            // recipeData.value.ingredient.measureAmount = AppState.activeRecipe.ingredient.measureAmount
+            // recipeData.value.ingredient.measureUnit = AppState.activeRecipe.ingredient.measureUnit
+            recipeData.value.analyzedInstructions = AppState.activeRecipe.instructions
+            recipeData.value.servings = AppState.activeRecipe.servings
+            recipeData.value.preparationMinutes = AppState.activeRecipe.preparationMinutes
+            recipeData.value.readyInMinutes = AppState.activeRecipe.readyInMinutes
+            recipeData.value.summary = AppState.activeRecipe.summary
+            recipeData.value.glutenFree = AppState.activeRecipe.glutenFree
+            recipeData.value.vegan = AppState.activeRecipe.vegan
+            recipeData.value.vegetarian = AppState.activeRecipe.vegetarian
+        }
+
         return {
+
             recipeData,
             ingredients,
+            recipeIngredients: computed(() => AppState.activeRecipe.ingredients),
             router,
             async addIngredient() {
                 try {
@@ -115,7 +138,8 @@ export default {
 
             async editRecipe() {
                 try {
-                    await recipesService.editRecipe(AppState.activeRecipe)
+                    const recipeId = AppState.activeRecipe.id
+                    await recipesService.editRecipe(recipeData.value, recipeId)
                 } catch (error) {
                     Pop.error(error)
                 }
