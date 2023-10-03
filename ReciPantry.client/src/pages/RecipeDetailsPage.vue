@@ -127,7 +127,7 @@
 
 <script>
 import { computed, onMounted, ref, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
@@ -139,6 +139,7 @@ import { onAuthLoaded } from '@bcwdev/auth0provider-client';
 export default {
     setup() {
         let route = useRoute()
+        let router = useRouter()
         let reviewData = ref({})
         let groceryData = ref({})
 
@@ -184,6 +185,7 @@ export default {
             ingredientOnList: computed(() => AppState.groceryList),
             groceryData,
             reviewData,
+            router,
 
             // Adds ingredient to shopping list when clicking on cart.
             async addToList(grocery) {
@@ -224,6 +226,7 @@ export default {
                 try {
                     if (await Pop.confirm('Are you sure you want to clone this?')) {
                         await recipesService.cloneRecipe(AppState.activeRecipe)
+                        router.push({ name: "Community Recipe Details", params: { recipeId: AppState.activeRecipe.id } })
                     }
                 } catch (error) {
                     Pop.error(error)
