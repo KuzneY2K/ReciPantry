@@ -17,7 +17,7 @@
       <!-- STUB Account page buttons -->
       <!-- Edit account modal -->
 
-      <div class="col-12 text-center">
+      <div class="col-12 text-center mt-3">
         <ModalWrapper id="edit-account">
           <template #button>
             <h1 class="fs-2 btn btn-outline-dark">EDIT ACCOUNT <i class="mdi mdi-head"></i></h1>
@@ -52,7 +52,7 @@
         </section>
       </div>
 
-      <div class="col-12 text-center mt-4">
+      <div class="col-12 text-center mt-3">
         <button class="btn btn-outline-dark" data-bs-toggle="collapse" data-bs-target="#favRecipes">
           <h1 class="fs-2 pt-2">FAV RECIPES <i class="mdi mdi-fire"></i></h1>
         </button>
