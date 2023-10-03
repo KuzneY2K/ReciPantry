@@ -34,9 +34,13 @@
           </template>
           <template #body>
             <h3>
-              Preferences
+              Preferences list
             </h3>
-            <PreferencesForm />
+          </template>
+          <template #footer>
+            <div class="fs-4">
+              <PreferencesForm />
+            </div>
           </template>
         </ModalWrapper>
       </div>
