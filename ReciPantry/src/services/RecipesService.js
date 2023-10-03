@@ -16,7 +16,7 @@ class RecipesService {
     }
     // creates a recipe in the db
     async createRecipe(body) {
-        const recipe = await dbContext.Recipes.create(body)
+        const recipe = (await dbContext.Recipes.create(body)).populate('creator')
         return recipe
     }
     //edits a recipe in the db, finds by ID, error handling, then updates/ saves

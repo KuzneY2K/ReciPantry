@@ -139,6 +139,7 @@ import { onAuthLoaded } from '@bcwdev/auth0provider-client';
 export default {
     setup() {
         let route = useRoute()
+        let router = useRouter()
         let reviewData = ref({})
         let groceryData = ref({})
         let router = useRouter()
@@ -185,6 +186,7 @@ export default {
             ingredientOnList: computed(() => AppState.groceryList),
             groceryData,
             reviewData,
+            router,
 
             // Adds ingredient to shopping list when clicking on cart.
             async addToList(grocery) {
@@ -225,6 +227,7 @@ export default {
                 try {
                     if (await Pop.confirm('Are you sure you want to clone this?')) {
                         await recipesService.cloneRecipe(AppState.activeRecipe)
+                        router.push({ name: "Community Recipe Details", params: { recipeId: AppState.activeRecipe.id } })
                     }
                 } catch (error) {
                     Pop.error(error)

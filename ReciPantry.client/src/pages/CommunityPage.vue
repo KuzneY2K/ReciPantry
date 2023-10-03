@@ -35,6 +35,7 @@ export default {
         async function getCommunityRecipes() {
             try {
                 await recipesService.getCommunityRecipes()
+
             } catch (error) {
                 Pop.error(error)
             }
