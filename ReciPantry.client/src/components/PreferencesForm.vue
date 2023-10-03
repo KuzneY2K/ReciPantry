@@ -1,5 +1,5 @@
 <template>
-    preferences here
+    preferences form
 </template>
 
 <script>
