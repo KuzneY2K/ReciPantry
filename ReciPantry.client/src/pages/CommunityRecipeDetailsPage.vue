@@ -75,7 +75,7 @@
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5" id="instructions">
 
-                {{ recipe.instructions?.toString() }}
+                <!-- {{ recipe.instructions?.toString() }} -->
 
             </p>
             <!-- <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
@@ -86,8 +86,8 @@
         <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
         <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
             <h1 class="p-0 m-0">About The Recipe</h1>
-            <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary">
-                {{ recipe.summary }}
+            <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary" id="summary">
+                <!-- {{ recipe.summary }} -->
             </div>
         </div>
         <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
@@ -147,6 +147,8 @@ export default {
         async function getCommunityRecipeById() {
             try {
                 await recipesService.getCommunityRecipeById(route.params.recipeId);
+                document.getElementById('instructions').innerText= AppState.activeRecipe.instructions
+                document.getElementById('summary').innerHTML = AppState.activeRecipe.summary
                 getReviewsByRecipe();
                 getFavoritesByRecipe();
             }
