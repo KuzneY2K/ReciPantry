@@ -17,15 +17,16 @@ class FavoritesService{
     // }
 
     async addOrRemoveFavorite(recipeId){
-        let isFavorite = AppState.favorites.find(favorite => favorite.accountId == AppState.account.id)
-        if (!isFavorite){
+        let isFavorite = AppState.myFavorites.find(favorite => favorite.accountId == AppState.account.id)
+        if (isFavorite){
+            await api.delete(`api/favorites/${isFavorite.id}`)
+            AppState.myFavorites.splice(isFavorite, 1)
+            logger.log(`Favorite at id ${isFavorite.id} deleted`)
+        } else {
             const res = await api.post('api/favorites', recipeId)
             logger.log('created favorite', res.data)
-            AppState.favorites.push(new Favorite(res.data))
-        } else {
-            await api.delete(`api/favorites/${isFavorite.id}`)
-            AppState.favorites.splice(isFavorite, 1)
-            logger.log(`Favorite at id ${isFavorite.id} deleted`)
+            AppState.myFavorites.push(new Favorite(res.data))
+            
         }
     }
 

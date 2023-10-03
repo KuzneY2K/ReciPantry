@@ -173,7 +173,7 @@ export default {
             ingredientOnList: computed(() => AppState.groceryList),
             router,
             favorite: computed(() => AppState.favorites),
-            isFavorite: computed(() => AppState.favorites.find(favorite => favorite.accountId == AppState.account.id)),
+            isFavorite: computed(() => AppState.myFavorites.find(favorite => favorite.accountId == AppState.account.id)),
             reviewData,
             groceryData,
             ref,
