@@ -20,11 +20,11 @@
         <div class="col-12 col-md-8 d-flex flex-column p-0 m-0 px-2" v-if="recipes[0]">
         <div class="btn-container d-flex flex-row justify-content-between">
             <!-- Go back -->
-            <button v-if="pageNum >= 1" @click="previousPage()" class="btn btn-success text-white">Previous Page</button>
+            <button v-if="pageNum >= 1" @click="previousPage()" class="btn btn-success text-white border border-1 border-black elevation-5 pag-btn px-1">Previous Page</button>
             <!-- UI prevents user from going into negative pageNum -->
-            <button v-if="pageNum < 1" @click="previousPage()" class="btn btn-success text-white" disabled>Previous Page</button>
+            <button v-if="pageNum < 1" @click="previousPage()" class="btn btn-success text-white border border-1 border-black elevation-5 pag-btn px-1" disabled>Previous Page</button>
             <!-- Go forward -->
-            <button @click="nextPage()" class="btn btn-success text-white">Next Page</button>
+            <button @click="nextPage()" class="btn btn-success text-white border border-1 border-black elevation-5 pag-btn px-1">Next Page</button>
         </div>
     </div>
       </section>
@@ -209,6 +209,10 @@ import { Modal } from 'bootstrap';
 .title {
     font-size: 2.25rem;
     text-shadow: 0px 1px 7px rgb(221, 221, 221)
+}
+
+.pag-btn {
+    width: 8rem;
 }
 
 </style>
