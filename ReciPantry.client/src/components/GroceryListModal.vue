@@ -20,7 +20,8 @@
                                 </ul>
                             </ul>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer d-flex flex-row justify-content-between">
+                            <span></span>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
