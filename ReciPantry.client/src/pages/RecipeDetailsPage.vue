@@ -16,7 +16,7 @@
                 class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
         </div>
         <div class="ms-4">
-            <button class="btn btn-success">Clone Recipe</button>
+            <button @click="cloneRecipe" class="btn btn-success">Clone Recipe</button>
         </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
         <div class="ingredients-container p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
@@ -214,6 +214,16 @@ export default {
                     reviewData.value.recipeId = route.params.recipeId
                     await reviewService.createReview(reviewData.value)
                     Pop.toast('Review left')
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
+
+            async cloneRecipe() {
+                try {
+                    if (await Pop.confirm('Are you sure you want to clone this?')) {
+                        await recipesService.cloneRecipe(AppState.activeRecipe)
+                    }
                 } catch (error) {
                     Pop.error(error)
                 }

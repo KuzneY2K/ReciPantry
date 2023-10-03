@@ -104,6 +104,19 @@ class RecipesService{
         const res = await api.put(`api/recipes/${recipeId}`, recipeData)
         AppState.activeRecipe = new Recipe(res.data)
     }
+
+    async cloneRecipe(originalRecipe){
+        const newRecipe = new CommunityRecipe(originalRecipe)
+        newRecipe.creator = AppState.account
+        newRecipe.creatorId = AppState.account.id
+        newRecipe.ingredients = Object.values(originalRecipe.ingredients)
+        newRecipe.instructions = originalRecipe.instructions
+        
+        logger.log(originalRecipe)
+    
+        logger.log(newRecipe)
+        this.createRecipe(newRecipe)
+    }
 }
 
 export const recipesService = new RecipesService()
