@@ -47,7 +47,7 @@
                     <i class="mdi mdi-cart p-0 m-0 text-success fs-2" @click="addToList(ingredient)"></i>
                     <!-- Checkbox for checking off what a user has and doesnt has -->
                     <input type="checkbox" name="have" class="form-check-input m-0 p-0 mx-2 checkbox">
-                    <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.name }}</span>
+                    <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.name }} - {{ ingredient.measureAmount }} {{ ingredient.measureUnit }}</span>
 
                 </li>
             </ul>
@@ -103,33 +103,7 @@
             </div>
         </div>
         <!-- MODAL - CONVERT TO COMPONENT -->
-        <div class="modal fade" id="groceryListModal" tabindex="-1" aria-labelledby="groceryListModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title fs-2" id="groceryListModalLabel">My <span class="text-success">Grocery</span>
-                            List</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="list-unstyled">
-                            <ul class="list-unstyled">
-                                <div class="li-container d-flex flex-row justify-content-between fs-5"
-                                    v-for="i in ingredientOnList" :key="i.name">
-                                    <li><i class="mdi mdi-food"></i> <span class="text-success">{{ i.name }}</span> -
-                                        {{ i.measureAmount }} {{ i.measureUnit }} </li><i
-                                        class="mdi mdi-close text-danger fs-2" @click="removeFromList(i.id)"></i>
-                                </div>
-                            </ul>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <GroceryListModal />
     </div>
 </template>
 
@@ -142,11 +116,13 @@ import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
 import { favoritesService } from '../services/FavoritesService';
+import { groceriesService } from '../services/GroceriesService.js';
 export default {
     setup() {
         let route = useRoute()
         let router = useRouter()
         let reviewData = ref({})
+        let groceryData = ref({})
 
         // gets recipe info from route params
         onMounted(() => {
@@ -190,16 +166,21 @@ export default {
             favorite: computed(() => AppState.favorites),
             isFavorite: computed(() => AppState.favorites.find(favorite => favorite.accountId == AppState.account.id)),
             reviewData,
+            groceryData,
             ref,
 
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
             async addToList(listItem) {
                 logger.log
-                if (await Pop.confirm(`Add ${listItem} to grocery list?`)) {
-                    AppState.groceryList.push(listItem)
-                    Pop.success(`Added ${listItem} to grocery list!`)
-                    logger.log(AppState.groceryList)
+                if (await Pop.confirm(`Add ${listItem.name} to grocery list?`)) {
+                    groceryData.value.groceryName = listItem.name
+                    groceryData.value.measureAmount = listItem.measureAmount
+                    groceryData.value.measureUnit = listItem.measureUnit
+                    await groceriesService.addGrocery(groceryData.value)
+                    // AppState.groceryList.push(listItem)
+                    Pop.success(`Added ${listItem.name} to grocery list!`)
+                    // logger.log(AppState.groceryList)
                 } else {
                     Pop.toast(`${listItem.name} not added to grocery list.`)
                 }

@@ -16,19 +16,25 @@
                             <input v-model="recipeData.title" class="form-control" id="recipeTitle" maxlength="50"
                                 type="text" placeholder="Title" required>
                         </div>
-                        <div class="col-8">
+                        <div class="col-12">
                             <label for="recipeIngredients">Ingredients:</label>
-                            <input v-model="ingredient.name" v-for="ingredient in ingredients" :key="ingredient.id"
+                            <div class="ingredient-container d-flex flex-row justify-content-start" v-for="ingredient in ingredients" :key="ingredient.id">
+                            <input v-model="ingredient.name"
                                 class="form-control" id="recipeIngredients" type="text" maxlength="1000"
                                 placeholder="Ingredients" required>
+                            <input type="number" v-model="ingredient.measureAmount" :key="ingredient.id" placeholder="ex: 2" class="form-control">
+                            <input type="text" v-model="ingredient.measureUnit" :key="ingredient.id" placeholder="TBSP" class="form-control">
+                            </div>
                         </div>
-                        <div class="col-2 p-0 m-0 mt-4">
-                            <button @click="addIngredient" type="button" class="btn btn-success"><i
+                        <div class="add-remove-container d-flex flex-row justify-content-between my-2">
+                        <div class="col-6 p-0 m-0 d-flex flex-row justify-content-center">
+                            <button @click="addIngredient" type="button" class="btn btn-success">Add<i
                                     class="mdi mdi-plus"></i></button>
                         </div>
-                        <div class="col-2 mt-4 p-0 m-0">
-                            <button @click="removeIngredient" class="btn btn-danger" type="button"><i
+                        <div class="col-6 p-0 m-0 d-flex flex-row justify-content-center">
+                            <button @click="removeIngredient" class="btn btn-danger" type="button">Remove <i
                                     class="mdi mdi-minus"></i></button>
+                        </div>
                         </div>
                         <div class="col-12 d-flex flex-column">
                             <label for="recipeInstructions">Instructions:</label>
