@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { onMounted, ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import Pop from '../utils/Pop';
 import { recipesService } from '../services/RecipesService';
@@ -92,6 +92,27 @@ export default {
         const recipeData = ref({})
         const router = useRouter()
         let ingredients = ref([{}])
+
+        watchEffect(() => {
+            populateForm();
+        })
+
+        async function populateForm() {
+            recipeData.value.title = AppState.activeRecipe.title
+            recipeData.value.image = AppState.activeRecipe.image
+            // recipeData.value.ingredient.name = AppState.activeRecipe.ingredient.name
+            // recipeData.value.ingredient.measureAmount = AppState.activeRecipe.ingredient.measureAmount
+            // recipeData.value.ingredient.measureUnit = AppState.activeRecipe.ingredient.measureUnit
+            recipeData.value.analyzedInstructions = AppState.activeRecipe.instructions
+            recipeData.value.servings = AppState.activeRecipe.servings
+            recipeData.value.preparationMinutes = AppState.activeRecipe.preparationMinutes
+            recipeData.value.readyInMinutes = AppState.activeRecipe.readyInMinutes
+            recipeData.value.summary = AppState.activeRecipe.summary
+            recipeData.value.glutenFree = AppState.activeRecipe.glutenFree
+            recipeData.value.vegan = AppState.activeRecipe.vegan
+            recipeData.value.vegetarian = AppState.activeRecipe.vegetarian
+        }
+
         return {
             recipeData,
             ingredients,
@@ -115,7 +136,8 @@ export default {
 
             async editRecipe() {
                 try {
-                    await recipesService.editRecipe(AppState.activeRecipe)
+                    const recipeId = AppState.activeRecipe.id
+                    await recipesService.editRecipe(recipeData.value, recipeId)
                 } catch (error) {
                     Pop.error(error)
                 }

@@ -34,9 +34,9 @@
             <div class="ms-2" v-if="account.id == recipe.creatorId">
                 <ModalWrapper id="editRecipes">
                     <template #button>
-                        <h5 class="btn btn-primary border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">
+                        <button class="btn btn-primary border border-1 border-black p-0 m-0 px-3 py-2 elevation-5">
                             Edit
-                            Recipe</h5>
+                            Recipe</button>
                     </template>
                     <template #body>
                         <EditRecipeForm />
