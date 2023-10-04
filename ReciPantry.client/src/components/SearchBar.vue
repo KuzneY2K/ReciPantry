@@ -22,7 +22,7 @@ import { logger } from '../utils/Logger.js'
 import { recipesService } from '../services/RecipesService.js'
 import Pop from '../utils/Pop.js'
 import { AppState } from '../AppState.js'
-import JSConfetti from 'js-confetti'
+
 
     export default {
         setup() {

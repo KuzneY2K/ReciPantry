@@ -2,10 +2,11 @@
   <!-- Landing Text -->
   <section class="row p-0 m-0">
     <div class="col-12 p-0 m-0" id="titleText">
-      <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__bounceInRight" id="titleH1"><span
+      <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__bounceInRight"><span
           class="text-success">FIND</span> THE RECIPE THAT <br>SUITS <span class="text-success">YOU</span> <i
           class="mdi mdi-chef-hat"></i></h1>
     </div>
+    <h1 id="titleH1"></h1>
   </section>
   <!-- Landing Card -->
   <section class="row p-0 m-0">
@@ -41,7 +42,6 @@
 import { computed, onMounted, ref } from 'vue';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
-// import Typed from 'typed.js';
 
 export default {
   setup() {
