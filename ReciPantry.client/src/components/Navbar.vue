@@ -36,9 +36,11 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, watchEffect, ref } from 'vue';
+import { computed, watchEffect, ref, onMounted } from 'vue';
+import { logger } from '../utils/Logger.js';
 export default {
   setup() {
+
     return {
       account: computed(() => AppState.account)
     }
@@ -47,6 +49,11 @@ export default {
 </script>
 
 <style scoped>
+
+.navbar.disabled {
+  pointer-events: none;
+}
+
 a:hover {
   text-decoration: none;
 }

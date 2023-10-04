@@ -10,7 +10,7 @@
                 <!-- Filters will be options that will set the reqData to their value -->
             </div>
             </form>
-            <button type="button" class="btn btn-grad px-3 py-0 filter-btn ms-2 border border-1 border-black elevation-5">
+            <button type="button" class="btn btn-grad px-3 py-0 filter-btn ms-2 border border-1 border-black elevation-5" id="filterButtonBox">
                 <img src="https://i.imgur.com/Gh9UJij.png" alt="" height="30" data-bs-toggle="modal" data-bs-target="#filterModal" class="p-0 m-0">
             </button>
     </div>

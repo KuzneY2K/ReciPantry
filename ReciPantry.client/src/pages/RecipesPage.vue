@@ -1,9 +1,9 @@
 <template>
-      <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
+      <section class="row p-0 m-0 animate__animated animate__fadeInDownBig" id="recipes-page-title">
         <div class="col-12 p-0 m-0 d-flex flex-column align-items-center justify-content-center">
             <h1 class="mt-3 title">Find your perfect <span class="text-success">Recipe</span></h1>
         <!-- Search bar that takes in parameters & filters 🔎 -->
-        <section class="row p-0 m-0">
+        <section class="row p-0 m-0" id="searchBarBox">
             <SearchBar />
         </section>          
         </div>
@@ -120,6 +120,18 @@ import { Modal } from 'bootstrap';
 
     export default {
         setup(){
+            const driver = window.driver.js.driver
+            const driverObj = driver({
+                showProgress: true,
+                allowClose: false,
+                steps: [
+                    { element: '#recipes-page-title', popover: { title: 'Ready to browse recipes? 🧑‍🍳', description: 'Finding recipes on ReciPantry is super easy. 🔎', side: "bottom", align: "center" } },
+                    { element: '#searchBarBox', popover: { title: 'Search Bar? 🪄', description: 'Use our search bar to find exactly what you need. 👀', side: "bottom", align: "center" } },
+                    { element: '#filterButtonBox', popover: { title: 'Filtering. 🔦', description: 'Our search filter will help you find that perfect recipe. ✨', side: "bottom", align: "center" } },
+                    { element: '#recipeCardBox', popover: { title: 'The Recipe. 🍻', description: 'Each and every recipe from your search will show up as an individual box.', side: "bottom", align: "center" } },
+                    { element: '#learnMoreBox', popover: { title: 'Details. 🍻', description: `Simply click learn more to see all of the that recipe's details.`, side: "bottom", align: "center" } },
+                ]
+            })
 
             let filterData = ref([])
 
@@ -140,8 +152,13 @@ import { Modal } from 'bootstrap';
                 window.scroll(0, 1000)
             }
 
+            function recipesOnBoarding(){
+                driverObj.drive()
+            }
+
             onMounted(() => {
-                scrollFix()
+                // scrollFix()
+                recipesOnBoarding()
                 getRandomRecipes()
             })
             
