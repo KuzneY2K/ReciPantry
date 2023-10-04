@@ -15,7 +15,7 @@
             <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
                 class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
         </div>
-        <div class="ms-5 mt-4">
+        <div class="ms-5 mt-4" v-if="account.id">
             <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5">Clone Recipe</button>
         </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
@@ -91,7 +91,7 @@
         <div class="p-0 m-0">
             <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
                 <h1 class="p-0 m-0m-0">Recipe Reviews</h1>
-                <button data-bs-toggle="collapse" data-bs-target="#reviewForm" class="btn btn-success">Add Review <i
+                <button data-bs-toggle="collapse" data-bs-target="#reviewForm" class="btn btn-success  border border-1 border-black elevation-5" v-if="account.id">Add Review <i
                         class="mdi mdi-plus"></i></button>
             </div>
             <!-- STUB create review form -->
@@ -108,7 +108,9 @@
                         <option value="4">4/5 stars</option>
                         <option value="5">5/5 stars</option>
                     </select>
-                    <button class="btn btn-success">Post Review</button>
+                    <div class="btn-container">
+                    <button class="btn btn-success border border-1 border-black elevation-5">Post Review</button>
+                    </div>
                 </form>
             </div>
 
@@ -184,6 +186,7 @@ export default {
             ingredients: computed(() => AppState.activeRecipe.ingredients),
             reviews: computed(() => AppState.activeReviews),
             ingredientOnList: computed(() => AppState.groceryList),
+            account: computed(() => AppState.account),
             groceryData,
             reviewData,
             router,
