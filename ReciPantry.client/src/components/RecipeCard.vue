@@ -49,9 +49,9 @@ import { RouterLink } from 'vue-router';
 }
 
 .recipe-title {
-    bottom: 3.5rem;
+    bottom: 1.5rem;
     text-shadow: 1px 1px 5px black;
-    height: 2rem;
+    height: 4rem;
     overflow-y: scroll !important;
 }
 
