@@ -196,7 +196,10 @@ export default {
                         driverObj.moveNext()
                     } } },
                     { element: '.instructions-container', popover: { title: `Instructions ⛏️`, description: `The recipe instructions are located here. You can expect to see a detailed breakdown of the recipe, how to prepare and cook it.`, side: "top", align: "center" } },
-                    { element: '.summary-container', popover: { title: `Summary 🗺️`, description: `A summary of the recipe. This may provide you a brief history of the recipe, its origins and much more.`, side: "top", align: "center" } },
+                    { element: '.summary-container', popover: { title: `Summary 🗺️`, description: `A summary of the recipe. This may provide you a brief history of the recipe, its origins and much more.`, side: "top", align: "center", onNextClick: () => {
+                        localStorage.setItem('needsDetailsTour', 'false')
+                        driverObj.moveNext()
+                    } } },
                     { element: '.reviews-container', popover: { title: `Reviews 💭`, description: `Thoughts and comments on this recipe are located here. Once logged in you will be able to review recipes.`, side: "top", align: "center" } },
                 ]
             })
@@ -222,7 +225,10 @@ export default {
         onMounted(() => {
             getRecipeById();
             getReviewsByRecipe();
-            detailsOnBoarding()
+            // localStorage.clear()
+            if(localStorage.getItem('needsDetailsTour') == null || localStorage.getItem('needsDetailsTour') == 'true'){
+                detailsOnBoarding()
+            }
         })
 
         // watchEffect(()=> {
