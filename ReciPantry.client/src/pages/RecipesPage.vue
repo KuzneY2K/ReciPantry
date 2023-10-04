@@ -129,6 +129,7 @@ import { Modal } from 'bootstrap';
                     { element: '#searchBarBox', popover: { title: 'Search Bar? 🪄', description: 'Use our search bar to find exactly what you need. 👀', side: "bottom", align: "center" } },
                     { element: '#filterButtonBox', popover: { title: 'Filtering. 🔦', description: 'Our search filter will help you find that perfect recipe. ✨', side: "bottom", align: "center" } },
                     { element: '#recipeCardBox', popover: { title: 'The Recipe. 🍻', description: 'Each and every recipe from your search will show up as an individual box.', side: "bottom", align: "center" } },
+                    { element: '#learnMoreBox', popover: { title: 'Details. 🍻', description: `Simply click learn more to see all of the that recipe's details.`, side: "bottom", align: "center" } },
                 ]
             })
 

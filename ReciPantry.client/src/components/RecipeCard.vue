@@ -3,10 +3,10 @@
     <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-2 border-dark elevation-5 position-relative"
         :style="{ backgroundImage: 'url(' + props.recipe.image + ')' }"  id="recipeCardBox">
         <h2 class="position-absolute text-white recipe-title position-absolute ms-3">{{ props.recipe.title }}</h2>
-        <div class="container" id="learnMoreBox">
+        <div class="container">
             <!-- Upon clicking "Learn More =>"  the user is taken to the recipe details page of the specific recipe-->
             <RouterLink :to="{ name: 'Recipe Details', params: { recipeId: props.recipe.id } }">
-                <span class="learnMore position-absolute text-white">Learn More</span><i
+                <span class="learnMore position-absolute text-white" id="learnMoreBox">Learn More</span><i
                     class="mdi mdi-arrow-right-bold p-0 m-0 fs-1 text-white position-absolute arrow"></i>
             </RouterLink>
         </div>
