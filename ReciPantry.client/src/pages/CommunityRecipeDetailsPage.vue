@@ -97,18 +97,40 @@
         </div>
         <div class="collapse" id="reviewForm">
             <form @submit.prevent="createReview" class="form-control">
-                <input v-model="reviewData.comment" class="form-control" placeholder="Your Comment" type="text" required
-                    maxlength="200" minlength="4">
-                <!-- <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating"> -->
-                <select v-model="reviewData.rating" class="form-control">
+                <!-- <select v-model="reviewData.rating" class="form-control">
                     <option disabled selected value="">rating</option>
                     <option value="1">1/5 stars</option>
                     <option value="2">2/5 stars</option>
                     <option value="3">3/5 stars</option>
                     <option value="4">4/5 stars</option>
                     <option value="5">5/5 stars</option>
-                </select>
-                <button class="btn btn-success">Post Review</button>
+                </select> -->
+                <div class="d-flex justify-content-center">
+                    <button type="button" @click="reviewData.rating = 1" class="btn text-warning fs-1">
+                        <i v-if="reviewData.rating >= 1" class="mdi mdi-star"></i>
+                        <i v-else class="mdi mdi-star-outline"></i>
+                    </button>
+                    <button type="button" @click="reviewData.rating = 2" class="btn text-warning fs-1">
+                        <i v-if="reviewData.rating >= 2" class="mdi mdi-star"></i>
+                        <i v-else class="mdi mdi-star-outline"></i>
+                    </button>
+                    <button type="button" @click="reviewData.rating = 3" class="btn text-warning fs-1">
+                        <i v-if="reviewData.rating >= 3" class="mdi mdi-star"></i>
+                        <i v-else class="mdi mdi-star-outline"></i>
+                    </button>
+                    <button type="button" @click="reviewData.rating = 4" class="btn text-warning fs-1">
+                        <i v-if="reviewData.rating >= 4" class="mdi mdi-star"></i>
+                        <i v-else class="mdi mdi-star-outline"></i>
+                    </button>
+                    <button type="button" @click="reviewData.rating = 5" class="btn text-warning fs-1">
+                        <i v-if="reviewData.rating >= 5" class="mdi mdi-star"></i>
+                        <i v-else class="mdi mdi-star-outline"></i>
+                    </button>
+                </div>
+                <input v-model="reviewData.comment" class="form-control" placeholder="Your Comment" type="text" required
+                    maxlength="200" minlength="4">
+                <!-- <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating"> -->
+                <button class="btn btn-success mt-2">Post Review</button>
             </form>
         </div>
 
@@ -140,6 +162,7 @@ export default {
         let router = useRouter();
         let reviewData = ref({});
         let groceryData = ref({});
+        let rating = ref(0);
         // gets recipe info from route params
         watchEffect(() => {
             getFavoritesByRecipe()
@@ -189,6 +212,7 @@ export default {
             isFavorite: computed(() => AppState.favorites.find(favorite => favorite.accountId == AppState.account.id)),
             reviewData,
             groceryData,
+            rating,
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
             async addToList(listItem) {
