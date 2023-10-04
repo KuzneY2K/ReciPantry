@@ -1,5 +1,6 @@
 export class CommunityRecipe {
     constructor(data){
+        this.avgRating = data.avgRating
         this.id = data.id
         this.creator = data.creator
         this.creatorId = data.creatorId

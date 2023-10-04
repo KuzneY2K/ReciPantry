@@ -5,7 +5,8 @@ export const ReviewSchema = new Schema({
     rating: { type: Number, required: true, min: 1, max: 5 },
     comment: { type: String, minLength: 1, maxLength: 144 },
     accountId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
-    recipeId: { type: String, required: true }
+    recipeId: { type: Schema.Types.ObjectId },
+    spoonId: { type: String }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 ReviewSchema.virtual('profile', {

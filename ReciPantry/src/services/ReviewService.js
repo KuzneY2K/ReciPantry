@@ -9,7 +9,7 @@ class ReviewService {
     }
 
     async getReviewsByRecipe(recipeId) {
-        const reviews = await dbContext.Reviews.find({ recipeId }).populate('profile', '-email')
+        const reviews = await dbContext.Reviews.find({ $or: [{ recipeId: recipeId }, { spoonId: recipeId }] }).populate('profile', '-email')
         return reviews
     }
 
