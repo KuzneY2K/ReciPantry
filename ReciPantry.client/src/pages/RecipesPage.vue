@@ -131,7 +131,11 @@ import { Modal } from 'bootstrap';
                     { element: '#recipeCardBox', popover: { title: 'The Recipe. 🍻', description: 'Each and every recipe from your search will show up as an individual box.', side: "bottom", align: "center" } },
                     { element: '#learnMoreBox', popover: { title: 'Details. 🍻', description: `Simply click learn more to see all of the that recipe's details.`, side: "bottom", align: "center" },
                     onNextClick: (() => {
-
+                        document.getElementsByClassName('searchBarBox')[0].classList.remove('disabled')
+                        document.getElementsByClassName('searchBarFilterBox')[0].classList.remove('disabled')
+                        document.getElementsByClassName('recipeCardBox')[0].classList.remove('disabled')
+                        localStorage.setItem('needsRecipesTour', false),
+                        driverObj.moveNext()
                     })
                     },
                     { element: '#main', popover: { title: 'Get cooking. 🍻', description: `Click "DONE" to exit this guide.`, side: "bottom", align: "center" } },
