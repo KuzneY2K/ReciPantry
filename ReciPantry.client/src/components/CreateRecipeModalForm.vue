@@ -104,8 +104,14 @@ import Pop from '../utils/Pop.js';
 import { recipesService } from '../services/RecipesService.js';
 import { Modal } from 'bootstrap';
 import { logger } from '../utils/Logger.js';
+import JSConfetti from 'js-confetti'
+
 export default {
     setup() {
+        const jsConfetti = new JSConfetti()
+        jsConfetti.addConfetti({
+            emojis: ['🍇', '🍖', '🥩', '🍔', '🥙', '🍲', '🍗', '🍆']
+        })
         const recipeData = ref({})
         const router = useRouter()
         let ingredients = ref([{}])
@@ -115,6 +121,7 @@ export default {
         return {
             recipeData,
             ingredients,
+            jsConfetti,
             async addIngredient() {
                 try {
                     ingredients.value.push({})
@@ -140,6 +147,7 @@ export default {
                     Modal.getOrCreateInstance('#createRecipe').hide()
                     logger.log(newRecipe)
                     router.push({ name: "Community Recipe Details", params: { recipeId: newRecipe.id } })
+                    const canvas = 
                 } catch (error) {
                     Pop.error(error)
                 }
