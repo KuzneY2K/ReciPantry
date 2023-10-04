@@ -6,7 +6,6 @@
                         <div class="modal-header">
                             <h5 class="modal-title fs-2" id="groceryListModalLabel">My <span class="text-success">Grocery</span>
                                 List</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <ul class="list-unstyled">
@@ -30,7 +29,7 @@
                                     <p class="dropdown-item">Clicking a grocery list item will redirect<br> you to a list of recipes utilizing that ingredient!</p>
                                 </ul>
     </div>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close List</button>
+                            <button type="button" class="btn btn-secondary gmBtn" data-bs-dismiss="modal">Close List</button>
                         </div>
                     </div>
                 </div>
