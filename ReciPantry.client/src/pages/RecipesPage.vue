@@ -140,7 +140,7 @@ import { Modal } from 'bootstrap';
                     }                    
                     },
                     },
-                    { element: '#recipes-', popover: { title: 'Get cooking. 🍻', description: `Click "DONE" to exit this guide.`, side: "bottom", align: "center" } },
+                    { element: '#recipes-p', popover: { title: 'Get cooking. 🍻', description: `Click "DONE" to exit this guide.`, side: "bottom", align: "center" } },
                 ]
             })
 
