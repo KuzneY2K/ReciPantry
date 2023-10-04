@@ -1,9 +1,9 @@
 <template>
-      <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
-        <div class="col-12 p-0 m-0 d-flex flex-column align-items-center justify-content-center" id="recipes-page-title">
+      <section class="row p-0 m-0 animate__animated animate__fadeInDownBig" id="recipes-page-title">
+        <div class="col-12 p-0 m-0 d-flex flex-column align-items-center justify-content-center">
             <h1 class="mt-3 title">Find your perfect <span class="text-success">Recipe</span></h1>
         <!-- Search bar that takes in parameters & filters 🔎 -->
-        <section class="row p-0 m-0">
+        <section class="row p-0 m-0" id="searchBarBox">
             <SearchBar />
         </section>          
         </div>
@@ -125,7 +125,8 @@ import { Modal } from 'bootstrap';
                 showProgress: true,
                 allowClose: false,
                 steps: [
-                    { element: '#recipes-page-title', popover: { title: 'Ready to browse recipes? 🧑‍🍳', description: 'Finding recipes on ReciPantry is super easy. 🔎', side: "bottom", align: "center" } }
+                    { element: '#recipes-page-title', popover: { title: 'Ready to browse recipes? 🧑‍🍳', description: 'Finding recipes on ReciPantry is super easy. 🔎', side: "bottom", align: "center" } },
+                    { element: '#searchBarBox', popover: { title: 'Search Bar? 🪄', description: 'Use our search bar to find exactly what you need. 👀', side: "bottom", align: "center" } }
                 ]
             })
 
@@ -148,8 +149,13 @@ import { Modal } from 'bootstrap';
                 window.scroll(0, 1000)
             }
 
+            function recipesOnBoarding(){
+                driverObj.drive()
+            }
+
             onMounted(() => {
                 // scrollFix()
+                recipesOnBoarding()
                 getRandomRecipes()
             })
             
