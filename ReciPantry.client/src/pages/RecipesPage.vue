@@ -11,7 +11,7 @@
       <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
         <!-- For every recipe result a clickable card is rendered out -->
         <div class="col-12 col-md-8 d-flex flex-column align-items-center justify-content-center">
-            <RecipeCard v-motion-roll-visible-once-bottom v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
+            <RecipeCard v-motion-pop-visible v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
         </div>
       </section>
 
@@ -174,6 +174,7 @@ import { Modal } from 'bootstrap';
                 try {
                     AppState.selectedCategory = null
                     AppState.selectedIngredient = null
+                    window.scrollTo(0, 0)
                     await recipesService.searchRecipesByQuery(AppState.savedQuery)
                 } catch (error) {
                     Pop.error(error)
