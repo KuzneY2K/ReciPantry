@@ -10,7 +10,7 @@
     </section>
     <section class="row p-0 m-0">
         <div class="col-12 p-0 m-0 d-flex flex-column justify-content-center align-items-center mt-3">
-            <CommunityRecipeCard v-for="recipe in communityRecipes" :key="recipe.id" :recipe="recipe" />
+            <CommunityRecipeCard v-for="recipe in communityRecipes" :key="recipe.id" :recipe="recipe" v-motion-pop-visible/>
         </div>
         <CreateRecipeModalForm />
         <div class="col-2 col-md-4">
@@ -28,8 +28,14 @@ import { AppState } from '../AppState.js';
 
 export default {
     setup() {
+
+        function scrollFix() {
+            window.scroll(0, 1000)
+        }
+
         onMounted(() => {
             getCommunityRecipes()
+            scrollFix()
         })
 
         async function getCommunityRecipes() {

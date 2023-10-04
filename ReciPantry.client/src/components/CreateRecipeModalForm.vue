@@ -133,7 +133,7 @@ export default {
                     emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇', '🍟', '🍕', '🥞', '🍪', '🥘', '🥕', '🦐', '🥑', '🍣', '🍜'],
                     confettiRadius: 500,
                     confettiNumber: 50,
-                    emojiSize: 125
+                    emojiSize: 75
                 })
                 logger.log('test')
             },
