@@ -97,14 +97,6 @@
         </div>
         <div class="collapse" id="reviewForm">
             <form @submit.prevent="createReview" class="form-control">
-                <!-- <select v-model="reviewData.rating" class="form-control">
-                    <option disabled selected value="">rating</option>
-                    <option value="1">1/5 stars</option>
-                    <option value="2">2/5 stars</option>
-                    <option value="3">3/5 stars</option>
-                    <option value="4">4/5 stars</option>
-                    <option value="5">5/5 stars</option>
-                </select> -->
                 <div class="d-flex justify-content-center">
                     <button type="button" @click="reviewData.rating = 1" class="btn text-warning fs-1">
                         <i v-if="reviewData.rating >= 1" class="mdi mdi-star"></i>
