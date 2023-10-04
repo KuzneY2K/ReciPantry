@@ -2,7 +2,7 @@
   <!-- Landing Text -->
   <section class="row p-0 m-0">
     <div class="col-12 p-0 m-0" id="titleText">
-      <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__bounceInRight"><span
+      <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__bounceInRight" id="titleH1"><span
           class="text-success">FIND</span> THE RECIPE THAT <br>SUITS <span class="text-success">YOU</span> <i
           class="mdi mdi-chef-hat"></i></h1>
     </div>
