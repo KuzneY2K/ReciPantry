@@ -183,7 +183,13 @@ export default {
                         document.getElementsByClassName('nmBtn')[0].classList.add('disabled')
                         driverObj.moveNext()
                     } } },
-                    { element: '.modal-content', popover: { title: ``, description: ``, side: "top", align: "center" } },
+                    { element: '.modal-content', popover: { title: `Nutrition Facts Label 📑`, description: `Self explanatory...`, side: "top", align: "center", onNextClick: () => {
+                        Modal.getOrCreateInstance('#nutritionModal').hide()
+                        document.getElementsByClassName('nmBtn')[0].classList.remove('disabled')
+                        driverObj.moveNext()
+                    } } },
+                    { element: '.instructions-container', popover: { title: `Instructions ⛏️`, description: `The recipe instructions are located here. You can expect to see a detailed breakdown of the recipe, how to prepare and cook it.`, side: "top", align: "center" } },
+                    { element: '.summary-container', popover: { title: `Summary 🗺️`, description: `A summary of the recipe. This may provide you a brief history of the recipe, its origins and much more.`, side: "top", align: "center" } },
                 ]
             })
 
