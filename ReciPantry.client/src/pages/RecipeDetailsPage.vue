@@ -43,7 +43,7 @@
                     <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.original }}</span>
 
                 </li>
-                <li>
+                <li class="nfBtn">
                     <!-- Button that pulls up nutrition facts specific to the meal -->
                     <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4">
                         <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal"
@@ -116,7 +116,7 @@
             </div>
 
             <!-- STUB review card -->
-            <div class="p-0 m-0 px-3">
+            <div class="p-0 m-0 px-3 reviews-container">
                 <div v-for="review in reviews" :key="review.id" class="col-12">
                     <ReviewCard :review="review" />
                 </div>
@@ -148,8 +148,8 @@ export default {
         let reviewData = ref({})
         let groceryData = ref({})
 
-        function detailsOnBoarding(){
-            driverObj.drive()
+        async function detailsOnBoarding(){
+            await driverObj.drive()
         }
             const driver = window.driver.js.driver
             const driverObj = driver({
@@ -158,10 +158,14 @@ export default {
                 steps: [
                     { element: '.img-container', popover: { title: `The Recipe 😎`, description: `Here you are viewing all details related to this recipe. Everything you need to know is on this page.`, side: "bottom", align: "center" } },
                     { element: '.readyInBox', popover: { title: 'How long am I cooking? 🥣', description: 'Good question. This portion of the page will show you the approximate cooking time of the recipe as well as what this recipe is called.', side: "bottom", align: "center" } },
-                    { element: '.ingredients-header', popover: { title: `Ingredients & Servings 🍜`, description: `Ingredients and servings for this recipe will be displayed here and no where else.`, side: "bottom", align: "center" } },
+                    { element: '.ingredients-header', popover: { title: `Ingredients & Servings 🍜`, description: `Ingredients and servings for this recipe will be displayed here and no where else.`, side: "bottom", align: "center", onNextClick: () => {
+                        document.getElementsByClassName('ingredient')[0].classList.add('disabled')
+                        driverObj.moveNext()
+                    } } },
                     { element: '.ingredient', popover: { title: `The Ingredient 🥕`, description: `This is an individual ingredient that will display on page load. Most of the time it will include the quantity needed for this select recipe.`, side: "bottom", align: "center" } },
                     { element: '.cart', popover: { title: `Adding to a grocery list 🛒`, description: `Don't have this ingredient? Don't have the attention span to remember it? No worries. Clicking the cart icon will add this ingredient to your personal shopping list.`, side: "bottom", align: "center", onNextClick: () => {
                         Modal.getOrCreateInstance('#groceryListModal').show()
+                        document.getElementsByClassName('gmBtn')[0].classList.add('disabled')
                         let modalBody = document.getElementById('groceryUl')
                         modalBody.innerHTML = `
                         <div class="li-container d-flex flex-row justify-content-between fs-5">
@@ -177,6 +181,7 @@ export default {
                         modalBody.innerHTML = ``
                         Modal.getOrCreateInstance('#groceryListModal').hide()
                         driverObj.moveNext()
+                        document.getElementsByClassName('nfBtn')[0].classList.add('disabled')
                     } } },
                     { element: '.nutrition-btn-container', popover: { title: `Nutrition Facts 📑`, description: `If applicable each recipe will display a nutrition facts label for that specific recipe.`, side: "bottom", align: "center", onNextClick: () => {
                         Modal.getOrCreateInstance('#nutritionModal').show()
@@ -186,10 +191,13 @@ export default {
                     { element: '.modal-content', popover: { title: `Nutrition Facts Label 📑`, description: `Self explanatory...`, side: "top", align: "center", onNextClick: () => {
                         Modal.getOrCreateInstance('#nutritionModal').hide()
                         document.getElementsByClassName('nmBtn')[0].classList.remove('disabled')
+                        document.getElementsByClassName('nfBtn')[0].classList.remove('disabled')
+                        document.getElementsByClassName('ingredient')[0].classList.remove('disabled')
                         driverObj.moveNext()
                     } } },
                     { element: '.instructions-container', popover: { title: `Instructions ⛏️`, description: `The recipe instructions are located here. You can expect to see a detailed breakdown of the recipe, how to prepare and cook it.`, side: "top", align: "center" } },
                     { element: '.summary-container', popover: { title: `Summary 🗺️`, description: `A summary of the recipe. This may provide you a brief history of the recipe, its origins and much more.`, side: "top", align: "center" } },
+                    { element: '.reviews-container', popover: { title: `Reviews 💭`, description: `Thoughts and comments on this recipe are located here. Once logged in you will be able to review recipes.`, side: "top", align: "center" } },
                 ]
             })
 
