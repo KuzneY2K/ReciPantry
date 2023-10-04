@@ -120,17 +120,19 @@ export default {
             ingredients,
             recipeIngredients: computed(() => AppState.activeRecipe.ingredients),
             router,
+
             async addIngredient() {
                 try {
-                    ingredients.value.push({})
+                    this.recipeIngredients.push({})
                 } catch (error) {
                     Pop.error(error)
                 }
             },
+
             async removeIngredient() {
                 try {
-                    if (ingredients.value.length != 1) {
-                        ingredients.value.pop()
+                    if (this.recipeIngredients.length != 1) {
+                        this.recipeIngredients.pop()
                     }
                 } catch (error) {
                     Pop.error(error)
