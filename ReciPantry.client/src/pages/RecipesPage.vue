@@ -178,8 +178,8 @@ import { Modal } from 'bootstrap';
                 try {
                     AppState.selectedCategory = null
                     AppState.selectedIngredient = null
-                    window.scrollTo(0, 0)
                     await recipesService.searchRecipesByQuery(AppState.savedQuery)
+                    scrollFix()
                 } catch (error) {
                     Pop.error(error)
                 }
