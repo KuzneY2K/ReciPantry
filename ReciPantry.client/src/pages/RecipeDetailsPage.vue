@@ -160,7 +160,8 @@ export default {
                 steps: [
                     { element: '.img-container', popover: { title: `The Recipe 😎`, description: `Here you are viewing all details related to this recipe. Everything you need to know is on this page.`, side: "bottom", align: "center" } },
                     { element: '.readyInBox', popover: { title: 'How long am I cooking? 🥣', description: 'Good question. This portion of the page will show you the approximate cooking time of the recipe as well as what this recipe is called.', side: "bottom", align: "center" } },
-                    { element: '.img-container', popover: { title: `The Recipe 😎`, description: `Here you are viewing all details related to this recipe. Everything you need to know is on this page.`, side: "bottom", align: "center" } },
+                    { element: '.ingredients-header', popover: { title: `Ingredients & Servings 🍜`, description: `Ingredients and servings for this recipe will be displayed here and no where else.`, side: "bottom", align: "center" } },
+                    { element: '.ingredients-container', popover: { title: `Ingredients List 🥕`, description: ``, side: "bottom", align: "center" } },
                 ]
             })
 
