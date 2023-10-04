@@ -1,17 +1,26 @@
 import { dbContext } from "../db/DbContext.js"
+import { ReviewSchema } from "../models/Review.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 import { logger } from "../utils/Logger.js"
 
 class RecipesService {
     // gets the recipes from the db
     async getRecipes(query) {
-        const recipes = await dbContext.Recipes.find(query).populate('ratings')
+        const recipes = await dbContext.Recipes.find(query)
         return recipes
     }
     //gets an individual recipe from the db
     async getRecipeById(recipeId) {
         const recipe = await dbContext.Recipes.findById(recipeId)
-        await recipe.populate('ratings')
+        const agg = await dbContext.Recipes.aggregate([{
+            $lookup: {
+                from: "Review",
+                localField: "_id",
+                foreignField: "recipeId",
+                as: "testSomething"
+            }
+        }])
+        logger.log('agg', agg)
         if (!recipe) throw new BadRequest(`No recipe at id ${recipeId}`)
         return recipe
     }
