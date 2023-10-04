@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="crdCanvas">
         <!-- Pulls recipe title from active recipe -->
         <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span
                 class="text-black">- {{

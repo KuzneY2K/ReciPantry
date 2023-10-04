@@ -147,7 +147,7 @@ export default {
                     Modal.getOrCreateInstance('#createRecipe').hide()
                     logger.log(newRecipe)
                     router.push({ name: "Community Recipe Details", params: { recipeId: newRecipe.id } })
-                    const canvas = 
+                    const canvas = document.getElementById('crdCanvas')
                 } catch (error) {
                     Pop.error(error)
                 }
