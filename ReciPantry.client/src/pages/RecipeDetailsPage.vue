@@ -181,7 +181,7 @@ export default {
                         Modal.getOrCreateInstance('#groceryListModal').hide()
                         driverObj.moveNext()
                     } } },
-                    { element: '#nutritionModal', popover: { title: `There's more? 🤔`, description: `Need more ideas for what you already have in your shopping cart or on your list? Clicking on each individual grocery list item will redirect you to a list of recipes using that ingredient.`, side: "bottom", align: "center" } },
+                    { element: '.nutrition-btn-container', popover: { title: `There's more? 🤔`, description: `Need more ideas for what you already have in your shopping cart or on your list? Clicking on each individual grocery list item will redirect you to a list of recipes using that ingredient.`, side: "bottom", align: "center" } },
                 ]
             })
 
