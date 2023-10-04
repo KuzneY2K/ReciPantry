@@ -6,7 +6,6 @@
           class="text-success">FIND</span> THE RECIPE THAT <br>SUITS <span class="text-success">YOU</span> <i
           class="mdi mdi-chef-hat"></i></h1>
     </div>
-    <h1 id="titleH1"></h1>
   </section>
   <!-- Landing Card -->
   <section class="row p-0 m-0">
@@ -45,7 +44,6 @@ import { logger } from '../utils/Logger.js';
 
 export default {
   setup() {
-
     const driver = window.driver.js.driver
     const driverObj = driver({
       showProgress: true,
@@ -89,6 +87,7 @@ export default {
       categories: computed(() => AppState.categories),
       
     }
+    
   }
 }
 </script>
