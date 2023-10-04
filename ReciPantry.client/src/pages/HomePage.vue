@@ -41,6 +41,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
+import Typed from 'typed.js';
 
 export default {
   setup() {
@@ -74,6 +75,10 @@ export default {
     
     function onboarding() {
       driverObj.drive()
+    }
+
+    function typeFace(){
+      let typeFaceHeader = new Typed()
     }
 
 
