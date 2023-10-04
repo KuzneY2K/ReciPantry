@@ -11,7 +11,7 @@
       <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
         <!-- For every recipe result a clickable card is rendered out -->
         <div class="col-12 col-md-8 d-flex flex-column align-items-center justify-content-center">
-            <RecipeCard v-motion-pop-visible v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
+            <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" v-motion-pop-visible/>
         </div>
       </section>
 
@@ -136,9 +136,13 @@ import { Modal } from 'bootstrap';
                 }
             }
 
+            function scrollFix(){
+                window.scroll(0, 1000)
+            }
+
             onMounted(() => {
+                scrollFix()
                 getRandomRecipes()
-                window.scrollTo(0, 0)
             })
             
             return{
