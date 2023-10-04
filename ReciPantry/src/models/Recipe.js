@@ -1,6 +1,7 @@
 import { Schema } from "mongoose"
 
 export const RecipeSchema = new Schema({
+    avgRating: { type: Number, required: false },
     creatorId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
     // analyzedInstructions: { type: Array, required: false },
     cheap: { type: Boolean, required: false },
@@ -35,4 +36,10 @@ RecipeSchema.virtual('creator', {
     foreignField: 'id',
     ref: 'Account',
     justOne: true
+})
+RecipeSchema.virtual('ratings', {
+    localField: '_id',
+    foreignField: 'recipeId',
+    ref: 'Review',
+    justOne: false
 })
