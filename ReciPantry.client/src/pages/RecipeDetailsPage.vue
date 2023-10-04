@@ -1,11 +1,11 @@
 <template>
-    <div v-if="recipe" >
+    <div v-if="recipe">
         <!-- Pulls recipe title from active recipe -->
         <section class="row p-0 m-0">
             <div class="col-12 p-0 m-0" id="recipeTitleBox">
-        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title" >{{ recipe.title }} <span
-                class="text-black readyInBox" id="readyInBox">- {{
-                    recipe.readyInMinutes }} Mins</span></h1>
+                <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span
+                        class="text-black readyInBox" id="readyInBox">- {{
+                            recipe.readyInMinutes }} Mins</span></h1>
             </div>
         </section>
         <div class="grocery-btn-container postion-absolute" v-if="account.id">
@@ -20,7 +20,8 @@
                 class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
         </div>
         <div class="ms-5 mt-4" v-if="account.id">
-            <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5">Clone Recipe</button>
+            <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5">Clone
+                Recipe</button>
         </div>
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
         <div class="ingredients-container p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
@@ -92,26 +93,39 @@
         <div class="p-0 m-0">
             <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
                 <h1 class="p-0 m-0m-0">Recipe Reviews</h1>
-                <button data-bs-toggle="collapse" data-bs-target="#reviewForm" class="btn btn-success  border border-1 border-black elevation-5" v-if="account.id">Add Review <i
+                <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
+                    class="btn btn-success  border border-1 border-black elevation-5" v-if="account.id">Add Review <i
                         class="mdi mdi-plus"></i></button>
             </div>
             <!-- STUB create review form -->
             <div class="collapse" id="reviewForm">
                 <form @submit.prevent="createReview" class="form-control">
+                    <div class="d-flex justify-content-center">
+                        <button type="button" @click="reviewData.rating = 1" class="btn text-warning fs-1">
+                            <i v-if="reviewData.rating >= 1" class="mdi mdi-star"></i>
+                            <i v-else class="mdi mdi-star-outline"></i>
+                        </button>
+                        <button type="button" @click="reviewData.rating = 2" class="btn text-warning fs-1">
+                            <i v-if="reviewData.rating >= 2" class="mdi mdi-star"></i>
+                            <i v-else class="mdi mdi-star-outline"></i>
+                        </button>
+                        <button type="button" @click="reviewData.rating = 3" class="btn text-warning fs-1">
+                            <i v-if="reviewData.rating >= 3" class="mdi mdi-star"></i>
+                            <i v-else class="mdi mdi-star-outline"></i>
+                        </button>
+                        <button type="button" @click="reviewData.rating = 4" class="btn text-warning fs-1">
+                            <i v-if="reviewData.rating >= 4" class="mdi mdi-star"></i>
+                            <i v-else class="mdi mdi-star-outline"></i>
+                        </button>
+                        <button type="button" @click="reviewData.rating = 5" class="btn text-warning fs-1">
+                            <i v-if="reviewData.rating >= 5" class="mdi mdi-star"></i>
+                            <i v-else class="mdi mdi-star-outline"></i>
+                        </button>
+                    </div>
                     <input v-model="reviewData.comment" class="form-control" placeholder="Your Comment" type="text" required
                         maxlength="200" minlength="4">
                     <!-- <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating"> -->
-                    <select v-model="reviewData.rating" class="form-control">
-                        <option disabled selected value="">rating</option>
-                        <option value="1">1/5 stars</option>
-                        <option value="2">2/5 stars</option>
-                        <option value="3">3/5 stars</option>
-                        <option value="4">4/5 stars</option>
-                        <option value="5">5/5 stars</option>
-                    </select>
-                    <div class="btn-container">
-                    <button class="btn btn-success border border-1 border-black elevation-5">Post Review</button>
-                    </div>
+                    <button class="btn btn-success mt-2">Post Review</button>
                 </form>
             </div>
 
@@ -148,61 +162,85 @@ export default {
         let reviewData = ref({})
         let groceryData = ref({})
 
-        async function detailsOnBoarding(){
+        async function detailsOnBoarding() {
             await driverObj.drive()
         }
-            const driver = window.driver.js.driver
-            const driverObj = driver({
-                showProgress: true,
-                allowClose: false,
-                steps: [
-                    { element: '.img-container', popover: { title: `The Recipe 😎`, description: `Here you are viewing all details related to this recipe. Everything you need to know is on this page.`, side: "bottom", align: "center" } },
-                    { element: '.readyInBox', popover: { title: 'How long am I cooking? 🥣', description: 'Good question. This portion of the page will show you the approximate cooking time of the recipe as well as what this recipe is called.', side: "bottom", align: "center" } },
-                    { element: '.ingredients-header', popover: { title: `Ingredients & Servings 🍜`, description: `Ingredients and servings for this recipe will be displayed here and no where else.`, side: "bottom", align: "center", onNextClick: () => {
-                        document.getElementsByClassName('ingredient')[0].classList.add('disabled')
-                        driverObj.moveNext()
-                    } } },
-                    { element: '.ingredient', popover: { title: `The Ingredient 🥕`, description: `This is an individual ingredient that will display on page load. Most of the time it will include the quantity needed for this select recipe.`, side: "bottom", align: "center" } },
-                    { element: '.cart', popover: { title: `Adding to a grocery list 🛒`, description: `Don't have this ingredient? Don't have the attention span to remember it? No worries. Clicking the cart icon will add this ingredient to your personal shopping list.`, side: "bottom", align: "center", onNextClick: () => {
-                        Modal.getOrCreateInstance('#groceryListModal').show()
-                        document.getElementsByClassName('gmBtn')[0].classList.add('disabled')
-                        let modalBody = document.getElementById('groceryUl')
-                        modalBody.innerHTML = `
+        const driver = window.driver.js.driver
+        const driverObj = driver({
+            showProgress: true,
+            allowClose: false,
+            steps: [
+                { element: '.img-container', popover: { title: `The Recipe 😎`, description: `Here you are viewing all details related to this recipe. Everything you need to know is on this page.`, side: "bottom", align: "center" } },
+                { element: '.readyInBox', popover: { title: 'How long am I cooking? 🥣', description: 'Good question. This portion of the page will show you the approximate cooking time of the recipe as well as what this recipe is called.', side: "bottom", align: "center" } },
+                {
+                    element: '.ingredients-header', popover: {
+                        title: `Ingredients & Servings 🍜`, description: `Ingredients and servings for this recipe will be displayed here and no where else.`, side: "bottom", align: "center", onNextClick: () => {
+                            document.getElementsByClassName('ingredient')[0].classList.add('disabled')
+                            driverObj.moveNext()
+                        }
+                    }
+                },
+                { element: '.ingredient', popover: { title: `The Ingredient 🥕`, description: `This is an individual ingredient that will display on page load. Most of the time it will include the quantity needed for this select recipe.`, side: "bottom", align: "center" } },
+                {
+                    element: '.cart', popover: {
+                        title: `Adding to a grocery list 🛒`, description: `Don't have this ingredient? Don't have the attention span to remember it? No worries. Clicking the cart icon will add this ingredient to your personal shopping list.`, side: "bottom", align: "center", onNextClick: () => {
+                            Modal.getOrCreateInstance('#groceryListModal').show()
+                            document.getElementsByClassName('gmBtn')[0].classList.add('disabled')
+                            let modalBody = document.getElementById('groceryUl')
+                            modalBody.innerHTML = `
                         <div class="li-container d-flex flex-row justify-content-between fs-5">
                             <li class="text-black"><i class="mdi mdi-food"></i> <span class="text-success">SALT</span> - 2 GALLONS </li>
                             <i class="mdi mdi-close text-danger fs-2 close-icon"></i>
                         </div>`
-                        driverObj.moveNext()
-                    } } },
-                    { element: '.grocery-list-modal-body', popover: { title: `Grocery List 📄`, description: `Once you log in or create an account you will be able to access your personal grocery list. All ingredients that you add to your grocery list will be displayed here.`, side: "top", align: "center" } },
-                    { element: '.li-container', popover: { title: `There's more? 🤔`, description: `Need more ideas for what you already have in your shopping cart or on your list? Clicking on each individual grocery list item will redirect you to a list of recipes using that ingredient.`, side: "bottom", align: "center" } },
-                    { element: '.close-icon', popover: { title: `Removing Groceries 🗑️`, description: `Click the X button to remove a grocery from your list.`, side: "bottom", align: "center", onNextClick: () => {
-                        let modalBody = document.getElementById('groceryUl')
-                        modalBody.innerHTML = ``
-                        Modal.getOrCreateInstance('#groceryListModal').hide()
-                        driverObj.moveNext()
-                        document.getElementsByClassName('nfBtn')[0].classList.add('disabled')
-                    } } },
-                    { element: '.nutrition-btn-container', popover: { title: `Nutrition Facts 📑`, description: `If applicable each recipe will display a nutrition facts label for that specific recipe.`, side: "bottom", align: "center", onNextClick: () => {
-                        Modal.getOrCreateInstance('#nutritionModal').show()
-                        document.getElementsByClassName('nmBtn')[0].classList.add('disabled')
-                        driverObj.moveNext()
-                    } } },
-                    { element: '.modal-content', popover: { title: `Nutrition Facts Label 📑`, description: `Self explanatory...`, side: "top", align: "center", onNextClick: () => {
-                        Modal.getOrCreateInstance('#nutritionModal').hide()
-                        document.getElementsByClassName('nmBtn')[0].classList.remove('disabled')
-                        document.getElementsByClassName('nfBtn')[0].classList.remove('disabled')
-                        document.getElementsByClassName('ingredient')[0].classList.remove('disabled')
-                        driverObj.moveNext()
-                    } } },
-                    { element: '.instructions-container', popover: { title: `Instructions ⛏️`, description: `The recipe instructions are located here. You can expect to see a detailed breakdown of the recipe, how to prepare and cook it.`, side: "top", align: "center" } },
-                    { element: '.summary-container', popover: { title: `Summary 🗺️`, description: `A summary of the recipe. This may provide you a brief history of the recipe, its origins and much more.`, side: "top", align: "center", onNextClick: () => {
-                        localStorage.setItem('needsDetailsTour', 'false')
-                        driverObj.moveNext()
-                    } } },
-                    { element: '.reviews-container', popover: { title: `Reviews 💭`, description: `Thoughts and comments on this recipe are located here. Once logged in you will be able to review recipes.`, side: "top", align: "center" } },
-                ]
-            })
+                            driverObj.moveNext()
+                        }
+                    }
+                },
+                { element: '.grocery-list-modal-body', popover: { title: `Grocery List 📄`, description: `Once you log in or create an account you will be able to access your personal grocery list. All ingredients that you add to your grocery list will be displayed here.`, side: "top", align: "center" } },
+                { element: '.li-container', popover: { title: `There's more? 🤔`, description: `Need more ideas for what you already have in your shopping cart or on your list? Clicking on each individual grocery list item will redirect you to a list of recipes using that ingredient.`, side: "bottom", align: "center" } },
+                {
+                    element: '.close-icon', popover: {
+                        title: `Removing Groceries 🗑️`, description: `Click the X button to remove a grocery from your list.`, side: "bottom", align: "center", onNextClick: () => {
+                            let modalBody = document.getElementById('groceryUl')
+                            modalBody.innerHTML = ``
+                            Modal.getOrCreateInstance('#groceryListModal').hide()
+                            driverObj.moveNext()
+                            document.getElementsByClassName('nfBtn')[0].classList.add('disabled')
+                        }
+                    }
+                },
+                {
+                    element: '.nutrition-btn-container', popover: {
+                        title: `Nutrition Facts 📑`, description: `If applicable each recipe will display a nutrition facts label for that specific recipe.`, side: "bottom", align: "center", onNextClick: () => {
+                            Modal.getOrCreateInstance('#nutritionModal').show()
+                            document.getElementsByClassName('nmBtn')[0].classList.add('disabled')
+                            driverObj.moveNext()
+                        }
+                    }
+                },
+                {
+                    element: '.modal-content', popover: {
+                        title: `Nutrition Facts Label 📑`, description: `Self explanatory...`, side: "top", align: "center", onNextClick: () => {
+                            Modal.getOrCreateInstance('#nutritionModal').hide()
+                            document.getElementsByClassName('nmBtn')[0].classList.remove('disabled')
+                            document.getElementsByClassName('nfBtn')[0].classList.remove('disabled')
+                            document.getElementsByClassName('ingredient')[0].classList.remove('disabled')
+                            driverObj.moveNext()
+                        }
+                    }
+                },
+                { element: '.instructions-container', popover: { title: `Instructions ⛏️`, description: `The recipe instructions are located here. You can expect to see a detailed breakdown of the recipe, how to prepare and cook it.`, side: "top", align: "center" } },
+                {
+                    element: '.summary-container', popover: {
+                        title: `Summary 🗺️`, description: `A summary of the recipe. This may provide you a brief history of the recipe, its origins and much more.`, side: "top", align: "center", onNextClick: () => {
+                            localStorage.setItem('needsDetailsTour', 'false')
+                            driverObj.moveNext()
+                        }
+                    }
+                },
+                { element: '.reviews-container', popover: { title: `Reviews 💭`, description: `Thoughts and comments on this recipe are located here. Once logged in you will be able to review recipes.`, side: "top", align: "center" } },
+            ]
+        })
 
 
 
@@ -226,7 +264,7 @@ export default {
             getRecipeById();
             getReviewsByRecipe();
             // localStorage.clear()
-            if(localStorage.getItem('needsDetailsTour') == null || localStorage.getItem('needsDetailsTour') == 'true'){
+            if (localStorage.getItem('needsDetailsTour') == null || localStorage.getItem('needsDetailsTour') == 'true') {
                 detailsOnBoarding()
             }
         })
@@ -323,7 +361,7 @@ export default {
     text-shadow: 0px 0px 5px rgb(255, 255, 255);
 }
 
-.disabled{
+.disabled {
     pointer-events: none;
 }
 
@@ -349,5 +387,4 @@ export default {
 
 .recipe-image {
     object-fit: cover;
-}
-</style>
+}</style>
