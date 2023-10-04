@@ -19,13 +19,14 @@
   <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
     <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center mt-4">
       <RouterLink :to="{ name: 'Recipes' }">
-        <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black" id="getStartedBox">Get Started <i
+        <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black getStartedBox" id="getStartedBox">Get Started <i
             class="mdi mdi-arrow-right-bold"></i></button>
       </RouterLink>
     </div>
   </section>
   <hr class="animate__animated animate__fadeIn">
-  <section class="row p-0 m-0" id="categoriesBox">
+  <!-- Categories Section -->
+  <section class="row p-0 m-0 categoriesBox" id="categoriesBox">
     <div class="col-12 p-0 m-0">
       <h1 class="text-center categories-title animate__animated animate__fadeIn">Browse Categories</h1>
     </div>
@@ -61,12 +62,16 @@ export default {
         { element: '#navbarCommunityBox', popover: { title: 'Community Page. 🫂', description: 'Explore all of our custom user created recipes, and be able to create your own!', side: "top", align: "center" } },
         { element: '#navbarAccountBox', popover: { title: 'Account Page. 👳', description: 'Access your account here.', side: "top", align: "center", 
         onNextClick: () => {
+          document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
+          document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
+          document.getElementsByClassName('navbar')[0].classList.remove('disabled')
           localStorage.setItem('needsHomeTour', false),
             logger.log('END TOUR => ' + localStorage.getItem('needsHomeTour'))
           driverObj.moveNext()
             } } },
-        { element: '#getStartedBox', popover: { title: 'Ready to start?', description: 'Get cooking.', side: "top", align: "center"}, 
-         }
+        { element: '#getStartedBox', popover: { title: 'Ready to start?', description: 'Get cooking.', side: "top", align: "center",
+        }, 
+        }
         
       ]
     })
@@ -78,8 +83,15 @@ export default {
 
   onMounted(() => {
     // localStorage.clear()
-    if(localStorage.getItem('needsHomeTour') == null){
+    if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == true){
+      document.getElementsByClassName('categoriesBox')[0].classList.add('disabled')
+      document.getElementsByClassName('getStartedBox')[0].classList.add('disabled')
+      document.getElementsByClassName('navbar')[0].classList.add('disabled')
       onboarding()
+    } else {
+      document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
+      document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
+      document.getElementsByClassName('navbar')[0].classList.remove('disabled')
     }
   })
     
@@ -98,6 +110,16 @@ export default {
 
 .recipantry-theme{
   background-color: rgb(49, 163, 66) !important;
+}
+
+// 
+
+.categoriesBox.disabled{
+  pointer-events: none;
+}
+
+.getStartedBox.disabled {
+  pointer-events: none;
 }
 
 .bubble-container {

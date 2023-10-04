@@ -108,6 +108,7 @@ import Pop from '../utils/Pop.js';
 
     export default {
     setup() {
+
         return {
             async setCategory(name){
                 try {
