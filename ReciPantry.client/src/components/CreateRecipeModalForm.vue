@@ -130,7 +130,7 @@ export default {
             explode() {
                 const jsConfetti = new JSConfetti()
                 jsConfetti.addConfetti({
-                    emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇', '🍟', '🍕', '🥞', '🍪'],
+                    emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇', '🍟', '🍕', '🥞', '🍪', '🥘', '🥕', '🦐', '🥑', '🍣', '🍜'],
                     confettiRadius: 50,
                     confettiNumber: 100
                 })
