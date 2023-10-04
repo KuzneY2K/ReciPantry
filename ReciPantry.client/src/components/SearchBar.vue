@@ -22,9 +22,10 @@ import { logger } from '../utils/Logger.js'
 import { recipesService } from '../services/RecipesService.js'
 import Pop from '../utils/Pop.js'
 import { AppState } from '../AppState.js'
+import JSConfetti from 'js-confetti'
 
     export default {
-          setup() {
+        setup() {
 
         // Accepts user queryy
         const reqData = ref('')
@@ -39,6 +40,10 @@ import { AppState } from '../AppState.js'
 
             // Just to test if buttons work
             testBtn() {
+                const jsConfetti = new JSConfetti()
+                jsConfetti.addConfetti({
+                    emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇']
+                })
                 logger.log('test')
             },
 
