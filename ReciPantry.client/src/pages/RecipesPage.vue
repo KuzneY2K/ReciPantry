@@ -129,14 +129,16 @@ import { Modal } from 'bootstrap';
                     { element: '#searchBarBox', popover: { title: 'Search Bar? 🪄', description: 'Use our search bar to find exactly what you need. 👀', side: "bottom", align: "center" } },
                     { element: '#filterButtonBox', popover: { title: 'Filtering. 🔦', description: 'Our search filter will help you find that perfect recipe. ✨', side: "bottom", align: "center" } },
                     { element: '#recipeCardBox', popover: { title: 'The Recipe. 🍻', description: 'Each and every recipe from your search will show up as an individual box.', side: "bottom", align: "center" } },
-                    { element: '#learnMoreBox', popover: { title: 'Details. 🍻', description: `Simply click learn more to see all of the that recipe's details.`, side: "bottom", align: "center" },
-                    onNextClick: (() => {
+                    { element: '#learnMoreBox', popover: { title: 'Details. 🍻', description: `Simply click learn more to see all of the that recipe's details.`, side: "bottom", align: "center",
+                    onNextClick: () => {
                         document.getElementsByClassName('searchBarBox')[0].classList.remove('disabled')
                         document.getElementsByClassName('searchBarFilterBox')[0].classList.remove('disabled')
+                        document.getElementsByClassName('searchBarSubmitBox')[0].classList.remove('disabled')
                         document.getElementsByClassName('recipeCardBox')[0].classList.remove('disabled')
                         localStorage.setItem('needsRecipesTour', false),
                         driverObj.moveNext()
-                    })
+                    }                    
+                    },
                     },
                     { element: '#main', popover: { title: 'Get cooking. 🍻', description: `Click "DONE" to exit this guide.`, side: "bottom", align: "center" } },
                 ]
@@ -167,7 +169,7 @@ import { Modal } from 'bootstrap';
 
             onMounted(() => {
                 // scrollFix()
-                // localStorage.clear()
+                localStorage.clear()
                 if(localStorage.getItem('needsRecipesTour') == null || localStorage.getItem('needsRecipesTour') == 'true'){
                     document.getElementsByClassName('searchBarBox')[0].classList.add('disabled')
                     document.getElementsByClassName('searchBarFilterBox')[0].classList.add('disabled')
