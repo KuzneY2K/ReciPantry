@@ -1,7 +1,7 @@
 <template>
         <div class="modal fade" id="groceryListModal" tabindex="-1" aria-labelledby="groceryListModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog grocery-list-modal-body">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title fs-2" id="groceryListModalLabel">My <span class="text-success">Grocery</span>
@@ -10,7 +10,7 @@
                         </div>
                         <div class="modal-body">
                             <ul class="list-unstyled">
-                                <ul class="list-unstyled">
+                                <ul class="list-unstyled" id="groceryUl">
                                     <div class="li-container d-flex flex-row justify-content-between fs-5"
                                         v-for="i in ingredientOnList" :key="i.name">
                                         <RouterLink :to="{ name: 'Recipes' }" @click="setIngredient(`${i.name}`)">

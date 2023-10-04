@@ -34,5 +34,6 @@ export const AppState = reactive({
   favorites: [],
   filterData: [],
   needsHomeTour: localStorage.getItem('needsHomeTour') || 'true',
-  needsRecipesTour: localStorage.getItem('needsRecipesTour') || 'true'
+  needsRecipesTour: localStorage.getItem('needsRecipesTour') || 'true',
+  needsDetailsTour: localStorage.getItem('needsDetailsTour') || 'true'
 })
