@@ -5,12 +5,13 @@ import { logger } from "../utils/Logger.js"
 class RecipesService {
     // gets the recipes from the db
     async getRecipes(query) {
-        const recipes = await dbContext.Recipes.find(query)
+        const recipes = await dbContext.Recipes.find(query).populate('ratings')
         return recipes
     }
     //gets an individual recipe from the db
     async getRecipeById(recipeId) {
         const recipe = await dbContext.Recipes.findById(recipeId)
+        await recipe.populate('ratings')
         if (!recipe) throw new BadRequest(`No recipe at id ${recipeId}`)
         return recipe
     }
