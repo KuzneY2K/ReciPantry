@@ -160,7 +160,7 @@ export default {
     setup() {
         let route = useRoute();
         let router = useRouter();
-        let reviewData = ref({});
+        let reviewData = ref({ rating: null });
         let groceryData = ref({});
         let rating = ref(0);
         // gets recipe info from route params
@@ -261,6 +261,10 @@ export default {
             },
             async createReview() {
                 try {
+                    if (reviewData.value.rating == null) {
+                        Pop.error("Please leave a rating")
+                        return
+                    }
                     logger.log(reviewData.value);
                     reviewData.value.recipeId = route.params.recipeId;
                     await reviewService.createReview(reviewData.value);
