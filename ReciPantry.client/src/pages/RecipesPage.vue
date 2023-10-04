@@ -197,6 +197,7 @@ import { Modal } from 'bootstrap';
                 async previousPage(){
                     try {
                         AppState.pageNum -= 1
+                        window.scrollTo(0, 0)
                         await recipesService.paginate(this.query)
                     } catch (error) {
                         Pop.error(error)
