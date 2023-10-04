@@ -169,11 +169,19 @@ export default {
                         modalBody.innerHTML = `
                         <div class="li-container d-flex flex-row justify-content-between fs-5">
                             <li class="text-black"><i class="mdi mdi-food"></i> <span class="text-success">SALT</span> - 2 GALLONS </li>
-                            <i class="mdi mdi-close text-danger fs-2"></i>
+                            <i class="mdi mdi-close text-danger fs-2 close-icon"></i>
                         </div>`
                         driverObj.moveNext()
                     } } },
-                    { element: '.grocery-list-modal-body', popover: { title: `Grocery List 📄`, description: `Once you log in or create an account you will be able to access your personal grocery list. All ingredients that you add to your grocery list will be displayed here.`, side: "top", align: "center" } }
+                    { element: '.grocery-list-modal-body', popover: { title: `Grocery List 📄`, description: `Once you log in or create an account you will be able to access your personal grocery list. All ingredients that you add to your grocery list will be displayed here.`, side: "top", align: "center" } },
+                    { element: '.li-container', popover: { title: `There's more? 🤔`, description: `Need more ideas for what you already have in your shopping cart or on your list? Clicking on each individual grocery list item will redirect you to a list of recipes using that ingredient.`, side: "bottom", align: "center" } },
+                    { element: '.close-icon', popover: { title: `Removing Groceries 🗑️`, description: `Click the X button to remove a grocery from your list.`, side: "bottom", align: "center", onNextClick: () => {
+                        let modalBody = document.getElementById('groceryUl')
+                        modalBody.innerHTML = ``
+                        Modal.getOrCreateInstance('#groceryListModal').hide()
+                        driverObj.moveNext()
+                    } } },
+                    { element: '#nutritionModal', popover: { title: `There's more? 🤔`, description: `Need more ideas for what you already have in your shopping cart or on your list? Clicking on each individual grocery list item will redirect you to a list of recipes using that ingredient.`, side: "bottom", align: "center" } },
                 ]
             })
 
