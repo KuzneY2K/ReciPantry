@@ -57,9 +57,6 @@
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h1>NUTRITION FACTS</h1>
-                        </div>
                         <div class="modal-body">
                             <!-- Widget's Containing ALL data for meal, turn into modal -->
                             <div class="widgets p-0 m-0">
