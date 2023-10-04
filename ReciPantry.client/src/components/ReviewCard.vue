@@ -1,7 +1,7 @@
 <template>
   <section
     class="row p-0 m-0 bg-white position-relative mb-3 mt-3 rounded rounded-3 border border-2 border-black elevation-5">
-    <div class="col-4 p-0 m-0">
+    <div class="col-3 p-0 m-0">
       <div class="card-container p-0 m-0 d-flex flex-column align-items-center justify-content-center">
         <div class="card-info p-0 m-0 mt-3">
           <img class="profile-picture p-0 m-0" :src="review.profile.picture" alt="">
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="col-8 p-0 m-0 d-flex flex-column justify-content-start align-items-start mt-3">
+    <div class="col-9 p-0 m-0 d-flex flex-column justify-content-start align-items-start mt-3">
       <p class="fs-4">{{ review.comment }}</p>
     </div>
     <div class="delete-btn-container p-0 m-0">
@@ -90,4 +90,5 @@ export default {
 .delete-btn {
   right: -0.75rem;
   top: -0.75rem;
-}</style>
+}
+</style>
