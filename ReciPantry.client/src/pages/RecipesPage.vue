@@ -169,7 +169,7 @@ import { Modal } from 'bootstrap';
 
             onMounted(() => {
                 // scrollFix()
-                localStorage.clear()
+                // localStorage.clear()
                 if(localStorage.getItem('needsRecipesTour') == null || localStorage.getItem('needsRecipesTour') == 'true'){
                     document.getElementsByClassName('searchBarBox')[0].classList.add('disabled')
                     document.getElementsByClassName('searchBarFilterBox')[0].classList.add('disabled')
