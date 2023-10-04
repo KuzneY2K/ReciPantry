@@ -58,7 +58,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h1>NUTRITION FACTS</h1>
                         </div>
                         <div class="modal-body">
                             <!-- Widget's Containing ALL data for meal, turn into modal -->
@@ -69,7 +69,7 @@
                         </div>
                         <!-- Closes modal -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary nmBtn" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,12 @@ export default {
                         Modal.getOrCreateInstance('#groceryListModal').hide()
                         driverObj.moveNext()
                     } } },
-                    { element: '.nutrition-btn-container', popover: { title: `There's more? 🤔`, description: `Need more ideas for what you already have in your shopping cart or on your list? Clicking on each individual grocery list item will redirect you to a list of recipes using that ingredient.`, side: "bottom", align: "center" } },
+                    { element: '.nutrition-btn-container', popover: { title: `Nutrition Facts 📑`, description: `If applicable each recipe will display a nutrition facts label for that specific recipe.`, side: "bottom", align: "center", onNextClick: () => {
+                        Modal.getOrCreateInstance('#nutritionModal').show()
+                        document.getElementsByClassName('nmBtn')[0].classList.add('disabled')
+                        driverObj.moveNext()
+                    } } },
+                    { element: '.modal-content', popover: { title: ``, description: ``, side: "top", align: "center" } },
                 ]
             })
 
@@ -299,6 +304,10 @@ export default {
 .recipe-title {
     font-size: 2.5rem;
     text-shadow: 0px 0px 5px rgb(255, 255, 255);
+}
+
+.disabled{
+    pointer-events: none;
 }
 
 .ingredients-label {
