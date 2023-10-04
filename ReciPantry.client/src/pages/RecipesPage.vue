@@ -10,7 +10,7 @@
       </section>
       <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
         <!-- For every recipe result a clickable card is rendered out -->
-        <div class="col-12 col-md-8 d-flex flex-column align-items-center justify-content-center">
+        <div class="col-12 col-md-8 d-flex flex-column align-items-center justify-content-center recipeCardBox">
             <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" v-motion-pop-visible/>
         </div>
       </section>
@@ -28,7 +28,7 @@
         </div>
     </div>
       </section>
-                              <!-- Filter Modal -->
+                <!-- Filter Modal -->
                 <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -129,7 +129,12 @@ import { Modal } from 'bootstrap';
                     { element: '#searchBarBox', popover: { title: 'Search Bar? 🪄', description: 'Use our search bar to find exactly what you need. 👀', side: "bottom", align: "center" } },
                     { element: '#filterButtonBox', popover: { title: 'Filtering. 🔦', description: 'Our search filter will help you find that perfect recipe. ✨', side: "bottom", align: "center" } },
                     { element: '#recipeCardBox', popover: { title: 'The Recipe. 🍻', description: 'Each and every recipe from your search will show up as an individual box.', side: "bottom", align: "center" } },
-                    { element: '#learnMoreBox', popover: { title: 'Details. 🍻', description: `Simply click learn more to see all of the that recipe's details.`, side: "bottom", align: "center" } },
+                    { element: '#learnMoreBox', popover: { title: 'Details. 🍻', description: `Simply click learn more to see all of the that recipe's details.`, side: "bottom", align: "center" },
+                    onNextClick: (() => {
+
+                    })
+                    },
+                    { element: '#main', popover: { title: 'Get cooking. 🍻', description: `Click "DONE" to exit this guide.`, side: "bottom", align: "center" } },
                 ]
             })
 
@@ -158,7 +163,19 @@ import { Modal } from 'bootstrap';
 
             onMounted(() => {
                 // scrollFix()
-                recipesOnBoarding()
+                // localStorage.clear()
+                if(localStorage.getItem('needsRecipesTour') == null || localStorage.getItem('needsRecipesTour') == 'true'){
+                    document.getElementsByClassName('searchBarBox')[0].classList.add('disabled')
+                    document.getElementsByClassName('searchBarFilterBox')[0].classList.add('disabled')
+                    document.getElementsByClassName('searchBarSubmitBox')[0].classList.add('disabled')
+                    document.getElementsByClassName('recipeCardBox')[0].classList.add('disabled')
+                    recipesOnBoarding()
+                } else {
+                document.getElementsByClassName('searchBarBox')[0].classList.remove('disabled')
+                document.getElementsByClassName('searchBarFilterBox')[0].classList.remove('disabled')
+                document.getElementsByClassName('recipeCardBox')[0].classList.remove('disabled')
+                }
+
                 getRandomRecipes()
             })
             
@@ -231,6 +248,22 @@ import { Modal } from 'bootstrap';
 </script>
 
 <style lang="scss" scoped>
+
+.searchBarBox.disabled{
+    pointer-events: none;
+}
+
+.searchBarFilterBox.disabled{
+    pointer-events: none;
+}
+
+.searchBarSubmitBox.disabled{
+    pointer-events: none;
+}
+
+.recipeCardBox.disabled{
+    pointer-events: none;
+}
 
 .title {
     font-size: 2.25rem;

@@ -1,5 +1,5 @@
 <template>
-  <main class="p-0 m-0 pattern-cross-dots-sm">
+  <main class="p-0 m-0 pattern-cross-dots-sm" id="main">
     <router-view />
   </main>
   <footer class="sticky-bottom">

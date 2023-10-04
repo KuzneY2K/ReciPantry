@@ -83,7 +83,7 @@ export default {
 
   onMounted(() => {
     // localStorage.clear()
-    if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == true){
+    if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == 'true'){
       document.getElementsByClassName('categoriesBox')[0].classList.add('disabled')
       document.getElementsByClassName('getStartedBox')[0].classList.add('disabled')
       document.getElementsByClassName('navbar')[0].classList.add('disabled')
