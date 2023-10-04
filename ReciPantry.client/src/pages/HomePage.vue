@@ -66,7 +66,7 @@ export default {
             logger.log('END TOUR => ' + localStorage.getItem('needsHomeTour'))
           driverObj.moveNext()
             } } },
-        { element: '#getStartedBox', popover: { title: 'Ready to start?', description: 'Go on now.', side: "top", align: "center"}, 
+        { element: '#getStartedBox', popover: { title: 'Ready to start?', description: 'Get cooking.', side: "top", align: "center"}, 
          }
         
       ]
