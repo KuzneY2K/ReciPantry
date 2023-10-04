@@ -1,9 +1,13 @@
 <template>
-    <div v-if="recipe">
+    <div v-if="recipe" >
         <!-- Pulls recipe title from active recipe -->
-        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span
-                class="text-black">- {{
+        <section class="row p-0 m-0">
+            <div class="col-12 p-0 m-0" id="recipeTitleBox">
+        <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title" >{{ recipe.title }} <span
+                class="text-black readyInBox" id="readyInBox">- {{
                     recipe.readyInMinutes }} Mins</span></h1>
+            </div>
+        </section>
         <div class="grocery-btn-container postion-absolute">
             <!-- Grocery List modal toggle -->
             <button
@@ -146,6 +150,20 @@ export default {
         let reviewData = ref({})
         let groceryData = ref({})
 
+        function detailsOnBoarding(){
+            driverObj.drive()
+        }
+            const driver = window.driver.js.driver
+            const driverObj = driver({
+                showProgress: true,
+                allowClose: false,
+                steps: [
+                    { element: '.recipe-title', popover: { title: `The Recipe 😎`, description: `Here you are viewing all details related to this recipe. Everything you need to know is on this page.`, side: "bottom", align: "center" } },
+                    { element: '.readyInBox', popover: { title: 'How long am I cooking? 🥣', description: 'Good question. This portion of the page will show you the approximate cooking time of the recipe.', side: "bottom", align: "center" } }
+                ]
+            })
+
+
 
         // Community Recipe function should be different, mayhaps - getCommunityRecipeById()
         async function getRecipeById() {
@@ -166,6 +184,7 @@ export default {
         onMounted(() => {
             getRecipeById();
             getReviewsByRecipe();
+            detailsOnBoarding()
         })
 
         // watchEffect(()=> {
