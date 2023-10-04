@@ -138,6 +138,7 @@ import { Modal } from 'bootstrap';
 
             onMounted(() => {
                 getRandomRecipes()
+                window.scrollTo(0, 0)
             })
             
             return{
@@ -185,6 +186,7 @@ import { Modal } from 'bootstrap';
                 async nextPage(){
                     try {
                         AppState.pageNum += 1
+                        window.scrollTo(0, 0)
                         await recipesService.paginate(this.query)
                     } catch (error) {
                         Pop.error(error)
