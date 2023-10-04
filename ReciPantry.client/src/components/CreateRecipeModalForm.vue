@@ -126,10 +126,13 @@ export default {
                 }
             },
 
-            explode(){
+            // JS CONFETTI Function
+            explode() {
                 const jsConfetti = new JSConfetti()
                 jsConfetti.addConfetti({
-                    emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇']
+                    emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇', '🍟', '🍕', '🥞', '🍪'],
+                    confettiRadius: 50,
+                    confettiNumber: 100
                 })
                 logger.log('test')
             },
