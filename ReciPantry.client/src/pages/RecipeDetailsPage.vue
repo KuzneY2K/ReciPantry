@@ -8,7 +8,7 @@
                     recipe.readyInMinutes }} Mins</span></h1>
             </div>
         </section>
-        <div class="grocery-btn-container postion-absolute">
+        <div class="grocery-btn-container postion-absolute" v-if="account.id">
             <!-- Grocery List modal toggle -->
             <button
                 class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5 grocery-list-btn"
@@ -142,6 +142,7 @@ import { reviewService } from '../services/ReviewService';
 import { groceriesService } from '../services/GroceriesService.js'
 import { onAuthLoaded } from '@bcwdev/auth0provider-client';
 import JSConfetti from 'js-confetti'
+import { Modal } from 'bootstrap';
 
 export default {
     setup() {
@@ -162,7 +163,17 @@ export default {
                     { element: '.readyInBox', popover: { title: 'How long am I cooking? 🥣', description: 'Good question. This portion of the page will show you the approximate cooking time of the recipe as well as what this recipe is called.', side: "bottom", align: "center" } },
                     { element: '.ingredients-header', popover: { title: `Ingredients & Servings 🍜`, description: `Ingredients and servings for this recipe will be displayed here and no where else.`, side: "bottom", align: "center" } },
                     { element: '.ingredient', popover: { title: `The Ingredient 🥕`, description: `This is an individual ingredient that will display on page load. Most of the time it will include the quantity needed for this select recipe.`, side: "bottom", align: "center" } },
-                    { element: '.cart', popover: { title: `Adding to a grocery list 🛒`, description: `Don't have this ingredient? Don't have the attention span to remember it? No worries. Clicking the cart icon will add this ingredient to your personal shopping list.`, side: "bottom", align: "center" } },
+                    { element: '.cart', popover: { title: `Adding to a grocery list 🛒`, description: `Don't have this ingredient? Don't have the attention span to remember it? No worries. Clicking the cart icon will add this ingredient to your personal shopping list.`, side: "bottom", align: "center", onNextClick: () => {
+                        Modal.getOrCreateInstance('#groceryListModal').show()
+                        let modalBody = document.getElementById('groceryUl')
+                        modalBody.innerHTML = `
+                        <div class="li-container d-flex flex-row justify-content-between fs-5">
+                            <li class="text-black"><i class="mdi mdi-food"></i> <span class="text-success">SALT</span> - 2 GALLONS </li>
+                            <i class="mdi mdi-close text-danger fs-2"></i>
+                        </div>`
+                        driverObj.moveNext()
+                    } } },
+                    { element: '.grocery-list-modal-body', popover: { title: `Grocery List 📄`, description: `Once you log in or create an account you will be able to access your personal grocery list. All ingredients that you add to your grocery list will be displayed here.`, side: "top", align: "center" } }
                 ]
             })
 
@@ -270,7 +281,7 @@ export default {
                 } catch (error) {
                     Pop.error(error)
                 }
-            }
+            },
         }
     }
 }
