@@ -8,8 +8,8 @@
     </div>
   </section>
   <!-- Landing Card -->
-  <section class="row p-0 m-0" id="homeCard">
-    <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center landingCardContainer">
+  <section class="row p-0 m-0">
+    <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center landingCardContainer" id="homeCard">
       <!-- COMPLETELY SEPARATE FROM RECIPE CARDS. -->
       <!-- These are the cards that can be side scrolled on the home page. -->
       <LandingCard  />
@@ -19,13 +19,13 @@
   <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
     <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center mt-4">
       <RouterLink :to="{ name: 'Recipes' }">
-        <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black">Get Started <i
+        <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black" id="getStartedBox">Get Started <i
             class="mdi mdi-arrow-right-bold"></i></button>
       </RouterLink>
     </div>
   </section>
   <hr class="animate__animated animate__fadeIn">
-  <section class="row p-0 m-0">
+  <section class="row p-0 m-0" id="categoriesBox">
     <div class="col-12 p-0 m-0">
       <h1 class="text-center categories-title animate__animated animate__fadeIn">Browse Categories</h1>
     </div>
@@ -40,16 +40,34 @@
 <script>
 import { computed, onMounted, ref } from 'vue';
 import { AppState } from '../AppState.js';
+import { logger } from '../utils/Logger.js';
 
 export default {
   setup() {
-
     const driver = window.driver.js.driver
     const driverObj = driver({
       showProgress: true,
+      allowClose: false,
       steps: [
-        { element: '#homeCard', popover: { title: 'Welcome to ReciPantry 🍔', description: 'Let us show you around and give you a small tour!!' }, position: 'Center' },
-        { element: '#titleText', popover: { title: 'Let us help you become the best chef. 🍔', description: 'Finding the perfect recipe and saving money while doing so has never been easier.' }, position: 'Center' },
+        { element: '#homeCard', popover: { title: 'Welcome to ReciPantry 🍔', description: 'Let us show you around and give you a small tour!!', side: "bottom", align: "center" } },
+        
+        { element: '#titleText', popover: { title: 'Let us help you become the best chef. 🧑‍🍳', description: 'Finding the perfect recipe and saving money while doing so has never been easier.', side: "bottom", align: "start", onNextClick: () => {
+          window.scrollBy(0, -window.innerHeight), driverObj.moveNext(), driverObj.refresh()
+        } }},
+        { element: '#categoriesBox', popover: { title: 'Not sure where to start? 🍲', description: 'Select any category to see all recipes related to that category. Need to see more? Scroll to the side!', side: "top", align: "center" } },
+        { element: '#navbarBox', popover: { title: 'Navigating around is simple. ↘️', description: 'Select any button to visit its respective webpage!', side: "top", align: "center" } },
+        { element: '#navbarHomeBox', popover: { title: 'Home Page. 🏡', description: 'You are here!', side: "top", align: "center" } },
+        { element: '#navbarRecipesBox', popover: { title: 'Recipe Page. 📃', description: 'Explore all of our recipes on this page!', side: "top", align: "center" } },
+        { element: '#navbarCommunityBox', popover: { title: 'Community Page. 🫂', description: 'Explore all of our custom user created recipes, and be able to create your own!', side: "top", align: "center" } },
+        { element: '#navbarAccountBox', popover: { title: 'Account Page. 👳', description: 'Access your account here.', side: "top", align: "center", 
+        onNextClick: () => {
+          localStorage.setItem('needsHomeTour', false),
+            logger.log('END TOUR => ' + localStorage.getItem('needsHomeTour'))
+          driverObj.moveNext()
+            } } },
+        { element: '#getStartedBox', popover: { title: 'Ready to start?', description: 'Get cooking.', side: "top", align: "center"}, 
+         }
+        
       ]
     })
     
@@ -59,18 +77,29 @@ export default {
 
 
   onMounted(() => {
-    onboarding()
+    // localStorage.clear()
+    if(localStorage.getItem('needsHomeTour') == null){
+      onboarding()
+    }
   })
     
     return {
       categories: computed(() => AppState.categories),
       
     }
+    
   }
 }
 </script>
 
 <style scoped lang="scss">
+
+// DRIVER JS - DONT TOUCH!
+
+.recipantry-theme{
+  background-color: rgb(49, 163, 66) !important;
+}
+
 .bubble-container {
   overflow-x: scroll !important;
 }

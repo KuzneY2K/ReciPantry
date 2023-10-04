@@ -22,6 +22,11 @@
 
                     </slot>
                 </div>
+                <div class="modal-body text-dark">
+                    <slot name="footer">
+
+                    </slot>
+                </div>
             </div>
         </div>
     </div>

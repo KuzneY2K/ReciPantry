@@ -104,6 +104,9 @@ import Pop from '../utils/Pop.js';
 import { recipesService } from '../services/RecipesService.js';
 import { Modal } from 'bootstrap';
 import { logger } from '../utils/Logger.js';
+import JSConfetti from 'js-confetti'
+
+
 export default {
     setup() {
         const recipeData = ref({})
@@ -122,6 +125,19 @@ export default {
                     Pop.error(error)
                 }
             },
+
+            // JS CONFETTI Function
+            explode() {
+                const jsConfetti = new JSConfetti()
+                jsConfetti.addConfetti({
+                    emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇', '🍟', '🍕', '🥞', '🍪', '🥘', '🥕', '🦐', '🥑', '🍣', '🍜'],
+                    confettiRadius: 500,
+                    confettiNumber: 50,
+                    emojiSize: 125
+                })
+                logger.log('test')
+            },
+
             async removeIngredient() {
                 try {
                     if (ingredients.value.length != 1) {
@@ -140,6 +156,7 @@ export default {
                     Modal.getOrCreateInstance('#createRecipe').hide()
                     logger.log(newRecipe)
                     router.push({ name: "Community Recipe Details", params: { recipeId: newRecipe.id } })
+                    this.explode()
                 } catch (error) {
                     Pop.error(error)
                 }

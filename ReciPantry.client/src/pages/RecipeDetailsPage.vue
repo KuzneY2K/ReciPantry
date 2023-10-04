@@ -135,6 +135,7 @@ import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
 import { groceriesService } from '../services/GroceriesService.js'
 import { onAuthLoaded } from '@bcwdev/auth0provider-client';
+import JSConfetti from 'js-confetti'
 
 export default {
     setup() {
@@ -187,6 +188,18 @@ export default {
             reviewData,
             router,
 
+            // JS CONFETTI function
+            explode() {
+                const jsConfetti = new JSConfetti()
+                jsConfetti.addConfetti({
+                    emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇', '🍟', '🍕', '🥞', '🍪', '🥘', '🥕', '🦐', '🥑', '🍣', '🍜'],
+                    confettiRadius: 500,
+                    confettiNumber: 50,
+                    emojiSize: 125
+                })
+                logger.log('test')
+            },
+
             // Adds ingredient to shopping list when clicking on cart.
             async addToList(grocery) {
                 if (await Pop.confirm(`Add ${grocery.name} to grocery list?`)) {
@@ -227,6 +240,7 @@ export default {
                     if (await Pop.confirm('Are you sure you want to clone this?')) {
                         await recipesService.cloneRecipe(AppState.activeRecipe)
                         router.push({ name: "Community Recipe Details", params: { recipeId: AppState.activeRecipe.id } })
+                        this.explode()
                     }
                 } catch (error) {
                     Pop.error(error)

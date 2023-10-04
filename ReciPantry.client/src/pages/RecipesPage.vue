@@ -11,7 +11,7 @@
       <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
         <!-- For every recipe result a clickable card is rendered out -->
         <div class="col-12 col-md-8 d-flex flex-column align-items-center justify-content-center">
-            <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
+            <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" v-motion-pop-visible/>
         </div>
       </section>
 
@@ -136,7 +136,12 @@ import { Modal } from 'bootstrap';
                 }
             }
 
+            function scrollFix(){
+                window.scroll(0, 1000)
+            }
+
             onMounted(() => {
+                scrollFix()
                 getRandomRecipes()
             })
             
@@ -174,6 +179,7 @@ import { Modal } from 'bootstrap';
                     AppState.selectedCategory = null
                     AppState.selectedIngredient = null
                     await recipesService.searchRecipesByQuery(AppState.savedQuery)
+                    scrollFix()
                 } catch (error) {
                     Pop.error(error)
                 }
@@ -185,6 +191,7 @@ import { Modal } from 'bootstrap';
                 async nextPage(){
                     try {
                         AppState.pageNum += 1
+                        window.scrollTo(0, 0)
                         await recipesService.paginate(this.query)
                     } catch (error) {
                         Pop.error(error)
@@ -195,6 +202,7 @@ import { Modal } from 'bootstrap';
                 async previousPage(){
                     try {
                         AppState.pageNum -= 1
+                        window.scrollTo(0, 0)
                         await recipesService.paginate(this.query)
                     } catch (error) {
                         Pop.error(error)
