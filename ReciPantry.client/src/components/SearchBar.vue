@@ -38,15 +38,6 @@ import { AppState } from '../AppState.js'
                 // logger.log(AppState.savedQuery)
             },
 
-            // Just to test if buttons work
-            testBtn() {
-                const jsConfetti = new JSConfetti()
-                jsConfetti.addConfetti({
-                    emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇']
-                })
-                logger.log('test')
-            },
-
             // Search recipes by query, autocompletes
             async searchRecipesByQuery() {
                 try {
