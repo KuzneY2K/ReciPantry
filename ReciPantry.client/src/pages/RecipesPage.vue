@@ -10,7 +10,7 @@
       </section>
       <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
         <!-- For every recipe result a clickable card is rendered out -->
-        <div class="col-12 col-md-8 d-flex flex-column align-items-center justify-content-center recipeCardBox">
+        <div class="col-12 col-md-9 col-md-8 d-flex flex-column align-items-center justify-content-center recipeCardBox">
             <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" v-motion-pop-visible/>
         </div>
       </section>
@@ -272,8 +272,14 @@ import { Modal } from 'bootstrap';
 }
 
 .title {
-    font-size: 2.25rem;
+    font-size: 4rem;
     text-shadow: 0px 1px 7px rgb(221, 221, 221)
+}
+
+@media (max-width: 768px){
+    .title{
+        font-size: 2.5rem;
+    }
 }
 
 .pag-btn {

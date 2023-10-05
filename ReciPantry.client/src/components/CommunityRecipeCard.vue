@@ -34,17 +34,34 @@ export default {
 <style lang="scss" scoped>
 .card-container {
     width: 90%;
-    height: 7rem;
+    height: 14rem;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
+
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        height: 7rem;
+    }
+
 }
 
 .recipe-title {
-    bottom: 3.5rem;
+    bottom: 8rem;
+    font-size: 3rem;
     text-shadow: 1px 1px 5px black;
-    height: 2rem;
+    height: 4rem;
     overflow-y: scroll !important;
+}
+
+@media (max-width: 768px){
+    .recipe-title{
+        font-size: 1.75rem;
+        bottom: 1.5rem;
+    }
 }
 
 .arrow {

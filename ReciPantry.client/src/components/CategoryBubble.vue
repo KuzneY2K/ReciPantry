@@ -135,10 +135,17 @@ import Pop from '../utils/Pop.js';
 }
 
 .bubble{
-    height: 6rem;
-    width: 6rem;
+    height: 12rem;
+    width: 12rem;
     object-fit: cover;
     border: 1px solid black;
+}
+
+@media (max-width: 768px){
+    .bubble{
+        height: 6rem;
+        width: 6rem;
+    }
 }
 
 </style>

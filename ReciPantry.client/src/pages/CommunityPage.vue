@@ -8,8 +8,8 @@
             </section>
         </div>
     </section>
-    <section class="row p-0 m-0">
-        <div class="col-12 p-0 m-0 d-flex flex-column justify-content-center align-items-center mt-3">
+    <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
+        <div class="col-12 col-md-9 col-md-8 d-flex flex-column align-items-center justify-content-center">
             <CommunityRecipeCard v-for="recipe in communityRecipes" :key="recipe.id" :recipe="recipe" v-motion-pop-visible/>
         </div>
         <CreateRecipeModalForm />
@@ -55,8 +55,14 @@ export default {
 
 <style lang="scss" scoped>
 .title {
-    font-size: 2.25rem;
+    font-size: 4rem;
     text-shadow: 0px 1px 7px rgb(221, 221, 221)
+}
+
+@media (max-width: 768px){
+    .title{
+        font-size: 2.5rem;
+    }
 }
 
 .pag-btn {

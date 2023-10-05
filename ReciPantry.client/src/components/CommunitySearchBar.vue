@@ -1,7 +1,7 @@
 <template>
     <div class="col-12 p-0 m-0 d-flex flex-row">
         <!-- Search Form - Search by query with filters -->
-        <form @submit.prevent="">
+        <form @submit.prevent="" class="form">
             <div class="input-group p-0 m-0 elevation-5 border border-black border-1 bg-transparent rounded">
                 <!-- Submit Button -->
                 <button type="submit" class="btn bg-light p-0 m-0"><span class="input-group-text p-0 m-0 py-1 px-3"
@@ -30,6 +30,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.form{
+    width: 40rem;
+}
+
+@media (max-width: 768px){
+    .form {
+        width: 15rem;
+    }
+}
 .btn-grad {
     background-color: rgb(156, 211, 185)
 }

@@ -30,7 +30,7 @@
       <h1 class="text-center categories-title animate__animated animate__fadeIn">Browse Categories</h1>
     </div>
     <div
-      class="col-12 col-md-10 px-5 p-md-0 m-0 d-flex flex-row justify-content-start bubble-container animate__animated animate__fadeInRightBig">
+      class="col-12 col-md-9 px-5 p-md-0 m-0 d-flex flex-row justify-content-start justify-content-md-center bubble-container animate__animated animate__fadeInRightBig">
       <CategoryBubble />
     </div>
   </section>
@@ -123,7 +123,7 @@ export default {
 
 @media (max-width: 768px){
   .home-title{
-    font-size: 3rem !important;
+    font-size: 2.5rem !important;
   }
 }
 
