@@ -35,7 +35,7 @@
           <router-link :to="{ name: 'About' }"
             class="btn text-sdark selectable text-uppercase animate__animated animate__bounce" height="35"
             id="navbarAccountBox">
-            <i class="mdi mdi-book-open-page-variant fs-2"></i>
+            <img src="https://i.imgur.com/8nJ90fn.png" alt="" height="30">
           </router-link>
         </li>
 
