@@ -26,7 +26,7 @@
   </section>
   <!-- Categories Section -->
   <section class="row p-0 m-0 categoriesBox d-flex flex-row justify-content-md-center" id="categoriesBox">
-    <div class="col-12 p-0 m-0">
+    <div class="col-12 p-0 m-0 mt-md-3">
       <h1 class="text-center categories-title animate__animated animate__fadeIn">Browse Categories</h1>
     </div>
     <div
