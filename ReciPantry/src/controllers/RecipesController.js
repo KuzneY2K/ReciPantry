@@ -21,7 +21,7 @@ export class RecipesController extends BaseController {
     // pretty simple here, get request to our DB
     async getRecipes(req, res, next) {
         try {
-            const recipes = await recipesService.getRecipes(req.query)
+            const recipes = await recipesService.getRecipes(req.query.name)
             res.send(recipes)
         } catch (error) {
             next(error)
@@ -60,6 +60,7 @@ export class RecipesController extends BaseController {
     // allows the user to edit a recipe they have created
     async editRecipe(req, res, next) {
         try {
+
             const updates = req.body
             const recipeId = req.params.recipeId
             const userId = req.userInfo.id

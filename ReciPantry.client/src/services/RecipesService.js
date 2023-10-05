@@ -46,6 +46,7 @@ class RecipesService{
     }
 
     async searchCommunityRecipes(query){
+        
         let res = await api.get(`api/recipes?query=${query}`)
         logger.log(res)
     }
