@@ -28,16 +28,6 @@ export class RecipesController extends BaseController {
             next(error)
         }
     }
-
-    async searchRecipes(req, res, next) {
-        try {
-            const query = req.body
-            const recipes = await recipesService.searchRecipes(query)
-            res.send(recipes)
-        } catch (error) {
-            next(error)
-        }
-    }
     // getting an individual recipe (utilized for the recipe details page)
     async getRecipeById(req, res, next) {
         try {
