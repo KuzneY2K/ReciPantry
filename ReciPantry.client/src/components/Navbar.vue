@@ -32,8 +32,8 @@
         </li>
 
         <li class="mx-2">
-          <router-link :to="{ name: 'About' }"
-            class="btn text-sdark selectable text-uppercase animate__animated animate__bounce" id="navbarAboutBox">
+          <router-link :to="{ name: 'About' }" class="btn selectable text-uppercase animate__animated animate__bounce"
+            id="navbarAboutBox">
             <img src="https://i.imgur.com/R1rFhM3.png" alt="" height="30">
           </router-link>
         </li>
