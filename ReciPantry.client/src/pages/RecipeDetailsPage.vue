@@ -260,7 +260,6 @@ export default {
                 document.getElementsByClassName('nutrition-label')[0].innerHTML = AppState.nutritionLabel
                 document.getElementsByClassName('summary')[0].innerHTML = AppState.activeRecipe.summary
                 document.getElementsByClassName('instructions')[0].innerHTML = AppState.activeRecipe.instructions
-                logger.log(AppState.activeRecipe)
             } catch (error) {
                 Pop.error(error)
             }
@@ -308,7 +307,6 @@ export default {
                     confettiNumber: 50,
                     emojiSize: 75
                 })
-                logger.log('test')
             },
 
             // Adds ingredient to shopping list when clicking on cart.
@@ -319,7 +317,6 @@ export default {
                     groceryData.value.measureUnit = grocery.measures.us.unitShort || ''
                     await groceriesService.addGrocery(groceryData.value)
                     Pop.success(`Added ${grocery.name} to grocery list!`)
-                    logger.log(AppState.groceryList)
                 } else {
                     Pop.toast(`${grocery.name} not added to grocery list.`)
                 }
@@ -327,7 +324,6 @@ export default {
                 // Remove ingredient from shopping list by clicking little X symbol
             },
             async removeFromList(groceryId) {
-                logger.log(groceryId)
                 if (await Pop.confirm(`Remove from gorcery list?`)) {
                     await groceriesService.removeFromList(groceryId)
                 } else {
@@ -337,7 +333,6 @@ export default {
             // STUB create review function - takes data fro input form in dropdown menu
             async createReview() {
                 try {
-                    logger.log(reviewData.value)
                     reviewData.value.recipeId = route.params.recipeId
                     await reviewService.createReview(reviewData.value)
                     Pop.toast('Review left')
@@ -394,4 +389,5 @@ export default {
 
 .recipe-image {
     object-fit: cover;
-}</style>
+}
+</style>

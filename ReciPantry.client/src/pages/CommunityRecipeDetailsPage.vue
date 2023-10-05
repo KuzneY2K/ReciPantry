@@ -161,7 +161,6 @@ export default {
         })
         onMounted(() => {
             getCommunityRecipeById();
-            logger.log(AppState.account)
         });
         async function getCommunityRecipeById() {
             try {
@@ -225,7 +224,6 @@ export default {
                 // Remove ingredient from shopping list by clicking little X symbol
             },
             async removeFromList(ingredientId) {
-                logger.log(ingredientId);
             },
             async deleteRecipe() {
                 try {
@@ -233,6 +231,7 @@ export default {
                         const recipeId = AppState.activeRecipe.id;
                         await recipesService.deleteRecipe(recipeId);
                         router.push({ name: 'Account' });
+                        Pop.toast('Recipe Deleted', 'success')
                     }
                     else {
                         Pop.toast('Recipe deletion cancelled.');
@@ -257,7 +256,6 @@ export default {
                         Pop.error("Please leave a rating")
                         return
                     }
-                    logger.log(reviewData.value);
                     reviewData.value.recipeId = route.params.recipeId;
                     await reviewService.createReview(reviewData.value);
                     reviewData.value = {};

@@ -1,8 +1,8 @@
 <template>
     <!-- Modal Body -->
     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-    <div class="modal fade create-form" id="createRecipe" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-        aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal fade create-form" id="createRecipe" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -18,29 +18,31 @@
                         </div>
                         <div class="col-12">
                             <label for="recipeIngredients">Ingredients:</label>
-                            <div class="ingredient-container d-flex flex-row justify-content-start" v-for="ingredient in ingredients" :key="ingredient.id">
-                            <input v-model="ingredient.name"
-                                class="form-control" id="recipeIngredients" type="text" maxlength="1000"
-                                placeholder="Ingredients" required>
-                            <input type="number" v-model="ingredient.measureAmount" :key="ingredient.id" placeholder="ex: 2" class="form-control">
-                            <input type="text" v-model="ingredient.measureUnit" :key="ingredient.id" placeholder="TBSP" class="form-control">
+                            <div class="ingredient-container d-flex flex-row justify-content-start"
+                                v-for="ingredient in ingredients" :key="ingredient.id">
+                                <input v-model="ingredient.name" class="form-control" id="recipeIngredients" type="text"
+                                    maxlength="1000" placeholder="Ingredients" required>
+                                <input type="number" v-model="ingredient.measureAmount" :key="ingredient.id"
+                                    placeholder="ex: 2" class="form-control">
+                                <input type="text" v-model="ingredient.measureUnit" :key="ingredient.id" placeholder="TBSP"
+                                    class="form-control">
                             </div>
                         </div>
                         <div class="add-remove-container d-flex flex-row justify-content-between my-2">
-                        <div class="col-6 p-0 m-0 d-flex flex-row justify-content-center">
-                            <button @click="addIngredient" type="button" class="btn btn-success">Add<i
-                                    class="mdi mdi-plus"></i></button>
-                        </div>
-                        <div class="col-6 p-0 m-0 d-flex flex-row justify-content-center">
-                            <button @click="removeIngredient" class="btn btn-danger" type="button">Remove <i
-                                    class="mdi mdi-minus"></i></button>
-                        </div>
+                            <div class="col-6 p-0 m-0 d-flex flex-row justify-content-center">
+                                <button @click="addIngredient" type="button" class="btn btn-success">Add<i
+                                        class="mdi mdi-plus"></i></button>
+                            </div>
+                            <div class="col-6 p-0 m-0 d-flex flex-row justify-content-center">
+                                <button @click="removeIngredient" class="btn btn-danger" type="button">Remove <i
+                                        class="mdi mdi-minus"></i></button>
+                            </div>
                         </div>
                         <div class="col-12 d-flex flex-column">
                             <label for="recipeInstructions">Instructions:</label>
-                            <textarea v-model="recipeData.instructions" class="form-control"
-                                name="recipeInstructions" id="recipeInstructions" maxlength="5000"
-                                placeholder="Instructions:" cols="100" required></textarea>
+                            <textarea v-model="recipeData.instructions" class="form-control" name="recipeInstructions"
+                                id="recipeInstructions" maxlength="5000" placeholder="Instructions:" cols="100"
+                                required></textarea>
                         </div>
                         <div class="col-6">
                             <label for="recipeServings">Servings:</label>
@@ -68,22 +70,22 @@
                                 placeholder="Tell everyone something about the recipe. ex: Where it comes from."></textarea>
                         </div>
                         <div class="check-container d-flex flex-column ms-4 my-3">
-                        <div class="col-4 form-check p-0 m-0">
-                            <label for="glutenFree">Gluten Free?</label>
-                            <input v-model="recipeData.glutenFree"
-                                class="form-check-input border border-1 border-black text-success" type="checkbox" value=""
-                                id="glutenFree">
-                        </div>
-                        <div class="col-4 form-check p-0 m-0">
-                            <label for="vegan">Vegan?</label>
-                            <input v-model="recipeData.vegan" value="" class="form-check-input border border-1 border-black"
-                                type="checkbox">
-                        </div>
-                        <div class="col-4 form-check p-0 m-0">
-                            <label for="vegetarian">Vegetarian?</label>
-                            <input v-model="recipeData.vegetarian" value=""
-                                class="form-check-input border border-1 border-black" type="checkbox">
-                        </div>
+                            <div class="col-4 form-check p-0 m-0">
+                                <label for="glutenFree">Gluten Free?</label>
+                                <input v-model="recipeData.glutenFree"
+                                    class="form-check-input border border-1 border-black text-success" type="checkbox"
+                                    value="" id="glutenFree">
+                            </div>
+                            <div class="col-4 form-check p-0 m-0">
+                                <label for="vegan">Vegan?</label>
+                                <input v-model="recipeData.vegan" value=""
+                                    class="form-check-input border border-1 border-black" type="checkbox">
+                            </div>
+                            <div class="col-4 form-check p-0 m-0">
+                                <label for="vegetarian">Vegetarian?</label>
+                                <input v-model="recipeData.vegetarian" value=""
+                                    class="form-check-input border border-1 border-black" type="checkbox">
+                            </div>
                         </div>
                         <div class="col-2">
                             <button class="btn btn-success">Submit</button>
@@ -135,7 +137,6 @@ export default {
                     confettiNumber: 50,
                     emojiSize: 75
                 })
-                logger.log('test')
             },
 
             async removeIngredient() {
@@ -154,7 +155,6 @@ export default {
                     Pop.toast('Recipe Created!', 'success')
                     resetForm()
                     Modal.getOrCreateInstance('#createRecipe').hide()
-                    logger.log(newRecipe)
                     router.push({ name: "Community Recipe Details", params: { recipeId: newRecipe.id } })
                     this.explode()
                 } catch (error) {
@@ -168,7 +168,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.create-form{
+.create-form {
     font-family: 'Ubuntu' !important;
 }
 </style>

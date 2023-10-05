@@ -1,8 +1,8 @@
 <template>
     <!-- For each recipe a card is rendered out, instead of using img a div background image is used for UI enhancement -->
-    <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-2 border-dark elevation-5 postion-relative"
+    <div class="card-container p-0 m-0 rounded rounded-5 my-2 border border-2 border-dark elevation-5 position-relative"
         :style="{ backgroundImage: 'url(' + props.recipe.image + ')' }">
-        <h2 class="postion-absolute text-white recipe-title position-absolute ms-3">{{ props.recipe.title }}</h2>
+        <h2 class="postion-absolute text-white recipe-title postion-absolute ms-3">{{ props.recipe.title }}</h2>
         <div class="container">
             <!-- Upon clicking "Learn More =>"  the user is taken to the recipe details page of the specific recipe-->
             <RouterLink :to="{ name: 'Community Recipe Details', params: { recipeId: props.recipe.id } }">
@@ -57,8 +57,8 @@ export default {
     overflow-y: scroll !important;
 }
 
-@media (max-width: 768px){
-    .recipe-title{
+@media (max-width: 768px) {
+    .recipe-title {
         font-size: 1.75rem;
         bottom: 1.5rem;
     }
