@@ -172,6 +172,9 @@ export default {
             onCloseClick: () => {
                 localStorage.setItem('needsDetailsTour', 'false')
                 driverObj.destroy()
+                document.getElementsByClassName('nmBtn')[0].classList.remove('disabled')
+                document.getElementsByClassName('nfBtn')[0].classList.remove('disabled')
+                document.getElementsByClassName('ingredient')[0].classList.remove('disabled')
             },
             steps: [
                 { element: '.img-container', popover: { title: `The Recipe 😎`, description: `Here you are viewing all details related to this recipe. Everything you need to know is on this page.`, side: "bottom", align: "center" } },

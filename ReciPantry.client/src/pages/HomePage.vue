@@ -51,6 +51,9 @@ export default {
       onCloseClick: () => { 
         localStorage.setItem('needsHomeTour', 'false')
         driverObj.destroy()
+        document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
+        document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
+        document.getElementsByClassName('navbar')[0].classList.remove('disabled')
       },
       steps: [
         { element: '#homeCard', popover: { title: 'Welcome to ReciPantry 🍔', description: 'Let us show you around and give you a small tour!!', side: "bottom", align: "center" } },

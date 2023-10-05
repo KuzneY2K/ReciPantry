@@ -127,6 +127,9 @@ import { Modal } from 'bootstrap';
                 onCloseClick: () => {
                     localStorage.setItem('needsRecipesTour', 'false')
                     driverObj.destroy()
+                    document.getElementsByClassName('searchBarBox')[0].classList.remove('disabled')
+                    document.getElementsByClassName('searchBarFilterBox')[0].classList.remove('disabled')
+                    document.getElementsByClassName('recipeCardBox')[0].classList.remove('disabled')
                 },
                 steps: [
                     { element: '#recipes-page-title', popover: { title: 'Ready to browse recipes? 🧑‍🍳', description: 'Finding recipes on ReciPantry is super easy.', side: "bottom", align: "center" } },
