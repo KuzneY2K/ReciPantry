@@ -36,11 +36,18 @@ import {recipesService} from '../services/RecipesService.js'
 <style lang="scss" scoped>
 
 .card-container {
-    height: 23rem;
-    width: 20rem;
+    height: 26rem;
+    width: 60rem;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+@media (max-width: 768px){
+    .card-container{
+        width: 22rem;
+        height: 23rem;
+    }
 }
 
 .arrow {
