@@ -17,25 +17,12 @@
         </li>
 
 
-        <li class="btn-group mx-2 btn text-success selectable text-uppercase animate__animated animate__bounce dropup">
-          <div type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="mx-2">
+          <router-link :to="{ name: 'Community' }"
+            class="btn text-success selectable text-uppercase animate__animated animate__bounce" id="navbarCommunityBox">
             <img src="https://i.imgur.com/msy9hgt.png" alt="" height="35">
-          </div>
-          <div class="dropdown-menu">
-            <div id="navbarCommunityBox">
-              <router-link :to="{ name: 'Community' }">
-                <p>Community</p>
-              </router-link>
-            </div>
-            <div>
-              <!-- <router-link :to="{ name: 'About' }">
-                About
-              </router-link> -->
-            </div>
-          </div>
+          </router-link>
         </li>
-
-
         <li class="mx-2">
           <router-link :to="{ name: 'Account' }"
             class="btn text-success selectable text-uppercase animate__animated animate__bounce" id="navbarAccountBox">
