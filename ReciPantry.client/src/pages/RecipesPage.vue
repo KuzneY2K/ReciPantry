@@ -11,7 +11,7 @@
     <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
         <!-- For every recipe result a clickable card is rendered out -->
         <div class="col-12 col-md-9 col-md-8 d-flex flex-column align-items-center justify-content-center recipeCardBox">
-            <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" data-aos="flip-right" />
+            <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" data-aos="flip-up" />
         </div>
     </section>
 
