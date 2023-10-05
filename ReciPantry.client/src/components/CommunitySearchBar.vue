@@ -23,6 +23,7 @@
 import { ref } from 'vue';
 import { AppState } from '../AppState.js';
 import { recipesService } from '../services/RecipesService.js';
+import Pop from '../utils/Pop.js';
 
 export default {
     setup() {
@@ -32,25 +33,30 @@ export default {
         return {
             query,
 
-        async searchCommunityRecipes(){
-            AppState.selectedCategory = null
-            await recipesService.searchCommunityRecipes(query.value)
-        }
+            async searchCommunityRecipes() {
+                try {
+                    AppState.selectedCategory = null
+                    await recipesService.searchCommunityRecipes(query.value)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.form{
+.form {
     width: 40rem;
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
     .form {
         width: 15rem;
     }
 }
+
 .btn-grad {
     background-color: rgb(156, 211, 185)
 }
