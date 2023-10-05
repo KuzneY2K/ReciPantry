@@ -3,6 +3,7 @@ import { recipesService } from "../services/RecipesService.js"
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { favoritesService } from "../services/FavoritesService.js";
 import { reviewService } from "../services/ReviewService.js";
+import { logger } from "../utils/Logger.js";
 
 export class RecipesController extends BaseController {
     constructor() {
@@ -21,6 +22,7 @@ export class RecipesController extends BaseController {
     // pretty simple here, get request to our DB
     async getRecipes(req, res, next) {
         try {
+            logger.log(req.query, req.body)
             const recipes = await recipesService.getRecipes(req.query)
             res.send(recipes)
         } catch (error) {
