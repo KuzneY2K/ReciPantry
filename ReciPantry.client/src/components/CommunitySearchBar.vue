@@ -7,7 +7,7 @@
                 <button type="submit" class="btn bg-light p-0 m-0"><span class="input-group-text p-0 m-0 py-1 px-3"
                         id="basic-addon1"><i class="mdi mdi-magnify fs-2"></i></span></button>
                 <input type="text" class="form-control bg-white" placeholder="Search a recipe" aria-label="searchBar"
-                    aria-describedby="basic-addon1" v-model="name">
+                    aria-describedby="basic-addon1" v-model="query">
                 <!-- FILTER BUTTON - Toggles modal that has all filter options. -->
                 <!-- Filters will be options that will set the reqData to their value -->
             </div>

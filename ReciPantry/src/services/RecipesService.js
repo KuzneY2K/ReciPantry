@@ -4,9 +4,15 @@ import { BadRequest, Forbidden } from "../utils/Errors.js"
 import { logger } from "../utils/Logger.js"
 
 class RecipesService {
+    async searchRecipes(query) {
+        let regex = new RegExp(query, 'i')
+        const recipes = await dbContext.Recipes.find({ title: regex })
+        logger.log(query)
+        return recipes
+    }
     // gets the recipes from the db
-    async getRecipes(query) {
-        const recipes = await dbContext.Recipes.find(query)
+    async getRecipes() {
+        const recipes = await dbContext.Recipes.find()
         return recipes
     }
     //gets an individual recipe from the db

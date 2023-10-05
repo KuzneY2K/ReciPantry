@@ -10,6 +10,7 @@ export class RecipesController extends BaseController {
         super('api/recipes')
         this.router
             .get('', this.getRecipes)
+            .get('/:query', this.searchRecipes)
             .get('/:recipeId', this.getRecipeById)
             .get('/:recipeId/favorites', this.getFavoritesByRecipe)
             .get('/:recipeId/reviews', this.getReviewsByRecipe)
@@ -22,7 +23,17 @@ export class RecipesController extends BaseController {
     // pretty simple here, get request to our DB
     async getRecipes(req, res, next) {
         try {
-            const recipes = await recipesService.getRecipes(req.query)
+            const recipes = await recipesService.getRecipes()
+            res.send(recipes)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async searchRecipes(req, res, next) {
+        try {
+            let query = req.params.query
+            const recipes = await recipesService.searchRecipes(query)
             res.send(recipes)
         } catch (error) {
             next(error)
