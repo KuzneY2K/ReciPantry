@@ -37,7 +37,7 @@
       </div>
       <div class="collapse" id="myRecipes">
         <section class="row">
-          <div class="flex-column align-items-center" v-for="recipe in recipes" :key="recipe.id">
+          <div class="flex-column d-flex align-items-center" v-for="recipe in recipes" :key="recipe.id">
             <CommunityRecipeCard :recipe="recipe" />
           </div>
         </section>
