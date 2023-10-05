@@ -45,6 +45,11 @@ class RecipesService{
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
     }
 
+    async searchCommunityRecipes(query){
+        let res = await api.get(`api/${query}/recipes`)
+        logger.log(res)
+    }
+
     async searchRecipesByIngredient(){
         AppState.pageNum = 1
         AppState.selectedCategory = null

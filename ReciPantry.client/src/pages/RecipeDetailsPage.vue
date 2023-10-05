@@ -307,7 +307,6 @@ export default {
                     confettiNumber: 50,
                     emojiSize: 75
                 })
-                logger.log('test')
             },
 
             // Adds ingredient to shopping list when clicking on cart.

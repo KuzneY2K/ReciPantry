@@ -49,6 +49,7 @@ export default {
                 jsConfetti.addConfetti({
                     emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇']
                 })
+                logger.log('test')
             },
 
             // Search recipes by query, autocompletes

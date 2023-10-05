@@ -9,6 +9,7 @@ export class RecipesController extends BaseController {
         super('api/recipes')
         this.router
             .get('', this.getRecipes)
+            .get('/:query', this.searchRecipes)
             .get('/:recipeId', this.getRecipeById)
             .get('/:recipeId/favorites', this.getFavoritesByRecipe)
             .get('/:recipeId/reviews', this.getReviewsByRecipe)
