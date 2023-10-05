@@ -168,7 +168,11 @@ export default {
         const driver = window.driver.js.driver
         const driverObj = driver({
             showProgress: true,
-            allowClose: false,
+            allowClose: true,
+            onCloseClick: () => {
+                localStorage.setItem('needsDetailsTour', 'false')
+                driverObj.destroy()
+            },
             steps: [
                 { element: '.img-container', popover: { title: `The Recipe 😎`, description: `Here you are viewing all details related to this recipe. Everything you need to know is on this page.`, side: "bottom", align: "center" } },
                 { element: '.readyInBox', popover: { title: 'How long am I cooking? 🥣', description: 'Good question. This portion of the page will show you the approximate cooking time of the recipe as well as what this recipe is called.', side: "bottom", align: "center" } },

@@ -123,7 +123,11 @@ import { Modal } from 'bootstrap';
             const driver = window.driver.js.driver
             const driverObj = driver({
                 showProgress: true,
-                allowClose: false,
+                allowClose: true,
+                onCloseClick: () => {
+                    localStorage.setItem('needsRecipesTour', 'false')
+                    driverObj.destroy()
+                },
                 steps: [
                     { element: '#recipes-page-title', popover: { title: 'Ready to browse recipes? 🧑‍🍳', description: 'Finding recipes on ReciPantry is super easy.', side: "bottom", align: "center" } },
                     { element: '#searchBarBox', popover: { title: 'Search Bar? 🔎', description: 'Use our search bar to find exactly what you need. 👀', side: "bottom", align: "center" } },

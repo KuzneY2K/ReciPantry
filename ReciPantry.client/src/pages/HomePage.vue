@@ -47,10 +47,13 @@ export default {
     const driver = window.driver.js.driver
     const driverObj = driver({
       showProgress: true,
-      allowClose: false,
+      allowClose: true,
+      onCloseClick: () => { 
+        localStorage.setItem('needsHomeTour', 'false')
+        driverObj.destroy()
+      },
       steps: [
         { element: '#homeCard', popover: { title: 'Welcome to ReciPantry 🍔', description: 'Let us show you around and give you a small tour!!', side: "bottom", align: "center" } },
-        
         { element: '#titleText', popover: { title: 'Let us help you become the best chef. 🧑‍🍳', description: 'Finding the perfect recipe and saving money while doing so has never been easier.', side: "bottom", align: "start", onNextClick: () => {
           window.scrollBy(0, -window.innerHeight), driverObj.moveNext(), driverObj.refresh()
         } }},
