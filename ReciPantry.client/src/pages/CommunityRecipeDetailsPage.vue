@@ -57,7 +57,7 @@
 
                 <!-- For every recipe available, render it's card out. -->
                 <li class="bg-white p-0 m-0 mt-3 py-3 px-3 rounded rounded-5 elevation-3 d-flex flex-row justify-content-start align-items-center"
-                    v-for="ingredient in ingredients" :key="ingredient" v-motion-pop-visible>
+                    v-for="ingredient in ingredients" :key="ingredient">
                     <!-- Cart icon so user can add ingredient to shopping list -->
                     <i class="mdi mdi-cart p-0 m-0 text-success fs-2" @click="addToList(ingredient)"></i>
                     <!-- Checkbox for checking off what a user has and doesnt has -->
@@ -128,7 +128,7 @@
 
         <!-- STUB review cards  -->
         <div class="p-0 m-0 px-3">
-            <div v-for="review in reviews" :key="review.id" class="col-12" v-motion-pop-visible>
+            <div v-for="review in reviews" :key="review.id" class="col-12">
                 <ReviewCard :review="review" />
             </div>
         </div>

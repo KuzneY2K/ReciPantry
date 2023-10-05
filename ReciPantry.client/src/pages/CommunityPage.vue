@@ -10,7 +10,7 @@
     </section>
     <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
         <div class="col-12 col-md-9 col-md-8 d-flex flex-column align-items-center justify-content-center">
-            <CommunityRecipeCard v-for="recipe in communityRecipes" :key="recipe.id" :recipe="recipe" v-motion-pop-visible/>
+            <CommunityRecipeCard v-for="recipe in communityRecipes" :key="recipe.id" :recipe="recipe"/>
         </div>
         <CreateRecipeModalForm />
         <div class="col-2 col-md-4" v-if="account.id">
