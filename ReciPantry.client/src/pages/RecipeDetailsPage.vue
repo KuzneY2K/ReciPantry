@@ -38,7 +38,7 @@
                 <li class="bg-white p-0 m-0 mt-3 py-3 px-3 rounded rounded-5 elevation-3 d-flex flex-row justify-content-start align-items-center ingredient"
                     v-for="ingredient in ingredients" :key="ingredient">
                     <!-- Cart icon so user can add ingredient to shopping list -->
-                    <i class="mdi mdi-cart p-0 m-0 text-success fs-2 cart" @click="addToList(ingredient)"></i>
+                    <i class="mdi mdi-cart p-0 m-0 text-success fs-2 cart selectable" @click="addToList(ingredient)"></i>
                     <!-- Checkbox for checking off what a user has and doesnt has -->
                     <input type="checkbox" name="have" class="form-check-input m-0 p-0 mx-2 checkbox">
                     <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.original }}</span>
