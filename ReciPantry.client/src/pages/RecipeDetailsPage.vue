@@ -36,7 +36,7 @@
 
                 <!-- For every recipe available, render it's card out. -->
                 <li class="bg-white p-0 m-0 mt-3 py-3 px-3 rounded rounded-5 elevation-3 d-flex flex-row justify-content-start align-items-center ingredient"
-                    v-for="ingredient in ingredients" :key="ingredient">
+                    v-for="ingredient in ingredients" :key="ingredient" v-motion-pop-visible>
                     <!-- Cart icon so user can add ingredient to shopping list -->
                     <i class="mdi mdi-cart p-0 m-0 text-success fs-2 cart" @click="addToList(ingredient)"></i>
                     <!-- Checkbox for checking off what a user has and doesnt has -->
@@ -44,7 +44,7 @@
                     <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.original }}</span>
 
                 </li>
-                <li class="nfBtn">
+                <li class="nfBtn" v-motion-pop-visible>
                     <!-- Button that pulls up nutrition facts specific to the meal -->
                     <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4">
                         <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal"
