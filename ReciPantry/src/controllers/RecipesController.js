@@ -9,6 +9,7 @@ export class RecipesController extends BaseController {
         super('api/recipes')
         this.router
             .get('', this.getRecipes)
+            .get('/:query', this.searchRecipes)
             .get('/:recipeId', this.getRecipeById)
             .get('/:recipeId/favorites', this.getFavoritesByRecipe)
             .get('/:recipeId/reviews', this.getReviewsByRecipe)
@@ -22,6 +23,16 @@ export class RecipesController extends BaseController {
     async getRecipes(req, res, next) {
         try {
             const recipes = await recipesService.getRecipes(req.query)
+            res.send(recipes)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async searchRecipes(req, res, next) {
+        try {
+            const query = req.body
+            const recipes = await recipesService.searchRecipes(query)
             res.send(recipes)
         } catch (error) {
             next(error)

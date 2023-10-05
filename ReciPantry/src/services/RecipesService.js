@@ -9,6 +9,11 @@ class RecipesService {
         const recipes = await dbContext.Recipes.find(query)
         return recipes
     }
+
+    async searchRecipes(query) {
+        const recipes = await dbContext.Recipes.find(query)
+        return recipes
+    }
     //gets an individual recipe from the db
     async getRecipeById(recipeId) {
         const recipe = await dbContext.Recipes.findById(recipeId)
