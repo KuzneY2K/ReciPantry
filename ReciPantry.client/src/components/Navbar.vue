@@ -2,7 +2,7 @@
   <nav class="navbar position-relative navbar-dark bg-white d-flex flex-row justify-content-center elevation-5"
     id="navbarBox">
     <div id="navbarText d-flex flew-row justify-content-around">
-      <ul class="navbar-nav d-flex flex-row justify-content-around">
+      <ul class="navbar-nav d-flex flex-row justify-content-between m-auto">
         <li class="mx-2">
           <router-link :to="{ name: 'Home' }"
             class="btn text-success selectable text-uppercase animate__animated animate__bounce" id="navbarHomeBox">
@@ -33,8 +33,8 @@
 
         <li class="mx-2">
           <router-link :to="{ name: 'About' }"
-            class="btn text-sdark selectable text-uppercase animate__animated animate__bounce" height="35"
-            id="navbarAccountBox">
+            class="btn text-dark selectable text-uppercase animate__animated animate__bounce" height="35"
+            id="navbarAbboutBox">
             <i class="mdi mdi-book-open-page-variant fs-2"></i>
           </router-link>
         </li>
