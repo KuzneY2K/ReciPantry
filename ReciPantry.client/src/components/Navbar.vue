@@ -46,9 +46,8 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, watchEffect, ref, onMounted } from 'vue';
-import { logger } from '../utils/Logger.js';
-import AboutPage from '../pages/AboutPage.vue';
+import { computed } from 'vue';
+
 export default {
   setup() {
 
