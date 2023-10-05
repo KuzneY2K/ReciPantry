@@ -231,6 +231,7 @@ export default {
                         const recipeId = AppState.activeRecipe.id;
                         await recipesService.deleteRecipe(recipeId);
                         router.push({ name: 'Account' });
+                        Pop.toast('Recipe Deleted', 'success')
                     }
                     else {
                         Pop.toast('Recipe deletion cancelled.');
