@@ -35,7 +35,7 @@
           <router-link :to="{ name: 'About' }"
             class="btn text-dark selectable text-uppercase animate__animated animate__bounce" height="35"
             id="navbarAboutBox">
-            <img src="https://i.imgur.com/CmboXMh.png" alt="" height="30">
+            <img src="https://i.imgur.com/4divXgR.png" alt="" height="30">
           </router-link>
         </li>
 
