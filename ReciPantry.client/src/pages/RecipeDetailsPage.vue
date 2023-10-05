@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="instructions-container p-0 m-0 px-4 mt-4" v-motion-pop-visible>
+        <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Set the inner HTML of this div to the active recipe instructions. -->
             <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
@@ -82,7 +82,7 @@
         </div>
 
         <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
-        <div class="summary-container p-0 m-0 px-4 mt-4 mb-4" v-motion-pop-visible>
+        <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
             <h1 class="p-0 m-0">About The Recipe</h1>
             <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary">
 
