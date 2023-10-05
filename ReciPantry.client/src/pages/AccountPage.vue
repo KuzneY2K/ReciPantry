@@ -27,23 +27,7 @@
           </template>
         </ModalWrapper>
       </div>
-      <div class="col-12 text-center mt-1">
-        <ModalWrapper id="preferences">
-          <template #button>
-            <h1 class="fs-2 btn btn-outline-dark">PREFERENCES <i class="mdi mdi-heart"></i></h1>
-          </template>
-          <template #body>
-            <h3>
-              Preferences list
-            </h3>
-          </template>
-          <template #footer>
-            <div class="fs-4">
-              <PreferencesForm />
-            </div>
-          </template>
-        </ModalWrapper>
-      </div>
+
 
 
       <div class="col-12 text-center mt-2">
@@ -129,7 +113,7 @@ export default {
       },
     };
   },
-  components: { ModalWrapper, EditAccountForm, CommunityRecipeCard, PreferencesForm }
+  components: { ModalWrapper, EditAccountForm, CommunityRecipeCard }
 }
 </script>
 
