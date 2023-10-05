@@ -44,7 +44,7 @@
                     <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.original }}</span>
 
                 </li>
-                <li class="nfBtn">
+                <li class="nfBtn" v-motion-pop-visible>
                     <!-- Button that pulls up nutrition facts specific to the meal -->
                     <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4">
                         <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal"
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="instructions-container p-0 m-0 px-4 mt-4">
+        <div class="instructions-container p-0 m-0 px-4 mt-4" v-motion-pop-visible>
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Set the inner HTML of this div to the active recipe instructions. -->
             <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
@@ -82,7 +82,7 @@
         </div>
 
         <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
-        <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
+        <div class="summary-container p-0 m-0 px-4 mt-4 mb-4" v-motion-pop-visible>
             <h1 class="p-0 m-0">About The Recipe</h1>
             <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary">
 
