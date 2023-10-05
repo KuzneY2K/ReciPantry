@@ -13,9 +13,8 @@
             <CommunityRecipeCard v-for="recipe in communityRecipes" :key="recipe.id" :recipe="recipe" v-motion-pop-visible/>
         </div>
         <CreateRecipeModalForm />
-        <div class="col-2 col-md-4">
-            <button data-bs-toggle="modal" data-bs-target="#createRecipe" class="btn btn-success buttonContainer"><i
-                    class="mdi mdi-plus"></i></button>
+        <div class="col-2 col-md-4" v-if="account.id">
+            <button data-bs-toggle="modal" data-bs-target="#createRecipe" class="btn btn-success buttonContainer border border-1 border-black elevation-5 py-2 px-3"><i class="mdi mdi-plus-thick"></i></button>
         </div>
     </section>
 </template>
@@ -47,7 +46,8 @@ export default {
             }
         }
         return {
-            communityRecipes: computed(() => AppState.communityRecipes)
+            communityRecipes: computed(() => AppState.communityRecipes),
+            account: computed(() => AppState.account)
         }
     }
 }
