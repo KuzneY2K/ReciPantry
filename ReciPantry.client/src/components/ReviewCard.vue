@@ -55,7 +55,6 @@ export default {
           if (await Pop.confirm('Delete Review?')) {
             const review = AppState.activeReviews.find(review => review.accountId == AppState.account.id)
             const reviewId = review.id
-            logger.log(review)
             await reviewService.deleteReview(reviewId)
             Pop.toast('Review Deleted!', 'success')
           }
