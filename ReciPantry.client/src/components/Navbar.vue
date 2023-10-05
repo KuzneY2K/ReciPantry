@@ -6,28 +6,36 @@
         <li class="mx-2">
           <router-link :to="{ name: 'Home' }"
             class="btn text-success selectable text-uppercase animate__animated animate__bounce" id="navbarHomeBox">
-            <img src="https://i.imgur.com/rNYQdS7.png" alt="" height="35">
+            <img src="https://i.imgur.com/rNYQdS7.png" alt="" height="30">
           </router-link>
         </li>
         <li class="mx-2">
           <router-link :to="{ name: 'Recipes' }"
             class="btn text-success selectable text-uppercase animate__animated animate__bounce" id="navbarRecipesBox">
-            <img src="https://i.imgur.com/HkbRCBE.png" alt="" height="35">
+            <img src="https://i.imgur.com/HkbRCBE.png" alt="" height="30">
           </router-link>
         </li>
-
 
         <li class="mx-2">
           <router-link :to="{ name: 'Community' }"
             class="btn text-success selectable text-uppercase animate__animated animate__bounce" id="navbarCommunityBox">
-            <img src="https://i.imgur.com/msy9hgt.png" alt="" height="35">
+            <img src="https://i.imgur.com/msy9hgt.png" alt="" height="30">
           </router-link>
         </li>
+
         <li class="mx-2">
           <router-link :to="{ name: 'Account' }"
             class="btn text-success selectable text-uppercase animate__animated animate__bounce" id="navbarAccountBox">
-            <img src="https://i.imgur.com/3bXnC5K.png" alt="" height="35"> <span class="fs-4"
+            <img src="https://i.imgur.com/3bXnC5K.png" alt="" height="30"> <span class="fs-4"
               v-if="!account.id">Login</span>
+          </router-link>
+        </li>
+
+        <li class="mx-2">
+          <router-link :to="{ name: 'About' }"
+            class="btn text-sdark selectable text-uppercase animate__animated animate__bounce" height="35"
+            id="navbarAccountBox">
+            <i class="mdi mdi-book-open-page-variant fs-2"></i>
           </router-link>
         </li>
 
@@ -41,6 +49,7 @@
 import { AppState } from '../AppState';
 import { computed, watchEffect, ref, onMounted } from 'vue';
 import { logger } from '../utils/Logger.js';
+import AboutPage from '../pages/AboutPage.vue';
 export default {
   setup() {
 
