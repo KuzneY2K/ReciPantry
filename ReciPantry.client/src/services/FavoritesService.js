@@ -22,11 +22,9 @@ class FavoritesService{
         if (isFavorite){
             await api.delete(`api/favorites/${isFavorite.id}`)
             AppState.favorites.splice(isFavorite, 1)
-            logger.log(`Favorite at id ${isFavorite.id} deleted`)
             Pop.success('Favorited no longer!')
         } else {
             const res = await api.post('api/favorites', recipeId)
-            logger.log('created favorite', res.data)
             AppState.favorites.push(new Favorite(res.data))
             Pop.success('New favorite added!')
             
@@ -35,7 +33,6 @@ class FavoritesService{
 
     async getFavoritesByRecipe(recipeId){
         const res = await api.get(`api/recipes/${recipeId}/favorites`)
-        logger.log('fetched favs', res.data)
         AppState.favorites = res.data.map(fav=> new Favorite(fav))
     }
 }

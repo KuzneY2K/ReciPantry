@@ -9,9 +9,7 @@ class RecipesService{
     // for home page, just gets a random recipe
     async getOneRecipe(){
         let res = await recipeApi.get('random?number=1')
-        // logger.log(res.data.recipes)
         AppState.randomRecipe = res.data.recipes.map(recipe => new Recipe(recipe))
-        // logger.log(AppState.randomRecipe)
     }
 
     async getRandomRecipes(){
@@ -27,13 +25,11 @@ class RecipesService{
         let res = await recipeApi.get(`complexSearch?query=${reqData}&diet=${AppState.filterData.vegan}${AppState.filterData.vegetarian}${AppState.filterData.glutenFree}${AppState.filterData.pescetarian}${AppState.filterData.keto}&intolerances=${AppState.filterData.dairy}${AppState.filterData.eggs}${AppState.filterData.grains}${AppState.filterData.peanuts}${AppState.filterData.seafood}${AppState.filterData.shellfish}${AppState.filterData.soy}${AppState.filterData.sulfite}${AppState.filterData.wheat}&number=10&offset=${AppState.pageNum}0`)
         
         AppState.recipes = res.data.results.map(recipe => new Recipe(recipe))
-        logger.log(AppState.recipes)
     }
 
     // get Community Recipes
     async getCommunityRecipes(){
         let res = await api.get(`api/recipes`)
-        logger.log(res)
         AppState.communityRecipes = res.data.map(recipe => new CommunityRecipe(recipe))
     }
 
@@ -66,7 +62,6 @@ class RecipesService{
     async getRecipeById(recipeId){
         let res = await recipeApi.get(`${recipeId}/information`)
         AppState.activeRecipe = new Recipe(res.data)  
-        logger.log(AppState.activeRecipe)        
         let nlRes = await recipeApi.get(`${recipeId}/nutritionLabel`)
         AppState.nutritionLabel = nlRes.data
     }
@@ -75,21 +70,17 @@ class RecipesService{
         AppState.activeRecipe = {}
         const res = await api.get(`api/recipes/${recipeId}`)
         AppState.activeRecipe = new CommunityRecipe(res.data)
-        logger.log(AppState.activeRecipe)
     }
     async createRecipe(recipeData){
         const res = await api.post('api/recipes', recipeData)
-        logger.log('Created Recipe', res.data)
         const newRecipe = new CommunityRecipe(res.data)
         AppState.communityRecipes.push(newRecipe)
-        logger.log('new recipe', newRecipe)
         return newRecipe
     }
 
     async deleteRecipe(recipeId){
         await api.delete(`api/recipes/${recipeId}`)
-        // let indexToRemove = AppState.recipes.findIndex(recipe=> recipe.id == recipeId)
-        // AppState.recipes.splice(indexToRemove, 1)
+
         let recipes = AppState.recipes.filter(r => r.id != AppState.activeRecipe.id)
         AppState.recipes = recipes
         AppState.activeRecipe = {}
@@ -97,7 +88,6 @@ class RecipesService{
 
     setFilterData(filterData){
         AppState.filterData = filterData
-        logger.log(AppState.filterData)
     }
 
     async editRecipe(recipeData, recipeId){
@@ -107,15 +97,11 @@ class RecipesService{
 
     async cloneRecipe(originalRecipe){
         const newRecipe = new CommunityRecipe(originalRecipe)
-        logger.log(AppState.account)
         newRecipe.creator = AppState.account
         newRecipe.creatorId = AppState.account.id
         newRecipe.extendedIngredients = Object.values(originalRecipe.ingredients)
         newRecipe.instructions = originalRecipe.instructions
-        logger.log(originalRecipe)
     
-        logger.log(newRecipe)
-        // this.createRecipe(newRecipe)
         AppState.activeRecipe = await this.createRecipe(newRecipe)
     }
 }

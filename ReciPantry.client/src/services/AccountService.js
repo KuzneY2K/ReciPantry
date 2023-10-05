@@ -19,7 +19,6 @@ class AccountService {
 
   async editAccount(updatedData){
     const res = await api.put('/account', updatedData)
-    // logger.log(res.data)
     AppState.account = new Account(res.data)
   }
 
@@ -27,9 +26,7 @@ class AccountService {
     try {
       AppState.myRecipes = []
       const res = await api.get('account/recipes')
-      logger.log(res.data)
       AppState.myRecipes = res.data.map(recipe => new Recipe(recipe))
-      logger.log('appstate', AppState.myRecipes)
     } catch (error) {
       Pop.error(error)
     }
@@ -38,8 +35,6 @@ class AccountService {
     try {
       const res = await api.get('account/favorites')
       AppState.myFavorites = res.data.map(favorite => new Favorite(favorite))
-      logger.log('my Favorites', AppState.myFavorites)
-      logger.log('res', res)
     } catch (error) {
       Pop.error(error)
     }
