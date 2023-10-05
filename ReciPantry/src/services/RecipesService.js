@@ -34,7 +34,7 @@ class RecipesService {
         const originalRecipe = await dbContext.Recipes.findById(recipeId)
         if (!originalRecipe) throw new BadRequest(`No event at id ${recipeId}`)
         if (originalRecipe.creatorId != userId) throw new Forbidden('This is not your recipe to edit!')
-        originalRecipe.analyzedInstructions = updates.analyzedInstructions || originalRecipe.analyzedInstructions
+        originalRecipe.instructions = updates.instructions || originalRecipe.instructions
         originalRecipe.cheap = updates.cheap || originalRecipe.cheap
         originalRecipe.cookingMinutes = updates.cookingMinutes || originalRecipe.cookingMinutes
         originalRecipe.cuisines = updates.cuisines || originalRecipe.cuisines
