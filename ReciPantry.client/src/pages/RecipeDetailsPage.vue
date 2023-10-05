@@ -36,7 +36,7 @@
 
                 <!-- For every recipe available, render it's card out. -->
                 <li class="bg-white p-0 m-0 mt-3 py-3 px-3 rounded rounded-5 elevation-3 d-flex flex-row justify-content-start align-items-center ingredient"
-                    v-for="ingredient in ingredients" :key="ingredient">
+                    v-for="ingredient in ingredients" :key="ingredient" v-motion-pop-visible>
                     <!-- Cart icon so user can add ingredient to shopping list -->
                     <i class="mdi mdi-cart p-0 m-0 text-success fs-2 cart" @click="addToList(ingredient)"></i>
                     <!-- Checkbox for checking off what a user has and doesnt has -->
