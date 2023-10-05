@@ -148,6 +148,9 @@ import { reviewService } from '../services/ReviewService';
 import { favoritesService } from '../services/FavoritesService';
 import { groceriesService } from '../services/GroceriesService.js';
 import EditRecipeForm from '../components/EditRecipeForm.vue';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default {
     setup() {
         let route = useRoute();
@@ -161,6 +164,7 @@ export default {
         })
         onMounted(() => {
             getCommunityRecipeById();
+            AOS.init()
         });
         async function getCommunityRecipeById() {
             try {

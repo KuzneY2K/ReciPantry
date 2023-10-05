@@ -11,7 +11,7 @@
     <section class="row d-flex flex-column align-items-center justify-content-center p-0 m-0 mt-3">
         <!-- For every recipe result a clickable card is rendered out -->
         <div class="col-12 col-md-9 col-md-8 d-flex flex-column align-items-center justify-content-center recipeCardBox">
-            <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" v-motion-pop-visible />
+            <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" data-aos="fade-up" />
         </div>
     </section>
 
@@ -134,6 +134,8 @@ import { recipesService } from '../services/RecipesService.js';
 import Pop from '../utils/Pop.js';
 import { logger } from '../utils/Logger.js';
 import { Modal } from 'bootstrap';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default {
     setup() {
@@ -193,6 +195,7 @@ export default {
         }
 
         onMounted(() => {
+            AOS.init()
             // scrollFix()
             // localStorage.clear()
             if (localStorage.getItem('needsRecipesTour') == null || localStorage.getItem('needsRecipesTour') == 'true') {
