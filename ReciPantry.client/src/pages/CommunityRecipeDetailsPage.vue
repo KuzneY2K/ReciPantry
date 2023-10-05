@@ -128,7 +128,7 @@
 
         <!-- STUB review cards  -->
         <div class="p-0 m-0 px-3">
-            <div v-for="review in reviews" :key="review.id" class="col-12">
+            <div v-for="review in reviews" :key="review.id" class="col-12" v-motion-pop-visible>
                 <ReviewCard :review="review" />
             </div>
         </div>

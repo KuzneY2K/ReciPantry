@@ -41,7 +41,6 @@ const routes = [
     path: '/community',
     name: 'Community',
     component: loadPage('CommunityPage'),
-    beforeEnter: authGuard
   }
 ]
 
