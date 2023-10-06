@@ -3,7 +3,7 @@
 
     <div class="about row justify-content-around justify-content-md-center">
       <h1 class="text-center mt-4">The Chefs <i class="mdi mdi-chef-hat"></i></h1>
-      <div class="p-1 col-10 col-md-2 card mt-4 elevation-5" data-aos="fade-right">
+      <div class="p-1 col-10 col-md-2 card mt-4 elevation-5 mx-3" data-aos="fade-right">
         <img src="../assets/img/tyler-pic.jpg" alt="Tyler">
         <span class="fs-3 ms-2 mt-3">Tyler:</span>
         <span class="p-2">Hello, my name is Tyler! I am a prospective full stack developer and a student at Boise CodeWorks. After
@@ -17,7 +17,7 @@
               class="text-success mdi mdi-linkedin"></i></a></span>
         </div>
       </div>
-      <div class="p-1 m-1 col-10 col-md-2 card mt-4 elevation-5" data-aos="fade-left">
+      <div class="p-1 m-1 col-10 col-md-2 card mt-4 elevation-5 mx-3" data-aos="fade-left">
         <img src="../assets/img/jason-pic.jpg" alt="Jason">
         <span class="fs-3 ms-2 mt-3">Jason:</span>
         <span class="p-2">Born and raised in California, I have always had an interest in computers and the idea of building
@@ -25,7 +25,7 @@
           development upon completion of the course.</span>
         <div class="links-container fs-1"></div>
       </div>
-      <div class="p-1 m-1 col-10 col-md-2 card mt-4 elevation-5" data-aos="fade-right">
+      <div class="p-1 m-1 col-10 col-md-2 card mt-4 elevation-5 mx-3" data-aos="fade-right">
         <img src="../assets/img/image0.jpeg" alt="Mark">
         <span class="fs-3 ms-2 mt-3">Mark:</span>
         <span class="p-2">Hi my name is Mark. Im originally from Florida and got stationed out in Mountain Home, ID while serving in the United States Air Force.After my military contract was over I was unsure of what exactly I wanted to do with my life and was for some time, lost. That was until one day, I figured I'd give coding a shot and discovered my life's true passion. I am very excited for what the future has in store for my self and my classmates.</span>
@@ -36,7 +36,7 @@
               class="text-success mdi mdi-linkedin"></i></a></span>
             </div>
       </div>
-      <div class="p-1 m-1 col-10 col-md-2 card mt-4 elevation-5" data-aos="fade-left">
+      <div class="p-1 m-1 col-10 col-md-2 card mt-4 elevation-5 mx-3" data-aos="fade-left">
         <img src="../assets/img/linc-pic.jpeg" alt="Lincoln">
         <span class="fs-3 ms-2 mt-3">Lincoln:</span>
         <span class="p-2">Raised here in the great state of Idaho, I've spent my first couple adult years working a multitude of
