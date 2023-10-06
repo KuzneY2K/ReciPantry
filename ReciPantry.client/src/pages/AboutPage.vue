@@ -11,8 +11,9 @@
           for myself. I decided to take a leap forward and jump-started my career as a software developer, and it has
           truly been a life changing experience. </span>
         <span class="text-end"><a target="_blank" href="https://github.com/TylerChristiansen22"><i
-              class="mdi mdi-github"></i></a> <a target="_blank"
-            href="https://www.linkedin.com/in/tyler-christiansen-58555328a/"><i class="mdi mdi-linkedin"></i></a></span>
+              class="text-success mdi mdi-github"></i></a> <a target="_blank"
+            href="https://www.linkedin.com/in/tyler-christiansen-58555328a/"><i
+              class="text-success mdi mdi-linkedin"></i></a></span>
       </div>
       <div class="p-1 m-1 col-10 col-md-2 card">
         <img src="../assets/img/jason-pic.jpg" alt="Jason">
@@ -42,11 +43,16 @@
         <span class="fs-4">Why:</span>
         <span class="fs-6">Help Home Cooks -> Eating out is expensive -> Learn to cook better than restaurants</span>
         <span class="fs-4">The Planning Stage:</span>
-        <span class="fs-6">Figma</span>
-        <span class="fs-6">UML</span>
-        <span class="fs-6">Trello</span>
+        <span class="fs-6"><a target="_blank"
+            href="https://www.figma.com/file/rQXArisUQj8ExCffrfGemZ/RECIPANTRY-V2?type=design&node-id=0-1&mode=design&t=8mHQE07ewG6lqaX5-0">Figma
+            Mock</a></span>
+        <span class="fs-6"><a target="_blank"
+            href="https://www.figma.com/file/2ipRFOXKY3djWvZokaSYFq/ReciPantry-UML?type=whiteboard&t=ZJCUPUUwpcnDvkoO-6">UML</a></span>
+        <span class="fs-6"><a target="_blank"
+            href="https://trello.com/invite/b/Js5URoUv/ATTIab8c4b01e59d1e6cc26ee0c7dbc05e1aCD363637/recipantry">Trello</a></span>
         <span class="fs-4">Technologies Used:</span>
-        <span class="fs-6">yadayada</span>
+        <span class="fs-6">MongoDB / Mongoose || Vue || Express || NodeJS || AOS || Bootstrap || VueUse/Motion ||
+          JSConfetti || DriverJS || Auth0 || SASS || </span>
 
       </div>
     </div>
