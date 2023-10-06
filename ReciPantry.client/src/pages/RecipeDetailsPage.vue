@@ -86,52 +86,67 @@
         </div>
         
     </section>
-        <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
-        <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
-            <h1 class="p-0 m-0">About The Recipe</h1>
-            <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary">
 
+    <section class="row p-0 m-0 d-flex flex-row justify-content-center">
+        <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
+        <div class="col-12 col-md-4 p-0 m-0">
+            <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
+            <h1 class="p-0 m-0">About The Recipe</h1>
+                <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary">
+            </div>
             </div>
         </div>
 
+        <div class="col-12 col-md-4 d-flex flex-column justify-content-between align-items-between px-4 py-4">
         <!-- STUB review card component -->
         <div class="p-0 m-0">
             <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
                 <h1 class="p-0 m-0m-0">Recipe Reviews</h1>
-                <button data-bs-toggle="collapse" data-bs-target="#reviewForm"
+                <button data-bs-toggle="modal" data-bs-target="#reviewModal"
                     class="btn btn-success  border border-1 border-black elevation-5" v-if="account.id">Add Review <i
                         class="mdi mdi-plus"></i></button>
             </div>
             <!-- STUB create review form -->
-            <div class="collapse" id="reviewForm">
-                <form @submit.prevent="createReview" class="form-control">
-                    <div class="d-flex justify-content-center">
-                        <button type="button" @click="reviewData.rating = 1" class="btn text-warning fs-1">
-                            <i v-if="reviewData.rating >= 1" class="mdi mdi-star"></i>
-                            <i v-else class="mdi mdi-star-outline"></i>
-                        </button>
-                        <button type="button" @click="reviewData.rating = 2" class="btn text-warning fs-1">
-                            <i v-if="reviewData.rating >= 2" class="mdi mdi-star"></i>
-                            <i v-else class="mdi mdi-star-outline"></i>
-                        </button>
-                        <button type="button" @click="reviewData.rating = 3" class="btn text-warning fs-1">
-                            <i v-if="reviewData.rating >= 3" class="mdi mdi-star"></i>
-                            <i v-else class="mdi mdi-star-outline"></i>
-                        </button>
-                        <button type="button" @click="reviewData.rating = 4" class="btn text-warning fs-1">
-                            <i v-if="reviewData.rating >= 4" class="mdi mdi-star"></i>
-                            <i v-else class="mdi mdi-star-outline"></i>
-                        </button>
-                        <button type="button" @click="reviewData.rating = 5" class="btn text-warning fs-1">
-                            <i v-if="reviewData.rating >= 5" class="mdi mdi-star"></i>
-                            <i v-else class="mdi mdi-star-outline"></i>
-                        </button>
+            <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content py-3">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="reviewModalLabel">Leave A Review</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                        <div class="modal-body" id="reviewForm">
+                            <form @submit.prevent="createReview" class="form-control py-4">
+                                <div class="d-flex justify-content-center">
+                                <button type="button" @click="reviewData.rating = 1" class="btn text-warning fs-1">
+                                    <i v-if="reviewData.rating >= 1" class="mdi mdi-star"></i>
+                                    <i v-else class="mdi mdi-star-outline"></i>
+                                </button>
+                                <button type="button" @click="reviewData.rating = 2" class="btn text-warning fs-1">
+                                    <i v-if="reviewData.rating >= 2" class="mdi mdi-star"></i>
+                                    <i v-else class="mdi mdi-star-outline"></i>
+                                </button>
+                                <button type="button" @click="reviewData.rating = 3" class="btn text-warning fs-1">
+                                    <i v-if="reviewData.rating >= 3" class="mdi mdi-star"></i>
+                                    <i v-else class="mdi mdi-star-outline"></i>
+                                </button>
+                                <button type="button" @click="reviewData.rating = 4" class="btn text-warning fs-1">
+                                    <i v-if="reviewData.rating >= 4" class="mdi mdi-star"></i>
+                                    <i v-else class="mdi mdi-star-outline"></i>
+                                </button>
+                                <button type="button" @click="reviewData.rating = 5" class="btn text-warning fs-1">
+                                    <i v-if="reviewData.rating >= 5" class="mdi mdi-star"></i>
+                                    <i v-else class="mdi mdi-star-outline"></i>
+                                </button>
+                            </div>
+                            <input v-model="reviewData.comment" class="form-control my-4" placeholder="Your Comment" type="text" required
+                            maxlength="200" minlength="4">
+                            <!-- <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating"> -->
+                            <button class="btn btn-success border border-1 border-black elevation-5 p-0 m-0 px-3 py-2">Post Review</button>
+                        </form>
                     </div>
-                    <input v-model="reviewData.comment" class="form-control" placeholder="Your Comment" type="text" required
-                        maxlength="200" minlength="4">
-                    <!-- <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating"> -->
-                    <button class="btn btn-success mt-2">Post Review</button>
-                </form>
+                </div>
+            </div>
+            </div>
             </div>
 
             <!-- STUB review card -->
@@ -141,10 +156,12 @@
                 </div>
             </div>
         </div>
+        </section>
 
         <!-- MODAL - CONVERT TO COMPONENT -->
         <GroceryListModal />
     </div>
+    
 </template>
 
 <script>
