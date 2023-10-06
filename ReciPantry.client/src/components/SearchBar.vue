@@ -70,7 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-    width: 40rem;
+    width: 60rem;
 }
 
 @media (max-width: 768px) {

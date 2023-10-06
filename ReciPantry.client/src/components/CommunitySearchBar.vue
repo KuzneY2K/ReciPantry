@@ -12,10 +12,6 @@
                 <!-- Filters will be options that will set the reqData to their value -->
             </div>
         </form>
-        <button type="button" class="btn btn-grad px-3 py-0 filter-btn ms-2 border border-1 border-black elevation-5">
-            <img src="https://i.imgur.com/Gh9UJij.png" alt="" height="30" data-bs-toggle="modal"
-                data-bs-target="#filterModal" class="p-0 m-0">
-        </button>
     </div>
 </template>
 
@@ -48,12 +44,12 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-    width: 40rem;
+    width: 60rem;
 }
 
 @media (max-width: 768px) {
     .form {
-        width: 15rem;
+        width: 20rem;
     }
 }
 

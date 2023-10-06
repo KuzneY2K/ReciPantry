@@ -10,7 +10,12 @@ class RecipesService {
             const recipes = await dbContext.Recipes.find()
             return recipes
         } else {
-            const recipes = await dbContext.Recipes.find({ title: regex } || { extendedIngredients: regex })
+            const recipes = await dbContext.Recipes.find({
+                $or: [
+                    { title: { $regex: regex } },
+                    { "extendedIngredients.name": { $regex: regex } }
+                ]
+            })
             return recipes
         }
     }

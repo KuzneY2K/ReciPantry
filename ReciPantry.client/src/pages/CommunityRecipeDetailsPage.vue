@@ -227,8 +227,6 @@ export default {
                 // Change pop confirm message that says "you wont be able to revert"
                 // Remove ingredient from shopping list by clicking little X symbol
             },
-            async removeFromList(ingredientId) {
-            },
             async deleteRecipe() {
                 try {
                     if (await Pop.confirm('Are you sure you want to delete this recipe?')) {
