@@ -15,7 +15,9 @@
       </div>
       <div class="p-1 m-1 col-10 col-md-2 card">
         <img src="../assets/img/jason-pic.jpg" alt="Jason">
-        <span>Bio</span>
+        <span>Born and raised in California, Jason has always had an interest in computers and the idea of building
+          applications. His ambition led him to Boise, Idaho to attend Boise CodeWorks. He will pursue a career in web
+          development upon completion of the course.</span>
         <span>Links</span>
       </div>
       <div class="p-1 m-1 col-10 col-md-2 card">
