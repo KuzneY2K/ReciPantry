@@ -2,7 +2,7 @@
   <div class="container-fluid">
 
     <div class="about row justify-content-around">
-      <h1 class="mt-1 text-center">The Chefs</h1>
+      <h1 class="mt-1 text-center">The Chefs <i class="mdi mdi-chef-hat"></i></h1>
       <div class="p-1 m-1 col-10 col-md-2 card">
         <img src="../assets/img/tyler-pic.jpg" alt="Tyler">
         <span class="fs-3">Tyler:</span>
