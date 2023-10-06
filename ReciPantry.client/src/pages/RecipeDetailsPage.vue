@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref, watchEffect } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { recipesService } from '../services/RecipesService.js';
 import { AppState } from '../AppState.js'
@@ -150,7 +150,6 @@ import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop';
 import { reviewService } from '../services/ReviewService';
 import { groceriesService } from '../services/GroceriesService.js'
-import { onAuthLoaded } from '@bcwdev/auth0provider-client';
 import JSConfetti from 'js-confetti'
 import { Modal } from 'bootstrap';
 

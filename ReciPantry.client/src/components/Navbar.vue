@@ -26,7 +26,7 @@
         <li class="mx-2">
           <router-link :to="{ name: 'Account' }"
             class="btn text-success selectable text-uppercase animate__animated animate__bounce" id="navbarAccountBox">
-            <img src="https://i.imgur.com/3bXnC5K.png" alt="" height="30"> <span class="fs-4"
+            <img src="https://i.imgur.com/3bXnC5K.png" v-if="account.id" alt="" height="30"> <span class="fs-4 loginText"
               v-if="!account.id">Login</span>
           </router-link>
         </li>

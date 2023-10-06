@@ -14,7 +14,7 @@
         </div>
         <CreateRecipeModalForm />
         <div class="col-2 col-md-4" v-if="account.id">
-            <button data-bs-toggle="modal" data-bs-target="#createRecipe" class="btn btn-success buttonContainer border border-1 border-black elevation-5 py-2 px-3"><i class="mdi mdi-plus-thick"></i></button>
+            <button data-bs-toggle="modal" data-bs-target="#createRecipe" class="btn btn-success buttonContainer border border-1 border-black elevation-5 py-2 px-3" id="createRecipeBtn"><i class="mdi mdi-plus-thick"></i></button>
         </div>
     </section>
 </template>
@@ -26,13 +26,38 @@ import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { logger } from '../utils/Logger.js';
 
 export default {
     setup() {
 
+        const driver = window.driver.js.driver
+        const driverObj = driver({
+            showProgress: true,
+            allowClose: true,
+            onCloseClick: () => {
+                localStorage.setItem('needsCreateTour', 'false')
+                driverObj.destroy()
+            },
+            steps: [
+                { element: '#createRecipeBtn', popover: { title: `Ready To Chef? 🧑‍🍳`, description: `Clicking this button will allow you to create.`, side: "bottom", align: "center" } },
+            ]
+        })
+
+        function communityOnBoarding(){
+            if(AppState.account.id){
+                logger.log('logged on')
+            } else {
+                logger.log('logged out')
+            }
+        }
+
+
         onMounted(() => {
             getCommunityRecipes()
             AOS.init()
+
+            setTimeout(communityOnBoarding, 2000)
         })
 
         async function getCommunityRecipes() {
