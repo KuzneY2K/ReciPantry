@@ -43,15 +43,6 @@ export default {
                 AppState.savedQuery = reqData
             },
 
-            // Just to test if buttons work
-            testBtn() {
-                const jsConfetti = new JSConfetti()
-                jsConfetti.addConfetti({
-                    emojis: ['🍔', '🥩', '🍗', '🍆', '🥪', '🍲', '🍉', '🍇']
-                })
-                logger.log('test')
-            },
-
             // Search recipes by query, autocompletes
             async searchRecipesByQuery() {
                 try {

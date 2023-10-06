@@ -42,7 +42,6 @@
                     <!-- Checkbox for checking off what a user has and doesnt has -->
                     <input type="checkbox" name="have" class="form-check-input m-0 p-0 mx-2 checkbox">
                     <span class="fs-5 m-0 p-0 ingredient-name">{{ ingredient.original }}</span>
-
                 </li>
                 <li class="nfBtn">
                     <!-- Button that pulls up nutrition facts specific to the meal -->
