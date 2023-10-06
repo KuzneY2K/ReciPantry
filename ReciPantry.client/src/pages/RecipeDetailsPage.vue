@@ -362,8 +362,14 @@ export default {
 
 <style lang="scss" scoped>
 .recipe-title {
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     text-shadow: 0px 0px 5px rgb(255, 255, 255);
+}
+
+@media (max-width: 768px){
+    .recipe-title{
+        font-size: 2.5rem;
+    }
 }
 
 .disabled {
