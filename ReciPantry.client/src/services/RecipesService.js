@@ -31,7 +31,7 @@ class RecipesService{
     async getCommunityRecipes(){
         let res = await api.get(`api/recipes`)
         AppState.communityRecipes = res.data.map(recipe => new CommunityRecipe(recipe))
-        logger.log(res)
+        // logger.log(res)
     }
 
     // async getRandomCommunityRecipes(){
@@ -80,7 +80,7 @@ class RecipesService{
     async getCommunityRecipeById(recipeId){
         AppState.activeRecipe = {}
         const res = await api.get(`api/recipes/${recipeId}`)
-        logger.log(AppState.activeRecipe)
+        // logger.log(AppState.activeRecipe)
         AppState.activeRecipe = new CommunityRecipe(res.data)
     }
     async createRecipe(recipeData){
