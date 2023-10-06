@@ -23,7 +23,8 @@ export class RecipesController extends BaseController {
     // pretty simple here, get request to our DB
     async getRecipes(req, res, next) {
         try {
-            const recipes = await recipesService.getRecipes()
+            let query = req.query
+            const recipes = await recipesService.getRecipes(query)
             res.send(recipes)
         } catch (error) {
             next(error)

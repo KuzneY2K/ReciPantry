@@ -11,8 +11,8 @@ class RecipesService {
         return recipes
     }
     // gets the recipes from the db
-    async getRecipes() {
-        const recipes = await dbContext.Recipes.find()
+    async getRecipes(query) {
+        const recipes = await dbContext.Recipes.find(query)
         return recipes
     }
     //gets an individual recipe from the db
