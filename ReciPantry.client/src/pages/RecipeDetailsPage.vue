@@ -1,8 +1,8 @@
-<template>
-    <div v-if="recipe">
+<template >
+    <div v-if="recipe" class="theRecipe">
         <!-- Pulls recipe title from active recipe -->
         <section class="row p-0 m-0">
-            <div class="col-12 p-0 m-0" id="recipeTitleBox">
+            <div class="col-12 p-0 m-0 d-md-flex flex-md-column align-items-md-center my-md-3" id="recipeTitleBox">
                 <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span
                         class="text-black readyInBox" id="readyInBox">- {{
                             recipe.readyInMinutes }} Mins</span></h1>
@@ -14,17 +14,19 @@
                 class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5 grocery-list-btn"
                 data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
         </div>
-        <div class="img-container d-flex flex-column align-items-center justify-content-center">
-            <!-- Pulls recipe cover image from active recipe -->
-            <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
-                class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
+        <div class="position-absolute clone-container">
+        <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5 position-fixed">Clone
+            Recipe</button></div>
+        <div class="mt-4" v-if="account.id">
+            <div class="img-container d-flex flex-column align-items-center justify-content-center mb-4">
+                <!-- Pulls recipe cover image from active recipe -->
+                <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
+                    class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
+            </div>
         </div>
-        <div class="ms-4 mt-4" v-if="account.id">
-            <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5">Clone
-                Recipe</button>
-        </div>
+        <!-- <div class="col-12 p-0 m-0 d-flex flex-column align-items-center"> -->
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
-        <div class="ingredients-container p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
+        <div class="ingredients-container col-12 col-md-10 m-md-auto p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
             <div class="ingredients-header d-flex flex-row justify-content-between align-items-center">
                 <h1 class="p-0 m-0 ingredients-label">Ingredients</h1>
                 <h3 class="badge bg-success fs-5 servings elevation-3">{{ recipe.servings }} SERVINGS</h3>
@@ -70,6 +72,7 @@
                     </div>
                 </div>
             </div>
+        <!-- </div> -->
         </div>
         <div class="instructions-container p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
@@ -372,6 +375,10 @@ export default {
     font-size: 2.25rem !important;
 }
 
+.theRecipe{
+    overflow-x: hidden !important;
+}
+
 .grocery-list {
     bottom: 5rem;
     right: 1rem;
@@ -387,6 +394,12 @@ export default {
     font-family: 'Ubuntu' !important;
 }
 
+.clone-container{
+    bottom: 7.4rem;
+    right: 9.7rem;
+    z-index: 5 !important;
+}
+
 .recipe-image {
     height: 26rem;
     width: 60rem;
@@ -397,8 +410,8 @@ export default {
 
 @media (max-width: 768px){
     .recipe-image{
-        width: 22rem;
-        height: 23rem;
+        width: 20rem;
+        height: 20rem;
     }
 }
 </style>
