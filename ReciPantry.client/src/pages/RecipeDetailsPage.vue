@@ -388,6 +388,17 @@ export default {
 }
 
 .recipe-image {
-    object-fit: cover;
+    height: 26rem;
+    width: 60rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px){
+    .recipe-image{
+        width: 22rem;
+        height: 23rem;
+    }
 }
 </style>
