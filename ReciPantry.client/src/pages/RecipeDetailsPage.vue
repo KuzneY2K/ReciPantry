@@ -24,9 +24,11 @@
                     class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
             </div>
         </div>
+
+        <section class="row p-0 m-0 px-5 d-flex flex-row justify-content-center">
         <!-- <div class="col-12 p-0 m-0 d-flex flex-column align-items-center"> -->
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
-        <div class="ingredients-container col-12 col-md-10 m-md-auto p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
+        <div class="ingredients-container col-12 col-md-4 p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
             <div class="ingredients-header d-flex flex-row justify-content-between align-items-center">
                 <h1 class="p-0 m-0 ingredients-label">Ingredients</h1>
                 <h3 class="badge bg-success fs-5 servings elevation-3">{{ recipe.servings }} SERVINGS</h3>
@@ -74,14 +76,16 @@
             </div>
         <!-- </div> -->
         </div>
-        <div class="instructions-container p-0 m-0 px-4 mt-4">
+        
+        <div class="instructions-container col-12 col-md-4 p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Set the inner HTML of this div to the active recipe instructions. -->
             <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 instructions">
-
+                
             </div>
         </div>
-
+        
+    </section>
         <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
         <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
             <h1 class="p-0 m-0">About The Recipe</h1>
