@@ -43,12 +43,12 @@
         <span class="fs-4">Why:</span>
         <span class="fs-6">Help Home Cooks -> Eating out is expensive -> Learn to cook better than restaurants</span>
         <span class="fs-4">The Planning Stage:</span>
-        <span class="fs-6"><a target="_blank"
+        <span class=" fs-6"><a class="text-success" target="_blank"
             href="https://www.figma.com/file/rQXArisUQj8ExCffrfGemZ/RECIPANTRY-V2?type=design&node-id=0-1&mode=design&t=8mHQE07ewG6lqaX5-0">Figma
             Mock</a></span>
-        <span class="fs-6"><a target="_blank"
+        <span class=" fs-6"><a class="text-success" target="_blank"
             href="https://www.figma.com/file/2ipRFOXKY3djWvZokaSYFq/ReciPantry-UML?type=whiteboard&t=ZJCUPUUwpcnDvkoO-6">UML</a></span>
-        <span class="fs-6"><a target="_blank"
+        <span class=" fs-6"><a class="text-success" target="_blank"
             href="https://trello.com/invite/b/Js5URoUv/ATTIab8c4b01e59d1e6cc26ee0c7dbc05e1aCD363637/recipantry">Trello</a></span>
         <span class="fs-4">Technologies Used:</span>
         <span class="fs-6">MongoDB / Mongoose || Vue || Express || NodeJS || AOS || Bootstrap || VueUse/Motion ||
