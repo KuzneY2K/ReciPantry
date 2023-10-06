@@ -91,7 +91,7 @@
         </div>
 
         <div class="col-12 col-md-4 d-flex flex-column justify-content-between align-items-between px-4 py-4">
-            <h1 class="p-0 m-0 m-0">Recipe Reviews </h1>
+            <h1 class="p-0 m-0 m-0 text-center">Recipe Reviews </h1>
         <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content py-3">
