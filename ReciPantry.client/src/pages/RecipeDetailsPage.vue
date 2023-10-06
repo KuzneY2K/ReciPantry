@@ -104,18 +104,18 @@
                 <h1 class="p-0 m-0m-0">Recipe Reviews</h1>
                 <div class="review-btn-container position-relative">
                 <button data-bs-toggle="modal" data-bs-target="#reviewModal"
-                    class="btn btn-success  border border-1 border-black elevation-5 review-btn" v-if="account.id">Add Review <i
+                    class="btn btn-success border border-1 border-black elevation-5 review-btn position-absolute" v-if="account.id">Add Review <i
                         class="mdi mdi-plus"></i></button>
                 </div>
             </div>
             <!-- STUB create review form -->
             <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+            <div class="modal-dialog">
                 <div class="modal-content py-3">
-                  <div class="modal-header">
+                <div class="modal-header">
                     <h5 class="modal-title" id="reviewModalLabel">Leave A Review</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
+                </div>
                         <div class="modal-body" id="reviewForm">
                             <form @submit.prevent="createReview" class="form-control py-4">
                                 <div class="d-flex justify-content-center">
