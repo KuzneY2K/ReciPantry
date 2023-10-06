@@ -23,7 +23,8 @@
         <span class="fs-3 text-center ms-2 mt-3">Jason</span>
         <span class="p-2">Born and raised in California, I have always had an interest in computers and the idea of
           building
-          applications. My ambition led me to Boise, Idaho to attend Boise CodeWorks. I will pursue a career in web
+          applications. My ambition led me to Boise, Idaho to attend Boise CodeWorks. I am excited to pursue a career in
+          web
           development upon completion of the course.</span>
         <div class="links-container text-center fs-1">
           <span class="text-end"><a target="_blank" href="https://github.com/millho"><i
