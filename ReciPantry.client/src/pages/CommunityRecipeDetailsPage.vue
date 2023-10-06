@@ -15,13 +15,6 @@
                 class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
         </div>
         <div class="btn-container d-flex flex-row justify-content-start justify-content-md-center ms-3 mt-4">
-
-            <!-- <div class="ms-2">
-                <button class="btn btn-success" @click="createFavorite"><i class="mdi mdi-heart-outline"></i></button>
-            </div>
-            <div class="ms-2">
-                <button class="btn btn-success" @click="deleteFavorite"><i class="mdi mdi-heart"></i></button>
-            </div> -->
             <div class="ms-2">
                 <button class="btn btn-success border border-1 border-black elevation-5 p-0 m-0 px-3 py-2"
                     @click="addOrRemoveFavorite"><i v-if="!isFavorite" class="mdi mdi-heart-outline"></i> <i v-else
@@ -44,8 +37,10 @@
                 </ModalWrapper>
             </div>
         </div>
+        
+        <section class="row p-0 m-0">
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
-        <div class="ingredients-container col-12 col-md-10 m-md-auto p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
+        <div class="ingredients-container col-12 col-md-6 p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
             <div class="ingredients-header d-flex flex-row justify-content-between align-items-center">
                 <h1 class="p-0 m-0 ingredients-label">Ingredients</h1>
                 <h3 class="badge bg-success fs-5 servings elevation-3">{{ recipe.servings }} SERVINGS</h3>
@@ -69,7 +64,7 @@
             <!-- Nutrition facts Modal -->
         </div>
 
-        <div class="instructions-container p-0 m-0 px-4 mt-4">
+        <div class="instructions-container col-12 col-md-6 p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5" id="instructions">
@@ -81,22 +76,25 @@
                         
                     </div> -->
         </div>
+        </section>
 
+
+        <section class="row p-0 m-0">
         <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
-        <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
-            <h1 class="p-0 m-0">About The Recipe</h1>
-            <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary" id="summary">
+        <div class="col-12 col-md-6 p-0 m-0">
+            <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
+                <h1 class="p-0 m-0">About The Recipe</h1>
+                    <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary" id="summary">
                 <!-- {{ recipe.summary }} -->
+                    </div>
             </div>
         </div>
-        <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
+
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-between align-items-between px-4 py-4">
             <h1 class="p-0 m-0m-0">Recipe Reviews </h1>
-            <button data-bs-toggle="collapse" data-bs-target="#reviewForm" class="btn btn-success">Add Review <i
-                    class="mdi mdi-plus"></i></button>
-        </div>
-        <div class="collapse" id="reviewForm">
-            <form @submit.prevent="createReview" class="form-control">
-                <div class="d-flex justify-content-center">
+            <div class="collapse" id="reviewForm">
+                <form @submit.prevent="createReview" class="form-control">
+                    <div class="d-flex justify-content-center">
                     <button type="button" @click="reviewData.rating = 1" class="btn text-warning fs-1">
                         <i v-if="reviewData.rating >= 1" class="mdi mdi-star"></i>
                         <i v-else class="mdi mdi-star-outline"></i>
@@ -119,18 +117,27 @@
                     </button>
                 </div>
                 <input v-model="reviewData.comment" class="form-control" placeholder="Your Comment" type="text" required
-                    maxlength="200" minlength="4">
+                maxlength="200" minlength="4">
                 <!-- <input type="number" min="1" max="5" class="form-control" required v-model="reviewData.rating"> -->
                 <button class="btn btn-success mt-2">Post Review</button>
             </form>
         </div>
-
+        
         <!-- STUB review cards  -->
         <div class="p-0 m-0 px-3">
             <div v-for="review in reviews" :key="review.id" class="col-12">
                 <ReviewCard :review="review" />
             </div>
         </div>
+        <div class="review-btn-container">
+                <button data-bs-toggle="collapse" data-bs-target="#reviewForm" class="btn btn-success ms-md-5">Add Review <i
+                class="mdi mdi-plus"></i>
+                </button>
+            </div>
+        </div>
+
+
+        </section>
         <!-- MODAL - CONVERT TO COMPONENT -->
         <GroceryListModal />
     </div>
