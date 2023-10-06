@@ -23,7 +23,7 @@
         <span>Links</span>
       </div>
       <div class="p-1 m-1 col-10 col-md-2 card">
-        <img src="../assets/img/tyler-pic.jpg" alt="Mark">
+        <img src="../assets/img/mark-pic.jpg" alt="Mark">
         <span>Bio</span>
         <span>Links</span>
       </div>
