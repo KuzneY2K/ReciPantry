@@ -6,9 +6,13 @@ import { logger } from "../utils/Logger.js"
 class RecipesService {
     async searchRecipes(query) {
         let regex = new RegExp(query, 'i')
-        const recipes = await dbContext.Recipes.find({ title: regex })
-        logger.log(query)
-        return recipes
+        if (query == '') {
+            const recipes = await dbContext.Recipes.find()
+            return recipes
+        } else {
+            const recipes = await dbContext.Recipes.find({ title: regex } || { extendedIngredients: regex })
+            return recipes
+        }
     }
     // gets the recipes from the db
     async getRecipes(query) {

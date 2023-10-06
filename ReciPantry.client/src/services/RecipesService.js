@@ -47,10 +47,13 @@ class RecipesService{
     }
 
     async searchCommunityRecipes(query){
+        if(query == ''){
+            this.getCommunityRecipes()
+        } else {
+            let res = await api.get(`api/recipes/results/${query}`)
+            AppState.communityRecipes = res.data.map(recipe => new CommunityRecipe(recipe))
+        }
         
-        let res = await api.get(`api/recipes/${query}`)
-        logger.log(query)
-        logger.log(res)
     }
 
     async searchRecipesByIngredient(){
