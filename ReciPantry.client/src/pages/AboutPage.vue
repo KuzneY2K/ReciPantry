@@ -24,9 +24,9 @@
         <span>Links</span>
       </div>
       <div class="p-1 m-1 col-10 col-md-2 card">
-        <img src="../assets/img/mark-pic.jpg" alt="Mark">
-        <span>Bio</span>
-        <span>Links</span>
+        <img src="../assets/img/image0.jpeg" alt="Mark">
+        <span class="fs-3">Mark</span>
+        <span>Hey, I'm Mark. Im originally from Florida and got stationed out in Mountain Home while serving in the United States Air Force.After my military contract was over I was unsure of what exactly I wanted to do with my life and was for some time, lost. That was until one day, I figured I'd give coding a shot and discovered my life's true passion. I am very excited for what the future has in store for my self and my classmates.</span>
       </div>
       <div class="p-1 m-1 col-10 col-md-2 card">
         <img src="../assets/img/linc-pic.jpeg" alt="Lincoln">
