@@ -102,9 +102,11 @@
         <div class="p-0 m-0">
             <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
                 <h1 class="p-0 m-0m-0">Recipe Reviews</h1>
+                <div class="review-btn-container position-relative">
                 <button data-bs-toggle="modal" data-bs-target="#reviewModal"
-                    class="btn btn-success  border border-1 border-black elevation-5" v-if="account.id">Add Review <i
+                    class="btn btn-success  border border-1 border-black elevation-5 review-btn" v-if="account.id">Add Review <i
                         class="mdi mdi-plus"></i></button>
+                </div>
             </div>
             <!-- STUB create review form -->
             <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
