@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid about-bios">
 
-    <div class="about row justify-content-around">
+    <div class="about row justify-content-around justify-content-md-center">
       <h1 class="text-center mt-4">The Chefs <i class="mdi mdi-chef-hat"></i></h1>
       <div class="p-1 col-10 col-md-2 card mt-4 elevation-5" data-aos="fade-right">
         <img src="../assets/img/tyler-pic.jpg" alt="Tyler">
@@ -20,8 +20,8 @@
       <div class="p-1 m-1 col-10 col-md-2 card mt-4 elevation-5" data-aos="fade-left">
         <img src="../assets/img/jason-pic.jpg" alt="Jason">
         <span class="fs-3 ms-2 mt-3">Jason:</span>
-        <span class="p-2">Born and raised in California, Jason has always had an interest in computers and the idea of building
-          applications. His ambition led him to Boise, Idaho to attend Boise CodeWorks. He will pursue a career in web
+        <span class="p-2">Born and raised in California, I have always had an interest in computers and the idea of building
+          applications. My ambition led me to Boise, Idaho to attend Boise CodeWorks. I will pursue a career in web
           development upon completion of the course.</span>
         <div class="links-container fs-1"></div>
       </div>
