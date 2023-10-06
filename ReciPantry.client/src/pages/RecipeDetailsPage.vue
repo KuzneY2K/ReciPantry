@@ -102,9 +102,9 @@
         <div class="p-0 m-0">
             <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
                 <h1 class="p-0 m-0m-0">Recipe Reviews</h1>
-                <div class="review-btn-container position-relative">
+                <div class="review-btn-container position-absolute">
                 <button data-bs-toggle="modal" data-bs-target="#reviewModal"
-                    class="btn btn-success border border-1 border-black elevation-5 review-btn position-absolute" v-if="account.id">Add Review <i
+                    class="btn btn-success border border-1 border-black elevation-5 review-btn position-fixed" v-if="account.id">Add Review <i
                         class="mdi mdi-plus"></i></button>
                 </div>
             </div>
@@ -417,6 +417,12 @@ export default {
 .checkbox {
     height: 1.25rem;
     width: 1.25rem;
+}
+
+.review-btn{
+    bottom: 5rem;
+    right: 4rem;
+    z-index: 5 !important;
 }
 
 .servings {
