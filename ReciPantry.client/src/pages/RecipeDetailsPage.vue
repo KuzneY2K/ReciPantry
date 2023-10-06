@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <section class="row p-0 m-0 px-5 d-flex flex-row justify-content-center">
+        <section class="row p-0 m-0 px-md-5 d-flex flex-row justify-content-center">
         <!-- <div class="col-12 p-0 m-0 d-flex flex-column align-items-center"> -->
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
         <div class="ingredients-container col-12 col-md-4 p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
@@ -97,11 +97,11 @@
             </div>
         </div>
 
-        <div class="col-12 col-md-4 d-flex flex-column justify-content-between align-items-between px-4 py-4">
+        <div class="col-12 col-md-4 d-flex flex-column px-4">
         <!-- STUB review card component -->
         <div class="p-0 m-0">
-            <div class="col-12 d-flex flex-row justify-content-between align-items-between px-4 py-4">
-                <h1 class="p-0 m-0m-0">Recipe Reviews</h1>
+            <div class="col-12 d-flex flex-column align-items-center justify-items-center px-4 py-4">
+                <h1 class="p-0 m-0 m-0">Recipe Reviews</h1>
                 <div class="review-btn-container position-absolute">
                 <button data-bs-toggle="modal" data-bs-target="#reviewModal"
                     class="btn btn-success border border-1 border-black elevation-5 review-btn position-fixed" v-if="account.id">Add Review <i
