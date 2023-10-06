@@ -30,13 +30,8 @@ import 'aos/dist/aos.css';
 export default {
     setup() {
 
-        function scrollFix() {
-            window.scroll(0, 1000)
-        }
-
         onMounted(() => {
             getCommunityRecipes()
-            scrollFix()
             AOS.init()
         })
 
