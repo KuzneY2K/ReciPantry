@@ -9,7 +9,7 @@
                     <h5 class="modal-title" id="modalTitleId">Create Recipe</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body createRecipeModal">
                     <form @submit.prevent="createRecipe" class="row">
                         <div class="col-12">
                             <label for="recipeTitle">Recipe Title:</label>
@@ -30,11 +30,11 @@
                         </div>
                         <div class="add-remove-container d-flex flex-row justify-content-between my-2">
                             <div class="col-6 p-0 m-0 d-flex flex-row justify-content-center">
-                                <button @click="addIngredient" type="button" class="btn btn-success">Add<i
+                                <button @click="addIngredient" type="button" class="btn btn-success" id="addIngredientBtn">Add<i
                                         class="mdi mdi-plus"></i></button>
                             </div>
                             <div class="col-6 p-0 m-0 d-flex flex-row justify-content-center">
-                                <button @click="removeIngredient" class="btn btn-danger" type="button">Remove <i
+                                <button @click="removeIngredient" class="btn btn-danger" type="button" id="removeIngredientBtn">Remove <i
                                         class="mdi mdi-minus"></i></button>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                         <div class="col-2">
-                            <button class="btn btn-success">Submit</button>
+                            <button class="btn btn-success" id="createRecipeSubmitBtn">Submit</button>
                         </div>
                     </form>
                 </div>

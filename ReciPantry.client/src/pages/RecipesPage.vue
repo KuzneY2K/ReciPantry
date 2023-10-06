@@ -146,9 +146,10 @@ export default {
             onCloseClick: () => {
                 localStorage.setItem('needsRecipesTour', 'false')
                 driverObj.destroy()
-                document.getElementsByClassName('searchBarBox')[0].classList.remove('disabled')
-                document.getElementsByClassName('searchBarFilterBox')[0].classList.remove('disabled')
-                document.getElementsByClassName('recipeCardBox')[0].classList.remove('disabled')
+                document.getElementsByClassName('searchBarBox')[0].disabled = false
+                document.getElementsByClassName('searchBarFilterBox')[0].disabled = false
+                document.getElementsByClassName('recipeCardBox')[0].disabled = false
+                document.getElementById('learnMoreBox').style.pointerEvents = false
             },
             steps: [
                 { element: '#recipes-page-title', popover: { title: 'Ready to browse recipes? 🧑‍🍳', description: 'Finding recipes on ReciPantry is super easy.', side: "bottom", align: "center" } },
@@ -159,10 +160,11 @@ export default {
                     element: '#learnMoreBox', popover: {
                         title: 'Details. 🍻', description: `Simply click learn more to see all of the that recipe's details.`, side: "bottom", align: "center",
                         onNextClick: () => {
-                            document.getElementsByClassName('searchBarBox')[0].classList.remove('disabled')
-                            document.getElementsByClassName('searchBarFilterBox')[0].classList.remove('disabled')
-                            document.getElementsByClassName('searchBarSubmitBox')[0].classList.remove('disabled')
-                            document.getElementsByClassName('recipeCardBox')[0].classList.remove('disabled')
+                            document.getElementsByClassName('searchBarBox')[0].disabled = false
+                            document.getElementsByClassName('searchBarFilterBox')[0].disabled = false
+                            document.getElementsByClassName('searchBarSubmitBox')[0].disabled = false
+                            document.getElementsByClassName('recipeCardBox')[0].disabled = false
+                            document.getElementById('learnMoreBox').style.pointerEvents = false
                             localStorage.setItem('needsRecipesTour', false),
                                 driverObj.moveNext()
                         }
@@ -199,15 +201,21 @@ export default {
             // scrollFix()
             // localStorage.clear()
             if (localStorage.getItem('needsRecipesTour') == null || localStorage.getItem('needsRecipesTour') == 'true') {
-                document.getElementsByClassName('searchBarBox')[0].classList.add('disabled')
-                document.getElementsByClassName('searchBarFilterBox')[0].classList.add('disabled')
-                document.getElementsByClassName('searchBarSubmitBox')[0].classList.add('disabled')
-                document.getElementsByClassName('recipeCardBox')[0].classList.add('disabled')
+                document.getElementsByClassName('searchBarBox').disabled = true
+                document.getElementsByClassName('searchBarFilterBox')[0].disabled = true
+                document.getElementsByClassName('searchBarSubmitBox')[0].disabled = true
+                document.getElementsByClassName('recipeCardBox')[0].disabled = true
+                setTimeout(function() {
+                    document.getElementById('learnMoreBox').style.pointerEvents = 'none'
+                }, 1000)
                 recipesOnBoarding()
             } else {
-                document.getElementsByClassName('searchBarBox')[0].classList.remove('disabled')
-                document.getElementsByClassName('searchBarFilterBox')[0].classList.remove('disabled')
-                document.getElementsByClassName('recipeCardBox')[0].classList.remove('disabled')
+                document.getElementsByClassName('searchBarBox')[0].disabled = false
+                document.getElementsByClassName('searchBarFilterBox')[0].disabled = false
+                document.getElementsByClassName('recipeCardBox')[0].disabled = false
+                setTimeout(function() {
+                    document.getElementById('learnMoreBox').style.pointerEvents = false
+                }, 1000)
             }
 
             getRandomRecipes()
