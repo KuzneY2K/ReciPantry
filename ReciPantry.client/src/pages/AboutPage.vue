@@ -17,6 +17,7 @@
       </div>
       <div class="p-1 m-1 col-10 col-md-2 card">
         <img src="../assets/img/jason-pic.jpg" alt="Jason">
+        <span class="fs-3">Jason:</span>
         <span>Born and raised in California, Jason has always had an interest in computers and the idea of building
           applications. His ambition led him to Boise, Idaho to attend Boise CodeWorks. He will pursue a career in web
           development upon completion of the course.</span>
@@ -29,8 +30,13 @@
       </div>
       <div class="p-1 m-1 col-10 col-md-2 card">
         <img src="../assets/img/linc-pic.jpeg" alt="Lincoln">
-        <span>Bio</span>
-        <span>Links</span>
+        <span class="fs-3">Lincoln:</span>
+        <span>Raised here in the great state of Idaho, I've spent my first couple adult years working a multitude of
+          different construction and labor jobs before realizing I needed a more sustaining and steady career. I am now a
+          student at Codeworks Boise, excited to take the leap into the Software Development world.</span>
+        <span class="text-end"><a target="_blank" href="https://github.com/lincmarler?tab=repositories"><i
+              class="text-success mdi mdi-github"></i></a> <a target="_blank"
+            href="www.linkedin.com/in/lincoln-marler-920a34287"><i class="text-success mdi mdi-linkedin"></i></a></span>
       </div>
       <h1 class="mt-1 text-center">About The Site</h1>
       <div class="card col-11">
