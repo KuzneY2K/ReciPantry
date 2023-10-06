@@ -5,8 +5,13 @@
       <h1 class="mt-1 text-center">The Chefs</h1>
       <div class="p-1 m-1 col-10 col-md-2 card">
         <img src="../assets/img/tyler-pic.jpg" alt="Tyler">
-        <span>Bio</span>
-        <span>Links</span>
+        <span class="fs-3">Tyler:</span>
+        <span>Hello, my name is Tyler! I am a prospective full stack developer and a student at Boise CodeWorks. After
+          graduating High School I attended CSU Channel Islands for a year before realizing I wanted something different
+          for myself. I decided to take a leap forward and jump-started my career as a software developer, and it has
+          truly been a life changing experience. </span>
+        <span class="text-end"><a href="https://github.com/TylerChristiansen22"><i class="mdi mdi-github"></i></a> <a
+            href="https://www.linkedin.com/in/tyler-christiansen-58555328a/"><i class="mdi mdi-linkedin"></i></a></span>
       </div>
       <div class="p-1 m-1 col-10 col-md-2 card">
         <img src="../assets/img/jason-pic.jpg" alt="Jason">
