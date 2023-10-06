@@ -38,9 +38,9 @@
             </div>
         </div>
         
-        <section class="row p-0 m-0">
+        <section class="row p-0 m-0 d-flex flex-row justify-content-center">
         <!-- To render only IF there is an active recipe, otherwise error will be thrown -->
-        <div class="ingredients-container col-12 col-md-6 p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
+        <div class="ingredients-container col-12 col-md-4 p-0 m-0 px-4 mt-4" v-if="recipe.ingredients">
             <div class="ingredients-header d-flex flex-row justify-content-between align-items-center">
                 <h1 class="p-0 m-0 ingredients-label">Ingredients</h1>
                 <h3 class="badge bg-success fs-5 servings elevation-3">{{ recipe.servings }} SERVINGS</h3>
@@ -64,7 +64,7 @@
             <!-- Nutrition facts Modal -->
         </div>
 
-        <div class="instructions-container col-12 col-md-6 p-0 m-0 px-4 mt-4">
+        <div class="instructions-container col-12 col-md-4 p-0 m-0 px-4 mt-4">
             <h1 class="p-0 m-0">Instructions</h1>
             <!-- Very primitive REGEX. Needs to be replaced with something cleaner. -->
             <p class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5" id="instructions">
@@ -79,9 +79,9 @@
         </section>
 
 
-        <section class="row p-0 m-0">
+        <section class="row p-0 m-0 d-flex flex-row justify-content-center">
         <!-- Summary of the recipe. Inner HTML is set to the summary to utilize HTML elements within the summary that is returned from the API -->
-        <div class="col-12 col-md-6 p-0 m-0">
+        <div class="col-12 col-md-4 p-0 m-0">
             <div class="summary-container p-0 m-0 px-4 mt-4 mb-4">
                 <h1 class="p-0 m-0">About The Recipe</h1>
                     <div class="bg-white p-4 mt-3 rounded rounded-5 elevation-3 fs-5 summary" id="summary">
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <div class="col-12 col-md-6 d-flex flex-column justify-content-between align-items-between px-4 py-4">
+        <div class="col-12 col-md-4 d-flex flex-column justify-content-between align-items-between px-4 py-4">
             <h1 class="p-0 m-0m-0">Recipe Reviews </h1>
             <div class="collapse" id="reviewForm">
                 <form @submit.prevent="createReview" class="form-control">
