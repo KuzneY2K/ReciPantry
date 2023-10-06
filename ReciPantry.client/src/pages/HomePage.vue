@@ -2,9 +2,9 @@
   <!-- Landing Text -->
   <section class="row p-0 m-0">
     <div class="col-12 p-0 m-0 d-flex flex-row justify-content-md-center" id="titleText">
-      <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__bounceInRight"><span
-        class="text-success">FIND</span> THE RECIPE THAT SUITS <span class="text-success">YOU</span> <i
-        class="mdi mdi-chef-hat"></i></h1>
+      <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__fadeIn"><span
+        class="text-success">FIND</span> THE <span>RECIPE THAT SUITS</span> <span class="text-success">YOU</span>, ON <span class="text-success">RECIPANTRY</span><i
+          class="mdi mdi-chef-hat"></i></h1>
       </div>
       <hr class="animate__animated animate__fadeIn">
       <!-- GET STARTED BUTTON - Redirects to recipes Search -->
@@ -15,7 +15,7 @@
         <LandingCard  />
       </div>
     </section>
-  <section class="row p-0 m-0 animate__animated animate__fadeInDownBig">
+  <section class="row p-0 m-0 animate__animated animate__fadeIn">
     <hr class="animate__animated animate__fadeIn mt-4">
     <div class="col-12 p-0 m-0 d-flex flex-row justify-content-center mb-3 mt-3">
       <RouterLink :to="{ name: 'Recipes' }">
@@ -41,6 +41,8 @@
 import { computed, onMounted, ref } from 'vue';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default {
   setup() {
@@ -65,7 +67,8 @@ export default {
         { element: '#navbarHomeBox', popover: { title: 'Home Page. 🏡', description: 'You are here!', side: "top", align: "center" } },
         { element: '#navbarRecipesBox', popover: { title: 'Recipe Page. 📃', description: 'Explore all of our recipes on this page!', side: "top", align: "center" } },
         { element: '#navbarCommunityBox', popover: { title: 'Community Page. 🫂', description: 'Explore all of our custom user created recipes, and be able to create your own!', side: "top", align: "center" } },
-        { element: '#navbarAccountBox', popover: { title: 'Account Page. 👳', description: 'Access your account here.', side: "top", align: "center", 
+        { element: '#navbarAccountBox', popover: { title: 'Account Page. 👳', description: 'Access your account here.', side: "top", align: "center", }},
+        { element: '#navbarAboutBox', popover: { title: 'About Page 🤔', description: 'Get some info on this site over on this tab.', side: "top", align: "center", 
         onNextClick: () => {
           document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
           document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
@@ -82,12 +85,13 @@ export default {
     })
     
     function onboarding() {
-      driverObj.drive()
+      setTimeout(driverObj.drive, 1000)
     }
 
 
   onMounted(() => {
     // localStorage.clear()
+    AOS.init()
     if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == 'true'){
       document.getElementsByClassName('categoriesBox')[0].classList.add('disabled')
       document.getElementsByClassName('getStartedBox')[0].classList.add('disabled')

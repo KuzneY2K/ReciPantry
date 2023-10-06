@@ -193,7 +193,7 @@ export default {
         }
 
         function recipesOnBoarding() {
-            driverObj.drive()
+            setTimeout(driverObj.drive, 1000)
         }
 
         onMounted(() => {
@@ -207,15 +207,15 @@ export default {
                 document.getElementsByClassName('recipeCardBox')[0].disabled = true
                 setTimeout(function() {
                     document.getElementById('learnMoreBox').style.pointerEvents = 'none'
-                }, 1000)
+                }, 1500)
                 recipesOnBoarding()
             } else {
                 document.getElementsByClassName('searchBarBox')[0].disabled = false
                 document.getElementsByClassName('searchBarFilterBox')[0].disabled = false
                 document.getElementsByClassName('recipeCardBox')[0].disabled = false
                 setTimeout(function() {
-                    document.getElementById('learnMoreBox').style.pointerEvents = false
-                }, 1000)
+                    document.getElementById('learnMoreBox').style.pointerEvents = 'auto'
+                }, 1500)
             }
 
             getRandomRecipes()

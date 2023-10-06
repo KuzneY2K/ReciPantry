@@ -64,7 +64,7 @@ export default {
         
         function communityOnBoarding(){
             if(AppState.account.id){
-                logger.log('logged on')
+                // logger.log('logged on')
                 if (localStorage.getItem('needsCreateTour') == null || localStorage.getItem('needsCreateTour') == 'true') {
                 driverObj.drive()
                 document.getElementById('createRecipeBtn').disabled = true
@@ -73,7 +73,7 @@ export default {
                 document.getElementById('createRecipeSubmitBtn').disabled = true
                 }
             } else {
-                logger.log('logged out')
+                // logger.log('logged out')
             }
         }
 

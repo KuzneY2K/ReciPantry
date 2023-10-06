@@ -119,6 +119,8 @@ import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import { recipesService } from '../services/RecipesService.js';
 import Pop from '../utils/Pop.js';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default {
     setup() {

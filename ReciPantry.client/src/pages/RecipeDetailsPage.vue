@@ -19,7 +19,7 @@
             <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
                 class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
         </div>
-        <div class="ms-5 mt-4" v-if="account.id">
+        <div class="ms-4 mt-4" v-if="account.id">
             <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5">Clone
                 Recipe</button>
         </div>
@@ -35,8 +35,7 @@
                 <!-- <li class="p-0 m-0">{{ recipe.ingredients[0]?.name }} - Amount: {{ recipe.ingredients[0]?.amount }} <br> {{ recipe.ingredients[0]?.measures?.us.amount + recipe.ingredients[0]?.measures?.us.unitShort }}</li> -->
 
                 <!-- For every recipe available, render it's card out. -->
-                <li class="bg-white p-0 m-0 mt-3 py-3 px-3 rounded rounded-5 elevation-3 d-flex flex-row justify-content-start align-items-center ingredient"
-                    v-for="ingredient in ingredients" :key="ingredient">
+                <li class="bg-white p-0 m-0 mt-3 py-3 px-3 rounded rounded-5 elevation-3 d-flex flex-row justify-content-start align-items-center ingredient" v-for="ingredient in ingredients" :key="ingredient" data-aos="zoom-out-up">
                     <!-- Cart icon so user can add ingredient to shopping list -->
                     <i class="mdi mdi-cart p-0 m-0 text-success fs-2 cart selectable" @click="addToList(ingredient)"></i>
                     <!-- Checkbox for checking off what a user has and doesnt has -->
@@ -45,7 +44,7 @@
                 </li>
                 <li class="nfBtn">
                     <!-- Button that pulls up nutrition facts specific to the meal -->
-                    <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4">
+                    <div class="nutrition-btn-container d-flex flex-column justify-content-center align-items-center mt-4" >
                         <button class="btn btn-success fs-2 px-4 rounded rounded-5 elevation-5" data-bs-toggle="modal"
                             data-bs-target="#nutritionModal">SEE NUTRITION FACTS <img src="https://i.imgur.com/WbcjLNE.png"
                                 alt="" height="30"></button>
@@ -152,6 +151,8 @@ import { reviewService } from '../services/ReviewService';
 import { groceriesService } from '../services/GroceriesService.js'
 import JSConfetti from 'js-confetti'
 import { Modal } from 'bootstrap';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default {
     setup() {
@@ -267,9 +268,10 @@ export default {
         onMounted(() => {
             getRecipeById();
             getReviewsByRecipe();
+            AOS.init()
             // localStorage.clear()
             if (localStorage.getItem('needsDetailsTour') == null || localStorage.getItem('needsDetailsTour') == 'true') {
-                detailsOnBoarding()
+                setTimeout(detailsOnBoarding, 1000)
             }
         })
 
