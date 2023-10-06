@@ -63,20 +63,20 @@
       <h1 class="mt-1 text-center mt-4">About The Site</h1>
       <div class="card col-11 mt-4 mb-4 elevation-5 bg-white py-3" data-aos="fade-right">
         <span class="fs-4">Problem Statement:</span>
-        <span class="fs-6">Find recipes instantly & learn to cook</span>
+        <span class="fs-6 mb-3">Find recipes instantly & learn to cook</span>
         <span class="fs-4">Concepts:</span>
-        <span class="fs-6">Collection of Recipes, User uploaded & "chef" picked</span>
+        <span class="fs-6 mb-3">Collection of Recipes, User uploaded & "chef" picked</span>
         <span class="fs-4">Target Audience:</span>
-        <span class="fs-6">Home Cooks / Aspiring Chefs</span>
+        <span class="fs-6 mb-3">Home Cooks / Aspiring Chefs</span>
         <span class="fs-4">Why:</span>
-        <span class="fs-6">Help Home Cooks -> Eating out is expensive -> Learn to cook better than restaurants</span>
+        <span class="fs-6 mb-3">Help Home Cooks -> Eating out is expensive -> Learn to cook better than restaurants</span>
         <span class="fs-4">The Planning Stage:</span>
         <span class=" fs-6"><a class="text-success" target="_blank"
             href="https://www.figma.com/file/rQXArisUQj8ExCffrfGemZ/RECIPANTRY-V2?type=design&node-id=0-1&mode=design&t=8mHQE07ewG6lqaX5-0">Figma
             Mock</a></span>
         <span class=" fs-6"><a class="text-success" target="_blank"
             href="https://www.figma.com/file/2ipRFOXKY3djWvZokaSYFq/ReciPantry-UML?type=whiteboard&t=ZJCUPUUwpcnDvkoO-6">UML</a></span>
-        <span class=" fs-6"><a class="text-success" target="_blank"
+        <span class=" fs-6 mb-2"><a class="text-success" target="_blank"
             href="https://trello.com/invite/b/Js5URoUv/ATTIab8c4b01e59d1e6cc26ee0c7dbc05e1aCD363637/recipantry">Trello</a></span>
         <span class="fs-4">Technologies Used:</span>
         <span class="fs-6">MongoDB / Mongoose || Vue || ES6 || Express || NodeJS || AOS || Bootstrap || VueUse/Motion ||
