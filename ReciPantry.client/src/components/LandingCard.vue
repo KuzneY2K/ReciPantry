@@ -19,9 +19,10 @@ import {recipesService} from '../services/RecipesService.js'
 
     export default {
         setup(){
-                async function getOneRecipe() {
+        async function getOneRecipe() {
             await recipesService.getOneRecipe()
         }
+
         onMounted(() => {
             getOneRecipe()
         })
@@ -47,6 +48,16 @@ import {recipesService} from '../services/RecipesService.js'
     .card-container{
         width: 22rem;
         height: 23rem;
+    }
+}
+
+.card-title{
+    font-size: 5rem !important;
+}
+
+@media (max-width: 768px){
+    .card-title{
+        font-size: 2.5rem !important;
     }
 }
 

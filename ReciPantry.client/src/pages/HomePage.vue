@@ -88,7 +88,6 @@ export default {
       setTimeout(driverObj.drive, 1000)
     }
 
-
   onMounted(() => {
     // localStorage.clear()
     AOS.init()
