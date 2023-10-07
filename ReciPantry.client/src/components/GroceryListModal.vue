@@ -9,6 +9,7 @@
                 <div class="modal-body">
                     <ul class="list-unstyled">
                         <ul class="list-unstyled" id="groceryUl">
+                            <ul class="list-unstyled" id="groceryUlFake"></ul>
                             <div class="li-container d-flex flex-row justify-content-between fs-5"
                                 v-for="i in ingredientOnList" :key="i.name">
                                 <RouterLink :to="{ name: 'Recipes' }" @click="setIngredient(`${i.name}`)">
