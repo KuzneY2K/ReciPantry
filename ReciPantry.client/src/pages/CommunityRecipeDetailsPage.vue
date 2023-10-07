@@ -92,13 +92,16 @@
 
         <div class="col-12 col-md-4 d-flex flex-column justify-content-between align-items-between px-4 py-4">
             <h1 class="p-0 m-0 m-0 text-center">Recipe Reviews </h1>
-        <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
+            <div v-for="review in reviews" :key="review.id" class="col-12">
+                    <ReviewCard :review="review" />
+            </div>
+            <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
             <div class="modal-content py-3">
-              <div class="modal-header">
+            <div class="modal-header">
                 <h5 class="modal-title" id="reviewModalLabel">Leave A Review</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
+            </div>
                     <div class="modal-body" id="reviewForm">
                         <form @submit.prevent="createReview" class="form-control py-4">
                             <div class="d-flex justify-content-center">
@@ -134,11 +137,6 @@
         </div>
         
         <!-- STUB review cards  -->
-        <div class="p-0 m-0 px-3">
-            <div v-for="review in reviews" :key="review.id" class="col-12">
-                <ReviewCard :review="review" />
-            </div>
-        </div>
         <div class="review-btn-container position-absolute">
                 <button data-bs-toggle="modal" data-bs-target="#reviewModal" class="btn btn-success ms-md-5 position-fixed review-btn border border-1 border-black elevation-5">Add Review <i
                 class="mdi mdi-plus"></i>

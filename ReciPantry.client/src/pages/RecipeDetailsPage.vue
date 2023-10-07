@@ -98,12 +98,15 @@
         </div>
 
         <!-- STUB review card component -->
-            <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-items-center px-4 py-4">
-                <h1 class="p-0 m-0 m-0">Recipe Reviews</h1>
-                <div class="review-btn-container position-absolute">
+        <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-items-center px-4 py-4">
+            <h1 class="p-0 m-0 m-0">Recipe Reviews</h1>
+            <div class="review-btn-container position-absolute">
                 <button data-bs-toggle="modal" data-bs-target="#reviewModal"
-                    class="btn btn-success border border-1 border-black elevation-5 review-btn position-fixed" v-if="account.id">Add Review <i
-                        class="mdi mdi-plus"></i></button>
+                class="btn btn-success border border-1 border-black elevation-5 review-btn position-fixed" v-if="account.id">Add Review <i
+                class="mdi mdi-plus"></i></button>
+            </div>
+                <div v-for="review in reviews" :key="review.id" class="col-12">
+                    <ReviewCard :review="review" />
                 </div>
             </div>
             <!-- STUB create review form -->
@@ -149,11 +152,6 @@
             </div>
 
             <!-- STUB review card -->
-            <div class="p-0 m-0 px-3 reviews-container">
-                <div v-for="review in reviews" :key="review.id" class="col-12">
-                    <ReviewCard :review="review" />
-                </div>
-            </div>
         </section>
 
         <!-- MODAL - CONVERT TO COMPONENT -->
