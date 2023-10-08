@@ -89,7 +89,6 @@ export default {
     }
 
   onMounted(() => {
-    // localStorage.clear()
     AOS.init()
     if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == 'true'){
       document.getElementsByClassName('categoriesBox')[0].classList.add('disabled')
