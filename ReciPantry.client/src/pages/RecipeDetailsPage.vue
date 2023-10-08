@@ -14,7 +14,7 @@
                 class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5 grocery-list-btn"
                 data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
         </div>
-        <div class="position-absolute clone-container">
+        <div class="position-absolute clone-container" v-if="account.id">
         <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5 position-fixed clone-btn">Clone
             Recipe</button></div>
         <div class="mt-4" v-if="account.id">
