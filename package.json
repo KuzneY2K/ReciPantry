@@ -11,5 +11,8 @@
     "dependencies": {
         "@vueuse/motion": "^2.0.0",
         "js-confetti": "^0.11.0"
+    },
+    "engines": {
+        "node": "^16"
     }
 }
