@@ -325,6 +325,7 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    object-fit: cover;
 }
 
 @media (max-width: 768px){

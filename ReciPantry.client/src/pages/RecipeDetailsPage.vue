@@ -17,7 +17,7 @@
         <div class="position-absolute clone-container" v-if="account.id">
         <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5 position-fixed clone-btn">Clone
             Recipe</button></div>
-        <div class="mt-4" v-if="account.id">
+        <div class="mt-4">
             <div class="img-container d-flex flex-column align-items-center justify-content-center mb-4">
                 <!-- Pulls recipe cover image from active recipe -->
                 <img :src="recipe.image" alt="Recipe Cover Image" height="300" width="350"
@@ -388,6 +388,7 @@ export default {
     }
 }
 
+
 .disabled {
     pointer-events: none;
 }
@@ -434,6 +435,7 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    object-fit: cover;
 }
 
 @media (max-width: 768px){
