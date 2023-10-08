@@ -290,9 +290,9 @@ export default {
             getReviewsByRecipe();
             AOS.init()
             // localStorage.clear()
-            if (localStorage.getItem('needsDetailsTour') == null || localStorage.getItem('needsDetailsTour') == 'true') {
-                setTimeout(detailsOnBoarding, 1000)
-            }
+            // if (localStorage.getItem('needsDetailsTour') == null || localStorage.getItem('needsDetailsTour') == 'true') {
+            //     setTimeout(detailsOnBoarding, 1000)
+            // }
         })
 
         // watchEffect(()=> {
