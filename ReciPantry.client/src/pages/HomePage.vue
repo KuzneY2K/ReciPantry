@@ -51,7 +51,7 @@ export default {
       showProgress: true,
       allowClose: true,
       onCloseClick: () => { 
-        window.localStorage.setItem('needsHomeTour', 'false')
+        localStorage.setItem('needsHomeTour', 'false')
         driverObj.destroy()
         document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
         document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
@@ -73,8 +73,8 @@ export default {
           document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
           document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
           document.getElementsByClassName('navbar')[0].classList.remove('disabled')
-          window.localStorage.setItem('needsHomeTour', false),
-            logger.log('END TOUR => ' + window.localStorage.getItem('needsHomeTour'))
+          localStorage.setItem('needsHomeTour', false),
+            logger.log('END TOUR => ' + localStorage.getItem('needsHomeTour'))
           driverObj.moveNext()
             } } },
         { element: '#getStartedBox', popover: { title: 'Ready to start?', description: 'Get cooking.', side: "top", align: "center",
@@ -90,16 +90,17 @@ export default {
 
   onMounted(() => {
     AOS.init()
-    if(window.localStorage.getItem('needsHomeTour') == null || window.localStorage.getItem('needsHomeTour') == 'true'){
-      document.getElementsByClassName('categoriesBox')[0].classList.add('disabled')
-      document.getElementsByClassName('getStartedBox')[0].classList.add('disabled')
-      document.getElementsByClassName('navbar')[0].classList.add('disabled')
-      onboarding()
-    } else {
-      document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
-      document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
-      document.getElementsByClassName('navbar')[0].classList.remove('disabled')
-    }
+    // if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == 'true'){
+    //   logger.log(localStorage.storedData)
+    //   document.getElementsByClassName('categoriesBox')[0].classList.add('disabled')
+    //   document.getElementsByClassName('getStartedBox')[0].classList.add('disabled')
+    //   document.getElementsByClassName('navbar')[0].classList.add('disabled')
+    //   onboarding()
+    // } else {
+    //   document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
+    //   document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
+    //   document.getElementsByClassName('navbar')[0].classList.remove('disabled')
+    // }
   })
     
     return {

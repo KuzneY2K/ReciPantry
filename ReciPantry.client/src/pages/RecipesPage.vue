@@ -198,23 +198,23 @@ export default {
 
         onMounted(() => {
             AOS.init()
-            if (window.localStorage.getItem('needsRecipesTour') == null || window.localStorage.getItem('needsRecipesTour') == 'true') {
-                document.getElementsByClassName('searchBarBox').disabled = true
-                document.getElementsByClassName('searchBarFilterBox')[0].disabled = true
-                document.getElementsByClassName('searchBarSubmitBox')[0].disabled = true
-                document.getElementsByClassName('recipeCardBox')[0].disabled = true
-                setTimeout(function() {
-                    document.getElementById('learnMoreBox').style.pointerEvents = 'none'
-                }, 1500)
-                recipesOnBoarding()
-            } else {
-                document.getElementsByClassName('searchBarBox')[0].disabled = false
-                document.getElementsByClassName('searchBarFilterBox')[0].disabled = false
-                document.getElementsByClassName('recipeCardBox')[0].disabled = false
-                setTimeout(function() {
-                    document.getElementById('learnMoreBox').style.pointerEvents = 'auto'
-                }, 1500)
-            }
+            // if (window.localStorage.getItem('needsRecipesTour') == null || window.localStorage.getItem('needsRecipesTour') == 'true') {
+            //     document.getElementsByClassName('searchBarBox').disabled = true
+            //     document.getElementsByClassName('searchBarFilterBox')[0].disabled = true
+            //     document.getElementsByClassName('searchBarSubmitBox')[0].disabled = true
+            //     document.getElementsByClassName('recipeCardBox')[0].disabled = true
+            //     setTimeout(function() {
+            //         document.getElementById('learnMoreBox').style.pointerEvents = 'none'
+            //     }, 1500)
+            //     recipesOnBoarding()
+            // } else {
+            //     document.getElementsByClassName('searchBarBox')[0].disabled = false
+            //     document.getElementsByClassName('searchBarFilterBox')[0].disabled = false
+            //     document.getElementsByClassName('recipeCardBox')[0].disabled = false
+            //     setTimeout(function() {
+            //         document.getElementById('learnMoreBox').style.pointerEvents = 'auto'
+            //     }, 1500)
+            // }
 
             getRandomRecipes()
         })
