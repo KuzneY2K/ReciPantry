@@ -33,8 +33,8 @@ export const AppState = reactive({
   /**@type {Favorite[]} */
   favorites: [],
   filterData: [],
-  needsHomeTour: localStorage.getItem('needsHomeTour'),
-  needsRecipesTour: localStorage.getItem('needsRecipesTour'),
-  needsDetailsTour: localStorage.getItem('needsDetailsTour'),
-  needsCreateTour: localStorage.getItem('needsCreateTour')
+  needsHomeTour: window.localStorage.getItem('needsHomeTour'),
+  needsRecipesTour: window.localStorage.getItem('needsRecipesTour'),
+  needsDetailsTour: window.localStorage.getItem('needsDetailsTour'),
+  needsCreateTour: window.localStorage.getItem('needsCreateTour')
 })

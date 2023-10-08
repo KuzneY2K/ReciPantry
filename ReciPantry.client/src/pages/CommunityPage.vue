@@ -38,7 +38,7 @@ export default {
             allowClose: true,
             disableActiveInteraction: true,
             onCloseClick: () => {
-                localStorage.setItem('needsCreateTour', 'false')
+                window.localStorage.setItem('needsCreateTour', 'false')
                 driverObj.destroy()
             },
             steps: [
@@ -55,7 +55,7 @@ export default {
                             document.getElementById('addIngredientBtn').disabled = false
                             document.getElementById('removeIngredientBtn').disabled = false
                             document.getElementById('createRecipeSubmitBtn').disabled = false
-                            localStorage.setItem('needsCreateTour', 'false')
+                            window.localStorage.setItem('needsCreateTour', 'false')
                             driverObj.moveNext()
                 } } },
                 { element: '#page', popover: { title: `And done.`, description: `Creating recipes is simple.`, side: "bottom", align: "right" } },
@@ -65,7 +65,7 @@ export default {
         function communityOnBoarding(){
             if(AppState.account.id){
                 // logger.log('logged on')
-                if (localStorage.getItem('needsCreateTour') == null || localStorage.getItem('needsCreateTour') == 'true') {
+                if (window.localStorage.getItem('needsCreateTour') == null || window.localStorage.getItem('needsCreateTour') == 'true') {
                 driverObj.drive()
                 document.getElementById('createRecipeBtn').disabled = true
                 document.getElementById('addIngredientBtn').disabled = true
@@ -73,7 +73,7 @@ export default {
                 document.getElementById('createRecipeSubmitBtn').disabled = true
                 }
             } else {
-                // logger.log('logged outt')
+                // logger.log('logged out')
             }
         }
 
@@ -81,8 +81,7 @@ export default {
         onMounted(() => {
             getCommunityRecipes()
             AOS.init()
-            // localStorage.clear()
-            // setTimeout(communityOnBoarding, 2000)
+            setTimeout(communityOnBoarding, 2000)
         })
 
         async function getCommunityRecipes() {
