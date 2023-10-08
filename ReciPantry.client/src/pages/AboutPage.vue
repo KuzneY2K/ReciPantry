@@ -37,8 +37,7 @@
         <img src="../assets/img/image0.jpeg" alt="Mark">
         <span class="fs-3 ms-2 text-center mt-3">Mark</span>
         <span class="p-2">Hi my name is Mark. Im originally from Florida and got stationed out in Mountain Home, ID while
-          serving in the United States Air Force.After my military contract was over I was unsure of what exactly I wanted
-          to do with my life and was for some time, lost. That was until one day, I figured I'd give coding a shot and
+          serving in the United States Air Force. After my military contract was over I spent some time trying to figure what exactly I wanted to do with my life. That was until one day, I figured I'd give coding another shot and
           discovered my life's true passion. I am very excited for what the future has in store for my self and my
           classmates.</span>
         <div class="links-container text-center fs-1">
