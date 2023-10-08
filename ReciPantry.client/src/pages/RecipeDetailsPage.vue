@@ -1,9 +1,9 @@
 <template >
-    <div v-if="recipe" class="theRecipe">
+    <div v-if="recipe" class="theRecipe position-relative">
         <!-- Pulls recipe title from active recipe -->
         <section class="row p-0 m-0">
             <div class="col-12 p-0 m-0 d-md-flex flex-md-column align-items-md-center my-md-3" id="recipeTitleBox">
-                <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title">{{ recipe.title }} <span
+                <h1 class="text-start ms-4 mt-3 text-success recipe-title">{{ recipe.title }} <span
                         class="text-black readyInBox" id="readyInBox">- {{
                             recipe.readyInMinutes }} Mins</span></h1>
             </div>
@@ -15,7 +15,7 @@
                 data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
         </div>
         <div class="position-absolute clone-container">
-        <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5 position-fixed">Clone
+        <button @click="cloneRecipe" class="btn btn-success border border-1 border-dark elevation-5 position-fixed clone-btn">Clone
             Recipe</button></div>
         <div class="mt-4" v-if="account.id">
             <div class="img-container d-flex flex-column align-items-center justify-content-center mb-4">
@@ -422,8 +422,8 @@ export default {
     font-family: 'Ubuntu' !important;
 }
 
-.clone-container{
-    bottom: 7.4rem;
+.clone-btn {
+    bottom: 5rem;
     left: 1rem;
     z-index: 5 !important;
 }
