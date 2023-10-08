@@ -73,7 +73,7 @@ export default {
                 document.getElementById('createRecipeSubmitBtn').disabled = true
                 }
             } else {
-                // logger.log('logged out')
+                // logger.log('logged outt')
             }
         }
 
