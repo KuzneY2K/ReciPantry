@@ -15,7 +15,7 @@ import Navbar from './components/Navbar.vue'
 export default {
   setup() {
     onMounted(() => {
-      // localStorage.clear()
+      localStorage.clear()
     })
     return {
       appState: computed(() => AppState)

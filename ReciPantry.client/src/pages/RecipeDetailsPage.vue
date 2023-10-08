@@ -212,7 +212,7 @@ export default {
                         title: `Adding to a grocery list 🛒`, description: `Don't have this ingredient? Don't have the attention span to remember it? No worries. Clicking the cart icon will add this ingredient to your personal shopping list.`, side: "bottom", align: "center", onNextClick: () => {
                             Modal.getOrCreateInstance('#groceryListModal').show()
                             document.getElementsByClassName('gmBtn')[0].classList.add('disabled')
-                            let modalBody = document.getElementById('groceryUl')
+                            let modalBody = document.getElementById('groceryUlFake')
                             modalBody.innerHTML = `
                         <div class="li-container d-flex flex-row justify-content-between fs-5">
                             <li class="text-black"><i class="mdi mdi-food"></i> <span class="text-success">SALT</span> - 2 GALLONS </li>
@@ -227,7 +227,7 @@ export default {
                 {
                     element: '.close-icon', popover: {
                         title: `Removing Groceries 🗑️`, description: `Click the X button to remove a grocery from your list.`, side: "bottom", align: "center", onNextClick: () => {
-                            let modalBody = document.getElementById('groceryUl')
+                            let modalBody = document.getElementById('groceryUlFake')
                             modalBody.innerHTML = ``
                             Modal.getOrCreateInstance('#groceryListModal').hide()
                             driverObj.moveNext()
