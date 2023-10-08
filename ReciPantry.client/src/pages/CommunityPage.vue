@@ -62,19 +62,19 @@ export default {
             ]
         })
         
-        // function communityOnBoarding(){
-        //     if(AppState.account.id){
-
-        //         if (localStorage.getItem('needsCreateTour') == null || localStorage.getItem('needsCreateTour') == 'true') {
-        //         driverObj.drive()
-        //         document.getElementById('createRecipeBtn').disabled = true
-        //         document.getElementById('addIngredientBtn').disabled = true
-        //         document.getElementById('removeIngredientBtn').disabled = true
-        //         document.getElementById('createRecipeSubmitBtn').disabled = true
-        //         }
-        //     } else {
-
-        //     }
+        function communityOnBoarding(){
+            if(AppState.account.id){
+                // logger.log('logged on')
+                if (localStorage.getItem('needsCreateTour') == null || localStorage.getItem('needsCreateTour') == 'true') {
+                driverObj.drive()
+                document.getElementById('createRecipeBtn').disabled = true
+                document.getElementById('addIngredientBtn').disabled = true
+                document.getElementById('removeIngredientBtn').disabled = true
+                document.getElementById('createRecipeSubmitBtn').disabled = true
+                }
+            } else {
+                // logger.log('logged out')
+            }
         }
 
 
@@ -82,7 +82,7 @@ export default {
             getCommunityRecipes()
             AOS.init()
             // localStorage.clear()
-            setTimeout(communityOnBoarding, 2000)
+            // setTimeout(communityOnBoarding, 2000)
         })
 
         async function getCommunityRecipes() {
