@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [vue()],
   build: {
-    outDir: '../ReciPantry/client',
+    outDir: '../ReciPantry/www',
     sourcemap: false
   },
   server: {
