@@ -424,7 +424,7 @@ export default {
 
 .clone-container{
     bottom: 7.4rem;
-    right: 9.7rem;
+    left: 1rem;
     z-index: 5 !important;
 }
 
