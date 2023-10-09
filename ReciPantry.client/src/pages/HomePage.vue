@@ -90,17 +90,17 @@ export default {
 
   onMounted(() => {
     AOS.init()
-    // if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == 'true'){
-    //   logger.log(localStorage.storedData)
-    //   document.getElementsByClassName('categoriesBox')[0].classList.add('disabled')
-    //   document.getElementsByClassName('getStartedBox')[0].classList.add('disabled')
-    //   document.getElementsByClassName('navbar')[0].classList.add('disabled')
-    //   onboarding()
-    // } else {
-    //   document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
-    //   document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
-    //   document.getElementsByClassName('navbar')[0].classList.remove('disabled')
-    // }
+    if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == 'true'){
+      logger.log(localStorage.storedData)
+      document.getElementsByClassName('categoriesBox')[0].classList.add('disabled')
+      document.getElementsByClassName('getStartedBox')[0].classList.add('disabled')
+      document.getElementsByClassName('navbar')[0].classList.add('disabled')
+      onboarding()
+    } else {
+      document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
+      document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
+      document.getElementsByClassName('navbar')[0].classList.remove('disabled')
+    }
   })
     
     return {

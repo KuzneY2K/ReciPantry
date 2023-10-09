@@ -289,9 +289,9 @@ export default {
             getRecipeById();
             getReviewsByRecipe();
             AOS.init()
-            // if (window.localStorage.getItem('needsDetailsTour') == null || window.localStorage.getItem('needsDetailsTour') == 'true') {
-            //     setTimeout(detailsOnBoarding, 1000)
-            // }
+            if (window.localStorage.getItem('needsDetailsTour') == null || window.localStorage.getItem('needsDetailsTour') == 'true') {
+                setTimeout(detailsOnBoarding, 1000)
+            }
         })
 
         // watchEffect(()=> {
