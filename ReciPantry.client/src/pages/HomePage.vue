@@ -51,7 +51,7 @@ export default {
       showProgress: true,
       allowClose: true,
       onCloseClick: () => { 
-        localStorage.setItem('needsHomeTour', 'false')
+        localStorage.setItem('needsHomeTour', false)
         driverObj.destroy()
         document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
         document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
@@ -90,7 +90,7 @@ export default {
 
   onMounted(() => {
     AOS.init()
-    if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == 'true'){
+    if(localStorage.getItem('needsHomeTour') == null || localStorage.getItem('needsHomeTour') == true){
       logger.log(localStorage.storedData)
       document.getElementsByClassName('categoriesBox')[0].classList.add('disabled')
       document.getElementsByClassName('getStartedBox')[0].classList.add('disabled')

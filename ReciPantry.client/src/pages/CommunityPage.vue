@@ -38,7 +38,7 @@ export default {
             allowClose: true,
             disableActiveInteraction: true,
             onCloseClick: () => {
-                window.localStorage.setItem('needsCreateTour', 'false')
+                window.localStorage.setItem('needsCreateTour', false)
                 driverObj.destroy()
             },
             steps: [
@@ -55,7 +55,7 @@ export default {
                             document.getElementById('addIngredientBtn').disabled = false
                             document.getElementById('removeIngredientBtn').disabled = false
                             document.getElementById('createRecipeSubmitBtn').disabled = false
-                            window.localStorage.setItem('needsCreateTour', 'false')
+                            window.localStorage.setItem('needsCreateTour', false)
                             driverObj.moveNext()
                 } } },
                 { element: '#page', popover: { title: `And done.`, description: `Creating recipes is simple.`, side: "bottom", align: "right" } },
@@ -65,7 +65,7 @@ export default {
         function communityOnBoarding(){
             if(AppState.account.id){
                 // logger.log('logged on')
-                if (window.localStorage.getItem('needsCreateTour') == null || window.localStorage.getItem('needsCreateTour') == 'true') {
+                if (window.localStorage.getItem('needsCreateTour') == null || window.localStorage.getItem('needsCreateTour') == true) {
                 driverObj.drive()
                 document.getElementById('createRecipeBtn').disabled = true
                 document.getElementById('addIngredientBtn').disabled = true

@@ -189,7 +189,7 @@ export default {
             showProgress: true,
             allowClose: true,
             onCloseClick: () => {
-                window.localStorage.setItem('needsDetailsTour', 'false')
+                window.localStorage.setItem('needsDetailsTour', false)
                 driverObj.destroy()
                 document.getElementsByClassName('nmBtn')[0].classList.remove('disabled')
                 document.getElementsByClassName('nfBtn')[0].classList.remove('disabled')
@@ -259,7 +259,7 @@ export default {
                 {
                     element: '.summary-container', popover: {
                         title: `Summary 🗺️`, description: `A summary of the recipe. This may provide you a brief history of the recipe, its origins and much more.`, side: "top", align: "center", onNextClick: () => {
-                            window.localStorage.setItem('needsDetailsTour', 'false')
+                            window.localStorage.setItem('needsDetailsTour', false)
                             driverObj.moveNext()
                         }
                     }
@@ -289,7 +289,7 @@ export default {
             getRecipeById();
             getReviewsByRecipe();
             AOS.init()
-            if (window.localStorage.getItem('needsDetailsTour') == null || window.localStorage.getItem('needsDetailsTour') == 'true') {
+            if (window.localStorage.getItem('needsDetailsTour') == null || window.localStorage.getItem('needsDetailsTour') == true) {
                 setTimeout(detailsOnBoarding, 1000)
             }
         })

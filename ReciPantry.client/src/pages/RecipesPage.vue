@@ -144,7 +144,7 @@ export default {
             showProgress: true,
             allowClose: true,
             onCloseClick: () => {
-                window.localStorage.setItem('needsRecipesTour', 'false')
+                window.localStorage.setItem('needsRecipesTour', false)
                 driverObj.destroy()
                 document.getElementsByClassName('searchBarBox')[0].disabled = false
                 document.getElementsByClassName('searchBarFilterBox')[0].disabled = false
@@ -198,7 +198,7 @@ export default {
 
         onMounted(() => {
             AOS.init()
-            if (window.localStorage.getItem('needsRecipesTour') == null || window.localStorage.getItem('needsRecipesTour') == 'true') {
+            if (window.localStorage.getItem('needsRecipesTour') == null || window.localStorage.getItem('needsRecipesTour') == true) {
                 document.getElementsByClassName('searchBarBox').disabled = true
                 document.getElementsByClassName('searchBarFilterBox')[0].disabled = true
                 document.getElementsByClassName('searchBarSubmitBox')[0].disabled = true
