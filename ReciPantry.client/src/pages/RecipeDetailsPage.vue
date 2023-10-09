@@ -330,6 +330,7 @@ export default {
 
             // Adds ingredient to shopping list when clicking on cart.
             async addToList(grocery) {
+                if(this.account.id){
                 if (await Pop.confirm(`Add ${grocery.name} to grocery list?`)) {
                     groceryData.value.groceryName = grocery.name
                     groceryData.value.measureAmount = grocery.measures.us.amount || ''
@@ -339,6 +340,9 @@ export default {
                 } else {
                     Pop.toast(`${grocery.name} not added to grocery list.`)
                 }
+            } else {
+                Pop.error(`Must be logged in to add ${grocery.name} to list!`)
+            }
 
                 // Remove ingredient from shopping list by clicking little X symbol
             },
