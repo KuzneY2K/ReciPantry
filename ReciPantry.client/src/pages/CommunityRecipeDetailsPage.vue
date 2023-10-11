@@ -137,7 +137,7 @@
         </div>
         
         <!-- STUB review cards  -->
-        <div class="review-btn-container position-absolute">
+        <div class="review-btn-container position-absolute" v-if="account.id">
                 <button data-bs-toggle="modal" data-bs-target="#reviewModal" class="btn btn-success ms-md-5 position-fixed review-btn border border-1 border-black elevation-5">Add Review <i
                 class="mdi mdi-plus"></i>
                 </button>
