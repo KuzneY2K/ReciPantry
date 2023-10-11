@@ -15,7 +15,7 @@
                 class="rounded rounded-5 border border-2 border-dark elevation-5 recipe-image">
         </div>
         <div class="btn-container d-flex flex-row justify-content-start justify-content-md-center ms-3 mt-4">
-            <div class="ms-2">
+            <div class="ms-2" v-if="account.id">
                 <button class="btn btn-success border border-1 border-black elevation-5 p-0 m-0 px-3 py-2"
                     @click="addOrRemoveFavorite"><i v-if="!isFavorite" class="mdi mdi-heart-outline"></i> <i v-else
                         class="mdi mdi-heart"></i></button>
