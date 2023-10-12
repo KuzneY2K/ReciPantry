@@ -278,7 +278,7 @@ export default {
                     reviewData.value.recipeId = route.params.recipeId;
                     await reviewService.createReview(reviewData.value);
                     reviewData.value = {};
-                    Pop.toast('Review left', 'success');
+                    Pop.toast('Review left.', 'success');
                 }
                 catch (error) {
                     Pop.error(error);
