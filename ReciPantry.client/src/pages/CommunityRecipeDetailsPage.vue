@@ -4,7 +4,7 @@
         <h1 class="text-start ms-4 mt-3 text-success position-relative recipe-title text-md-center">{{ recipe.title }} <span
                 class="text-black">- {{
                     recipe.readyInMinutes }} Mins</span></h1>
-        <div class="grocery-btn-container position-absolute">
+        <div class="grocery-btn-container position-absolute" v-if="account.id">
             <!-- Grocery List modal toggle -->
             <button class="btn btn-success position-fixed grocery-list border border-1 border-black elevation-5"
                 data-bs-toggle="modal" data-bs-target="#groceryListModal"><i class="mdi mdi-list-box"></i></button>
@@ -225,7 +225,7 @@ export default {
             // Adds ingredient to shopping list when clicking on cart.
             // Utilizes localStorage
             async addToList(listItem) {
-                logger.log;
+                if(this.account.id){
                 if (await Pop.confirm(`Add ${listItem.name} to grocery list?`)) {
                     groceryData.value.groceryName = listItem.name;
                     groceryData.value.measureAmount = listItem.measureAmount;
@@ -238,6 +238,9 @@ export default {
                 else {
                     Pop.toast(`${listItem.name} not added to grocery list.`);
                 }
+            } else {
+                Pop.error(`Must be logged in to add ${listItem.name} to list!`)
+            }
                 // Change pop confirm message that says "you wont be able to revert"
                 // Remove ingredient from shopping list by clicking little X symbol
             },
