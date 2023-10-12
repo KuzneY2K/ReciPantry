@@ -38,7 +38,7 @@ import {recipesService} from '../services/RecipesService.js'
 
 .card-container {
     height: 26rem;
-    width: 60rem;
+    width: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -52,7 +52,7 @@ import {recipesService} from '../services/RecipesService.js'
 }
 
 .card-title{
-    font-size: 5rem !important;
+    font-size: 4rem !important;
 }
 
 @media (max-width: 768px){
@@ -62,17 +62,20 @@ import {recipesService} from '../services/RecipesService.js'
 }
 
 .arrow {
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
     bottom: 0rem;
     right: 1rem;
     text-shadow: 1px 1px 5px black;
 }
 
 .learnMore{
+    font-size: 1.5rem;
     bottom: .8rem;
-    right: 3rem;
+    right: 4rem;
     text-shadow: 1px 1px 3px black;
 }
+
+
 
 .card-title{
     bottom: 4rem;

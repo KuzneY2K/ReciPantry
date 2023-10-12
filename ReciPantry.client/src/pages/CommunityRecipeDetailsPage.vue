@@ -292,7 +292,7 @@ export default {
 
 <style lang="scss" scoped>
 .recipe-title {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     text-shadow: 0px 0px 5px rgb(255, 255, 255);
 }
 
