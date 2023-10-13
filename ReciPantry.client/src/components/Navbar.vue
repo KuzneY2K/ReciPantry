@@ -30,14 +30,14 @@
               v-if="!account.id">Login</span>
           </router-link>
         </li>
-
+<!-- 
         <li class="mx-2">
           <router-link :to="{ name: 'About' }"
             class="btn text-dark selectable text-uppercase animate__animated animate__bounce" height="35"
             id="navbarAboutBox">
             <img src="https://i.imgur.com/4divXgR.png" alt="" height="30">
           </router-link>
-        </li>
+        </li> -->
 
       </ul>
       <!-- LOGIN COMPONENT HERE -->

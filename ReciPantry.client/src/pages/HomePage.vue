@@ -74,16 +74,15 @@ export default {
         { element: '#navbarHomeBox', popover: { title: 'Home Page. 🏡', description: 'You are here!', side: "top", align: "center" } },
         { element: '#navbarRecipesBox', popover: { title: 'Recipe Page. 📃', description: 'Explore all of our recipes on this page!', side: "top", align: "center" } },
         { element: '#navbarCommunityBox', popover: { title: 'Community Page. 🫂', description: 'Explore all of our custom user created recipes, and be able to create your own!', side: "top", align: "center" } },
-        { element: '#navbarAccountBox', popover: { title: 'Account Page. 👳', description: 'Access your account here.', side: "top", align: "center", }},
-        { element: '#navbarAboutBox', popover: { title: 'About Page 🤔', description: 'Get some info on this site over on this tab.', side: "top", align: "center", 
-        onNextClick: () => {
+        { element: '#navbarAccountBox', popover: { title: 'Account Page. 👳', description: 'Access your account here.', side: "top", align: "center", onNextClick: () => {
           document.getElementsByClassName('categoriesBox')[0].classList.remove('disabled')
           document.getElementsByClassName('getStartedBox')[0].classList.remove('disabled')
           document.getElementsByClassName('navbar')[0].classList.remove('disabled')
           localStorage.setItem('needsHomeTour', false),
             logger.log('END TOUR => ' + localStorage.getItem('needsHomeTour'))
           driverObj.moveNext()
-            } } },
+            } }},
+        // { element: '#navbarAboutBox', popover: { title: 'About Page 🤔', description: 'Get some info on this site over on this tab.', side: "top", align: "center", } },
         { element: '#getStartedBox', popover: { title: 'Ready to start?', description: 'Get cooking.', side: "top", align: "center",
         }, 
         }
