@@ -1,9 +1,12 @@
 <template>
+  <header class="sticky-top">
+    <NavbarDesktop class="d-md-flex d-none" />
+  </header>
   <main class="p-0 m-0 pattern-cross-dots-sm" id="main">
     <router-view />
   </main>
   <footer class="sticky-bottom">
-    <Navbar />
+    <Navbar class="d-md-none" />
   </footer>
 </template>
 
