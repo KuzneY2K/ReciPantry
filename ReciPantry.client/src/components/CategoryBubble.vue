@@ -149,8 +149,8 @@ export default {
 }
 
 .bubble {
-    height: 12rem;
-    width: 12rem;
+    height: 9rem;
+    width: 9rem;
     object-fit: cover;
     border: 1px solid black;
 }

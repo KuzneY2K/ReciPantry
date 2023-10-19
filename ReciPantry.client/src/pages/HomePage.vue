@@ -5,7 +5,7 @@
       <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__fadeIn"><span
         class="text-success">Welcome </span>to <span class="text-success">ReciPantry</span><i class="mdi mdi-chef-hat"></i></h1>
       </div>
-      <hr class="animate__animated animate__fadeIn">
+      <!-- <hr class="animate__animated animate__fadeIn"> -->
       <!-- GET STARTED BUTTON - Redirects to recipes Search -->
       <!-- Landing Card -->
       <div class="col-12 col-md-5 p-0 m-0 d-flex flex-row justify-content-center landingCardContainer" id="homeCard">
@@ -13,10 +13,10 @@
         <!-- These are the cards that can be side scrolled on the home page. -->
         <LandingCard  />
       </div>
-      <div class="col-12 col-md-5 p-0 m-0 d-flex flex-column align-items-center justify-content-center landingCardContainer">
-        <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__fadeIn"><span class="text-success">Thinking</span> of what to <span class="text-success">cook</span>? Find your <span class="text-success">perfect recipe</span> here.</h1>
+      <div class="col-12 col-md-5 p-0 m-0 d-flex flex-column align-items-center justify-content-cente animate__animated animate__fadeInr">
+        <h1 class="home-title postion-absolute ms-4 mt-4 animate__animated animate__fadeIn start"><span class="text-success">Thinking</span> of what to <span class="text-success">cook</span>? Find your <span class="text-success">perfect recipe</span> here.</h1>
         <RouterLink :to="{ name: 'Recipes' }">
-        <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black getStartedBox" id="getStartedBox">Get Started <i
+        <button class="btn btn-success p-0 m-0 px-4 py-2 fs-2 elevation-5 border border-1 border-black getStartedBox animate__animated animate__fadeIn" id="getStartedBox">Get Started <i
             class="mdi mdi-arrow-right-bold"></i></button>
       </RouterLink>
       </div>
@@ -31,17 +31,17 @@
     </div>
   </section> -->
   <!-- Categories Section -->
-  <hr class="animate__animated animate__fadeIn">
-  <section class="row p-0 m-0 categoriesBox d-flex flex-row justify-content-md-center" id="categoriesBox">
+  <!-- <hr class="animate__animated animate__fadeIn"> -->
+  <section class="row p-0 m-0 categoriesBox d-flex flex-row justify-content-md-center mt-5" id="categoriesBox">
     <div class="col-12 p-0 m-0 mt-md-3">
       <h1 class="text-center categories-title animate__animated animate__fadeIn mb-md-4">Browse Categories</h1>
     </div>
     <div
-      class="col-12 col-md-9 px-5 p-md-0 m-0 d-flex flex-row justify-content-start justify-content-md-center bubble-container animate__animated animate__fadeInRightBig">
+      class="col-12 col-md-9 px-5 p-md-0 m-0 d-flex flex-row justify-content-start justify-content-md-center bubble-container animate__animated animate__fadeInRightBig w-100">
       <CategoryBubble />
     </div>
   </section>
-  <hr class="animate__animated animate__fadeIn">
+  <!-- <hr class="animate__animated animate__fadeIn"> -->
 </template>
 
 <script>
