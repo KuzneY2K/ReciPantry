@@ -81,7 +81,7 @@ export default {
         onMounted(() => {
             getCommunityRecipes()
             AOS.init()
-            setTimeout(communityOnBoarding, 2000)
+            // setTimeout(communityOnBoarding, 2000)
         })
 
         async function getCommunityRecipes() {
